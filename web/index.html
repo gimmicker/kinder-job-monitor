@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f5f4a">
+<title>유치원 공고</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+  :root {
+    --bg: #f6f4ef; --card: #ffffff; --ink: #1b1b1b; --muted: #5b5b5b; --line: #ddd8cc;
+    --brand: #1f5f4a; --brand-ink: #ffffff; --match: #1f6f3a; --match-bg: #e3f3e7;
+    --review: #8a5300; --review-bg: #fff1d6; --no: #6b6b6b; --no-bg: #eeeeee; --urgent: #b3261e;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 19px/1.5 -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: var(--brand); color: var(--brand-ink);
+           padding: calc(env(safe-area-inset-top) + 12px) 16px 10px; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  h1 { font-size: 23px; margin: 0; }
+  .checked { font-size: 15px; opacity: .9; margin-top: 2px; }
+  #bell { border: 2px solid #fff; background: transparent; color: #fff; border-radius: 999px;
+          padding: 6px 12px; font-size: 16px; font-weight: 700; white-space: nowrap; }
+  #bell.on { background: #fff; color: var(--brand); }
+  nav { display: flex; gap: 6px; margin-top: 10px; }
+  nav button { flex: 1; border: 0; border-radius: 10px; padding: 10px 4px; font-size: 18px; font-weight: 700;
+               background: rgba(255,255,255,.18); color: #fff; }
+  nav button.active { background: #fff; color: var(--brand); }
+  nav .n { font-size: 15px; font-weight: 400; }
+  main { padding: 12px 16px 40px; max-width: 720px; margin: 0 auto; }
+  .banner { background: #fff; border: 2px solid var(--brand); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+  .banner p { margin: 0 0 10px; }
+  .btn { display: block; width: 100%; text-align: center; border: 0; border-radius: 12px; padding: 14px;
+         font-size: 19px; font-weight: 700; background: var(--brand); color: #fff; text-decoration: none; }
+  .btn.ghost { background: #fff; color: var(--brand); border: 2px solid var(--brand); }
+  .card { display: block; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--line);
+          border-radius: 14px; padding: 14px; margin-bottom: 10px; color: inherit; font: inherit; }
+  .card.past { opacity: .55; }
+  .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; }
+  .chip { font-size: 15px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+  .chip.match { background: var(--match-bg); color: var(--match); }
+  .chip.review { background: var(--review-bg); color: var(--review); }
+  .chip.not_match { background: var(--no-bg); color: var(--no); }
+  .chip.new { background: var(--urgent); color: #fff; }
+  .chip.type { background: #eef2f7; color: #2a3b55; }
+  .title { font-size: 20px; font-weight: 700; word-break: keep-all; overflow-wrap: anywhere; }
+  .dl { margin-top: 6px; font-size: 18px; font-weight: 700; }
+  .dl.urgent { color: var(--urgent); }
+  .sub { color: var(--muted); font-size: 16px; }
+  .empty { text-align: center; color: var(--muted); padding: 40px 10px; }
+  .detail h2 { font-size: 23px; line-height: 1.4; margin: 6px 0 12px; word-break: keep-all; overflow-wrap: anywhere; }
+  .detail dl { display: grid; grid-template-columns: 6em 1fr; gap: 8px 10px; margin: 0 0 16px; }
+  .detail dt { color: var(--muted); }
+  .detail dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+  .back { background: none; border: 0; color: var(--brand); font-size: 19px; font-weight: 700; padding: 8px 0; }
+  .note { font-size: 15px; color: var(--muted); margin-top: 16px; }
+  .stack > * + * { margin-top: 10px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div>
+      <h1>청주 유치원 공고</h1>
+      <div class="checked" id="checked">불러오는 중…</div>
+    </div>
+    <button id="bell" type="button" hidden>🔔 알림 켜기</button>
+  </div>
+  <nav id="tabs">
+    <button data-tab="match">적합 <span class="n" id="n-match"></span></button>
+    <button data-tab="review">확인 필요 <span class="n" id="n-review"></span></button>
+    <button data-tab="all">전체</button>
+  </nav>
+</header>
+<main id="main"></main>
+<script src="config.js"></script>
+<script>
+(() => {
+  const CFG = window.APP_CONFIG || {};
+  const $ = (s) => document.querySelector(s);
+  const main = $("#main");
+  const LABEL = { match: "적합", review: "확인 필요", not_match: "부적합" };
+  const WD = "일월화수목금토";
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  };
+  let JOBS = [], STATUS = {}, tab = "match", installEvt = null;
+
+  // ?code= 는 알림 등록 코드. 한 번 저장하고 주소에서 지운다.
+  const params = new URLSearchParams(location.search);
+  if (params.get("code")) { store.set("code", params.get("code")); }
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const today = () => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
+  function dl(dateStr) {
+    if (!dateStr) return { text: "마감일 확인 필요", urgent: false, past: false };
+    const [y, m, d] = dateStr.split("-").map(Number);
+    const dt = new Date(y, m - 1, d);
+    const left = Math.round((dt - today()) / 86400000);
+    const base = `마감 ${m}/${d}(${WD[dt.getDay()]})`;
+    if (left < 0) return { text: `${base} · 마감됨`, urgent: false, past: true };
+    if (left === 0) return { text: `${base} · 오늘 마감`, urgent: true, past: false };
+    return { text: `${base} · D-${left}`, urgent: left <= 2, past: false };
+  }
+  function fmtTime(iso) {
+    if (!iso) return "-";
+    const d = new Date(iso);
+    return `${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+  }
+  const seen = new Set(store.get("seen", []));
+  const isNew = (j) => !seen.has(j.post_id) && j.match_status !== "not_match";
+  function markSeen(id) { if (!seen.has(id)) { seen.add(id); store.set("seen", [...seen].slice(-500)); } }
+
+  function sortJobs(list) {
+    const t = today().toISOString().slice(0, 10);
+    const open = list.filter((j) => !j.deadline || j.deadline >= t)
+      .sort((a, b) => (a.deadline || "9999").localeCompare(b.deadline || "9999"));
+    const past = list.filter((j) => j.deadline && j.deadline < t)
+      .sort((a, b) => b.deadline.localeCompare(a.deadline));
+    return [...open, ...past];
+  }
+
+  function card(j) {
+    const d = dl(j.deadline);
+    return `<button class="card ${d.past ? "past" : ""}" data-id="${esc(j.post_id)}">
+      <div class="row">
+        ${isNew(j) ? '<span class="chip new">NEW</span>' : ""}
+        <span class="chip ${j.match_status}">${LABEL[j.match_status]}</span>
+        ${j.job_type ? `<span class="chip type">${esc(j.job_type)}</span>` : ""}
+      </div>
+      <div class="title">${esc(j.title)}</div>
+      <div class="dl ${d.urgent ? "urgent" : ""}">${d.text}</div>
+      ${j.institution ? `<div class="sub">${esc(j.institution)}</div>` : ""}
+    </button>`;
+  }
+
+  function renderList() {
+    document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.tab === tab));
+    let list = tab === "all" ? JOBS : JOBS.filter((j) => j.match_status === tab);
+    if (tab === "new") list = JOBS.filter(isNew);
+    list = sortJobs(list);
+    const banner = bannerHtml();
+    const head = tab === "new" ? `<p class="sub">새로 올라온 공고</p>` : "";
+    main.innerHTML = banner + head + (list.length ? list.map(card).join("")
+      : `<div class="empty">${tab === "match" ? "지금은 적합한 공고가 없어요." : "공고가 없어요."}<br>마지막 확인: ${fmtTime(STATUS.last_checked_at)}</div>`)
+      + `<p class="note">자동 분류 결과입니다. 정확한 내용은 꼭 원문에서 확인하세요.</p>`;
+  }
+
+  function renderDetail(id) {
+    const j = JOBS.find((x) => x.post_id === id);
+    if (!j) {
+      const src = params.get("src");
+      main.innerHTML = `<div class="stack"><button class="back" data-back>← 목록</button>
+        <p>이 공고를 아직 불러오지 못했어요.</p>
+        ${src ? `<a class="btn" href="${esc(src)}" target="_blank" rel="noopener">원문 보기</a>` : ""}</div>`;
+      return;
+    }
+    markSeen(id);
+    const d = dl(j.deadline);
+    const files = (j.attachments || []).map(esc).join("<br>") || "없음";
+    main.innerHTML = `<div class="detail">
+      <button class="back" data-back>← 목록</button>
+      <div class="row"><span class="chip ${j.match_status}">${LABEL[j.match_status]}</span>
+        ${j.job_type ? `<span class="chip type">${esc(j.job_type)}</span>` : ""}</div>
+      <h2>${esc(j.title)}</h2>
+      <div class="dl ${d.urgent ? "urgent" : ""}" style="margin-bottom:14px">${d.text}</div>
+      <a class="btn" href="${esc(j.url)}" target="_blank" rel="noopener">원문 보기</a>
+      <dl style="margin-top:16px">
+        <dt>기관</dt><dd>${esc(j.institution || j.author || "확인 필요")}</dd>
+        <dt>등록일</dt><dd>${esc(j.posted_at || "-")}</dd>
+        <dt>분류 이유</dt><dd>${esc(j.reason)}</dd>
+        <dt>첨부</dt><dd>${files}</dd>
+      </dl>
+      <p class="note">공고문 내용은 대부분 원문 페이지의 이미지와 첨부파일에 있어요. 지원 방법과 자격은 원문에서 확인하세요.</p>
+    </div>`;
+    window.scrollTo(0, 0);
+  }
+
+  function route() {
+    const p = new URLSearchParams(location.search);
+    if (p.get("post")) return renderDetail(p.get("post"));
+    tab = p.get("tab") || store.get("tab", "match");
+    renderList();
+  }
+  let depth = 0; // 앱 안에서 이동한 횟수. 알림으로 바로 열린 경우 0
+  function go(qs) { depth++; history.pushState(null, "", qs ? `?${qs}` : location.pathname); route(); }
+
+  document.addEventListener("click", (e) => {
+    const c = e.target.closest(".card"); if (c) return go(`post=${encodeURIComponent(c.dataset.id)}`);
+    if (e.target.closest("[data-back]")) {
+      if (depth > 0) { depth -= 1; return history.back(); } // popstate가 route() 호출
+      return go(`tab=${store.get("tab", "match")}`);
+    }
+    const t = e.target.closest("#tabs button");
+    if (t) { store.set("tab", t.dataset.tab); return go(`tab=${t.dataset.tab}`); }
+    if (e.target.closest("[data-install]") && installEvt) { installEvt.prompt(); installEvt = null; renderList(); }
+    if (e.target.closest("[data-enable]")) enablePush();
+  });
+  window.addEventListener("popstate", route);
+  window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); installEvt = e; if (!params.get("post")) renderList(); });
+
+  // ---------- 알림 ----------
+  const pushSupported = "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+  const pushReady = pushSupported && CFG.vapidPublicKey && CFG.workerUrl;
+  let pushOn = false;
+
+  function bannerHtml() {
+    let h = "";
+    if (installEvt) h += `<div class="banner"><p>휴대폰 홈 화면에 앱으로 설치하면 더 편해요.</p><button class="btn ghost" data-install>홈 화면에 설치</button></div>`;
+    if (pushReady && !pushOn) {
+      const denied = Notification.permission === "denied";
+      h += `<div class="banner"><p>${denied ? "알림이 차단되어 있어요. 휴대폰 설정 → 앱/Chrome → 알림에서 이 사이트를 허용해 주세요."
+        : "새 공고가 올라오면 알림을 받을 수 있어요."}</p>${denied ? "" : '<button class="btn" data-enable>🔔 알림 켜기</button>'}</div>`;
+    }
+    return h;
+  }
+  function setBell() {
+    const b = $("#bell"); if (!pushReady) return;
+    b.hidden = false; b.classList.toggle("on", pushOn);
+    b.textContent = pushOn ? "🔔 알림 켜짐" : "🔕 알림 꺼짐";
+    b.onclick = pushOn ? null : enablePush;
+  }
+  function b64ToBytes(b64) {
+    const pad = "=".repeat((4 - (b64.length % 4)) % 4);
+    const raw = atob((b64 + pad).replace(/-/g, "+").replace(/_/g, "/"));
+    return Uint8Array.from(raw, (c) => c.charCodeAt(0));
+  }
+  async function register(sub) {
+    const code = store.get("code", "");
+    const r = await fetch(`${CFG.workerUrl}/subscribe`, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code, subscription: sub.toJSON(), ua: navigator.userAgent.slice(0, 120) }),
+    });
+    if (!r.ok) throw new Error(r.status === 403 ? "등록 코드가 없어요. 처음 받은 주소로 다시 열어주세요." : `등록 실패 (${r.status})`);
+    // 서비스워커가 구독 갱신 때 쓸 수 있게 저장
+    const reg = await navigator.serviceWorker.ready;
+    reg.active && reg.active.postMessage({ type: "config", workerUrl: CFG.workerUrl, code, vapidPublicKey: CFG.vapidPublicKey });
+  }
+  async function enablePush() {
+    try {
+      const perm = await Notification.requestPermission();
+      if (perm !== "granted") { renderList(); return; }
+      const reg = await navigator.serviceWorker.ready;
+      let sub = await reg.pushManager.getSubscription();
+      if (!sub) sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToBytes(CFG.vapidPublicKey) });
+      await register(sub);
+      pushOn = true; store.set("pushRegistered", sub.endpoint);
+    } catch (err) {
+      alert("알림을 켜지 못했어요.\n" + err.message);
+    }
+    setBell(); if (!new URLSearchParams(location.search).get("post")) renderList();
+  }
+  async function checkPush() {
+    if (!pushReady) return;
+    const reg = await navigator.serviceWorker.ready;
+    const sub = await reg.pushManager.getSubscription();
+    pushOn = !!sub && Notification.permission === "granted";
+    // 구독이 바뀌었으면(브라우저가 갱신) 다시 등록
+    if (pushOn && store.get("pushRegistered", "") !== sub.endpoint) {
+      try { await register(sub); store.set("pushRegistered", sub.endpoint); } catch {}
+    }
+    setBell();
+  }
+
+  // ---------- 시작 ----------
+  async function load() {
+    try {
+      const [jr, sr] = await Promise.all([fetch("data/jobs.json", { cache: "no-store" }), fetch("data/status.json", { cache: "no-store" })]);
+      JOBS = await jr.json(); STATUS = await sr.json();
+    } catch { JOBS = []; STATUS = {}; }
+    const n = (s) => JOBS.filter((j) => j.match_status === s && dl(j.deadline).past === false).length;
+    $("#n-match").textContent = n("match") || ""; $("#n-review").textContent = n("review") || "";
+    $("#checked").textContent = `마지막 확인 ${fmtTime(STATUS.last_checked_at)}${STATUS.last_status === "failed" ? " · 확인 실패" : ""}`;
+    route();
+  }
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").then(() => checkPush()).then(() => { if (!new URLSearchParams(location.search).get("post")) renderList(); }).catch(() => {});
+  }
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") load(); });
+  load();
+})();
+</script>
+</body>
+</html>

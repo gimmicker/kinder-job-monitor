@@ -1,0 +1,104 @@
+name: monitor
+
+on:
+  schedule:
+    # cron은 UTC. 평일(월~금) 한국시간 08:30, 12:30, 17:30
+    - cron: "30 23 * * 0-4"
+    - cron: "30 3 * * 1-5"
+    - cron: "30 8 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      test_push:
+        description: "테스트 알림만 보내기"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: monitor
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    env:
+      PYTHONUTF8: "1"
+      MAIL_USER: ${{ secrets.MAIL_USER }}
+      MAIL_APP_PASSWORD: ${{ secrets.MAIL_APP_PASSWORD }}
+      MAIL_ADMIN: ${{ secrets.MAIL_ADMIN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: 테스트 알림
+        if: ${{ inputs.test_push }}
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          WORKER_ADMIN_TOKEN: ${{ secrets.WORKER_ADMIN_TOKEN }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ vars.VAPID_SUBJECT }}
+        run: python -m app.push --test
+
+      - name: 수집·분류
+        id: collect
+        if: ${{ !inputs.test_push }}
+        run: python -m app.main
+
+      - name: 데이터 커밋
+        if: ${{ always() && !inputs.test_push }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "data: 수집 $(TZ=Asia/Seoul date '+%m/%d %H:%M')"
+          git push
+
+      - name: 사이트 빌드
+        if: ${{ !inputs.test_push }}
+        env:
+          VAPID_PUBLIC_KEY: ${{ vars.VAPID_PUBLIC_KEY }}
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+        run: python -m app.build_site _site
+
+      - uses: actions/configure-pages@v5
+        if: ${{ !inputs.test_push }}
+
+      - uses: actions/upload-pages-artifact@v3
+        if: ${{ !inputs.test_push }}
+        with:
+          path: _site
+
+      - name: 배포
+        id: deploy
+        if: ${{ !inputs.test_push }}
+        uses: actions/deploy-pages@v4
+
+      - name: 알림 발송
+        if: ${{ !inputs.test_push }}
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          WORKER_ADMIN_TOKEN: ${{ secrets.WORKER_ADMIN_TOKEN }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ vars.VAPID_SUBJECT }}
+        run: python -m app.push
+
+      - name: 알림 기록 커밋
+        if: ${{ always() && !inputs.test_push }}
+        run: |
+          git add data
+          git diff --cached --quiet || git commit -m "data: 알림 기록"
+          git push

@@ -1,0 +1,9 @@
+.venv/
+_site/
+__pycache__/
+.pytest_cache/
+*.tmp
+worker/.wrangler/
+worker/node_modules/
+.env
+*.stackdump

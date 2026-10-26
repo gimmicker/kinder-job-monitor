@@ -1,0 +1,57 @@
+# 수집·분류 설정. 기준을 바꿀 때는 이 파일만 고치면 된다.
+
+source:
+  base: "https://pool.cbe.go.kr"
+  list_path: "/cbe/na/ntt/selectNttList.do"
+  detail_path: "/cbe/na/ntt/selectNttInfo.do"
+  bbs_id: "1798"
+  mi: "11716"
+  list_count: 50        # 한 페이지 건수 (게시판 허용: 10~100)
+  max_pages: 4          # 이미 본 글만 나오는 페이지에 닿으면 그 전에 멈춤
+  request_delay_sec: 2
+  timeout_sec: 20
+  user_agent: "Mozilla/5.0 (compatible; kinder-job-monitor/1.0; personal low-frequency use)"
+
+filters:
+  # 게시판 '분류' 칸 값
+  categories: ["유치원"]
+  # 분류가 다르더라도 제목에 이 단어가 있으면 유치원 공고로 본다
+  kindergarten_words: ["유치원", "병설유"]
+
+  # 지역 판단 순서:
+  #   1) config/places.yaml 기관 목록
+  #   2) 제목·작성자에 청주 단어 → 청주
+  #   3) 기관 이름이 청주 읍면으로 시작 → 청주 / 다른 시군·읍면으로 시작 → 기타
+  #   4) 제목·작성자에 다른 시군 이름 → 기타
+  #   5) 본문에 청주 단어 → 청주
+  #   6) 모르면 '확인 필요'
+  region:
+    cheongju_words: ["청주", "청원구", "상당구", "서원구", "흥덕구"]
+    cheongju_towns: ["오송", "오창", "내수", "강내", "옥산", "남이", "현도", "가덕", "낭성",
+                     "미원", "문의", "남일", "북이", "청원"]
+    other_names: ["충주", "제천", "보은", "옥천", "영동", "증평", "진천", "괴산", "음성", "단양"]
+    other_towns: ["충주", "제천", "보은", "옥천", "영동", "증평", "진천", "괴산", "음성", "단양",
+                  "금왕", "광혜원", "황간", "감곡", "생극", "초평", "봉양", "수안보", "주덕", "앙성"]
+
+  # 직무 유형: 위에서부터 먼저 맞는 것을 쓴다
+  job_types:
+    - { type: "자원봉사",   words: ["자원봉사", "봉사자", "온나누미"] }
+    - { type: "기간제교사", words: ["기간제", "계약제교원", "계약제 교원"] }
+    - { type: "대체교사",   words: ["대체교사", "대체 교사", "대체인력"] }
+    - { type: "전일제강사", words: ["전일제강사", "전일제 강사"] }
+    - { type: "방과후강사", words: ["방과후", "방가후", "방학 중 강사", "방학중 강사", "특성화"] }
+    - { type: "교육공무직", words: ["교육공무직", "돌봄전담사", "실무사", "조리"] }
+    - { type: "시간강사",   words: ["시간강사", "시간제"] }
+    - { type: "기타강사",   words: ["강사", "튜터"] }
+
+  # 청주 + 아래 유형 → 적합 / 청주 + 그 외 유형 → 확인 필요 / 아래 '제외' 유형 → 부적합
+  match_job_types: ["기간제교사", "대체교사", "전일제강사", "방과후강사", "시간강사", "기타강사"]
+  exclude_job_types: ["자원봉사"]
+
+notify:
+  summary_threshold: 3      # 새 공고가 이보다 많으면 요약 알림 1건
+  statuses: ["match", "review"]
+
+retention:
+  drop_after_deadline_days: 90
+  runs_keep: 100

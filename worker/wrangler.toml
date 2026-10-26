@@ -1,0 +1,11 @@
+name = "kinder-job-push"
+main = "index.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+# GitHub Pages 주소의 origin (경로 제외). 예: https://myname.github.io
+ALLOWED_ORIGIN = "https://CHANGE-ME.github.io"
+
+[[kv_namespaces]]
+binding = "SUBS"
+id = "CHANGE-ME"   # npx wrangler kv namespace create SUBS 출력값
