@@ -12,6 +12,13 @@ on:
         description: "테스트 알림만 보내기"
         type: boolean
         default: false
+  # 화면 파일이 바뀌면 사이트만 다시 배포 (수집·알림은 건너뜀)
+  push:
+    branches: [main]
+    paths:
+      - "web/**"
+      - "app/build_site.py"
+      - ".github/workflows/monitor.yml"
 
 permissions:
   contents: write
@@ -55,11 +62,11 @@ jobs:
 
       - name: 수집·분류
         id: collect
-        if: ${{ !inputs.test_push }}
+        if: ${{ !inputs.test_push && github.event_name != 'push' }}
         run: python -m app.main
 
       - name: 데이터 커밋
-        if: ${{ always() && !inputs.test_push }}
+        if: ${{ always() && !inputs.test_push && github.event_name != 'push' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -88,7 +95,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: 알림 발송
-        if: ${{ !inputs.test_push }}
+        if: ${{ !inputs.test_push && github.event_name != 'push' }}
         env:
           WORKER_URL: ${{ secrets.WORKER_URL }}
           WORKER_ADMIN_TOKEN: ${{ secrets.WORKER_ADMIN_TOKEN }}
@@ -97,7 +104,7 @@ jobs:
         run: python -m app.push
 
       - name: 알림 기록 커밋
-        if: ${{ always() && !inputs.test_push }}
+        if: ${{ always() && !inputs.test_push && github.event_name != 'push' }}
         run: |
           git add data
           git diff --cached --quiet || git commit -m "data: 알림 기록"
