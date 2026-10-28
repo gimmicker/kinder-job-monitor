@@ -15,7 +15,8 @@ def _read(path: Path, default):
 def _write(path: Path, data) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(".tmp")
-    with open(tmp, "w", encoding="utf-8") as f:
+    with open(tmp, "w", encoding="utf-8", newline="
+") as f:  # PC(Windows)에서 돌려도 LF로
         json.dump(data, f, ensure_ascii=False, indent=1, sort_keys=True)
         f.write("\n")
     tmp.replace(path)
