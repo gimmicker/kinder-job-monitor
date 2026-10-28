@@ -94,6 +94,9 @@
   // ?code= 는 알림 등록 코드. 한 번 저장하고 주소에서 지운다.
   const params = new URLSearchParams(location.search);
   if (params.get("code")) { store.set("code", params.get("code")); }
+  // 아이폰은 홈 화면에 추가한 앱에서만 알림 가능. 그 앱은 Safari와 저장소가 따로라 코드가 안 넘어간다.
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const standalone = navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
 
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const today = () => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
@@ -212,6 +215,7 @@
   function bannerHtml() {
     let h = "";
     if (installEvt) h += `<div class="banner"><p>휴대폰 홈 화면에 앱으로 설치하면 더 편해요.</p><button class="btn ghost" data-install>홈 화면에 설치</button></div>`;
+    if (isIOS && !standalone) h += `<div class="banner"><p>아이폰은 알림을 받으려면 앱으로 설치해야 해요.<br>Safari 아래쪽 <b>공유 버튼(□↑)</b> → <b>홈 화면에 추가</b>를 누른 뒤, 홈 화면의 <b>유치원 공고</b> 아이콘으로 열어 알림을 켜 주세요.</p></div>`;
     if (pushReady && !pushOn) {
       const denied = Notification.permission === "denied";
       h += `<div class="banner"><p>${denied ? "알림이 차단되어 있어요. 휴대폰 설정 → 앱/Chrome → 알림에서 이 사이트를 허용해 주세요."
@@ -231,7 +235,11 @@
     return Uint8Array.from(raw, (c) => c.charCodeAt(0));
   }
   async function register(sub) {
-    const code = store.get("code", "");
+    let code = store.get("code", "");
+    if (!code) {
+      code = (prompt("등록 코드를 입력해 주세요.\n(처음 받은 주소에서 code= 뒤에 있는 글자)") || "").trim();
+      if (code) store.set("code", code);
+    }
     const r = await fetch(`${CFG.workerUrl}/subscribe`, {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ code, subscription: sub.toJSON(), ua: navigator.userAgent.slice(0, 120) }),
