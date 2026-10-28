@@ -68,6 +68,12 @@
                    color: var(--muted); width: 30px; height: 30px; border-radius: 50%; font-size: 16px; line-height: 1;
                    display: grid; place-items: center; padding: 0; }
   .search .clear[hidden] { display: none; }
+  .scope { display: inline-flex; justify-self: start; background: var(--no-bg); border-radius: 10px; padding: 3px; gap: 2px; }
+  .scope[hidden] { display: none; }
+  .scope button { border: 0; background: none; border-radius: 8px; padding: 6px 14px; font-size: 15px; font-weight: 700; color: var(--muted);
+                  transition: background .2s, color .2s; }
+  .scope button.on { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  .scope small { font-weight: 500; margin-left: 2px; }
   .cats { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * max(16px, env(safe-area-inset-left))); padding: 2px max(16px, env(safe-area-inset-left)); }
   .cats::-webkit-scrollbar { display: none; }
   .cat { flex: none; border: 1.5px solid var(--line); background: var(--card); color: var(--muted); border-radius: 999px;
@@ -86,7 +92,7 @@
   .dday { border-radius: 11px; text-align: center; padding: 7px 0 6px; background: var(--match-bg); color: var(--match); }
   .dday.review { background: var(--review-bg); color: var(--review); }
   .dday.u { background: var(--urgent); color: #fff; }
-  .dday.past, .dday.none { background: var(--no-bg); color: var(--no); }
+  .dday.past, .dday.none, .dday.other { background: var(--no-bg); color: var(--no); }
   .dday b { display: block; font-size: 19px; line-height: 1.15; font-variant-numeric: tabular-nums; }
   .dday small { display: block; font-size: 12px; font-weight: 700; }
   .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 4px; }
@@ -138,8 +144,7 @@
   .bigdl b.past { color: var(--no); }
   .bigdl span { font-weight: 700; }
   .why { border-radius: 14px; padding: 12px 14px; background: var(--match-bg); color: var(--match); }
-  .why.review { background: var(--review-bg); color: var(--review); }
-  .why.not_match { background: var(--no-bg); color: var(--no); }
+  .why.other { background: var(--no-bg); color: var(--ink); }
   .why b { display: block; font-size: 15px; }
   .detail dl { display: grid; grid-template-columns: 5em 1fr; gap: 8px 10px; margin: 0; }
   .detail dt { color: var(--muted); }
@@ -175,6 +180,12 @@
   .welcome p { margin: 0; color: var(--muted); font-size: 16px; }
   @keyframes wave { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(16deg); } 50% { transform: rotate(-8deg); } 75% { transform: rotate(12deg); } }
   .finish { margin-top: 4px; }
+  .plabel { font-size: 14px; font-weight: 700; color: var(--muted); margin-bottom: -4px; }
+  .picks { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pick { border: 1.5px solid var(--line); background: var(--card); color: var(--muted); border-radius: 999px; padding: 6px 13px;
+          font-size: 15px; font-weight: 700; transition: background .2s, color .2s, border-color .2s; }
+  .pick.on { background: var(--brand); border-color: var(--brand); color: #fff; }
+  .set .warn { margin: 0; font-size: 15px; font-weight: 700; color: var(--urgent); }
   .nameinput { width: 100%; border: 1.5px solid var(--line); border-radius: 12px; padding: 11px 12px;
                font-size: 18px; color: var(--ink); background: var(--card); outline: none; }
   .nameinput:focus { border-color: var(--brand); }
@@ -321,7 +332,6 @@
   const CFG = window.APP_CONFIG || {};
   const $ = (s) => document.querySelector(s);
   const main = $("#main");
-  const LABEL = { match: "조건 맞음", review: "확인 필요", not_match: "조건 밖" };
   const WD = "일월화수목금토";
   const TABS = ["open", "fav", "closed"];
   const store = {
@@ -329,9 +339,18 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
   };
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // 받을 공고 조건 (폰에 저장). 고를 수 있는 값과 기본값은 config.js에서 온다
+  const COND = CFG.conditions || { cities: ["청주"], types: [], defaults: { cities: ["청주"], types: [] } };
+  let PREFS = (() => {
+    const p = store.get("prefs", null);
+    return p && Array.isArray(p.cities) && Array.isArray(p.types) ? p : COND.defaults;
+  })();
+  // app/prefs.py의 is_mine과 같은 규칙: 아는 값이 고른 조건과 다를 때만 '내 조건 아님'
+  const isMine = (j) => !((j.job_type && !PREFS.types.includes(j.job_type)) || (j.city && !PREFS.cities.includes(j.city)));
   let JOBS = [], STATUS = {}, installEvt = null;
   let curJob = null;
-  let tab = "open", cat = "전체", query = "", showOut = false, listScroll = 0, loaded = false;
+  let tab = "open", cat = "전체", query = "", listScroll = 0, loaded = false;
+  let scope = store.get("scope", "mine"); // 목록: 내 조건(mine) / 전체(all)
 
   // ?code= 는 알림 등록 코드. 한 번 저장한다.
   const params = new URLSearchParams(location.search);
@@ -368,7 +387,7 @@
   function place(j) {
     const k = j.kinder;
     if (k && k.city) return k.city === "청주" ? `청주 ${k.area || ""}`.trim() : k.city;
-    return j.region === "청주" ? "청주" : j.region === "기타" ? "청주 밖" : "지역 확인 필요";
+    return j.region === "청주" ? "청주" : j.region === "기타" ? "청주 밖" : "";
   }
   // 아이콘: 의미가 있는 것은 토스페이스 이모지, 작은 조작 버튼은 2px 선 아이콘
   const greetName = (n) => n + (/님$/.test(n) ? "께" : " 선생님께");
@@ -394,19 +413,19 @@
     return t || typeName(j.job_type) || j.title;
   }
   function why(j) {
-    const ty = typeName(j.job_type) || "이";
-    if (j.match_status === "match") return `청주 지역이고, 찾으시는 ${ty} 공고예요.`;
-    if (j.match_status === "review") {
-      if (j.region === "청주") return `청주 지역이에요. ${ty} 직무가 맞는지 원문에서 확인해 주세요.`;
-      return "학교 위치를 확인하지 못했어요. 원문에서 지역을 확인해 주세요.";
+    const ty = typeName(j.job_type);
+    if (isMine(j)) {
+      if (!j.city || !j.job_type) return "지역이나 직무를 자동으로 알아내지 못해 놓치지 않게 내 조건에 넣어 두었어요. 원문에서 확인해 주세요.";
+      return `고르신 지역(${j.city})과 직무(${ty})에 맞는 공고예요.`;
     }
-    if (j.job_type === "자원봉사") return "자원봉사 모집이라 조건 밖으로 분류했어요.";
-    if (j.region === "기타") return "청주가 아닌 지역 공고예요.";
-    return j.reason || "조건 밖으로 분류했어요.";
+    const diff = [];
+    if (j.city && !PREFS.cities.includes(j.city)) diff.push(`지역(${j.city === "기타" ? "청주 밖" : j.city})`);
+    if (j.job_type && !PREFS.types.includes(j.job_type)) diff.push(`직무(${ty})`);
+    return `고르신 조건과 ${diff.join(", ")}이 달라요. 설정에서 조건을 바꿀 수 있어요.`;
   }
 
   const seen = new Set(store.get("seen", []));
-  const isNew = (j) => !seen.has(j.post_id) && j.match_status !== "not_match";
+  const isNew = (j) => !seen.has(j.post_id) && isMine(j);
   function markSeen(id) { if (!seen.has(id)) { seen.add(id); store.set("seen", [...seen].slice(-500)); } }
   const favs = new Set(store.get("favs", []));
   function toggleFav(id) { favs.has(id) ? favs.delete(id) : favs.add(id); store.set("favs", [...favs]); updateCounts(); }
@@ -418,8 +437,8 @@
     if (t === "closed") return isPast(j);
     return !isPast(j);
   }
-  // 탭 → 조건 밖 숨김 → 카테고리 → 검색
-  function base(t) { return JOBS.filter((j) => inTab(j, t) && (t === "fav" || showOut || j.match_status !== "not_match")); }
+  // 탭 → 내 조건/전체 → 카테고리 → 검색 (찜은 항상 전부)
+  function base(t) { return JOBS.filter((j) => inTab(j, t) && (t === "fav" || scope === "all" || isMine(j))); }
   function matches(j, q) {
     if (!q) return true;
     const hay = `${j.title} ${j.institution || ""} ${typeName(j.job_type)} ${j.job_type || ""} ${(j.kinder && j.kinder.addr) || ""}`.toLowerCase();
@@ -440,7 +459,7 @@
 
   function card(j, i, animate) {
     const d = dl(j.deadline);
-    const ddCls = d.cls || (j.match_status === "review" ? "review" : "");
+    const ddCls = d.cls || (isMine(j) ? "" : "other");
     const fav = favs.has(j.post_id);
     return `<article class="card ${d.past ? "past" : ""} ${animate ? "enter" : ""}" style="${animate ? `animation-delay:${Math.min(i, 8) * 35}ms` : ""}"
         data-id="${esc(j.post_id)}" tabindex="0" role="link">
@@ -448,7 +467,7 @@
       <div>
         <div class="chips">
           ${isNew(j) && !d.past ? '<span class="chip new">NEW</span>' : ""}
-          <span class="chip ${j.match_status}">${LABEL[j.match_status]}</span>
+          ${isMine(j) ? '<span class="chip match">내 조건</span>' : ""}
           ${j.job_type ? `<span class="chip type">${esc(typeName(j.job_type))}</span>` : ""}
         </div>
         <div class="inst">${hl(j.institution || j.author || "기관 확인 필요", query)}</div>
@@ -477,6 +496,8 @@
   function emptyText(all) {
     if (query) return `‘${esc(query)}’에 맞는 공고가 없어요.`;
     if (tab === "fav") return `<span class="big">${tf("⭐")}</span>찜한 공고가 없어요.<br>공고 카드의 별을 누르면 여기에 모여요.`;
+    if (scope === "mine" && tab !== "fav" && JOBS.some((j) => inTab(j, tab)))
+      return `내 조건에 맞는 ${tab === "closed" ? "마감된" : "모집 중인"} 공고가 없어요.<br><button type="button" class="link" data-scope="all">전체 공고 보기</button>`;
     if (tab === "closed") return "마감된 공고가 없어요.";
     if (all) return "이 분류에는 모집 중인 공고가 없어요.";
     return `지금 모집 중인 공고가 없어요.<br>새 공고가 올라오면 알림으로 알려드릴게요.<br><small>마지막 확인 ${fmtTime(STATUS.last_checked_at)}</small>`;
@@ -490,6 +511,7 @@
           <input id="q" type="search" inputmode="search" enterkeyhint="search" placeholder="기관, 직무 검색 (예: 방과후, 오창)" value="${esc(query)}" autocomplete="off">
           <button class="clear" type="button" data-clear ${query ? "" : "hidden"} aria-label="검색어 지우기">${ic("x")}</button>
         </label>
+        <div class="scope" id="scope"></div>
         <div class="cats" id="cats"></div>
       </div>
       <div id="cards"></div>`;
@@ -505,12 +527,13 @@
     $("#cats").hidden = !pool.length;
     $("#cats").innerHTML = cats.map((c) => `<button class="cat ${c === cat ? "active" : ""}" type="button" data-cat="${esc(c)}">${esc(c)}<small>${c === "전체" ? pool.length : counts[c]}</small></button>`).join("");
     const list = sortJobs(pool.filter((j) => (cat === "전체" || (typeName(j.job_type) || "기타") === cat) && matches(j, query)), tab);
-    const hidden = tab === "fav" || showOut ? 0 : JOBS.filter((j) => inTab(j, tab) && j.match_status === "not_match").length;
+    const inTabAll = JOBS.filter((j) => inTab(j, tab));
+    $("#scope").hidden = tab === "fav" || !inTabAll.length;
+    $("#scope").innerHTML = `<button type="button" data-scope="mine" class="${scope === "mine" ? "on" : ""}">내 조건 <small>${inTabAll.filter(isMine).length}</small></button>`
+      + `<button type="button" data-scope="all" class="${scope === "all" ? "on" : ""}">전체 <small>${inTabAll.length}</small></button>`;
     const doAnim = animate && !reduceMotion;
     $("#cards").innerHTML = (list.length ? `<div class="list">${list.map((j, i) => card(j, i, doAnim)).join("")}</div>`
-        : `<div class="empty">${emptyText(pool.length > 0)}</div>`)
-      + (hidden ? `<button class="more" type="button" data-out>조건 밖 공고 ${hidden}건도 보기</button>`
-        : showOut && tab !== "fav" ? `<button class="more" type="button" data-out>조건 밖 공고 숨기기</button>` : "");
+        : `<div class="empty">${emptyText(pool.length > 0)}</div>`);
     const q = $(".search .clear"); if (q) q.hidden = !query;
   }
 
@@ -536,11 +559,11 @@
     const backLabel = { open: "모집 중", fav: "찜", closed: "마감됨" }[store.get("tab", "open")] || "목록";
     main.innerHTML = `<div class="detail">
       <button class="back" type="button" data-back>${ic("back")}${backLabel}</button>
-      <div class="chips" style="margin:0"><span class="chip ${j.match_status}">${LABEL[j.match_status]}</span>
+      <div class="chips" style="margin:0">${isMine(j) ? '<span class="chip match">내 조건</span>' : ""}
         ${j.job_type ? `<span class="chip type">${esc(typeName(j.job_type))}</span>` : ""}</div>
       <h2>${esc(j.institution || j.author || "기관 확인 필요")}<span>${esc(jobDesc(j))}</span></h2>
       <div class="bigdl"><b class="${d.cls}">${d.past ? "마감" : d.short}</b><span>${d.long}</span></div>
-      <div class="why ${j.match_status}"><b>이 공고가 보인 이유</b>${esc(why(j))}</div>
+      <div class="why ${isMine(j) ? "" : "other"}"><b>${isMine(j) ? "내 조건에 맞아요" : "내 조건과 달라요"}</b>${esc(why(j))}</div>
       <dl>
         <dt>등록일</dt><dd>${fmtDate(j.posted_at)}</dd>
         <dt>첨부</dt><dd>${esc(fileSum)}</dd>
@@ -632,7 +655,10 @@
       k.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", inline: "center", block: "nearest" });
       return;
     }
-    if (e.target.closest("[data-out]")) { showOut = !showOut; updateCounts(); renderCards(true); return; }
+    const sc = e.target.closest("[data-scope]");
+    if (sc) { scope = sc.dataset.scope; store.set("scope", scope); cat = "전체"; updateCounts(); renderCards(true); return; }
+    const pf = e.target.closest("[data-pref]");
+    if (pf) { togglePref(pf.dataset.pref, pf.dataset.v); return; }
     if (e.target.closest("[data-clear]")) { query = ""; const q = $("#q"); if (q) { q.value = ""; q.focus(); } renderCards(true); return; }
     if (e.target.closest("#checked")) { load(); return; }
     if (e.target.closest("[data-route]") && curJob && curJob.kinder) { openRoute(curJob.kinder); return; }
@@ -703,7 +729,7 @@
     }
     const r = await fetch(`${CFG.workerUrl}/subscribe`, {
       method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ code, subscription: sub.toJSON(), ua: navigator.userAgent.slice(0, 120) }),
+      body: JSON.stringify({ code, subscription: sub.toJSON(), ua: navigator.userAgent.slice(0, 120), prefs: PREFS }),
     });
     if (!r.ok) throw new Error(r.status === 403 ? "등록 코드가 없어요. 처음 받은 주소로 다시 열어주세요." : `등록 실패 (${r.status})`);
     // 서비스워커가 구독 갱신 때 쓸 수 있게 저장
@@ -800,6 +826,22 @@
     if (v) store.set("callname", v); else localStorage.removeItem("callname");
     $("#name-msg").textContent = v ? `저장했어요 · 앱을 열 때 “${greetName(v)}”` : "";
   }
+  function togglePref(kind, v) {
+    const on = new Set(PREFS[kind]);
+    on.has(v) ? on.delete(v) : on.add(v);
+    PREFS = { ...PREFS, [kind]: COND[kind].filter((x) => on.has(x)) };
+    store.set("prefs", PREFS);
+    updateCounts(); renderSettings(); syncPrefs();
+  }
+  // 알림이 켜져 있으면 바뀐 조건을 알림 서버에도 저장
+  let prefTimer;
+  function syncPrefs() {
+    if (!pushOn) return;
+    clearTimeout(prefTimer);
+    prefTimer = setTimeout(async () => {
+      try { const reg = await navigator.serviceWorker.ready; const sub = await reg.pushManager.getSubscription(); if (sub) await register(sub); } catch {}
+    }, 800);
+  }
   function pruneFavs() {
     const past = JOBS.filter((j) => favs.has(j.post_id) && isPast(j)).map((j) => j.post_id);
     past.forEach((id) => favs.delete(id));
@@ -830,6 +872,16 @@
         <h3>${tf("💌")} 이름</h3>
         <input id="callname" class="nameinput" type="text" maxlength="12" placeholder="예: 김○○" value="${esc(store.get("callname", "") || "")}" autocomplete="off" enterkeyhint="done">
         <div class="route-msg" id="name-msg" role="status"></div>
+      </section>
+
+      <section class="set">
+        <h3>${tf("🎯")} 받을 공고 조건</h3>
+        <p class="desc">고른 조건에 맞는 공고가 '내 조건'으로 보이고, 알림도 이 조건대로 와요.</p>
+        <div class="plabel">지역</div>
+        <div class="picks">${COND.cities.map((c) => `<button type="button" class="pick ${PREFS.cities.includes(c) ? "on" : ""}" data-pref="cities" data-v="${esc(c)}" aria-pressed="${PREFS.cities.includes(c)}">${esc(c)}</button>`).join("")}</div>
+        <div class="plabel">직무</div>
+        <div class="picks">${COND.types.map((t) => `<button type="button" class="pick ${PREFS.types.includes(t) ? "on" : ""}" data-pref="types" data-v="${esc(t)}" aria-pressed="${PREFS.types.includes(t)}">${esc(typeName(t))}</button>`).join("")}</div>
+        ${!PREFS.cities.length || !PREFS.types.length ? `<p class="warn">지역과 직무를 하나 이상 골라 주세요.</p>` : ""}
       </section>
 
       <section class="set">

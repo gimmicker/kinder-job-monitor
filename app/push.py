@@ -13,10 +13,11 @@ import requests
 
 from . import mailer
 from .config import iso, load_settings, now_kst
+from .kinders import load_kinders
+from .prefs import default_prefs, is_mine, job_city, sanitize
 from .store import Store
 
 WEEKDAY = "월화수목금토일"
-LABEL = {"match": "적합", "review": "확인 필요"}
 
 
 def deadline_text(deadline: str | None, today: date) -> str:
@@ -28,21 +29,33 @@ def deadline_text(deadline: str | None, today: date) -> str:
     return f"마감 {d.month}/{d.day}({WEEKDAY[d.weekday()]}) · {dday}"
 
 
+def _type_name(t: str | None) -> str:
+    return (t[:-2] + " " + t[-2:]) if t and t[-2:] in ("강사", "교사") else (t or "")
+
+
+def headline(j: dict) -> str:
+    """알림 첫 줄: '주중초병설유치원 · 방과후 강사'. 기관을 모르면 원래 제목."""
+    inst, jt = j.get("institution"), _type_name(j.get("job_type"))
+    if inst:
+        return f"{inst} · {jt}" if jt else inst
+    return j["title"][:70]
+
+
 def build_messages(pending: list[dict], threshold: int, today: date) -> list[dict]:
     """반환: [{payload, post_ids}]"""
     if not pending:
         return []
     if len(pending) > threshold:
-        n_match = sum(1 for j in pending if j["match_status"] == "match")
-        body = f"적합 {n_match}건 · 확인 필요 {len(pending) - n_match}건\n" + \
-               "\n".join(f"· {j['title'][:40]}" for j in pending[:3])
+        lines = [f"· {headline(j)}" for j in pending[:3]]
+        if len(pending) > 3:
+            lines.append(f"그 외 {len(pending) - 3}건")
         return [{"post_ids": [j["post_id"] for j in pending],
-                 "payload": {"title": f"새 유치원 공고 {len(pending)}건", "body": body,
-                             "url": "./?tab=new", "tag": "summary"}}]
+                 "payload": {"title": f"새 유치원 공고 {len(pending)}건", "body": "\n".join(lines),
+                             "url": "./?tab=open", "tag": "summary"}}]
     out = []
     for j in pending:
         out.append({"post_ids": [j["post_id"]],
-                    "payload": {"title": f"[{LABEL[j['match_status']]}] {j['title'][:70]}",
+                    "payload": {"title": headline(j),
                                 "body": deadline_text(j.get("deadline"), today),
                                 "url": f"./?post={j['post_id']}", "tag": f"post-{j['post_id']}",
                                 "post_id": j["post_id"], "source_url": j["url"]}})
@@ -93,6 +106,21 @@ def send(messages, subs, private_key, subject, webpush=None) -> dict:
     return {"delivered": delivered, "gone": gone, "errors": errors}
 
 
+def plan(pending: list[dict], subs: list[dict], settings: dict, kinders: dict) -> dict:
+    """폰(구독)마다 그 폰의 조건에 맞는 공고만 고른다. 반환: {sub_id: [공고]}.
+
+    조건을 저장하지 않은 폰은 기본 조건(청주 + 설정의 직무)을 쓴다.
+    """
+    default = default_prefs(settings)
+    cities = {j["post_id"]: job_city(j, kinders) for j in pending}
+    out = {}
+    for sub in subs:
+        prefs = sanitize(sub.get("prefs"), settings) or default
+        mine = [j for j in pending if is_mine(j, cities[j["post_id"]], prefs)]
+        out[sub["id"]] = sorted(mine, key=lambda j: j.get("deadline") or "9999")
+    return out
+
+
 def _env(name):
     v = os.environ.get(name)
     if not v:
@@ -117,7 +145,8 @@ def main(argv=None) -> int:
         return 0 if not res["errors"] else 1
 
     store = Store()
-    pending = store.pending_notifications(settings["notify"]["statuses"], now.date())
+    # 폰마다 조건이 달라서 모든 상태를 후보로 두고, 폰별로 고른다
+    pending = store.pending_notifications(["match", "review", "not_match"], now.date())
     if not pending:
         print("새로 알릴 공고 없음")
         return 0
@@ -133,16 +162,29 @@ def main(argv=None) -> int:
         print("구독 0개")
         return 0
 
-    msgs = build_messages(pending, settings["notify"]["summary_threshold"], now.date())
-    res = send(msgs, subs, key, subject)
+    per_sub = plan(pending, subs, settings, load_kinders())
+    res = {"delivered": set(), "gone": set(), "errors": []}
+    failed = set()  # 보내려다 실패한 공고 → 다음 실행에서 다시 시도
+    for sub in subs:
+        mine = per_sub[sub["id"]]
+        if not mine:
+            continue
+        r = send(build_messages(mine, settings["notify"]["summary_threshold"], now.date()), [sub], key, subject)
+        res["delivered"] |= r["delivered"]
+        res["gone"] |= r["gone"]
+        res["errors"] += r["errors"]
+        if not r["gone"]:
+            failed |= {j["post_id"] for j in mine} - r["delivered"]
     for sid in res["gone"]:
         worker.delete(sid)
-    for pid in res["delivered"]:
-        store.jobs[pid]["notified_at"] = iso(now)
+    # 어느 폰에도 실패하지 않은 공고는 처리 완료 (보냈거나, 원하는 폰이 없었음)
+    for j in pending:
+        if j["post_id"] not in failed:
+            store.jobs[j["post_id"]]["notified_at"] = iso(now)
     store.save()
 
     alive = len(subs) - len(res["gone"])
-    print(f"알림 {len(res['delivered'])}/{len(pending)}건 전달, 만료 구독 {len(res['gone'])}개, 오류 {len(res['errors'])}개")
+    print(f"알림 {len(res['delivered'])}건 전달 (후보 {len(pending)}건), 만료 구독 {len(res['gone'])}개, 오류 {len(res['errors'])}개")
     if alive == 0:
         mailer.send_admin("[유치원 공고] 폰 알림 구독 만료",
                           "어머니 폰의 알림 등록이 만료되었습니다. 앱을 열고 [알림 켜기]를 다시 눌러주세요.")

@@ -10,7 +10,9 @@ import sys
 from pathlib import Path
 
 from .config import DATA_DIR, ROOT
+from .config import load_settings
 from .kinders import find, load_kinders
+from .prefs import CITIES, default_prefs, job_city, job_types
 
 PUBLIC_FIELDS = ["post_id", "url", "title", "category", "author", "institution", "posted_at", "deadline",
                  "deadline_detail", "attachments", "image_count", "match_status", "reason", "job_type",
@@ -28,13 +30,17 @@ def build(out: Path) -> None:
     for j in jobs.values():
         row = {k: j.get(k) for k in PUBLIC_FIELDS}
         row["kinder"] = find(j, kinders)  # 원아·학급 수, 주소 (유치원알리미 공시)
+        row["city"] = job_city(j, kinders)  # 내 조건 판단용 시·군 (모르면 null)
         slim.append(row)
     (out / "data" / "jobs.json").write_text(json.dumps(slim, ensure_ascii=False), encoding="utf-8")
     status = DATA_DIR / "status.json"
     shutil.copy(status, out / "data" / "status.json") if status.exists() else \
         (out / "data" / "status.json").write_text("{}", encoding="utf-8")
+    settings = load_settings()
     cfg = {"vapidPublicKey": os.environ.get("VAPID_PUBLIC_KEY", ""),
-           "workerUrl": os.environ.get("WORKER_URL", "").rstrip("/")}
+           "workerUrl": os.environ.get("WORKER_URL", "").rstrip("/"),
+           # 받을 공고 조건: 고를 수 있는 값과 기본값 (app/prefs.py와 같은 규칙)
+           "conditions": {"cities": CITIES, "types": job_types(settings), "defaults": default_prefs(settings)}}
     (out / "config.js").write_text(f"window.APP_CONFIG = {json.dumps(cfg)};\n", encoding="utf-8")
     print(f"site → {out} ({len(slim)} jobs)")
 
