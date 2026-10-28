@@ -125,5 +125,18 @@
   "pruned": 1,
   "started_at": "2026-10-28T21:29:13+09:00",
   "status": "success"
+ },
+ {
+  "changed_count": 0,
+  "cheongju_error": "RuntimeError: 요청 실패 https://www.cbcje.go.kr:446/cbcje/sub.php {'menukey': 6426, 'page': 1, 'listCnt': 50}: HTTPSConnectionPool(host='www.cbcje.go.kr', port=446): Max retries exceeded with url: /cbcje/sub.php?menukey=6426&page=1&listCnt=50 (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.cbcje.go.kr', port=446) at 0x7f9e8ec6bda0>, 'Connection to www.cbcje.go.kr timed out. (connect timeout=30)'))",
+  "detail_errors": 0,
+  "finished_at": "2026-10-28T22:41:22+09:00",
+  "kinder_count": 5,
+  "list_count": 50,
+  "new_count": 0,
+  "pages": 1,
+  "pruned": 0,
+  "started_at": "2026-10-28T22:39:18+09:00",
+  "status": "partial"
  }
 ]
