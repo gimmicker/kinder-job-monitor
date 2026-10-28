@@ -8,7 +8,7 @@
 <title>유치원 공고</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <!-- 이모지 아이콘: 토스페이스 (토스팀, https://toss.im/tossface) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/toss/tossface@v1.6.1/dist/tossface.css">
 <style>
@@ -223,16 +223,22 @@
   #intro { position: fixed; inset: 0; z-index: 50; background: var(--brand); color: #fff;
            display: grid; place-items: center; transition: transform .5s var(--ease); }
   #intro .box { display: grid; justify-items: center; gap: 18px; transition: opacity .2s, transform .25s var(--ease); }
-  #intro .tile { width: 116px; height: 116px; border-radius: 28px; background: #184c3b;
+  #intro .tile { width: 120px; height: 120px; border-radius: 28px; background: #184c3b; padding: 6px;
                  box-shadow: 0 10px 30px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.08);
                  animation: tileIn .45s var(--ease) both; }
   #intro svg { width: 100%; height: 100%; display: block; }
-  #intro .s { fill: none; stroke: #fff; stroke-width: 8.5; }
-  #intro .s1 { stroke-dasharray: 82; stroke-dashoffset: 82; animation: draw .38s .28s ease-out forwards; }
-  #intro .s2 { stroke-dasharray: 56; stroke-dashoffset: 56; animation: draw .2s .62s ease-out forwards; }
-  #intro .s3, #intro .s4 { stroke-dasharray: 19; stroke-dashoffset: 19; animation: draw .14s .8s ease-out forwards; }
-  #intro .s4 { animation-delay: .88s; }
-  #intro .lbl { fill: #ffe6a0; font: 700 15px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; opacity: 0; animation: fadeUp .3s .95s var(--ease) forwards; }
+  /* 심볼: 지붕 → 꼭대기 → 종이 내려와 흔들림 → 별 반짝 (scripts/make_icons.py와 같은 모양) */
+  #intro .roof { fill: none; stroke: #fff; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round;
+                 stroke-dasharray: 84; stroke-dashoffset: 84; animation: draw .4s .2s ease-out forwards; }
+  #intro .knob { transform-box: fill-box; transform-origin: center; transform: scale(0); animation: pop .3s .55s var(--ease) forwards; }
+  #intro .bell { transform-box: view-box; transform-origin: 50px 30px; opacity: 0;
+                 animation: drop .35s .62s cubic-bezier(.3,1.4,.6,1) forwards, swing .9s .95s ease-in-out; }
+  #intro .star { transform-box: fill-box; transform-origin: center; transform: scale(0); animation: pop .35s 1.05s var(--ease) forwards; }
+  #intro .ray { stroke: #ffd45e; stroke-width: 3.5; stroke-linecap: round; opacity: 0; animation: ray .5s 1.1s ease-out forwards; }
+  @keyframes pop { 0% { transform: scale(0); } 70% { transform: scale(1.25); } 100% { transform: scale(1); } }
+  @keyframes drop { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: none; } }
+  @keyframes swing { 0% { transform: rotate(0); } 25% { transform: rotate(13deg); } 50% { transform: rotate(-9deg); } 75% { transform: rotate(4deg); } 100% { transform: rotate(0); } }
+  @keyframes ray { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
   #intro h2 { margin: 0; font-size: 24px; letter-spacing: -.01em; opacity: 0; animation: fadeUp .4s .5s var(--ease) forwards; }
   #intro p { margin: -10px 0 0; font-size: 15px; opacity: 0; animation: fadeUp .4s .7s var(--ease) forwards; color: rgba(255,255,255,.8); }
   #intro.out { transform: translateY(-100%); }
@@ -251,11 +257,15 @@
   <div class="box">
     <div class="tile">
       <svg viewBox="0 0 100 100">
-        <circle class="s s1" cx="50" cy="31" r="13" transform="rotate(-90 50 31)"/>
-        <path class="s s2" d="M22 54H78"/>
-        <path class="s s3" d="M38 54V72"/>
-        <path class="s s4" d="M62 54V72"/>
-        <text class="lbl" x="50" y="90" text-anchor="middle">공고</text>
+        <path class="roof" d="M17 42 L50 17 L83 42"/>
+        <circle class="knob" cx="50" cy="15" r="5" fill="#fff"/>
+        <g class="bell">
+          <circle cx="50" cy="33" r="3.6" fill="#fff"/>
+          <path d="M50 34c-9.5 0-15 7.2-15 16.5v7.5c0 3.2-2.4 5.6-6.5 8.5h43c-4.1-2.9-6.5-5.3-6.5-8.5v-7.5C65 41.2 59.5 34 50 34z" fill="#fff"/>
+        </g>
+        <path class="star" d="M50.00 70.50 L51.82 74.99 L56.66 75.34 L52.95 78.46 L54.11 83.16 L50.00 80.60 L45.89 83.16 L47.05 78.46 L43.34 75.34 L48.18 74.99Z"
+              fill="#ffd45e" stroke="#ffd45e" stroke-width="1.6" stroke-linejoin="round"/>
+        <path class="ray" d="M22 56l-6-2M23 64l-6 2M78 56l6-2M77 64l6 2"/>
       </svg>
     </div>
     <h2>청주 유치원 공고</h2>
