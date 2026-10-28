@@ -8,4 +8,4 @@ ALLOWED_ORIGIN = "https://gimmicker.github.io"
 
 [[kv_namespaces]]
 binding = "SUBS"
-id = "CHANGE-ME"   # npx wrangler kv namespace create SUBS 출력값
+id = "e5569271aa1d4316932c752d467cf372"
