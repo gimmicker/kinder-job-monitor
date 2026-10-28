@@ -1,6 +1,7 @@
 """수집 → 분류 → 저장. 알림은 사이트 배포 후 app.push가 따로 보낸다.
 
-사용: python -m app.main
+사용: python -m app.main                  두 출처 모두 (GitHub Actions에서는 충북교육청만)
+      python -m app.main --only-cheongju   청주교육지원청만 (한국 인터넷에서, scripts/sync_cheongju.py가 부른다)
 종료 코드: 0 성공/부분 성공, 1 실패(데이터는 저장됨)
 """
 import os
@@ -110,29 +111,48 @@ def reclassify(store: Store, f: dict, places: dict) -> None:
         job.update(cls)
 
 
-def main() -> int:
+class _Skip(Exception):
+    pass
+
+
+def settings_skip_cj() -> bool:
+    return bool(load_settings().get("cheongju", {}).get("skip_on_github", True))
+
+
+def main(argv=None) -> int:
+    argv = argv if argv is not None else sys.argv[1:]
+    only_cj = "--only-cheongju" in argv
+    # 청주교육지원청 사이트는 해외 접속을 막는다 → GitHub Actions(미국)에서는 건너뛰고 한국 PC에서 따로 돌린다
+    skip_cj = os.environ.get("GITHUB_ACTIONS") == "true" and settings_skip_cj()
     settings, places = load_settings(), merge_places(load_places(), load_kinders())
     store = Store()
     now = now_kst()
-    run = {"started_at": iso(now)}
+    run = {"started_at": iso(now), "status": "success"}
+    if only_cj:
+        run["source"] = "cheongju"
     code = 0
-    try:
-        stats = collect(Scraper(settings["source"]), store, settings, places, now)
-        run.update(stats)
-        run["status"] = "partial" if stats["detail_errors"] else "success"
-    except Exception as e:
-        run["status"] = "failed"
-        run["error"] = f"{type(e).__name__}: {e}"[:500]
-        traceback.print_exc()
-        code = 1
+    if not only_cj:
+        try:
+            stats = collect(Scraper(settings["source"]), store, settings, places, now)
+            run.update(stats)
+            run["status"] = "partial" if stats["detail_errors"] else "success"
+        except Exception as e:
+            run["status"] = "failed"
+            run["error"] = f"{type(e).__name__}: {e}"[:500]
+            traceback.print_exc()
+            code = 1
     # 두 번째 출처: 청주교육지원청. 한쪽이 실패해도 다른 쪽은 계속한다
     cj = {}
     try:
+        if skip_cj:
+            raise _Skip()
         collect_cheongju(CheongjuScraper(settings["cheongju"], settings["source"]["user_agent"]),
                          store, settings, now, cj)
         run.update(cj)
         if cj.get("detail_errors") and run["status"] == "success":
             run["status"] = "partial"
+    except _Skip:
+        run["cheongju"] = "skipped (해외 접속 차단, PC에서 수집)"
     except Exception as e:
         run["cheongju_error"] = f"{type(e).__name__}: {e}"[:500]
         traceback.print_exc()
@@ -144,9 +164,12 @@ def main() -> int:
     dropped = store.prune(finish.date(), settings["retention"]["drop_after_deadline_days"])
     run["pruned"] = dropped
     store.add_run(run, settings["retention"]["runs_keep"])
-    store.status.update({"last_checked_at": iso(finish), "last_status": run["status"]})
-    if run["status"] != "failed":
-        store.status["last_success_at"] = iso(finish)
+    if only_cj:
+        store.status["cheongju_checked_at"] = iso(finish)
+    else:
+        store.status.update({"last_checked_at": iso(finish), "last_status": run["status"]})
+        if run["status"] != "failed":
+            store.status["last_success_at"] = iso(finish)
     store.save()
 
     summary = (f"[{run['status']}] 목록 {run.get('list_count', 0)}건, 유치원 {run.get('kinder_count', 0)}건, "
