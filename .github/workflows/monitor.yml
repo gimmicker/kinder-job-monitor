@@ -75,27 +75,27 @@ jobs:
           git push
 
       - name: 사이트 빌드
-        if: ${{ !inputs.test_push }}
+        if: ${{ !cancelled() && !inputs.test_push }}
         env:
           VAPID_PUBLIC_KEY: ${{ vars.VAPID_PUBLIC_KEY }}
           WORKER_URL: ${{ secrets.WORKER_URL }}
         run: python -m app.build_site _site
 
       - uses: actions/configure-pages@v5
-        if: ${{ !inputs.test_push }}
+        if: ${{ !cancelled() && !inputs.test_push }}
 
       - uses: actions/upload-pages-artifact@v3
-        if: ${{ !inputs.test_push }}
+        if: ${{ !cancelled() && !inputs.test_push }}
         with:
           path: _site
 
       - name: 배포
         id: deploy
-        if: ${{ !inputs.test_push }}
+        if: ${{ !cancelled() && !inputs.test_push }}
         uses: actions/deploy-pages@v4
 
       - name: 알림 발송
-        if: ${{ !inputs.test_push && github.event_name != 'push' }}
+        if: ${{ !cancelled() && !inputs.test_push && github.event_name != 'push' }}
         env:
           WORKER_URL: ${{ secrets.WORKER_URL }}
           WORKER_ADMIN_TOKEN: ${{ secrets.WORKER_ADMIN_TOKEN }}

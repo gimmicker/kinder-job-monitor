@@ -87,7 +87,12 @@ def collect(scraper, store: Store, settings: dict, places: dict, now) -> dict:
         store.jobs[pid] = job
         stats["new_count"] += 1
 
-    # 설정·기관 목록이 바뀌어도 반영되도록 매번 전체 재분류 (네트워크 없음)
+    reclassify(store, f, places)
+    return stats
+
+
+def reclassify(store: Store, f: dict, places: dict) -> None:
+    """설정·기관 목록이 바뀌어도 반영되도록 저장된 공고 전체를 다시 분류 (네트워크 없음)."""
     for job in store.jobs.values():
         row = {"title": job["title"], "category": job["category"], "author": job.get("author") or ""}
         cls = filters.classify(row, f, places, job.get("body", ""))
@@ -98,7 +103,6 @@ def collect(scraper, store: Store, settings: dict, places: dict, now) -> dict:
                 cls["match_status"] = "review"
             cls["reason"] += f" · 마감일 불일치(목록 {job['deadline']}, 본문 {job['deadline_detail']})"
         job.update(cls)
-    return stats
 
 
 def main() -> int:
@@ -112,6 +116,7 @@ def main() -> int:
         run.update(stats)
         run["status"] = "partial" if stats["detail_errors"] else "success"
     except Exception as e:
+        reclassify(store, settings["filters"], places)  # 게시판이 안 열려도 분류 기준 변경은 반영
         run["status"] = "failed"
         run["error"] = f"{type(e).__name__}: {e}"[:500]
         traceback.print_exc()
