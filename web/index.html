@@ -122,6 +122,11 @@
   .detail dt { color: var(--muted); }
   .detail dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
   .orig { font-size: 15px; color: var(--muted); }
+  .kinfo { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; display: grid; gap: 8px; }
+  .kinfo h3 { margin: 0; font-size: 17px; }
+  .kinfo a { color: var(--brand); font-weight: 700; }
+  .kinfo .sub { color: var(--muted); font-weight: 500; font-size: 15px; }
+  .kinfo .src { margin: 0; font-size: 13px; color: var(--muted); }
   .hint { background: var(--review-bg); color: var(--review); border-radius: 12px; padding: 10px 12px; font-size: 16px; }
   .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: rgba(246,244,239,.96);
           border-top: 1px solid var(--line); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
@@ -215,6 +220,13 @@
     const [y, m, d] = s.split("-").map(Number);
     return `${m}월 ${d}일(${WD[new Date(y, m - 1, d).getDay()]})`;
   }
+  // 유치원알리미 주소가 있으면 '청주 청원구'·'제천', 없으면 분류 결과로
+  function place(j) {
+    const k = j.kinder;
+    if (k && k.city) return k.city === "청주" ? `청주 ${k.area || ""}`.trim() : k.city;
+    return j.region === "청주" ? "청주" : j.region === "기타" ? "청주 밖" : "지역 확인 필요";
+  }
+  function timingText(t) { return t && t.length === 5 ? `${t.slice(0, 4)}년 ${t.slice(4)}차 공시` : "공시"; }
   const typeName = (t) => (t || "").replace(/(강사|교사)$/, " $1").trim();
 
   // 제목에서 연도·기관명·'채용 공고' 같은 반복 표현을 빼고 직무 설명만 남긴다
@@ -256,7 +268,7 @@
   function base(t) { return JOBS.filter((j) => inTab(j, t) && (t === "fav" || showOut || j.match_status !== "not_match")); }
   function matches(j, q) {
     if (!q) return true;
-    const hay = `${j.title} ${j.institution || ""} ${typeName(j.job_type)} ${j.job_type || ""}`.toLowerCase();
+    const hay = `${j.title} ${j.institution || ""} ${typeName(j.job_type)} ${j.job_type || ""} ${(j.kinder && j.kinder.addr) || ""}`.toLowerCase();
     return q.toLowerCase().split(/\s+/).every((w) => hay.includes(w));
   }
   function hl(text, q) {
@@ -287,8 +299,8 @@
         </div>
         <div class="inst">${hl(j.institution || j.author || "기관 확인 필요", query)}</div>
         <div class="job">${hl(jobDesc(j), query)}</div>
-        <div class="meta">${[j.region === "청주" ? "청주" : j.region === "기타" ? "청주 밖" : "지역 확인 필요",
-          j.posted_at ? fmtDate(j.posted_at).replace(/\(.\)/, "") + " 등록" : ""].filter(Boolean).join(" · ")}</div>
+        <div class="meta">${[place(j), j.kinder && j.kinder.kids ? `원아 ${j.kinder.kids}명` : "",
+          j.posted_at ? `${+j.posted_at.slice(5, 7)}/${+j.posted_at.slice(8, 10)} 등록` : ""].filter(Boolean).join(" · ")}</div>
       </div>
       <button class="star ${fav ? "on" : ""}" type="button" data-fav="${esc(j.post_id)}" aria-label="${fav ? "찜 해제" : "찜하기"}" aria-pressed="${fav}">${fav ? "★" : "☆"}</button>
     </article>`;
@@ -379,6 +391,16 @@
         <dt>첨부</dt><dd>${esc(fileSum)}</dd>
         <dt>원래 제목</dt><dd class="orig">${esc(j.title)}</dd>
       </dl>
+      ${j.kinder ? `<section class="kinfo">
+        <h3>유치원 정보</h3>
+        <dl>
+          <dt>유형</dt><dd>${esc(j.kinder.establish || "-")}</dd>
+          <dt>규모</dt><dd>${j.kinder.classes}학급 · 원아 ${j.kinder.kids}명${j.kinder.special_classes ? ` <span class="sub">(특수학급 ${j.kinder.special_classes})</span>` : ""}</dd>
+          <dt>주소</dt><dd>${esc(j.kinder.addr || "-")}</dd>
+          ${j.kinder.tel ? `<dt>전화</dt><dd><a href="tel:${esc(j.kinder.tel.replace(/[^0-9]/g, ""))}">${esc(j.kinder.tel)}</a></dd>` : ""}
+        </dl>
+        <p class="src">유치원알리미 ${timingText(j.kinder.timing)} 기준</p>
+      </section>` : ""}
       ${hasHwp ? `<div class="hint">HWP 파일은 휴대폰에서 ‘한컴오피스 Viewer’ 앱으로 열 수 있어요.</div>` : ""}
       <p class="note">공고문 내용은 대부분 원문 페이지의 이미지와 첨부파일에 있어요. 지원 방법과 자격은 원문에서 확인하세요.</p>
     </div>

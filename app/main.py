@@ -10,6 +10,7 @@ import traceback
 
 from . import filters, mailer
 from .config import iso, load_places, load_settings, now_kst
+from .kinders import load_kinders, merge_places
 from .parser import ParseError, parse_detail, parse_list
 from .scraper import Scraper, detail_url
 from .store import Store
@@ -101,7 +102,7 @@ def collect(scraper, store: Store, settings: dict, places: dict, now) -> dict:
 
 
 def main() -> int:
-    settings, places = load_settings(), load_places()
+    settings, places = load_settings(), merge_places(load_places(), load_kinders())
     store = Store()
     now = now_kst()
     run = {"started_at": iso(now)}

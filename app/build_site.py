@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 
 from .config import DATA_DIR, ROOT
+from .kinders import find, load_kinders
 
 PUBLIC_FIELDS = ["post_id", "url", "title", "category", "author", "institution", "posted_at", "deadline",
                  "deadline_detail", "attachments", "image_count", "match_status", "reason", "job_type",
@@ -22,7 +23,12 @@ def build(out: Path) -> None:
     shutil.copytree(ROOT / "web", out)
     (out / "data").mkdir()
     jobs = json.loads((DATA_DIR / "jobs.json").read_text(encoding="utf-8")) if (DATA_DIR / "jobs.json").exists() else {}
-    slim = [{k: j.get(k) for k in PUBLIC_FIELDS} for j in jobs.values()]
+    kinders = load_kinders()
+    slim = []
+    for j in jobs.values():
+        row = {k: j.get(k) for k in PUBLIC_FIELDS}
+        row["kinder"] = find(j, kinders)  # 원아·학급 수, 주소 (유치원알리미 공시)
+        slim.append(row)
     (out / "data" / "jobs.json").write_text(json.dumps(slim, ensure_ascii=False), encoding="utf-8")
     status = DATA_DIR / "status.json"
     shutil.copy(status, out / "data" / "status.json") if status.exists() else \

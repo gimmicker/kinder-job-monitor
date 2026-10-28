@@ -53,9 +53,16 @@ GitHub Secrets: `WORKER_URL`, `WORKER_ADMIN_TOKEN`(=ADMIN_TOKEN)
 4. Actions → monitor → Run workflow → `테스트 알림만 보내기` 체크 → 알림 오는지 확인
 5. 알림이 늦으면: 설정 → 애플리케이션 → Chrome → 배터리 → 제한 없음
 
-### 5. 지역 판단 정확도 올리기 (선택)
-NEIS 인증키(open.neis.go.kr, 무료)를 받아:
-```bash
-NEIS_KEY=... .venv/Scripts/python scripts/build_places.py
-```
-단설 유치원(예: 홍광유치원)은 `config/places.yaml`의 `유:` 아래에 직접 추가: `홍광: 청주`
+### 5. 기관 지역·유치원 정보 갱신 (가끔)
+인증키는 `.local/secrets.env`에 보관한다 (커밋 안 됨).
+
+- 초등학교 목록 (병설유치원 지역 판단): NEIS 인증키(open.neis.go.kr)
+  ```bash
+  NEIS_KEY=... .venv/Scripts/python scripts/build_places.py
+  ```
+- 충북 유치원 공시 자료 (지역, 원아·학급 수, 주소, 전화): 유치원알리미 OPEN API 인증키
+  (e-childschoolinfo.moe.go.kr → 자료실 → OPEN API). 공시가 바뀌는 때(연 2회쯤) 다시 실행해 커밋한다.
+  ```bash
+  CHILD_KEY=... .venv/Scripts/python scripts/build_kinders.py   # → config/kinders.json
+  ```
+- 위 두 자료에 없거나 틀린 기관은 `config/places.yaml`에 직접 적는다. 직접 적은 값이 우선한다.
