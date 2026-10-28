@@ -152,6 +152,13 @@
   .nums .tf { font-size: 24px; }
   .nums b { font-size: 26px; line-height: 1.15; font-variant-numeric: tabular-nums; }
   .nums span { font-size: 13px; color: var(--muted); font-weight: 700; }
+  .route { display: grid; gap: 8px; margin-top: 4px; }
+  .route-go { background: #03a94d; font-size: 18px; padding: 12px; }
+  .route-go .tf { font-size: 20px; }
+  .route-from { font-size: 15px; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+  .link { background: none; border: 0; padding: 0; color: var(--brand); font-weight: 700; font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
+  .route-msg { font-size: 15px; color: var(--brand); font-weight: 700; }
+  .route-msg:empty { display: none; }
   .kinfo .row { display: flex; gap: 8px; align-items: flex-start; font-size: 16px; }
   .kinfo .row .tf { font-size: 17px; margin-top: 3px; }
   .hint { background: var(--review-bg); color: var(--review); border-radius: 12px; padding: 10px 12px; font-size: 16px; }
@@ -271,6 +278,7 @@
   };
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let JOBS = [], STATUS = {}, installEvt = null;
+  let curJob = null;
   let tab = "open", cat = "전체", query = "", showOut = false, listScroll = 0, loaded = false;
 
   // ?code= 는 알림 등록 코드. 한 번 저장한다.
@@ -463,6 +471,7 @@
       return;
     }
     markSeen(id);
+    curJob = j;
     const d = dl(j.deadline);
     const fav = favs.has(j.post_id);
     const files = j.attachments || [];
@@ -493,6 +502,7 @@
         </div>
         <div class="row">${tf("📍")}<span>${esc(j.kinder.addr || "-")}</span></div>
         ${j.kinder.tel ? `<div class="row">${tf("📞")}<a href="tel:${esc(j.kinder.tel.replace(/[^0-9]/g, ""))}">${esc(j.kinder.tel)}</a></div>` : ""}
+        ${routeHtml(j.kinder)}
       </section>` : ""}
       ${hasHwp ? `<div class="hint">HWP 파일은 휴대폰에서 ‘한컴오피스 Viewer’ 앱으로 열 수 있어요.</div>` : ""}
       <p class="note">공고문 내용은 대부분 원문 페이지의 이미지와 첨부파일에 있어요. 지원 방법과 자격은 원문에서 확인하세요.</p>
@@ -570,6 +580,8 @@
     if (e.target.closest("[data-out]")) { showOut = !showOut; updateCounts(); renderCards(true); return; }
     if (e.target.closest("[data-clear]")) { query = ""; const q = $("#q"); if (q) { q.value = ""; q.focus(); } renderCards(true); return; }
     if (e.target.closest("#checked")) { load(); return; }
+    if (e.target.closest("[data-route]") && curJob && curJob.kinder) { openRoute(curJob.kinder); return; }
+    if (e.target.closest("[data-sethome]")) { saveHome(); return; }
     if (e.target.closest("[data-install]") && installEvt) { installEvt.prompt(); installEvt = null; renderList(); }
     if (e.target.closest("[data-enable]")) enablePush();
   });
@@ -653,6 +665,50 @@
       try { await register(sub); store.set("pushRegistered", sub.endpoint); } catch {}
     }
     setBell();
+  }
+
+  // ---------- 길찾기: 네이버 지도 앱의 대중교통 경로. 집 위치는 이 폰에만 저장 ----------
+  function routeHtml(k) {
+    if (!k || !k.lat || !k.lng) return "";
+    const home = store.get("home", null);
+    return `<div class="route">
+      <button class="btn route-go" type="button" data-route>${tf("🚌")} 버스 길찾기</button>
+      <div class="route-from">${home
+        ? `${tf("🏠")} 집에서 출발 <button type="button" class="link" data-sethome>집 위치 다시 저장</button>`
+        : `${tf("📍")} 지금 있는 곳에서 출발 <button type="button" class="link" data-sethome>지금 위치를 집으로 저장</button>`}</div>
+      <div class="route-msg" id="route-msg" role="status"></div>
+    </div>`;
+  }
+  function openRoute(k) {
+    const home = store.get("home", null);
+    const enc = encodeURIComponent;
+    let q = `dlat=${k.lat}&dlng=${k.lng}&dname=${enc(k.name)}&appname=${enc(location.hostname || "kinder-job")}`;
+    if (home) q = `slat=${home.lat}&slng=${home.lng}&sname=${enc("집")}&` + q;
+    const appUrl = `nmap://route/public?${q}`;
+    const from = home ? `${home.lng},${home.lat},${enc("집")},,` : "-";
+    const webUrl = `https://map.naver.com/p/directions/${from}/${k.lng},${k.lat},${enc(k.name)},,/-/transit`;
+    // 네이버 지도 앱이 열리면 이 화면이 가려진다. 1.5초 뒤에도 그대로면 앱이 없는 것으로 보고 웹 지도로
+    let left = false;
+    const onHide = () => { if (document.visibilityState === "hidden") left = true; };
+    document.addEventListener("visibilitychange", onHide);
+    location.href = appUrl;
+    setTimeout(() => {
+      document.removeEventListener("visibilitychange", onHide);
+      if (!left) location.href = webUrl;
+    }, 1500);
+  }
+  function saveHome() {
+    const say = (t) => { const m = $("#route-msg"); if (m) m.textContent = t; };
+    if (!navigator.geolocation) return say("이 폰에서는 위치를 가져올 수 없어요.");
+    say("위치를 확인하는 중…");
+    navigator.geolocation.getCurrentPosition((pos) => {
+      store.set("home", { lat: +pos.coords.latitude.toFixed(6), lng: +pos.coords.longitude.toFixed(6) });
+      if (curJob) renderDetail(curJob.post_id);
+      say("집 위치를 저장했어요. 위치는 이 폰에만 저장돼요.");
+    }, (err) => {
+      say(err.code === 1 ? "위치 권한이 꺼져 있어요. 휴대폰 설정에서 이 앱(또는 브라우저)의 위치 권한을 허용해 주세요."
+        : "위치를 가져오지 못했어요. 잠시 후 다시 눌러 주세요.");
+    }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
   }
 
   // ---------- 당겨서 새로고침: 맨 위에서 아래로 끌면 초록 영역이 늘어나고, 놓으면 다시 불러온다 ----------

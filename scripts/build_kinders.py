@@ -27,6 +27,14 @@ def num(v) -> int:
         return 0
 
 
+def coord(v) -> float | None:
+    try:
+        f = float(v)
+    except (TypeError, ValueError):
+        return None
+    return round(f, 6) if f else None
+
+
 def slim(k: dict) -> dict:
     parts = (k.get("addr") or "").split()
     city = parts[1][:-1] if len(parts) > 1 and parts[1][-1] in "시군" else None
@@ -37,6 +45,7 @@ def slim(k: dict) -> dict:
         "classes": sum(num(k.get(f)) for f in ["clcnt3", "clcnt4", "clcnt5", "mixclcnt", "shclcnt"]),
         "kids": sum(num(k.get(f)) for f in ["ppcnt3", "ppcnt4", "ppcnt5", "mixppcnt", "shppcnt"]),
         "special_classes": num(k.get("shclcnt")), "timing": k.get("pbnttmng"),
+        "lat": coord(k.get("lttdcdnt")), "lng": coord(k.get("lngtcdnt")),
     }
 
 

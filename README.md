@@ -15,7 +15,10 @@ py -3.11 -m venv .venv
 .venv/Scripts/python -m pytest -q          # 테스트
 .venv/Scripts/python -m app.main           # 실제 수집 (data/ 갱신)
 .venv/Scripts/python -m app.build_site     # _site/ 생성
+.venv/Scripts/python scripts/preview.py    # 화면 미리보기 http://localhost:8090 (폰도 보려면 --lan)
 ```
+
+개발은 `dev` 브랜치에서 하고, 반영할 때 `main`에 합친다. `main`에 화면 파일이 올라가면 자동 배포된다.
 
 분류 기준은 `config/settings.yaml`, 기관별 지역은 `config/places.yaml`.
 
