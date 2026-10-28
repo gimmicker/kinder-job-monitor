@@ -4,7 +4,7 @@
 // 환경 변수(vars): ALLOWED_ORIGIN  예) https://<user>.github.io
 // KV 바인딩: SUBS
 //
-// POST   /subscribe            {code, subscription, ua}  (앱에서 호출)
+// POST   /subscribe            {code, subscription, ua, prefs}  (앱에서 호출, 조건 바꿀 때도 다시 호출)
 // GET    /subscriptions        Bearer ADMIN_TOKEN        (GitHub Actions)
 // DELETE /subscriptions/:id    Bearer ADMIN_TOKEN
 
@@ -44,6 +44,13 @@ function validSubscription(s) {
     && s.keys && typeof s.keys.p256dh === "string" && typeof s.keys.auth === "string";
 }
 
+// 받을 공고 조건: 짧은 문자열 목록만 보관 (실제 값 검사는 발송하는 쪽에서 한 번 더)
+function cleanPrefs(p) {
+  if (!p || typeof p !== "object") return null;
+  const list = (v) => (Array.isArray(v) ? v.filter((x) => typeof x === "string" && x.length <= 12).slice(0, 20) : []);
+  return { cities: list(p.cities), types: list(p.types) };
+}
+
 function isAdmin(req, env) {
   const h = req.headers.get("Authorization") || "";
   return safeEqual(h.replace(/^Bearer\s+/i, ""), env.ADMIN_TOKEN);
@@ -68,6 +75,7 @@ export default {
       const rec = {
         subscription: { endpoint: body.subscription.endpoint, keys: body.subscription.keys },
         ua: String(body.ua || "").slice(0, 120),
+        prefs: cleanPrefs(body.prefs),
         updated_at: new Date().toISOString(),
       };
       await env.SUBS.put(id, JSON.stringify(rec));

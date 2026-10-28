@@ -11,7 +11,9 @@
    "classes": 6,
    "kids": 122,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.629359,
+   "lng": 127.437495
   },
   "유:경희숲": {
    "name": "경희숲유치원",
@@ -23,7 +25,9 @@
    "classes": 6,
    "kids": 86,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.131674,
+   "lng": 128.23161
   },
   "유:국원": {
    "name": "국원유치원",
@@ -35,7 +39,9 @@
    "classes": 7,
    "kids": 114,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.970645,
+   "lng": 127.951829
   },
   "유:극동": {
    "name": "극동유치원",
@@ -47,7 +53,9 @@
    "classes": 2,
    "kids": 10,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.129476,
+   "lng": 128.225658
   },
   "유:금왕": {
    "name": "금왕유치원",
@@ -59,7 +67,9 @@
    "classes": 9,
    "kids": 83,
    "special_classes": 3,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.990181,
+   "lng": 127.592746
   },
   "유:꼬마샘": {
    "name": "꼬마샘유치원",
@@ -71,7 +81,9 @@
    "classes": 6,
    "kids": 111,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.881119,
+   "lng": 127.532737
   },
   "유:꼬망새": {
    "name": "꼬망새유치원",
@@ -83,7 +95,9 @@
    "classes": 6,
    "kids": 114,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.98836,
+   "lng": 127.584936
   },
   "유:꿀참나무숲": {
    "name": "꿀참나무숲유치원",
@@ -95,7 +109,9 @@
    "classes": 6,
    "kids": 115,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.623036,
+   "lng": 127.532421
   },
   "유:꿈가득한": {
    "name": "꿈가득한유치원",
@@ -107,7 +123,9 @@
    "classes": 14,
    "kids": 284,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.616108,
+   "lng": 127.450554
   },
   "유:꿈나무": {
    "name": "꿈나무유치원",
@@ -119,7 +137,9 @@
    "classes": 6,
    "kids": 74,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.614456,
+   "lng": 127.502461
   },
   "유:나래": {
    "name": "나래유치원",
@@ -131,7 +151,9 @@
    "classes": 8,
    "kids": 130,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.623292,
+   "lng": 127.509064
   },
   "유:남성": {
    "name": "남성유치원",
@@ -143,7 +165,9 @@
    "classes": 7,
    "kids": 101,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.607418,
+   "lng": 127.48451
   },
   "유:단양": {
    "name": "단양유치원",
@@ -155,7 +179,9 @@
    "classes": 5,
    "kids": 57,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.97851,
+   "lng": 128.36904
   },
   "유:대소": {
    "name": "대소유치원",
@@ -167,7 +193,9 @@
    "classes": 6,
    "kids": 77,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.966826,
+   "lng": 127.485949
   },
   "유:덕성": {
    "name": "덕성유치원",
@@ -179,7 +207,9 @@
    "classes": 6,
    "kids": 91,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.666111,
+   "lng": 127.484334
   },
   "유:동남": {
    "name": "동남유치원",
@@ -191,7 +221,9 @@
    "classes": 15,
    "kids": 229,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.617188,
+   "lng": 127.522876
   },
   "유:동명푸른솔": {
    "name": "동명푸른솔유치원",
@@ -203,7 +235,9 @@
    "classes": 10,
    "kids": 216,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.600394,
+   "lng": 127.51927
   },
   "유:동성": {
    "name": "동성유치원",
@@ -215,7 +249,9 @@
    "classes": 7,
    "kids": 126,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.913671,
+   "lng": 127.54407
   },
   "유:동심예능": {
    "name": "동심예능유치원",
@@ -227,7 +263,9 @@
    "classes": 5,
    "kids": 76,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.988138,
+   "lng": 127.934185
   },
   "유:동화나라": {
    "name": "동화나라유치원",
@@ -239,7 +277,9 @@
    "classes": 5,
    "kids": 104,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.778865,
+   "lng": 127.571157
   },
   "유:리라": {
    "name": "리라유치원",
@@ -251,7 +291,9 @@
    "classes": 3,
    "kids": 45,
    "special_classes": 0,
-   "timing": "20242"
+   "timing": "20242",
+   "lat": 37.15006,
+   "lng": 128.212241
   },
   "유:무궁화": {
    "name": "무궁화유치원",
@@ -263,7 +305,9 @@
    "classes": 4,
    "kids": 82,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.666437,
+   "lng": 127.478926
   },
   "유:문화": {
    "name": "문화유치원",
@@ -275,7 +319,9 @@
    "classes": 4,
    "kids": 83,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.846767,
+   "lng": 127.442814
   },
   "유:미호": {
    "name": "미호유치원",
@@ -287,7 +333,9 @@
    "classes": 3,
    "kids": 35,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.629132,
+   "lng": 127.369831
   },
   "유:바른": {
    "name": "바른유치원",
@@ -299,7 +347,9 @@
    "classes": 7,
    "kids": 142,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.673187,
+   "lng": 127.503529
   },
   "유:백합": {
    "name": "백합유치원",
@@ -311,7 +361,9 @@
    "classes": 1,
    "kids": 16,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 36.301329,
+   "lng": 127.565328
   },
   "유:보문정사": {
    "name": "보문정사유치원",
@@ -323,7 +375,9 @@
    "classes": 6,
    "kids": 102,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.630721,
+   "lng": 127.413007
   },
   "유:보슬": {
    "name": "보슬유치원",
@@ -335,7 +389,9 @@
    "classes": 5,
    "kids": 95,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.980277,
+   "lng": 127.927078
   },
   "유:보은성모": {
    "name": "보은성모유치원",
@@ -347,7 +403,9 @@
    "classes": 2,
    "kids": 14,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 36.486821,
+   "lng": 127.714838
   },
   "유:부강": {
    "name": "부강유치원",
@@ -359,7 +417,9 @@
    "classes": 5,
    "kids": 79,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.15012,
+   "lng": 128.223551
   },
   "유:비봉": {
    "name": "비봉유치원",
@@ -371,7 +431,9 @@
    "classes": 8,
    "kids": 115,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.712758,
+   "lng": 127.41323
   },
   "유:사랑": {
    "name": "사랑유치원",
@@ -383,7 +445,9 @@
    "classes": 6,
    "kids": 118,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.966239,
+   "lng": 127.946138
   },
   "유:사직": {
    "name": "사직유치원",
@@ -395,7 +459,9 @@
    "classes": 7,
    "kids": 131,
    "special_classes": 0,
-   "timing": "20242"
+   "timing": "20242",
+   "lat": 36.633514,
+   "lng": 127.474907
   },
   "유:산남": {
    "name": "산남유치원",
@@ -407,7 +473,9 @@
    "classes": 6,
    "kids": 85,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.611099,
+   "lng": 127.461381
   },
   "유:산새소리": {
    "name": "산새소리유치원",
@@ -419,7 +487,9 @@
    "classes": 3,
    "kids": 63,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.629827,
+   "lng": 127.43778
   },
   "유:산성": {
    "name": "산성유치원",
@@ -431,7 +501,9 @@
    "classes": 7,
    "kids": 127,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.633538,
+   "lng": 127.511367
   },
   "유:삼양": {
    "name": "삼양유치원",
@@ -443,7 +515,9 @@
    "classes": 6,
    "kids": 114,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.296664,
+   "lng": 127.569522
   },
   "유:새청주": {
    "name": "새청주유치원",
@@ -455,7 +529,9 @@
    "classes": 6,
    "kids": 144,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.644003,
+   "lng": 127.474544
   },
   "유:색동": {
    "name": "색동유치원",
@@ -467,7 +543,9 @@
    "classes": 2,
    "kids": 24,
    "special_classes": 0,
-   "timing": "20242"
+   "timing": "20242",
+   "lat": 36.296559,
+   "lng": 127.571178
   },
   "유:샛별": {
    "name": "샛별유치원",
@@ -479,7 +557,9 @@
    "classes": 3,
    "kids": 38,
    "special_classes": 0,
-   "timing": "20242"
+   "timing": "20242",
+   "lat": 36.613162,
+   "lng": 127.505406
   },
   "유:서원": {
    "name": "서원유치원",
@@ -491,7 +571,9 @@
    "classes": 6,
    "kids": 106,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.631721,
+   "lng": 127.44209
   },
   "유:서전": {
    "name": "서전유치원",
@@ -503,7 +585,9 @@
    "classes": 13,
    "kids": 213,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.902415,
+   "lng": 127.539058
   },
   "유:서청주": {
    "name": "서청주유치원",
@@ -515,7 +599,9 @@
    "classes": 3,
    "kids": 51,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.631298,
+   "lng": 127.437225
   },
   "유:서충주꿈의": {
    "name": "서충주꿈의유치원",
@@ -527,7 +613,9 @@
    "classes": 12,
    "kids": 248,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.018659,
+   "lng": 127.828212
   },
   "유:성모": {
    "name": "성모유치원",
@@ -539,7 +627,9 @@
    "classes": 3,
    "kids": 36,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.133911,
+   "lng": 128.212718
   },
   "유:성신": {
    "name": "성신유치원",
@@ -551,7 +641,9 @@
    "classes": 3,
    "kids": 27,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.808417,
+   "lng": 127.79101
   },
   "유:성안나": {
    "name": "성안나유치원",
@@ -563,7 +655,9 @@
    "classes": 2,
    "kids": 19,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 36.641801,
+   "lng": 127.491267
   },
   "유:소화": {
    "name": "소화유치원",
@@ -575,7 +669,9 @@
    "classes": 5,
    "kids": 93,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.142024,
+   "lng": 128.211281
   },
   "유:신평": {
    "name": "신평유치원",
@@ -587,7 +683,9 @@
    "classes": 6,
    "kids": 87,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.699442,
+   "lng": 127.43745
   },
   "유:심우": {
    "name": "심우유치원",
@@ -599,7 +697,9 @@
    "classes": 3,
    "kids": 46,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.574699,
+   "lng": 127.391315
   },
   "유:씨에이": {
    "name": "씨에이유치원",
@@ -611,7 +711,9 @@
    "classes": 2,
    "kids": 19,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.626354,
+   "lng": 127.468603
   },
   "유:아름드리": {
    "name": "아름드리유치원",
@@ -623,7 +725,9 @@
    "classes": 10,
    "kids": 204,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.638963,
+   "lng": 127.437057
   },
   "유:아이림": {
    "name": "아이림유치원",
@@ -635,7 +739,9 @@
    "classes": 7,
    "kids": 122,
    "special_classes": 0,
-   "timing": "20232"
+   "timing": "20232",
+   "lat": 36.627435,
+   "lng": 127.506815
   },
   "유:아이엘": {
    "name": "아이엘유치원",
@@ -647,7 +753,9 @@
    "classes": 5,
    "kids": 80,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.60896,
+   "lng": 127.487853
   },
   "유:영동": {
    "name": "영동유치원",
@@ -659,7 +767,9 @@
    "classes": 11,
    "kids": 149,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.17097,
+   "lng": 127.773516
   },
   "유:예광": {
    "name": "예광유치원",
@@ -671,7 +781,9 @@
    "classes": 6,
    "kids": 99,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.625483,
+   "lng": 127.509262
   },
   "유:예아뜨": {
    "name": "예아뜨유치원",
@@ -683,7 +795,9 @@
    "classes": 5,
    "kids": 106,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.631155,
+   "lng": 127.466122
   },
   "유:오송": {
    "name": "오송유치원",
@@ -695,7 +809,9 @@
    "classes": 7,
    "kids": 110,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.628743,
+   "lng": 127.325573
   },
   "유:오송솔미": {
    "name": "오송솔미유치원",
@@ -707,7 +823,9 @@
    "classes": 14,
    "kids": 212,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.623156,
+   "lng": 127.316547
   },
   "유:오창자연": {
    "name": "오창자연유치원",
@@ -719,7 +837,9 @@
    "classes": 10,
    "kids": 171,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.727686,
+   "lng": 127.408249
   },
   "유:옥동": {
    "name": "옥동유치원",
@@ -731,7 +851,9 @@
    "classes": 10,
    "kids": 164,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.903519,
+   "lng": 127.528913
   },
   "유:옥산": {
    "name": "옥산유치원",
@@ -743,7 +865,9 @@
    "classes": 6,
    "kids": 88,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.66415,
+   "lng": 127.373117
   },
   "유:우암": {
    "name": "우암유치원",
@@ -755,7 +879,9 @@
    "classes": 3,
    "kids": 58,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.986237,
+   "lng": 127.92149
   },
   "유:유동": {
    "name": "유동유치원",
@@ -767,7 +893,9 @@
    "classes": 9,
    "kids": 191,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.645081,
+   "lng": 127.456708
   },
   "유:율봉": {
    "name": "율봉유치원",
@@ -779,7 +907,9 @@
    "classes": 8,
    "kids": 126,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.66746,
+   "lng": 127.499885
   },
   "유:의림": {
    "name": "의림유치원",
@@ -791,7 +921,9 @@
    "classes": 7,
    "kids": 119,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.134782,
+   "lng": 128.198045
   },
   "유:자연": {
    "name": "자연유치원",
@@ -803,7 +935,9 @@
    "classes": 7,
    "kids": 125,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.636935,
+   "lng": 127.429913
   },
   "유:장엄": {
    "name": "장엄유치원",
@@ -815,7 +949,9 @@
    "classes": 4,
    "kids": 85,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.144861,
+   "lng": 128.213147
   },
   "유:제천": {
    "name": "제천유치원",
@@ -827,7 +963,9 @@
    "classes": 6,
    "kids": 121,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.160225,
+   "lng": 128.214807
   },
   "유:죽림": {
    "name": "죽림유치원",
@@ -839,7 +977,9 @@
    "classes": 9,
    "kids": 198,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.596425,
+   "lng": 127.44235
   },
   "유:즐거운숲": {
    "name": "즐거운숲유치원",
@@ -851,7 +991,9 @@
    "classes": 2,
    "kids": 11,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 36.613188,
+   "lng": 127.482135
   },
   "유:지웰시티": {
    "name": "지웰시티유치원",
@@ -863,7 +1005,9 @@
    "classes": 10,
    "kids": 229,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.639682,
+   "lng": 127.426896
   },
   "유:진천": {
    "name": "진천유치원",
@@ -875,7 +1019,9 @@
    "classes": 11,
    "kids": 162,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.86015,
+   "lng": 127.477898
   },
   "유:창성": {
    "name": "창성유치원",
@@ -887,7 +1033,9 @@
    "classes": 3,
    "kids": 49,
    "special_classes": 0,
-   "timing": "20242"
+   "timing": "20242",
+   "lat": 36.60515,
+   "lng": 127.490046
   },
   "유:창신": {
    "name": "창신유치원",
@@ -899,7 +1047,9 @@
    "classes": 11,
    "kids": 148,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.629314,
+   "lng": 127.464438
   },
   "유:창의놀이": {
    "name": "창의놀이유치원",
@@ -911,7 +1061,9 @@
    "classes": 2,
    "kids": 27,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.129914,
+   "lng": 128.21181
   },
   "유:청주": {
    "name": "청주유치원",
@@ -923,7 +1075,9 @@
    "classes": 7,
    "kids": 144,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.631464,
+   "lng": 127.521902
   },
   "유:초록": {
    "name": "초록유치원",
@@ -935,7 +1089,9 @@
    "classes": 5,
    "kids": 91,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.99208,
+   "lng": 127.929225
   },
   "유:초롱꽃": {
    "name": "초롱꽃유치원",
@@ -947,7 +1103,9 @@
    "classes": 16,
    "kids": 234,
    "special_classes": 3,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.607056,
+   "lng": 127.519479
   },
   "유:충주남산": {
    "name": "충주남산유치원",
@@ -959,7 +1117,9 @@
    "classes": 7,
    "kids": 112,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.95982,
+   "lng": 127.936968
   },
   "유:충주해솔": {
    "name": "충주해솔유치원",
@@ -971,7 +1131,9 @@
    "classes": 6,
    "kids": 120,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.9839,
+   "lng": 127.929603
   },
   "유:키드랜드": {
    "name": "키드랜드유치원",
@@ -983,7 +1145,9 @@
    "classes": 6,
    "kids": 126,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.965586,
+   "lng": 127.484491
   },
   "유:탄금": {
    "name": "탄금유치원",
@@ -995,7 +1159,9 @@
    "classes": 8,
    "kids": 113,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.978713,
+   "lng": 127.923917
   },
   "유:한국교원대학교부설": {
    "name": "한국교원대학교부설유치원",
@@ -1007,7 +1173,9 @@
    "classes": 7,
    "kids": 103,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.605666,
+   "lng": 127.357324
   },
   "유:한담": {
    "name": "한담유치원",
@@ -1019,7 +1187,9 @@
    "classes": 3,
    "kids": 22,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.981074,
+   "lng": 127.920495
   },
   "유:한빛": {
    "name": "한빛유치원",
@@ -1031,7 +1201,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 36.187463,
+   "lng": 127.778064
   },
   "유:해든": {
    "name": "해든유치원",
@@ -1043,7 +1215,9 @@
    "classes": 12,
    "kids": 204,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.728309,
+   "lng": 127.452738
   },
   "유:해밀": {
    "name": "해밀유치원",
@@ -1055,7 +1229,9 @@
    "classes": 2,
    "kids": 17,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.102446,
+   "lng": 127.642758
   },
   "유:해성": {
    "name": "해성유치원",
@@ -1067,7 +1243,9 @@
    "classes": 6,
    "kids": 97,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.977522,
+   "lng": 127.932681
   },
   "유:헨젤과그레텔": {
    "name": "헨젤과그레텔유치원",
@@ -1079,7 +1257,9 @@
    "classes": 4,
    "kids": 66,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.628569,
+   "lng": 127.502678
   },
   "유:현대": {
    "name": "현대유치원",
@@ -1091,7 +1271,9 @@
    "classes": 12,
    "kids": 105,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.624789,
+   "lng": 127.450159
   },
   "유:홍광": {
    "name": "홍광유치원",
@@ -1103,7 +1285,9 @@
    "classes": 8,
    "kids": 128,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.164861,
+   "lng": 128.215645
   },
   "유:홍익": {
    "name": "홍익유치원",
@@ -1115,7 +1299,9 @@
    "classes": 6,
    "kids": 115,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.611664,
+   "lng": 127.477841
   },
   "유:화랑": {
    "name": "화랑유치원",
@@ -1127,7 +1313,9 @@
    "classes": 1,
    "kids": 15,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 36.845398,
+   "lng": 127.457329
   },
   "초:가경": {
    "name": "가경초등학교병설유치원",
@@ -1139,7 +1327,9 @@
    "classes": 2,
    "kids": 7,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.624742,
+   "lng": 127.443619
   },
   "초:가곡": {
    "name": "가곡초등학교병설유치원",
@@ -1151,7 +1341,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 37.026898,
+   "lng": 128.384877
   },
   "초:가덕": {
    "name": "가덕초등학교병설유치원",
@@ -1163,7 +1355,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20242"
+   "timing": "20242",
+   "lat": 36.578548,
+   "lng": 127.578468
   },
   "초:가흥": {
    "name": "가흥초등학교병설유치원",
@@ -1175,7 +1369,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.07671,
+   "lng": 127.854468
   },
   "초:각리": {
    "name": "각리초등학교병설유치원",
@@ -1187,7 +1383,9 @@
    "classes": 7,
    "kids": 70,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.706859,
+   "lng": 127.423924
   },
   "초:갈원": {
    "name": "갈원초등학교병설유치원",
@@ -1199,7 +1397,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.56887,
+   "lng": 127.396572
   },
   "초:감곡": {
    "name": "감곡초등학교병설유치원",
@@ -1211,7 +1411,9 @@
    "classes": 1,
    "kids": 6,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.116066,
+   "lng": 127.645439
   },
   "초:감물": {
    "name": "감물초등학교병설유치원",
@@ -1223,7 +1425,9 @@
    "classes": 2,
    "kids": 6,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.839141,
+   "lng": 127.871442
   },
   "초:강내": {
    "name": "강내초등학교병설유치원",
@@ -1235,7 +1439,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.597169,
+   "lng": 127.3569
   },
   "초:강서": {
    "name": "강서초등학교병설유치원",
@@ -1247,7 +1453,9 @@
    "classes": 3,
    "kids": 36,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.628411,
+   "lng": 127.423228
   },
   "초:개신": {
    "name": "개신초등학교병설유치원",
@@ -1259,7 +1467,9 @@
    "classes": 3,
    "kids": 29,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.620275,
+   "lng": 127.448748
   },
   "초:경덕": {
    "name": "경덕초등학교병설유치원",
@@ -1271,7 +1481,9 @@
    "classes": 2,
    "kids": 17,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.621079,
+   "lng": 127.437835
   },
   "초:경산": {
    "name": "경산초등학교병설유치원",
@@ -1283,7 +1495,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.625352,
+   "lng": 127.440451
   },
   "초:관기": {
    "name": "관기초등학교병설유치원",
@@ -1295,7 +1509,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.436022,
+   "lng": 127.821351
   },
   "초:괴산명덕": {
    "name": "괴산명덕초등학교병설유치원",
@@ -1307,7 +1523,9 @@
    "classes": 2,
    "kids": 10,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.808822,
+   "lng": 127.787782
   },
   "초:교동": {
    "name": "교동초등학교병설유치원",
@@ -1319,7 +1537,9 @@
    "classes": 1,
    "kids": 8,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.610594,
+   "lng": 127.510527
   },
   "초:구룡": {
    "name": "구룡초등학교병설유치원",
@@ -1331,7 +1551,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.264019,
+   "lng": 127.828084
   },
   "초:구정": {
    "name": "구정초등학교병설유치원",
@@ -1343,7 +1565,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.780859,
+   "lng": 127.535208
   },
   "초:군남": {
    "name": "군남초등학교병설유치원",
@@ -1355,7 +1579,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.278189,
+   "lng": 127.581809
   },
   "초:군서": {
    "name": "군서초등학교병설유치원",
@@ -1367,7 +1593,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.278348,
+   "lng": 127.527106
   },
   "초:금가": {
    "name": "금가초등학교병설유치원",
@@ -1379,7 +1607,9 @@
    "classes": 1,
    "kids": 7,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.044227,
+   "lng": 127.922507
   },
   "초:금구": {
    "name": "금구초등학교병설유치원",
@@ -1391,7 +1621,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.945158,
+   "lng": 127.430203
   },
   "초:금성": {
    "name": "금성초등학교병설유치원",
@@ -1403,7 +1635,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.067464,
+   "lng": 128.165298
   },
   "초:금천": {
    "name": "금천초등학교병설유치원",
@@ -1415,7 +1649,9 @@
    "classes": 3,
    "kids": 27,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.627313,
+   "lng": 127.505734
   },
   "초:남당": {
    "name": "남당초등학교병설유치원",
@@ -1427,7 +1663,9 @@
    "classes": 2,
    "kids": 4,
    "special_classes": 1,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 37.131604,
+   "lng": 128.201614
   },
   "초:남신": {
    "name": "남신초등학교병설유치원",
@@ -1439,7 +1677,9 @@
    "classes": 2,
    "kids": 10,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.9324,
+   "lng": 127.684808
   },
   "초:남이": {
    "name": "남이초등학교병설유치원",
@@ -1451,7 +1691,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.577096,
+   "lng": 127.454275
   },
   "초:남일": {
    "name": "남일초등학교병설유치원",
@@ -1463,7 +1705,9 @@
    "classes": 1,
    "kids": 10,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.575961,
+   "lng": 127.510208
   },
   "초:남천": {
    "name": "남천초등학교병설유치원",
@@ -1475,7 +1719,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.136209,
+   "lng": 128.217356
   },
   "초:남평": {
    "name": "남평초등학교병설유치원",
@@ -1487,7 +1733,9 @@
    "classes": 5,
    "kids": 48,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.611741,
+   "lng": 127.489076
   },
   "초:내북": {
    "name": "내북초등학교병설유치원",
@@ -1499,7 +1747,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.57582,
+   "lng": 127.651958
   },
   "초:내수": {
    "name": "내수초등학교병설유치원",
@@ -1511,7 +1761,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.726716,
+   "lng": 127.537764
   },
   "초:내토": {
    "name": "내토초등학교병설유치원",
@@ -1523,7 +1775,9 @@
    "classes": 3,
    "kids": 25,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.134112,
+   "lng": 128.22935
   },
   "초:노은": {
    "name": "노은초등학교병설유치원",
@@ -1535,7 +1789,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.048624,
+   "lng": 127.754834
   },
   "초:단월": {
    "name": "단월초등학교병설유치원",
@@ -1547,7 +1803,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.947755,
+   "lng": 127.89919
   },
   "초:단재": {
    "name": "단재초등학교병설유치원",
@@ -1559,7 +1817,9 @@
    "classes": 7,
    "kids": 91,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.599347,
+   "lng": 127.500286
   },
   "초:달천": {
    "name": "달천초등학교병설유치원",
@@ -1571,7 +1831,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.96333,
+   "lng": 127.879054
   },
   "초:대가": {
    "name": "대가초등학교병설유치원",
@@ -1583,7 +1845,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.033169,
+   "lng": 128.26279
   },
   "초:대강": {
    "name": "대강초등학교병설유치원",
@@ -1595,7 +1859,9 @@
    "classes": 1,
    "kids": 6,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.922234,
+   "lng": 128.358552
   },
   "초:대미": {
    "name": "대미초등학교병설유치원",
@@ -1607,7 +1873,9 @@
    "classes": 1,
    "kids": 8,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.033977,
+   "lng": 127.928569
   },
   "초:덕벌": {
    "name": "덕벌초등학교병설유치원",
@@ -1619,7 +1887,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.6553,
+   "lng": 127.479076
   },
   "초:도안": {
    "name": "도안초등학교병설유치원",
@@ -1631,7 +1901,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.817085,
+   "lng": 127.611215
   },
   "초:동광": {
    "name": "동광초등학교병설유치원",
@@ -1643,7 +1915,9 @@
    "classes": 5,
    "kids": 82,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.488069,
+   "lng": 127.718818
   },
   "초:동량": {
    "name": "동량초등학교병설유치원",
@@ -1655,7 +1929,9 @@
    "classes": 1,
    "kids": 6,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.027634,
+   "lng": 127.964967
   },
   "초:동이": {
    "name": "동이초등학교우산분교장병설유치원",
@@ -1667,7 +1943,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.277778,
+   "lng": 127.681472
   },
   "초:동인": {
    "name": "동인초등학교병설유치원",
@@ -1679,7 +1957,9 @@
    "classes": 2,
    "kids": 8,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.805817,
+   "lng": 127.789709
   },
   "초:두학": {
    "name": "두학초등학교병설유치원",
@@ -1691,7 +1971,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.134603,
+   "lng": 128.245427
   },
   "초:만승": {
    "name": "만승초등학교병설유치원",
@@ -1703,7 +1985,9 @@
    "classes": 6,
    "kids": 65,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.992317,
+   "lng": 127.442097
   },
   "초:매곡": {
    "name": "매곡초등학교병설유치원",
@@ -1715,7 +1999,9 @@
    "classes": 2,
    "kids": 8,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.192496,
+   "lng": 127.932252
   },
   "초:매포": {
    "name": "매포초등학교병설유치원",
@@ -1727,7 +2013,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.034226,
+   "lng": 128.301526
   },
   "초:맹동": {
    "name": "맹동초등학교병설유치원",
@@ -1739,7 +2027,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.926976,
+   "lng": 127.563538
   },
   "초:명지": {
    "name": "명지초등학교병설유치원",
@@ -1751,7 +2041,9 @@
    "classes": 5,
    "kids": 72,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.118828,
+   "lng": 128.205457
   },
   "초:모충": {
    "name": "모충초등학교병설유치원",
@@ -1763,7 +2055,9 @@
    "classes": 2,
    "kids": 31,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.62569,
+   "lng": 127.478354
   },
   "초:목도": {
    "name": "목도초등학교병설유치원",
@@ -1775,7 +2069,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.874338,
+   "lng": 127.854227
   },
   "초:목행": {
    "name": "목행초등학교병설유치원",
@@ -1787,7 +2083,9 @@
    "classes": 2,
    "kids": 16,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.007807,
+   "lng": 127.918925
   },
   "초:문광": {
    "name": "문광초등학교병설유치원",
@@ -1799,7 +2097,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.789813,
+   "lng": 127.783356
   },
   "초:문백": {
    "name": "문백초등학교병설유치원",
@@ -1811,7 +2111,9 @@
    "classes": 1,
    "kids": 10,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.786276,
+   "lng": 127.433152
   },
   "초:문상": {
    "name": "문상초등학교병설유치원",
@@ -1823,7 +2125,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.837726,
+   "lng": 127.471893
   },
   "초:문의": {
    "name": "문의초등학교병설유치원",
@@ -1835,7 +2139,9 @@
    "classes": 2,
    "kids": 4,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.518656,
+   "lng": 127.493508
   },
   "초:미원": {
    "name": "미원초등학교병설유치원",
@@ -1847,7 +2153,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.63599,
+   "lng": 127.659707
   },
   "초:백곡": {
    "name": "백곡초등학교병설유치원",
@@ -1859,7 +2167,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.885894,
+   "lng": 127.359913
   },
   "초:백봉": {
    "name": "백봉초등학교병설유치원",
@@ -1871,7 +2181,9 @@
    "classes": 1,
    "kids": 8,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.707264,
+   "lng": 127.72721
   },
   "초:백운": {
    "name": "백운초등학교병설유치원",
@@ -1883,7 +2195,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.13973,
+   "lng": 128.020124
   },
   "초:보광": {
    "name": "보광초등학교병설유치원",
@@ -1895,7 +2209,9 @@
    "classes": 1,
    "kids": 8,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.818096,
+   "lng": 127.649885
   },
   "초:보은삼산": {
    "name": "보은삼산초등학교병설유치원",
@@ -1907,7 +2223,9 @@
    "classes": 4,
    "kids": 46,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.484887,
+   "lng": 127.716964
   },
   "초:복대": {
    "name": "복대초등학교병설유치원",
@@ -1919,7 +2237,9 @@
    "classes": 9,
    "kids": 157,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.614104,
+   "lng": 127.429946
   },
   "초:봉덕": {
    "name": "봉덕초등학교병설유치원",
@@ -1931,7 +2251,9 @@
    "classes": 2,
    "kids": 24,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.652628,
+   "lng": 127.462384
   },
   "초:봉명": {
    "name": "봉명초등학교병설유치원",
@@ -1943,7 +2265,9 @@
    "classes": 4,
    "kids": 46,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.63994,
+   "lng": 127.456443
   },
   "초:봉양": {
    "name": "봉양초등학교병설유치원",
@@ -1955,7 +2279,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.13699,
+   "lng": 128.112696
   },
   "초:부윤": {
    "name": "부윤초등학교병설유치원",
@@ -1967,7 +2293,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.948814,
+   "lng": 127.524859
   },
   "초:북이": {
    "name": "북이초등학교병설유치원",
@@ -1979,7 +2307,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.761952,
+   "lng": 127.555817
   },
   "초:북일": {
    "name": "북일초등학교병설유치원",
@@ -1991,7 +2321,9 @@
    "classes": 1,
    "kids": 6,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.689648,
+   "lng": 127.485396
   },
   "초:비상": {
    "name": "비상초등학교병설유치원",
@@ -2003,7 +2335,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20242"
+   "timing": "20242",
+   "lat": 36.711158,
+   "lng": 127.582088
   },
   "초:사직": {
    "name": "사직초등학교병설유치원",
@@ -2015,7 +2349,9 @@
    "classes": 2,
    "kids": 11,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.630978,
+   "lng": 127.47769
   },
   "초:사천": {
    "name": "사천초등학교병설유치원",
@@ -2027,7 +2363,9 @@
    "classes": 1,
    "kids": 7,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.670692,
+   "lng": 127.47977
   },
   "초:산외": {
    "name": "산외초등학교병설유치원",
@@ -2039,7 +2377,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 36.552634,
+   "lng": 127.731666
   },
   "초:산척": {
    "name": "산척초등학교병설유치원",
@@ -2051,7 +2391,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20242"
+   "timing": "20242",
+   "lat": 37.079814,
+   "lng": 127.957864
   },
   "초:삼보": {
    "name": "삼보초등학교병설유치원",
@@ -2063,7 +2405,9 @@
    "classes": 4,
    "kids": 27,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.778268,
+   "lng": 127.578757
   },
   "초:삼성": {
    "name": "삼성초등학교병설유치원",
@@ -2075,7 +2419,9 @@
    "classes": 2,
    "kids": 8,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.019903,
+   "lng": 127.496779
   },
   "초:상당": {
    "name": "상당초등학교병설유치원",
@@ -2087,7 +2433,9 @@
    "classes": 5,
    "kids": 78,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.608031,
+   "lng": 127.520176
   },
   "초:상봉": {
    "name": "상봉초등학교병설유치원",
@@ -2099,7 +2447,9 @@
    "classes": 1,
    "kids": 17,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.638702,
+   "lng": 127.286491
   },
   "초:상촌": {
    "name": "상촌초등학교병설유치원",
@@ -2111,7 +2461,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.147615,
+   "lng": 127.912092
   },
   "초:새터": {
    "name": "새터초등학교병설유치원",
@@ -2123,7 +2475,9 @@
    "classes": 2,
    "kids": 12,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.667196,
+   "lng": 127.471063
   },
   "초:생극": {
    "name": "생극초등학교병설유치원",
@@ -2135,7 +2489,9 @@
    "classes": 2,
    "kids": 9,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.033997,
+   "lng": 127.604812
   },
   "초:생명": {
    "name": "생명초등학교병설유치원",
@@ -2147,7 +2503,9 @@
    "classes": 7,
    "kids": 114,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.712147,
+   "lng": 127.438549
   },
   "초:서경": {
    "name": "서경초등학교병설유치원",
@@ -2159,7 +2517,9 @@
    "classes": 1,
    "kids": 6,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.618309,
+   "lng": 127.441789
   },
   "초:서촌": {
    "name": "서촌초등학교병설유치원",
@@ -2171,7 +2531,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.650566,
+   "lng": 127.399447
   },
   "초:서현": {
    "name": "서현초등학교병설유치원",
@@ -2183,7 +2545,9 @@
    "classes": 5,
    "kids": 72,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.619265,
+   "lng": 127.429429
   },
   "초:석교": {
    "name": "석교초등학교병설유치원",
@@ -2195,7 +2559,9 @@
    "classes": 2,
    "kids": 10,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.626761,
+   "lng": 127.494248
   },
   "초:석성": {
    "name": "석성초등학교병설유치원",
@@ -2207,7 +2573,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.748887,
+   "lng": 127.513573
   },
   "초:성암": {
    "name": "성암초등학교병설유치원",
@@ -2219,7 +2587,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.826763,
+   "lng": 127.406479
   },
   "초:성화": {
    "name": "성화초등학교병설유치원",
@@ -2231,7 +2601,9 @@
    "classes": 5,
    "kids": 56,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.616015,
+   "lng": 127.455557
   },
   "초:세성": {
    "name": "세성초등학교병설유치원",
@@ -2243,7 +2615,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.904939,
+   "lng": 127.967429
   },
   "초:세중": {
    "name": "세중초등학교병설유치원",
@@ -2255,7 +2629,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.388369,
+   "lng": 127.829493
   },
   "초:소수": {
    "name": "소수초등학교병설유치원",
@@ -2267,7 +2643,9 @@
    "classes": 1,
    "kids": 9,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.853497,
+   "lng": 127.745573
   },
   "초:소이": {
    "name": "소이초등학교병설유치원",
@@ -2279,7 +2657,9 @@
    "classes": 2,
    "kids": 11,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.915344,
+   "lng": 127.754717
   },
   "초:소태": {
    "name": "소태초등학교병설유치원",
@@ -2291,7 +2671,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.111048,
+   "lng": 127.846465
   },
   "초:속리": {
    "name": "속리초등학교병설유치원",
@@ -2303,7 +2685,9 @@
    "classes": 1,
    "kids": 6,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.471205,
+   "lng": 127.789491
   },
   "초:솔강": {
    "name": "솔강초등학교병설유치원",
@@ -2315,7 +2699,9 @@
    "classes": 7,
    "kids": 115,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.61771,
+   "lng": 127.310753
   },
   "초:솔밭": {
    "name": "솔밭초등학교병설유치원",
@@ -2327,7 +2713,9 @@
    "classes": 4,
    "kids": 57,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.641319,
+   "lng": 127.426075
   },
   "초:송면": {
    "name": "송면초등학교병설유치원",
@@ -2339,7 +2727,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.674187,
+   "lng": 127.862326
   },
   "초:송학": {
    "name": "송학초등학교병설유치원",
@@ -2351,7 +2741,9 @@
    "classes": 2,
    "kids": 6,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.184577,
+   "lng": 128.262156
   },
   "초:수곡": {
    "name": "수곡초등학교병설유치원",
@@ -2363,7 +2755,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.618365,
+   "lng": 127.471126
   },
   "초:수봉": {
    "name": "수봉초등학교병설유치원",
@@ -2375,7 +2769,9 @@
    "classes": 2,
    "kids": 11,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.939722,
+   "lng": 127.692599
   },
   "초:수산": {
    "name": "수산초등학교병설유치원",
@@ -2387,7 +2783,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20232"
+   "timing": "20232",
+   "lat": 36.935637,
+   "lng": 128.188236
   },
   "초:수성": {
    "name": "수성초등학교병설유치원",
@@ -2399,7 +2797,9 @@
    "classes": 3,
    "kids": 27,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.718893,
+   "lng": 127.526889
   },
   "초:수안보": {
    "name": "수안보초등학교병설유치원",
@@ -2411,7 +2811,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.844872,
+   "lng": 128.000165
   },
   "초:수정": {
    "name": "수정초등학교병설유치원",
@@ -2423,7 +2825,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.535846,
+   "lng": 127.821384
   },
   "초:수한": {
    "name": "수한초등학교병설유치원",
@@ -2435,7 +2839,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.45852,
+   "lng": 127.7014
   },
   "초:수회": {
    "name": "수회초등학교병설유치원",
@@ -2447,7 +2853,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.877767,
+   "lng": 127.974662
   },
   "초:신백": {
    "name": "신백초등학교병설유치원",
@@ -2459,7 +2867,9 @@
    "classes": 1,
    "kids": 8,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.128337,
+   "lng": 128.226545
   },
   "초:신송": {
    "name": "신송초등학교병설유치원",
@@ -2471,7 +2881,9 @@
    "classes": 1,
    "kids": 8,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.575501,
+   "lng": 127.493319
   },
   "초:심천": {
    "name": "심천초등학교병설유치원",
@@ -2483,7 +2895,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.23469,
+   "lng": 127.724978
   },
   "초:쌍봉": {
    "name": "쌍봉초등학교병설유치원",
@@ -2495,7 +2909,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.00314,
+   "lng": 127.542309
   },
   "초:안남": {
    "name": "안남초등학교병설유치원",
@@ -2507,7 +2923,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.355346,
+   "lng": 127.672101
   },
   "초:안내": {
    "name": "안내초등학교병설유치원",
@@ -2519,7 +2937,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.392594,
+   "lng": 127.663289
   },
   "초:앙성": {
    "name": "앙성초등학교병설유치원",
@@ -2531,7 +2951,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.106467,
+   "lng": 127.757806
   },
   "초:양강": {
    "name": "양강초등학교병설유치원",
@@ -2543,7 +2965,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.145936,
+   "lng": 127.746987
   },
   "초:양산": {
    "name": "양산초등학교병설유치원",
@@ -2555,7 +2979,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20232"
+   "timing": "20232",
+   "lat": 36.124642,
+   "lng": 127.66638
   },
   "초:양청": {
    "name": "양청초등학교병설유치원",
@@ -2567,7 +2993,9 @@
    "classes": 3,
    "kids": 34,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.720139,
+   "lng": 127.42541
   },
   "초:어상천": {
    "name": "어상천초등학교병설유치원",
@@ -2579,7 +3007,9 @@
    "classes": 2,
    "kids": 2,
    "special_classes": 1,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 37.102928,
+   "lng": 128.35802
   },
   "초:엄정": {
    "name": "엄정초등학교병설유치원",
@@ -2591,7 +3021,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.087247,
+   "lng": 127.917313
   },
   "초:연풍": {
    "name": "연풍초등학교병설유치원",
@@ -2603,7 +3035,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.762943,
+   "lng": 127.997109
   },
   "초:영춘": {
    "name": "영춘초등학교병설유치원",
@@ -2615,7 +3049,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.080414,
+   "lng": 128.48299
   },
   "초:오갑": {
    "name": "오갑초등학교병설유치원",
@@ -2627,7 +3063,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.112258,
+   "lng": 127.676961
   },
   "초:오석": {
    "name": "오석초등학교병설유치원",
@@ -2639,7 +3077,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 36.999531,
+   "lng": 127.896057
   },
   "초:오송": {
    "name": "오송초등학교병설유치원",
@@ -2651,7 +3091,9 @@
    "classes": 1,
    "kids": 7,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.613332,
+   "lng": 127.325392
   },
   "초:오송솔미": {
    "name": "오송솔미초등학교병설유치원",
@@ -2663,7 +3105,9 @@
    "classes": 7,
    "kids": 107,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.623668,
+   "lng": 127.315424
   },
   "초:오창": {
    "name": "오창초등학교병설유치원",
@@ -2675,7 +3119,9 @@
    "classes": 4,
    "kids": 51,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.740934,
+   "lng": 127.457913
   },
   "초:옥포": {
    "name": "옥포초등학교병설유치원",
@@ -2687,7 +3133,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.496894,
+   "lng": 127.416542
   },
   "초:왕미": {
    "name": "왕미초등학교병설유치원",
@@ -2699,7 +3147,9 @@
    "classes": 1,
    "kids": 9,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.155416,
+   "lng": 128.158425
   },
   "초:용담": {
    "name": "용담초등학교병설유치원",
@@ -2711,7 +3161,9 @@
    "classes": 2,
    "kids": 3,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.636123,
+   "lng": 127.501414
   },
   "초:용두": {
    "name": "용두초등학교병설유치원",
@@ -2723,7 +3175,9 @@
    "classes": 5,
    "kids": 47,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.143758,
+   "lng": 128.19694
   },
   "초:용성": {
    "name": "용성초등학교병설유치원",
@@ -2735,7 +3189,9 @@
    "classes": 3,
    "kids": 16,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.623945,
+   "lng": 127.516701
   },
   "초:용아": {
    "name": "용아초등학교병설유치원",
@@ -2747,7 +3203,9 @@
    "classes": 5,
    "kids": 71,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.618248,
+   "lng": 127.521943
   },
   "초:용암": {
    "name": "용암초등학교병설유치원",
@@ -2759,7 +3217,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.614303,
+   "lng": 127.507829
   },
   "초:용원": {
    "name": "용원초등학교병설유치원",
@@ -2771,7 +3231,9 @@
    "classes": 1,
    "kids": 8,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.995207,
+   "lng": 127.73524
   },
   "초:용화": {
    "name": "용화초등학교병설유치원",
@@ -2783,7 +3245,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.023594,
+   "lng": 127.76591
   },
   "초:우암": {
    "name": "우암초등학교병설유치원",
@@ -2795,7 +3259,9 @@
    "classes": 2,
    "kids": 13,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.647467,
+   "lng": 127.490452
   },
   "초:운동": {
    "name": "운동초등학교병설유치원",
@@ -2807,7 +3273,9 @@
    "classes": 2,
    "kids": 19,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.606831,
+   "lng": 127.513118
   },
   "초:운천": {
    "name": "운천초등학교병설유치원",
@@ -2819,7 +3287,9 @@
    "classes": 3,
    "kids": 36,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.654489,
+   "lng": 127.473387
   },
   "초:원남": {
    "name": "원남초등학교병설유치원",
@@ -2831,7 +3301,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.87881,
+   "lng": 127.653811
   },
   "초:원당": {
    "name": "원당초등학교병설유치원",
@@ -2843,7 +3315,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 37.074163,
+   "lng": 127.615715
   },
   "초:원봉": {
    "name": "원봉초등학교병설유치원",
@@ -2855,7 +3329,9 @@
    "classes": 1,
    "kids": 6,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.612844,
+   "lng": 127.501867
   },
   "초:원평": {
    "name": "원평초등학교병설유치원",
@@ -2867,7 +3343,9 @@
    "classes": 3,
    "kids": 22,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.611227,
+   "lng": 127.495503
   },
   "초:율량": {
    "name": "율량초등학교병설유치원",
@@ -2879,7 +3357,9 @@
    "classes": 2,
    "kids": 6,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.668093,
+   "lng": 127.491653
   },
   "초:이원": {
    "name": "이원초등학교병설유치원",
@@ -2891,7 +3371,9 @@
    "classes": 1,
    "kids": 7,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.246829,
+   "lng": 127.622786
   },
   "초:이월": {
    "name": "이월초등학교병설유치원",
@@ -2903,7 +3385,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.930832,
+   "lng": 127.431049
   },
   "초:장락": {
    "name": "장락초등학교병설유치원",
@@ -2915,7 +3399,9 @@
    "classes": 3,
    "kids": 40,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.154362,
+   "lng": 128.222511
   },
   "초:장연": {
    "name": "장연초등학교병설유치원",
@@ -2927,7 +3413,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.824955,
+   "lng": 127.955121
   },
   "초:제천덕산": {
    "name": "제천덕산초등학교병설유치원",
@@ -2939,7 +3427,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.907742,
+   "lng": 128.1689
   },
   "초:제천중앙": {
    "name": "제천중앙초등학교병설유치원",
@@ -2951,7 +3441,9 @@
    "classes": 3,
    "kids": 24,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.152974,
+   "lng": 128.215548
   },
   "초:주덕": {
    "name": "주덕초등학교병설유치원",
@@ -2963,7 +3455,9 @@
    "classes": 1,
    "kids": 11,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.976714,
+   "lng": 127.787767
   },
   "초:주덕화곡": {
    "name": "주덕화곡초등학교병설유치원",
@@ -2975,7 +3469,9 @@
    "classes": 7,
    "kids": 94,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.007885,
+   "lng": 127.820698
   },
   "초:주성": {
    "name": "주성초등학교병설유치원",
@@ -2987,7 +3483,9 @@
    "classes": 2,
    "kids": 9,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.641427,
+   "lng": 127.485255
   },
   "초:주중": {
    "name": "주중초등학교병설유치원",
@@ -2999,7 +3497,9 @@
    "classes": 3,
    "kids": 29,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.672311,
+   "lng": 127.491682
   },
   "초:죽리": {
    "name": "죽리초등학교병설유치원",
@@ -3011,7 +3511,9 @@
    "classes": 1,
    "kids": 7,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.753553,
+   "lng": 127.61216
   },
   "초:죽림": {
    "name": "죽림초등학교병설유치원",
@@ -3023,7 +3525,9 @@
    "classes": 4,
    "kids": 47,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.612778,
+   "lng": 127.442924
   },
   "초:죽향": {
    "name": "죽향초등학교병설유치원",
@@ -3035,7 +3539,9 @@
    "classes": 2,
    "kids": 26,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.313471,
+   "lng": 127.577497
   },
   "초:증안": {
    "name": "증안초등학교병설유치원",
@@ -3047,7 +3553,9 @@
    "classes": 3,
    "kids": 29,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.634514,
+   "lng": 127.427823
   },
   "초:증약": {
    "name": "증약초등학교병설유치원",
@@ -3059,7 +3567,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.334251,
+   "lng": 127.523587
   },
   "초:증평": {
    "name": "증평초등학교병설유치원",
@@ -3071,7 +3581,9 @@
    "classes": 6,
    "kids": 73,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.78157,
+   "lng": 127.587936
   },
   "초:직지": {
    "name": "직지초등학교병설유치원",
@@ -3083,7 +3595,9 @@
    "classes": 2,
    "kids": 28,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.639751,
+   "lng": 127.437782
   },
   "초:진흥": {
    "name": "진흥초등학교병설유치원",
@@ -3095,7 +3609,9 @@
    "classes": 5,
    "kids": 54,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.636042,
+   "lng": 127.434713
   },
   "초:창리": {
    "name": "창리초등학교병설유치원",
@@ -3107,7 +3623,9 @@
    "classes": 7,
    "kids": 86,
    "special_classes": 2,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.736548,
+   "lng": 127.449328
   },
   "초:청남": {
    "name": "청남초등학교병설유치원",
@@ -3119,7 +3637,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.620512,
+   "lng": 127.497389
   },
   "초:청룡": {
    "name": "청룡초등학교병설유치원",
@@ -3131,7 +3651,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.00052,
+   "lng": 127.472517
   },
   "초:청산": {
    "name": "청산초등학교병설유치원",
@@ -3143,7 +3665,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.347243,
+   "lng": 127.793476
   },
   "초:청성": {
    "name": "청성초등학교병설유치원",
@@ -3155,7 +3679,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.328957,
+   "lng": 127.759435
   },
   "초:청안": {
    "name": "청안초등학교병설유치원",
@@ -3167,7 +3693,9 @@
    "classes": 1,
    "kids": 7,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.772355,
+   "lng": 127.639191
   },
   "초:청원": {
    "name": "청원초등학교병설유치원",
@@ -3179,7 +3707,9 @@
    "classes": 7,
    "kids": 88,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.709599,
+   "lng": 127.430555
   },
   "초:청주내곡": {
    "name": "청주내곡초등학교병설유치원",
@@ -3191,7 +3721,9 @@
    "classes": 6,
    "kids": 101,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.666825,
+   "lng": 127.456899
   },
   "초:청주내덕": {
    "name": "청주내덕초등학교병설유치원",
@@ -3203,7 +3735,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.656076,
+   "lng": 127.49512
   },
   "초:청주소로": {
    "name": "청주소로초등학교병설유치원",
@@ -3215,7 +3749,9 @@
    "classes": 6,
    "kids": 97,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.672281,
+   "lng": 127.391001
   },
   "초:청천": {
    "name": "청천초등학교병설유치원",
@@ -3227,7 +3763,9 @@
    "classes": 1,
    "kids": 7,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.661494,
+   "lng": 127.737514
   },
   "초:청풍": {
    "name": "청풍초등학교병설유치원",
@@ -3239,7 +3777,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.996504,
+   "lng": 128.165306
   },
   "초:초평": {
    "name": "초평초등학교병설유치원",
@@ -3251,7 +3791,9 @@
    "classes": 1,
    "kids": 7,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.847535,
+   "lng": 127.538426
   },
   "초:추풍령": {
    "name": "추풍령초등학교병설유치원",
@@ -3263,7 +3805,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.215079,
+   "lng": 127.996621
   },
   "초:충주교현": {
    "name": "충주교현초등학교병설유치원",
@@ -3275,7 +3819,9 @@
    "classes": 1,
    "kids": 5,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.974115,
+   "lng": 127.937496
   },
   "초:충주금릉": {
    "name": "충주금릉초등학교병설유치원",
@@ -3287,7 +3833,9 @@
    "classes": 2,
    "kids": 17,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.994404,
+   "lng": 127.929984
   },
   "초:충주남한강": {
    "name": "충주남한강초등학교병설유치원",
@@ -3299,7 +3847,9 @@
    "classes": 7,
    "kids": 114,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.955544,
+   "lng": 127.928581
   },
   "초:충주대림": {
    "name": "충주대림초등학교병설유치원",
@@ -3311,7 +3861,9 @@
    "classes": 2,
    "kids": 21,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.96913,
+   "lng": 127.918044
   },
   "초:충주대소원": {
    "name": "충주대소원초등학교병설유치원",
@@ -3323,7 +3875,9 @@
    "classes": 4,
    "kids": 53,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.987332,
+   "lng": 127.826708
   },
   "초:충주성남": {
    "name": "충주성남초등학교병설유치원",
@@ -3335,7 +3889,9 @@
    "classes": 1,
    "kids": 8,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.96631,
+   "lng": 127.94072
   },
   "초:충주예성": {
    "name": "충주예성초등학교병설유치원",
@@ -3347,7 +3903,9 @@
    "classes": 3,
    "kids": 18,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.978806,
+   "lng": 127.933248
   },
   "초:충주중앙": {
    "name": "충주중앙초등학교병설유치원",
@@ -3359,7 +3917,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.984343,
+   "lng": 127.92997
   },
   "초:충주중앙탑": {
    "name": "충주중앙탑초등학교병설유치원",
@@ -3371,7 +3931,9 @@
    "classes": 11,
    "kids": 173,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.015527,
+   "lng": 127.830695
   },
   "초:칠금": {
    "name": "칠금초등학교병설유치원",
@@ -3383,7 +3945,9 @@
    "classes": 2,
    "kids": 7,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.984209,
+   "lng": 127.923863
   },
   "초:칠성": {
    "name": "칠성초등학교병설유치원",
@@ -3395,7 +3959,9 @@
    "classes": 1,
    "kids": 12,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.785674,
+   "lng": 127.86239
   },
   "초:탄부": {
    "name": "탄부초등학교병설유치원",
@@ -3407,7 +3973,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20242"
+   "timing": "20242",
+   "lat": 36.425347,
+   "lng": 127.776842
   },
   "초:판동": {
    "name": "판동초등학교송죽분교장병설유치원",
@@ -3419,7 +3987,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20261"
+   "timing": "20261",
+   "lat": 36.43798,
+   "lng": 127.734386
   },
   "초:평곡": {
    "name": "평곡초등학교병설유치원",
@@ -3431,7 +4001,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.929079,
+   "lng": 127.70123
   },
   "초:풍광": {
    "name": "풍광초등학교병설유치원",
@@ -3443,7 +4015,9 @@
    "classes": 2,
    "kids": 16,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.629861,
+   "lng": 127.435228
   },
   "초:하당": {
    "name": "하당초등학교병설유치원",
@@ -3455,7 +4029,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.907027,
+   "lng": 127.679223
   },
   "초:학산": {
    "name": "학산초등학교병설유치원",
@@ -3467,7 +4043,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.092071,
+   "lng": 127.685917
   },
   "초:학성": {
    "name": "학성초등학교병설유치원",
@@ -3479,7 +4057,9 @@
    "classes": 1,
    "kids": 6,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.899204,
+   "lng": 127.44293
   },
   "초:한벌": {
    "name": "한벌초등학교병설유치원",
@@ -3491,7 +4071,9 @@
    "classes": 2,
    "kids": 8,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.637068,
+   "lng": 127.474789
   },
   "초:한솔": {
    "name": "한솔초등학교병설유치원",
@@ -3503,7 +4085,9 @@
    "classes": 2,
    "kids": 13,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.618757,
+   "lng": 127.475993
   },
   "초:한송": {
    "name": "한송초등학교병설유치원",
@@ -3515,7 +4099,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.883319,
+   "lng": 128.080183
   },
   "초:한천": {
    "name": "한천초등학교병설유치원",
@@ -3527,7 +4113,9 @@
    "classes": 1,
    "kids": 13,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.906959,
+   "lng": 127.507898
   },
   "초:행정": {
    "name": "행정초등학교병설유치원",
@@ -3539,7 +4127,9 @@
    "classes": 1,
    "kids": 4,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.53662,
+   "lng": 127.531947
   },
   "초:현도": {
    "name": "현도초등학교병설유치원",
@@ -3551,7 +4141,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20252"
+   "timing": "20252",
+   "lat": 36.476594,
+   "lng": 127.427011
   },
   "초:화당": {
    "name": "화당초등학교병설유치원",
@@ -3563,7 +4155,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.16924,
+   "lng": 127.986666
   },
   "초:화산": {
    "name": "화산초등학교병설유치원",
@@ -3575,7 +4169,9 @@
    "classes": 2,
    "kids": 14,
    "special_classes": 1,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 37.130086,
+   "lng": 128.213573
   },
   "초:황간": {
    "name": "황간초등학교병설유치원",
@@ -3587,7 +4183,9 @@
    "classes": 1,
    "kids": 9,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.227418,
+   "lng": 127.912996
   },
   "초:회남": {
    "name": "회남초등학교병설유치원",
@@ -3599,7 +4197,9 @@
    "classes": 1,
    "kids": 2,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.446207,
+   "lng": 127.579774
   },
   "초:회인": {
    "name": "회인초등학교병설유치원",
@@ -3611,7 +4211,9 @@
    "classes": 1,
    "kids": 1,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.491718,
+   "lng": 127.595214
   },
   "초:흥덕": {
    "name": "흥덕초등학교병설유치원",
@@ -3623,7 +4225,9 @@
    "classes": 1,
    "kids": 3,
    "special_classes": 0,
-   "timing": "20262"
+   "timing": "20262",
+   "lat": 36.645634,
+   "lng": 127.473755
   }
  }
 }
