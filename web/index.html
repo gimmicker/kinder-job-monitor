@@ -150,6 +150,7 @@
   .detail dt { color: var(--muted); }
   .detail dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
   .orig { font-size: 15px; color: var(--muted); }
+  .dlnote { margin: 0; font-size: 14px; color: var(--muted); }
   .kinfo { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; display: grid; gap: 8px; }
   .kinfo h3 { margin: 0; font-size: 17px; }
   .kinfo a { color: var(--brand); font-weight: 700; }
@@ -431,7 +432,9 @@
   function toggleFav(id) { favs.has(id) ? favs.delete(id) : favs.add(id); store.set("favs", [...favs]); updateCounts(); }
 
   const onList = () => { const q = new URLSearchParams(location.search); return !q.get("post") && !q.get("view"); };
-  const isPast = (j) => j.deadline && j.deadline < todayIso();
+  // 마감일을 모르는 공고는 등록 30일 뒤 마감된 것으로 본다 (app/store.py 알림 기준과 같음)
+  const daysAgoIso = (n) => { const d = today(); d.setDate(d.getDate() - n); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+  const isPast = (j) => j.deadline ? j.deadline < todayIso() : !!(j.posted_at && j.posted_at < daysAgoIso(30));
   function inTab(j, t) {
     if (t === "fav") return favs.has(j.post_id);
     if (t === "closed") return isPast(j);
@@ -562,10 +565,13 @@
       <div class="chips" style="margin:0">${isMine(j) ? '<span class="chip match">내 조건</span>' : ""}
         ${j.job_type ? `<span class="chip type">${esc(typeName(j.job_type))}</span>` : ""}</div>
       <h2>${esc(j.institution || j.author || "기관 확인 필요")}<span>${esc(jobDesc(j))}</span></h2>
+      ${j.deadline_source === "첨부 공고문" ? `<p class="dlnote">마감일은 첨부 공고문에서 자동으로 읽었어요. 원문에서 한 번 더 확인해 주세요.</p>` : ""}
+      ${!j.deadline ? `<p class="dlnote">마감일을 자동으로 찾지 못했어요. 원문·첨부에서 확인해 주세요.</p>` : ""}
       <div class="bigdl"><b class="${d.cls}">${d.past ? "마감" : d.short}</b><span>${d.long}</span></div>
       <div class="why ${isMine(j) ? "" : "other"}"><b>${isMine(j) ? "내 조건에 맞아요" : "내 조건과 달라요"}</b>${esc(why(j))}</div>
       <dl>
         <dt>등록일</dt><dd>${fmtDate(j.posted_at)}</dd>
+        <dt>출처</dt><dd>${esc(j.source || "충북교육청 학교구인정보")}</dd>
         <dt>첨부</dt><dd>${esc(fileSum)}</dd>
         <dt>원래 제목</dt><dd class="orig">${esc(j.title)}</dd>
       </dl>

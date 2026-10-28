@@ -27,6 +27,7 @@ class Store:
         self.jobs: dict = _read(self.dir / "jobs.json", {})
         self.runs: list = _read(self.dir / "runs.json", [])
         self.status: dict = _read(self.dir / "status.json", {})
+        self.seen: dict = _read(self.dir / "seen.json", {})
 
     @property
     def is_empty(self) -> bool:
@@ -36,6 +37,7 @@ class Store:
         _write(self.dir / "jobs.json", self.jobs)
         _write(self.dir / "runs.json", self.runs)
         _write(self.dir / "status.json", self.status)
+        _write(self.dir / "seen.json", self.seen)
 
     def add_run(self, run: dict, keep: int) -> None:
         self.runs.append(run)
@@ -57,6 +59,8 @@ class Store:
                 continue
             if j.get("deadline") and j["deadline"] < today.isoformat():
                 continue
+            if not j.get("deadline") and (j.get("posted_at") or "9999") < (today - timedelta(days=30)).isoformat():
+                continue  # 마감일을 모르는데 한 달 넘은 공고
             out.append(j)
         order = {s: i for i, s in enumerate(statuses)}
         return sorted(out, key=lambda j: (order[j["match_status"]], j.get("deadline") or "9999"))

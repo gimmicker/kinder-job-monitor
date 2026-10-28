@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>청주교육지원청 &gt; 알림마당 &gt; 구인정보 &gt; 교육지원청 &gt; 목록				</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/base/css/mgs.basic.css?20261028" media="all" />    
+<link rel="stylesheet" type="text/css" href="/base/css/mgs.board.css?20261028" media="all" />
+<link rel="stylesheet" type="text/css" href="/base/css/mgs.template.css?20261028" media="all" />
+<link rel="stylesheet" type="text/css" href="/base/css/mgs.ui.css?20261028" media="all" />
+<link rel="stylesheet" type="text/css" href="/base/css/member.css?20261028" media="all" />
+<link rel="stylesheet" type="text/css" href="/base/js/jquery-ui-1.12.1.custom/jquery-ui.min.css?20261028" />
+<link rel="stylesheet" type="text/css" href="/base/js/jquery-print-preview/css/print-preview.css?20261028" />
+
+<script src="/base/js/jquery/jquery-3.7.1.min.js?20261028"></script>
+<script src="/base/js/jquery/jquery-migrate-3.5.0.min.js?20261028"></script>
+<script src="/base/js/jquery-ui-1.12.1.custom/jquery-ui.min.js?20261028"></script>
+<script src="/base/js/jquery/jquery.cookie.min.js?20261028"></script>
+<script src="/base/js/jquery/jquery.banner.js?20261028"></script>
+<script src="/base/js/jquery/jquery.slides.min.js?20261028"></script>
+<script src="/base/js/jquery/jquery.touchslider.min.js?20261028"></script>
+<script src="/base/js/jquery/slick.min.js?20261028"></script>
+<script src="/base/js/jquery/jquery.spin.js?20261028"></script>
+<script src="/base/js/jquery/jquery.rwdImageMaps.min.js?20261028"></script>
+<script src="/base/js/jquery-print-preview/jquery.print-preview.js?20261028"></script>
+
+<script src="/base/js/mgs/mgs.util.js?20261028"></script>
+<script src="/base/js/mgs/mgs.select.js?20261028"></script>
+<script src="/base/js/mgs/mgs.navigation.js?20261028"></script>
+<script src="/base/js/mgs/mgs.navigation.mobile.js?20261028"></script>
+<script src="/base/js/mgs/mgs.sns.js?20261028"></script>
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">if(!wcs_add) var wcs_add = {};wcs_add["wa"] = "180ceb368076a9";if(window.wcs) {wcs_do();}</script>
+
+		<script src="/base/editor/ckeditor/ckeditor.js"></script>
+		<script src="/base/js/kakao/kakao.min.js"></script>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+	$(document).ready(function(){
+		$('#top1menu').navigation(1, true);
+		//$('a.print-preview').printPreview(); 		
+		$('img[usemap]').rwdImageMaps();
+		
+				
+		var beforeScroll = 0;
+		$(document).on("scroll", function(){
+			if( $(document).scrollTop() > '165' ){
+				if($(window).width() > 1024){
+					$('#popup').css({'top':'-180px'});
+				}
+				$('#menubg').css({'top':'55px'});
+				$('#header').addClass('scroll');
+				if($('#content').length) {
+					$('#content').addClass('scroll');
+				}
+			}else{
+				$('#popup').css({'top':'0'});
+				if($('#header').hasClass('pop') == true) {
+					$('#menubg').css({'top':'278px'});
+				} else {
+					$('#menubg').css({'top':'220px'});
+				}				
+				$('#header').removeClass('scroll');
+				if($('#content').length) {
+					$('#content').removeClass('scroll');
+				}
+			}
+		});
+		
+		$(function() {
+			$(".closeBtn1").click(function(){
+				$(".selectBtn1").focus();
+			});
+			$(".closeBtn2").click(function(){
+				$(".selectBtn2").focus();
+			});
+			$(".closeBtn3").click(function(){
+				$(".selectBtn3").focus();
+			});
+			$(".closeBtn4").click(function(){
+				$(".selectBtn4").focus();
+			});
+			$(".closeBtn5").click(function(){
+				$(".selectBtn5").focus();
+			});
+		});
+
+		$("#lnb_device").html($("#top1menu").html()).find(".menu1th+p").detach();
+		var param = "#topmenu";
+		var obj = "#wrap";
+		var btn = "#open_mn";
+		var elem = 01; // th1 메뉴코드, index로 사용
+		var dur = 500; // 애니메이션 진행 속도
+		var meth = "easeOutExpo"; // 애니메이션 진행 타입
+		lnb_open(param,obj,btn,elem,dur,meth);
+
+		//날씨 수신안내			
+		$(".we_i").focusin(function(){
+			$(this).find("p").show();					
+		});
+		$(".we_i").focusout(function(){
+			$(this).find("p").removeAttr("style");
+		});
+		
+		//공유,QR코드				
+		$(".sns_open").click(function(){
+			$(this).parent().find("ul").fadeIn();					
+		});
+		$(".sns_close").click(function(){
+			$(this).parent().fadeOut();
+			$(this).parent().parent().find(".sns_open").focus();
+		});
+		
+		//top버튼
+		$("#footer_top a").click(function(e) {
+		  e.preventDefault();
+		  $('html,body').animate({scrollTop: 0}, 200);
+		});
+		$("#printChk").click(function () {
+			//프린트 출력시 2018.12.14
+			//$.getPrintData("4", "6425", "218.158.92.42", "손님", "");
+			window.open(this.href, 'print', 'width=1000, height=800');
+			return false
+		});
+		
+		//탭 접근성
+		$('.mn_category1, .contTabList').find('li.on > a').not('.tabBtn').attr('title','선택됨');
+		
+	});
+	(function($){
+		$.getPrintData = function(type, menukey, ip, name, no) {
+			$.ajax({   
+				type: "get",   
+				dataType: "xml",
+				cache: false,
+				url: "/base/xml/printChk.php?type=" + type + "&menukey=" + menukey + "&ip=" + ip + "&name=" + name + "&no=" + no,
+				success: function(xml) {
+					if($(xml).find("models").find("model").length > 0) { 
+						$(xml).find("models").find("model").each(function() { 
+							var link = $(this).find("link").text();
+							alert(link);
+						});   
+					}      
+				},    
+				error: function(xhr, status, error) {   
+					$("#printChk").append("에러가 발생하였습니다.");
+					$("#printChk").append(error);
+				}   
+			});   
+		}
+	})(jQuery);
+ 
+//]]> 
+
+//비공개대상정보 세부기준		
+	function viewAnswer(menu){
+		var mn = menu;
+		if(document.getElementById(mn+"_view").style.display=="none"){
+			$('#'+mn+'_view').slideDown("slow");
+		}else{
+			$('#'+mn+'_view').slideUp("slow");
+		}
+	}
+</script> 		<link rel="stylesheet" type="text/css" href="css/lib.css?20261028" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/sub.css?20261028" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/board.css?20261028" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/contents.css?20261028" media="all" />
+		
+		<script type="text/javascript" src="/base/js/mgs/mgs.aside.js"></script>
+		<script type="text/javascript">
+		//<![CDATA[
+			$(document).ready(function(){
+				//quick menu
+				$(".quick_menu .cont_box").hide();
+				$(".quick_menu .open").click(function(){
+					$(".quick_menu .cont_box").hide();
+					$(this).next("div.cont_box").addClass('active').fadeIn();
+					$(".cont_box li:first-child a").focus();
+					
+					return false;
+				});
+				$(".quick_menu .cont_box .close").click(function(){
+					$(this).parents("div.cont_box").removeClass('active').fadeOut();
+					$(".quick_menu .open").focus();
+					return false;
+				});
+				$("body").click(function(){
+					$(".quick_menu .cont_box").fadeOut();
+				});
+
+				$('.print-preview').printPreview();
+				//quick menu - resize
+				$( window ).resize(function() {
+					var aside = $("#aside");
+					if($(window).width() <= 1200) {
+						var aside = $("#aside");						
+						$("#aside").remove();
+					} else {
+						$("#aside").show();
+					}
+				});
+			});
+		//]]>
+		</script>
+	<style type="text/css">
+		@media print {
+			#footer {display:none;}
+			#content {width:900px; height:100%; overflow:hidden;}
+			.centerColumn {margin:0 0 0 0 !important; overflow:hidden;}
+		}
+	</style>
+	</head>
+	<body>
+		<div id="subWrapper">
+			<div id="accessibility">
+				<ul>
+					<li><a href="#centerContent">본문 바로가기</a></li>
+					<li><a href="#lnb">대메뉴 바로가기</a></li>
+					<li><a href="#subMenu">부메뉴 바로가기</a></li>
+				</ul>
+			</div>
+			<div id="shadow_device"></div>
+			<div id="touchArea"></div>
+			<div id="menubg"></div>
+			<div id="wrap">
+				
+
+				<div id="header">
+					<div class="wrap">
+						<div id="gnb" class="clearfix">
+	<ul class="gnb01">
+		<li><a href="main.php" class="fir"><img src="/base/imgs/cmmn/gnb_home.png" alt="메인으로 돌아가기"></a></li>
+		<li class="zoom"><span>글자크기</span>
+			<a href="#" onclick="return false;" class="zoomIn"><img src="/base/imgs/cmmn/gnb_zoomIn.png" alt="확대"></a>
+			<a href="#" onclick="return false;" class="zoomOut"><img src="/base/imgs/cmmn/gnb_zoomOut.png" alt="축소"></a>
+		</li>
+	</ul>
+	<ul class="gnb02">	
+					<li><a href="sub.php?menukey=803&amp;refcode=1" class="login">로그인</a></li>
+								<li><a href="sub.php?menukey=801">누리집지도</a></li>
+		
+	</ul>
+</div>
+<div class="clearfix"> 
+	<h1 id="logo"><a href="main.php">
+					<img src="/base/imgs/logo/logo_00000004.png" alt="충청북도 청주교육지원청" />
+				
+	</a></h1>
+	<div class="main_search"> 
+		<form name="searchForm" action="https://info.cbe.go.kr/search/cbcje.php" method="get" target="_blank">
+			<input type="hidden" name="code2" value="00000004" />
+			<fieldset>
+				<legend>통합검색</legend>
+				<div class="select">
+					<label class="skip" for="searchKwd">검색어를 입력하세요</label>
+					<input type="text" id="searchKwd" name="kwd" class="kwdbox inplinekr" value="" title="검색어를 입력하세요" placeholder="검색어를 입력하세요" />
+					<input type="image" class="search_btn" title="검색(새창)" src="/base/imgs/cmmn/search_btn_00000004.png" onclick="if($('#searchKwd').val() == '') { alert('검색어를 입력하세요.'); $('#searchKwd').focus(); return false; } else { return true;}" alt="검색(새창)" />
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+			<div id="brand_logo">
+			<!--img src="/cbcje/imgs/sub/slogan.png" alt="함께 성장하며 꿈꾸는 미래! 공감 청주교육"  style="width:300px"/-->
+			<img src="/base/imgs/logo/brand_logo.png" alt="함께 성장하며 꿈꾸는 미래! 공감 청주교육" />
+		</div>
+		
+	
+		
+		</div>						<div id="lnb" class="clearfix"><ul id="top1menu" class="clearfix"><li class="top2hover"><a href="sub.php?menukey=502" id="top1m1" class="menu1th top_menu1 mobon">알림마당</a><div id="top2m1" class="top2m" style="display: none;"><ul><li class="lnb11"><a href="sub.php?menukey=502" class="off">공지사항</a></li><li class="lnb12"><a href="sub.php?menukey=503" class="off">교육지원청 소식지</a></li><li class="lnb13"><a href="sub.php?menukey=505" class="off">보도자료</a><ul><li><a href="sub.php?menukey=505" class="off">일일보도자료</a></li><li><a href="sub.php?menukey=506" class="off">보도해명/정정</a></li></ul></li><li class="lnb14"><a href="sub.php?menukey=507" class="off">각종행사사진</a></li><li class="lnb15"><a href="sub.php?menukey=6425" class="on">구인정보</a><ul><li><a href="sub.php?menukey=6425" class="on">교육지원청</a></li><li><a href="sub.php?menukey=6426" class="off">학교</a></li></ul></li><li class="lnb16"><a href="sub.php?menukey=518" class="off">인력풀 정보&#40;구직신청&#41;</a><ul><li><a href="sub.php?menukey=518" class="off">기간제교사 인력풀</a></li><li><a href="https://pool.cbe.go.kr" target="_blank" title="새창">인력풀통합시스템 <span class="blank"></span></a></li><li><a href="https://www.cbe.go.kr/after/main.do" target="_blank" title="새창">방과후학교강사풀 <span class="blank"></span></a></li><li><a href="https://www.cbe.go.kr/dept-19/lo/login/loginPage.do" target="_blank" title="새창">유치원방과후특성화강사인력풀 <span class="blank"></span></a></li></ul></li><li class="lnb17"><a href="sub.php?menukey=510" class="off">교육지원청인사</a><ul><li><a href="http://info.cbe.go.kr/home/sub.php?menukey=104&amp;cate=00000021" target="_blank" title="새창">교원인사 <span class="blank"></span></a></li></ul></li><li class="lnb18"><a href="sub.php?menukey=5788" class="off">입찰정보</a><ul><li><a href="sub.php?menukey=5788" class="off">입찰정보&#40;청주&#41;</a></li><li><a href="sub.php?menukey=5789" class="off">입찰계약정보&#40;도교육청&#41;</a></li></ul></li><li class="lnb19"><a href="sub.php?menukey=527" class="off">공시송달</a></li><li class="lnb110"><a href="sub.php?menukey=528" class="off">공무국외연수</a></li></ul></div></li><li class="top2hover"><a href="sub.php?menukey=530" id="top1m2" class="menu1th top_menu2">참여마당</a><div id="top2m2" class="top2m" style="display: none;"><ul><li class="lnb21"><a href="sub.php?menukey=530" class="off">우리학교자랑</a></li><li class="lnb22"><a href="sub.php?menukey=532" class="off">청렴봉사행정</a><ul><li><a href="sub.php?menukey=532" class="off">청렴관련자료실</a></li><li><a href="sub.php?menukey=533" class="off">청렴사례나눔방</a></li><li><a href="sub.php?menukey=534" class="off">통합부조리&#40;클린&#41;신고센터</a></li></ul></li><li class="lnb23"><a href="sub.php?menukey=535" class="off">공무원행동강령위반신고센터</a></li><li class="lnb24"><a href="sub.php?menukey=536" class="off">내부공익신고센터</a></li><li class="lnb25"><a href="sub.php?menukey=5672" class="off">불법하도급 및 임금체불신고</a><ul><li><a href="sub.php?menukey=5672" class="off">불법하도급 신고센터</a></li><li><a href="sub.php?menukey=5673" class="off">임금체불등 신고센터</a></li></ul></li><li class="lnb26"><a href="sub.php?menukey=538" class="off">사이버상담</a><ul><li><a href="sub.php?menukey=538" class="off">위&#40;Wee&#41;센터 사이버상담실</a></li></ul></li><li class="lnb27"><a href="sub.php?menukey=550" class="off">설문조사</a></li><li class="lnb28"><a href="sub.php?menukey=546" class="off">의견수렴</a><ul><li><a href="sub.php?menukey=546" class="off">민원만족도 의견수렴</a></li><li><a href="sub.php?menukey=547" class="off">행정예고 의견수렴</a></li><li><a href="sub.php?menukey=548" class="off">주요업무계획 의견수렴</a></li></ul></li></ul></div></li><li class="top2hover"><a href="sub.php?menukey=553" id="top1m3" class="menu1th top_menu3">민원/정보공개</a><div id="top2m3" class="top2m" style="display: none;"><ul><li class="lnb31"><a href="sub.php?menukey=553" class="off">청주교육행정서비스헌장</a><ul><li><a href="sub.php?menukey=553" class="off">선언문</a></li><li><a href="sub.php?menukey=555" class="off">공통 이행기준</a></li><li><a href="sub.php?menukey=556" class="off">부서별 이행기준</a></li><li><a href="sub.php?menukey=557" class="off">민원인께서 협조해 주실 사항</a></li></ul></li><li class="lnb32"><a href="sub.php?menukey=559" class="off">민원안내</a><ul><li><a href="sub.php?menukey=559" class="off">민원안내</a></li><li><a href="sub.php?menukey=560" class="off">민원서식</a></li><li><a href="sub.php?menukey=561" class="off">정부24</a></li><li><a href="https://www.cbe.go.kr/cbe/ad/func/cvpl/cvplReqstList.do?mi=12401" target="_blank" title="새창">민원서비스 사전예약 신청 <span class="blank"></span></a></li><li><a href="sub.php?menukey=564" class="off">민원후견인제도</a></li><li><a href="sub.php?menukey=5907" class="off">무인민원발급서비스</a></li><li><a href="sub.php?menukey=565" class="off">110화상/수화/채팅상담</a></li></ul></li><li class="lnb33"><a href="sub.php?menukey=6077" class="off">학교체육시설 예약 관리</a><ul><li><a href="sub.php?menukey=6077" class="off">이용방법</a></li><li><a href="sub.php?menukey=6078" class="off">시설현황</a></li><li><a href="sub.php?menukey=6080" class="off">알림마당 <span class="depth"></span></a><ul class="4th" style="display: none;"><li><a href="sub.php?menukey=6080" class="off">시설사용규정</a></li><li><a href="sub.php?menukey=6081" class="off">사용료안내</a></li><li><a href="sub.php?menukey=6082" class="off">공개자료실</a></li></ul></li></ul></li><li class="lnb34"><a href="sub.php?menukey=568" class="off">청주교육신문고</a><ul><li><a href="sub.php?menukey=568" class="off">자주하는 질문 FAQ</a></li><li><a href="sub.php?menukey=567" class="off">민원신청하기</a></li><li><a href="sub.php?menukey=569" class="off">나의민원보기</a></li></ul></li><li class="lnb35"><a href="sub.php?menukey=573" class="off">유·초·중학교 전입학</a><ul><li><a href="sub.php?menukey=573" class="off">전입학절차</a></li><li><a href="sub.php?menukey=574" class="off">초·중학교 학구 안내</a></li><li><a href="https://www.go-firstschool.go.kr/PAMS_SS/selectVacancyInfoList.do?SIDO_CD=43&amp;GUGUN_CD=111" target="_blank" title="새창">유치원결원&#40;전학가능인원&#41; <span class="blank"></span></a></li><li><a href="sub.php?menukey=575" class="off">중학교결원&#40;전입가능인원&#41;</a></li></ul></li><li class="lnb36"><a href="sub.php?menukey=578" class="off">학원 교습소 개인과외</a><ul><li><a href="sub.php?menukey=578" class="off">학원설립안내</a></li><li><a href="sub.php?menukey=579" class="off">학원운영안내</a></li><li><a href="sub.php?menukey=580" class="off">교습소설립안내</a></li><li><a href="sub.php?menukey=581" class="off">교습소운영안내</a></li><li><a href="sub.php?menukey=5580" class="off">개인과외신고안내</a></li><li><a href="sub.php?menukey=582" class="off">관련서식</a></li><li><a href="sub.php?menukey=583" class="off">자료실</a></li></ul></li><li class="lnb37"><a href="sub.php?menukey=6299" class="off">비영리&#40;공익&#41;법인 평생교육시설</a><ul><li><a href="sub.php?menukey=6299" class="off">비영리&#40;공익&#41;법인 안내</a></li><li><a href="sub.php?menukey=6300" class="off">평생교육시설 안내</a></li><li><a href="sub.php?menukey=6121" class="off">자료실&#40;법인,평생교육&#41;</a></li></ul></li><li class="lnb38"><a href="sub.php?menukey=586" class="off">교육환경보호구역</a><ul><li><a href="sub.php?menukey=586" class="off">교육환경보호구역이란?</a></li><li><a href="sub.php?menukey=587" class="off">설정관련법규</a></li><li><a href="sub.php?menukey=588" class="off">금지행위및시설물</a></li><li><a href="sub.php?menukey=589" class="off">제외신청및심의</a></li><li><a href="sub.php?menukey=590" class="off">교육환경보호구역도</a></li></ul></li><li class="lnb39"><a href="sub.php?menukey=593" class="off">체육시설</a><ul><li><a href="sub.php?menukey=593" class="off">충북학생롤러경기장</a></li><li><a href="sub.php?menukey=595" class="off">충북학생체육센터</a></li><li><a href="sub.php?menukey=596" class="off">충북두산학생테니스장</a></li></ul></li><li class="lnb310"><a href="sub.php?menukey=598" class="off">업무추진비</a><ul><li><a href="sub.php?menukey=598&amp;cate=00000957">교육지원청</a></li><li><a href="sub.php?menukey=598&amp;cate=00000958">사립유치원</a></li></ul></li><li class="lnb311"><a href="sub.php?menukey=605" class="off">정보공개</a><ul><li><a href="sub.php?menukey=605" class="off">정보공개제도안내 <span class="depth"></span></a><ul class="4th" style="display: none;"><li><a href="sub.php?menukey=605" class="off">정보공개제도란</a></li><li><a href="sub.php?menukey=606" class="off">정보공개대상기관</a></li><li><a href="sub.php?menukey=607" class="off">정보공개방법</a></li><li><a href="sub.php?menukey=608" class="off">업무처리절차</a></li><li><a href="sub.php?menukey=609" class="off">불복구제절차방법</a></li><li><a href="sub.php?menukey=610" class="off">정보공개수수료</a></li><li><a href="sub.php?menukey=611" class="off">비공개대상정보 및 세부기준</a></li><li><a href="https://www.open.go.kr/infOthbc/infOthbc/infOthbcLaword.do" target="_blank" title="새창">정보공개 관계서식 <span class="blank"></span></a></li><li><a href="sub.php?menukey=613" class="off">정보공개 관련법령</a></li></ul></li><li><a href="sub.php?menukey=614" class="off">사전정보공표</a></li><li><a href="sub.php?menukey=615" class="off">정보공개청구</a></li><li><a href="sub.php?menukey=6307" class="off">공공데이터 개방</a></li><li><a href="sub.php?menukey=6309" class="off">주요문서목록 <span class="depth"></span></a><ul class="4th" style="display: none;"><li><a href="sub.php?menukey=6309" class="off">2014년 이후</a></li><li><a href="sub.php?menukey=6310" class="off">2013년 이전</a></li></ul></li></ul></li></ul></div></li><li class="top2hover"><a href="sub.php?menukey=5821" id="top1m4" class="menu1th top_menu4">교육정보</a><div id="top2m4" class="top2m" style="display: none;"><ul><li class="lnb41"><a href="sub.php?menukey=5821" class="off">유·초·중 교육자료</a><ul><li><a href="sub.php?menukey=5821" class="off">교육과정</a></li><li><a href="sub.php?menukey=5822" class="off">자료실</a></li><li><a href="sub.php?menukey=5824" class="off">초등교육연구회</a></li><li><a href="sub.php?menukey=5825" class="off">연구시범학교</a></li></ul></li><li class="lnb42"><a href="sub.php?menukey=648" class="off">체육·보건·급식 정보</a><ul><li><a href="sub.php?menukey=648" class="off">체육교육</a></li><li><a href="sub.php?menukey=649" class="off">보건정보</a></li><li><a href="sub.php?menukey=650" class="off">급식정보</a></li><li><a href="sub.php?menukey=6037" class="off">학생선수 고충처리센터&#40;신고&#41;</a></li></ul></li><li class="lnb43"><a href="sub.php?menukey=5805" class="off">학교지원</a><ul><li><a href="sub.php?menukey=5805" class="off">학교지원 기본방향</a></li><li><a href="sub.php?menukey=5806" class="off">자료실</a></li><li><a href="sub.php?menukey=5808" class="off">학교업무바로지원신청</a></li></ul></li><li class="lnb44"><a href="sub.php?menukey=6462" class="off">정보지원</a><ul><li><a href="sub.php?menukey=6462" class="off">정보지원</a></li><li><a href="sub.php?menukey=6463" class="off">이로미&#40;스마트기기&#41; 안내</a></li><li><a href="sub.php?menukey=6596" class="off">자료실</a></li></ul></li><li class="lnb45"><a href="sub.php?menukey=781" class="off">맞춤형장학지원</a><ul><li><a href="sub.php?menukey=781" class="off">자료실</a></li><li><a href="sub.php?menukey=778" class="off">맞춤형장학사례 <span class="depth"></span></a><ul class="4th" style="display: none;"><li><a href="sub.php?menukey=778" class="off">유치원</a></li><li><a href="sub.php?menukey=779" class="off">초등학교</a></li><li><a href="sub.php?menukey=780" class="off">중학교</a></li></ul></li></ul></li><li class="lnb46"><a href="sub.php?menukey=783">영재교육원</a><ul><li><a href="sub.php?menukey=783" class="off">영재교육원소개</a></li><li><a href="sub.php?menukey=784" class="off">영재학급안내</a></li><li><a href="sub.php?menukey=785" class="off">영재교육종합데이터베이스</a></li><li><a href="sub.php?menukey=786" class="off">영재교육자료실</a></li></ul></li><li class="lnb47"><a href="sub.php?menukey=5586" class="off">위&#40;Wee&#41;센터 안내</a><ul><li><a href="sub.php?menukey=5586" class="off">위&#40;Wee&#41;센터란?</a></li><li><a href="sub.php?menukey=5587" class="off">위&#40;Wee&#41;센터에서 하는 일</a></li><li><a href="sub.php?menukey=5588" class="off">위&#40;Wee&#41;센터 상담신청</a></li><li><a href="sub.php?menukey=5589" class="off">위&#40;Wee&#41;센터 사이버상담실</a></li><li><a href="sub.php?menukey=5590" class="off">위&#40;Wee&#41;센터 활동사진</a></li><li><a href="sub.php?menukey=5591" class="off">위&#40;Wee&#41;센터 상담활동 및 자료</a></li></ul></li><li class="lnb48"><a href="sub.php?menukey=6071" class="off">학생지원과</a><ul><li><a href="sub.php?menukey=6071" class="off">학생생활교육</a></li><li><a href="sub.php?menukey=6072" class="off">학교폭력전담</a></li></ul></li><li class="lnb49"><a href="sub.php?menukey=744" class="off">교육협력과</a><ul><li><a href="sub.php?menukey=744" class="off">학생맞춤통합지원센터 <span class="depth"></span></a><ul class="4th" style="display: none;"><li><a href="sub.php?menukey=744" class="off">사업소개 <span class="depth"></span></a><ul class="5th" style="display: none;"><li><a href="sub.php?menukey=744">학생맞춤통합지원센터</a></li><li><a href="sub.php?menukey=742">교육복지우선지원사업</a></li></ul></li><li><a href="sub.php?menukey=745" class="off">자료실</a></li></ul></li><li><a href="sub.php?menukey=729" class="off">방과후·돌봄지원센터 <span class="depth"></span></a><ul class="4th" style="display: none;"><li><a href="sub.php?menukey=729" class="off">지원센터 소개</a></li><li><a href="sub.php?menukey=733" class="off">자료실 <span class="depth"></span></a><ul class="5th" style="display: none;"><li><a href="sub.php?menukey=733">방과후·돌봄&#40;초&#41;</a></li><li><a href="sub.php?menukey=732">방과후학교&#40;중·고&#41;</a></li><li><a href="sub.php?menukey=6503">청주 방과후·돌봄센터</a></li></ul></li><li><a href="https://www.cbe.go.kr/after/na/ntt/selectNttList.do?mi=10216&amp;bbsId=1890" target="_blank" title="새창">방과후학교강사풀 <span class="blank"></span></a><ul class="5th" style="display: none;"><li><a href="sub.php?menukey=735">강사풀운영계획</a></li><li><a href="sub.php?menukey=736">방과후학교강사풀</a></li></ul></li></ul></li><li><a href="sub.php?menukey=721" class="off">청주온마을배움터</a></li><li><a href="sub.php?menukey=725" class="off">남부지역거점학부모지원센터 <span class="depth"></span></a><ul class="4th" style="display: none;"><li><a href="sub.php?menukey=725" class="off">남부지역거점학부모지원센터 소개</a></li><li><a href="sub.php?menukey=726" class="off">자료실</a></li><li><a href="sub.php?menukey=727" class="off">행사 사진</a></li></ul></li><li><a href="sub.php?menukey=746" class="off">오시는길</a></li></ul></li><li class="lnb410"><a href="sub.php?menukey=764">특수교육지원센터</a><ul><li><a href="sub.php?menukey=764" class="off">지원센터 소개</a></li><li><a href="sub.php?menukey=765" class="off">공지사항</a></li><li><a href="sub.php?menukey=766" class="off">자료실</a></li><li><a href="sub.php?menukey=767" class="off">대여물품 현황</a></li><li><a href="sub.php?menukey=768" class="off">신청서</a></li><li><a href="sub.php?menukey=6258" class="off">오시는길</a></li></ul></li><li class="lnb411"><a href="sub.php?menukey=788">충북학습종합클리닉센터</a><ul><li><a href="sub.php?menukey=788" class="off">센터 소개</a></li><li><a href="sub.php?menukey=789" class="off">이용 방법</a></li><li><a href="sub.php?menukey=6458" class="off">자료실</a></li></ul></li></ul></div></li><li class="top2hover"><a href="sub.php?menukey=657" id="top1m5" class="menu1th top_menu5">행정정보</a><div id="top2m5" class="top2m" style="display: none;"><ul><li class="lnb51"><a href="sub.php?menukey=657" class="off">청주교육지원청훈령</a></li><li class="lnb52"><a href="sub.php?menukey=659" class="off">학교운영위원회</a><ul><li><a href="sub.php?menukey=659" class="off">기능 및 업무</a></li><li><a href="sub.php?menukey=660" class="off">업무자료실</a></li><li><a href="sub.php?menukey=661" class="off">사이버학교운영위원회</a></li><li><a href="sub.php?menukey=5921" class="off">학교&#40;유치원&#41; 공개 게시판</a></li></ul></li><li class="lnb53"><a href="sub.php?menukey=662" class="off">사립학교정보</a></li><li class="lnb54"><a href="sub.php?menukey=664" class="off">학교정보공시</a></li><li class="lnb55"><a href="sub.php?menukey=673" class="off">교육재정정보</a><ul><li><a href="sub.php?menukey=673" class="off">교육비특별회계 <span class="depth"></span></a><ul class="4th" style="display: none;"><li><a href="sub.php?menukey=673" class="off">교육예산정보</a></li><li><a href="sub.php?menukey=674" class="off">예산집행공개</a></li></ul></li><li><a href="sub.php?menukey=676" class="off">학교회계 <span class="depth"></span></a><ul class="4th" style="display: none;"><li><a href="sub.php?menukey=676" class="off">학교재정정보</a></li><li><a href="sub.php?menukey=677" class="off">교육기자재정보</a></li></ul></li><li><a href="sub.php?menukey=678" class="off">주민참여예산제</a></li><li><a href="sub.php?menukey=679" class="off">재정효율화우수사례</a></li><li><a href="sub.php?menukey=680" class="off">예산낭비신고센터</a></li></ul></li><li class="lnb56"><a href="sub.php?menukey=666" class="off">기록관</a><ul><li><a href="sub.php?menukey=666" class="off">게시판</a></li><li><a href="sub.php?menukey=813" class="off">사이버전시관</a></li><li><a href="sub.php?menukey=6260" class="off">간행물 발간등록번호 신청</a></li></ul></li><li class="lnb57"><a href="sub.php?menukey=683" class="off">기타자료실</a></li><li class="lnb58"><a href="sub.php?menukey=5594" class="off">재정과</a><ul><li><a href="sub.php?menukey=5594" class="off">재정과자료실</a></li><li><a href="sub.php?menukey=5595" class="off">계약자료실</a></li><li><a href="sub.php?menukey=5596" class="off">폐교재산활용</a></li></ul></li><li class="lnb59"><a href="sub.php?menukey=5597" class="off">시설1과</a></li><li class="lnb510"><a href="sub.php?menukey=685" class="off">시설2과</a></li><li class="lnb511"><a href="sub.php?menukey=6238" class="off">사립유치원</a><ul><li><a href="sub.php?menukey=6238" class="off">사립유치원 회계</a></li><li><a href="sub.php?menukey=6240" class="off">유치원평가</a></li></ul></li></ul></div></li><li class="top2hover"><a href="sub.php?menukey=687" id="top1m6" class="menu1th top_menu6">교육지원청소개</a><div id="top2m6" class="top2m" style="display: none;"><ul><li class="lnb61"><a href="sub.php?menukey=687" class="off">인사말</a></li><li class="lnb62"><a href="sub.php?menukey=689" class="off">교육지원청연혁</a><ul><li><a href="sub.php?menukey=689" class="off">교육지원청연혁</a></li><li><a href="sub.php?menukey=690" class="off">역대교육장&#40;청주&#41;</a></li><li><a href="sub.php?menukey=6542" class="off">역대교육장&#40;청원&#41;</a></li></ul></li><li class="lnb63"><a href="sub.php?menukey=692" class="off">조직도</a><ul><li><a href="sub.php?menukey=692" class="off">조직도</a></li><li><a href="sub.php?menukey=694" class="off">담당업무안내</a></li></ul></li><li class="lnb64"><a href="sub.php?menukey=6444" class="off">교육행정기관평가</a></li><li class="lnb65"><a href="sub.php?menukey=697" class="off">주요업무계획</a><ul><li><a href="sub.php?menukey=697" class="off">일반현황</a></li><li><a href="sub.php?menukey=698" class="off">충북교육 기본방향</a></li><li><a href="sub.php?menukey=6483" class="off">2026 충북교육 핵심정책</a></li><li><a href="sub.php?menukey=699" class="off">청주교육 기본방향</a></li><li><a href="sub.php?menukey=700" class="off">2025년 주요성과</a></li><li><a href="sub.php?menukey=6257" class="off">2026년 주요업무계획 <span class="depth"></span></a><ul class="4th" style="display: none;"><li><a href="sub.php?menukey=6257" class="off">2026. 주요업무계획 다운로드</a></li></ul></li><li><a href="sub.php?menukey=6052" class="off">2026년 중점사업</a></li></ul></li><li class="lnb66"><a href="sub.php?menukey=6474" class="off">청주교육CI/브랜드슬로건</a></li><li class="lnb67"><a href="sub.php?menukey=710" class="off">교육기관안내</a><ul><li><a href="sub.php?menukey=710" class="off">이름으로 찾기</a></li><li><a href="/map/index.php" target="_blank" title="새창">지도에서 찾기 <span class="blank"></span></a></li></ul></li><li class="lnb68"><a href="sub.php?menukey=714" class="off">청사배치도</a></li><li class="lnb69"><a href="sub.php?menukey=717" class="off">오시는길</a></li></ul></div></li><li class="top2hover" style="display: none;"><a href="sub.php?menukey=792" id="top1m7" class="menu1th top_menu7">기타</a><div id="top2m7" class="top2m" style="display: none;"><ul><li class="lnb71"><a href="sub.php?menukey=792" class="off">개인정보처리방침</a></li><li class="lnb72"><a href="sub.php?menukey=793" class="off">개인정보처리방침 수정이력</a></li><li class="lnb73"><a href="sub.php?menukey=6242" class="off">영상정보처리방침</a></li><li class="lnb74"><a href="sub.php?menukey=794" class="off">인포존모음</a></li><li class="lnb75"><a href="sub.php?menukey=796" class="off">저작권정책</a></li><li class="lnb76"><a href="sub.php?menukey=798" class="off">저작권신고</a></li><li class="lnb77"><a href="sub.php?menukey=799" class="off">뷰어프로그램</a></li><li class="lnb78"><a href="sub.php?menukey=800" class="off">배너모음</a></li><li class="lnb79"><a href="sub.php?menukey=801" class="off">누리집지도</a></li><li class="lnb710"><a href="sub.php?menukey=810" class="off">누리집 이용방법</a></li></ul></div></li></ul></div>
+<div id="site_btn">
+	<a href="sub.php?menukey=801" class="allmenu">전체메뉴</a>
+	<a href="sub.php?menukey=810"><img src="/base/imgs/cmmn/site_btn.png" alt="누리집 이용방법" /></a>
+</div>						<div class="h_m_mn">	
+			<a href="sub.php?menukey=803&amp;refcode=1" id="btnLogin">로그인</a>
+		
+	<a href="" id="btn_search">검색열기</a>
+	<a href="" id="open_mn">메뉴열기</a>
+</div>
+
+<div id="m_search"> 
+	<div class="keyword">
+	<div class="m_srch_tit">통합검색</div>
+	<form name="searchForm" action="https://info.cbe.go.kr/search/cbcje.php" method="get" target="_blank" title="통합검색 새창">
+		<input type="hidden" name="code2" value="00000004" />
+		<fieldset class="totalSearch">
+			<legend class="skip">통합검색</legend>				 
+			<label class="skip" for="m_searchKwd">검색어 입력</label>
+			<input type="text" id="m_searchKwd" name="kwd" class="kwdbox" onfocus="this.value = '';" value="검색어를 입력하세요" title="검색어 입력박스" style="width:70%;" />
+			<button type="submit" style="width:70%;">검색</button>
+		</fieldset>
+	</form>
+	</div>	
+	<div id="srch_close">
+		<a href="">검색닫기</a>
+	</div>
+</div>
+
+<div id="topmenu">
+	<div class="g_link clearfix">
+			
+	</div>
+	<ul id="lnb_device"></ul>
+	<div id="m_close">
+		<a href="">메뉴닫기</a>
+	</div>
+</div>					</div>
+				</div>
+				<div id="content">
+					<div class="wrap clearfix">
+						<div class="sub_top">
+							<!-- 
+<h1 class="subTitle">교육지원청</h1>
+<div class="location"><a href="main.php" title="메인으로 이동합니다"><img src="/base/imgs/cmmn/icon_home.png" alt="홈페이지 메인아이콘" /></a> > 알림마당<img src="/base/imgs/cmmn/location_arrow.png" alt=">" />구인정보<img src="/base/imgs/cmmn/location_arrow.png" alt=">" /><strong>교육지원청</strong></div>
+ -->
+
+
+<div class="location">
+	<a href="main.php" title="메인으로 이동합니다"><img src="/base/imgs/cmmn/icon_home.png" alt="홈페이지 메인" /></a><img src="/base/imgs/cmmn/location_arrow.png" alt=">" /><span>알림마당<img src="/base/imgs/cmmn/location_arrow.png" alt=">" />구인정보<img src="/base/imgs/cmmn/location_arrow.png" alt=">" /><strong>교육지원청</strong></span></div>
+<ul class="sns clearfix">
+	<li class="share"><a href="#n" onclick="return false" class="sns_open"  title="공유"><img src="/base/imgs/cmmn/sub_share.png" alt="공유" /></a>
+		<ul>
+			<li><a href="#" class="list1" title="카카오톡 공유하기 새창열림" onclick="sendLink('667bbd57c6129ecacd573d1c72f08600','청주교육지원청 &gt; 알림마당 &gt; 구인정보 &gt; 교육지원청 &gt; 목록', 'http://www.cbcje.go.kr/base/imgs/logo/kakao_logo.png');"><img src="/base/imgs/cmmn/kakaotalk.png" alt="카카오톡 공유하기 새창열림" /></a></li>
+						<li><a href="#" class="list3" title="X 공유하기 새창열림" onclick="openTwitter('교육지원청'); return false;"><img src="/base/imgs/cmmn/twitter.png" alt="X 공유하기 새창열림" /></a></li>
+			<li><a href="#" class="list4" title="페이스북 공유하기 새창열림" onclick="openFacebook('교육지원청'); return false;"><img src="/base/imgs/cmmn/facebook.png" alt="페이스북 공유하기 새창열림" /></a></li>
+			<li class="sns_close"><a href="#n" onclick="return false"><img src="/base/imgs/cmmn/sns_close.png" alt="공유 닫기" /></a></li>
+		</ul>		
+	</li>
+	<li class="print">
+		<a href="print.php?menukey=6425&mod=&page=1&listCnt=50" id="printChk" title="인쇄(새창열림)"><img src="/base/imgs/cmmn/sub_print.png" alt="인쇄" /></a>
+	</li>
+	
+			<li class="mnscrap">
+			<a href="#" title="스크랩" onclick="alert('메뉴스크랩 기능은 실명인증 또는 아이핀 로그인을 하셔야 이용할 수 있습니다.'); return false;"><img src="/base/imgs/cmmn/sub_scrap.png" alt="메뉴스크랩" /></a>
+		</li>
+			
+</ul>
+						</div>
+						<div class="leftColumn">
+							
+
+<div id="subMenu" >
+	<h1><span>알림마당</span></h1>
+	<ul><li class="off plus"><a href="sub.php?menukey=502">공지사항</a></li><li class="off plus"><a href="sub.php?menukey=503">교육지원청 소식지</a></li><li class="off plus"><a href="sub.php?menukey=505">보도자료</a><ul><li><a href="sub.php?menukey=505" class="off">일일보도자료</a></li><li><a href="sub.php?menukey=506" class="off">보도해명/정정</a></li></ul></li><li class="off plus"><a href="sub.php?menukey=507">각종행사사진</a></li><li class="on plus"><a href="sub.php?menukey=6425">구인정보</a><ul><li><a href="sub.php?menukey=6425" class="on">교육지원청</a></li><li><a href="sub.php?menukey=6426" class="off">학교</a></li></ul></li><li class="off plus"><a href="sub.php?menukey=518">인력풀 정보&#40;구직신청&#41;</a><ul><li><a href="sub.php?menukey=518" class="off">기간제교사 인력풀</a></li><li class="off blank"><a href="https://pool.cbe.go.kr" target="_blank" title="새창">인력풀통합시스템 <span class='blank'></span></a></li><li class="off blank"><a href="https://www.cbe.go.kr/after/main.do" target="_blank" title="새창">방과후학교강사풀 <span class='blank'></span></a></li><li class="off blank"><a href="https://www.cbe.go.kr/dept-19/lo/login/loginPage.do" target="_blank" title="새창">유치원방과후특성화강사인력풀 <span class='blank'></span></a></li></ul></li><li class="off plus"><a href="sub.php?menukey=510">교육지원청인사</a><ul><li class="off blank"><a href="http://info.cbe.go.kr/home/sub.php?menukey=104&amp;cate=00000021" target="_blank" title="새창">교원인사 <span class='blank'></span></a></li></ul></li><li class="off plus"><a href="sub.php?menukey=5788">입찰정보</a><ul><li><a href="sub.php?menukey=5788" class="off">입찰정보&#40;청주&#41;</a></li><li><a href="sub.php?menukey=5789" class="off">입찰계약정보&#40;도교육청&#41;</a></li></ul></li><li class="off plus"><a href="sub.php?menukey=527">공시송달</a></li><li class="off plus"><a href="sub.php?menukey=528">공무국외연수</a></li></ul>
+</div>
+						</div>
+						<div id="centerContent" class="centerColumn">
+								<div class="subVisual subVisual1">
+    	<h2 class="subTitle">교육지원청</h2>
+    	<p><img src="../cbcje/imgs/sub/slogan.png" alt="함께 성장하며 꿈꾸는 미래! 공감 청주교육" /></p>
+    </div>
+
+
+ 
+
+
+							<div id="contentBody">
+																		<script type="text/javascript">
+			$(document).ready(function(){
+				$(document).bind("contextmenu", function(e) {
+					return false;
+				});
+			});
+			$(document).bind('selectstart',function() {return false;}); 
+			$(document).bind('dragstart',function(){return false;}); 
+		</script>
+<script>
+var code = "";
+var cate = "";
+$(document).ready(function(){
+	if(cate == "" && code == 1){
+		$('#cateNAll').focus();
+	}else{
+		$('#cateN').focus();
+	}
+});
+
+</script>
+
+
+<script type="text/javascript">
+	function getViewLink(fno, bid, did) {
+	/*기본정보*/
+	$.ajax({
+		type : "get",
+		url : "/base/php/viewer/getlink.php?fno=" + fno + "&bid=" + bid + "&did=" + did,		
+		dataType : "json",
+		success : function(data) {
+			if(data['status'] != "error"){				
+				window.open("http://210.106.100.98/SynapDocViewServer/job?fileType=URL&convertType=1&filePath=" + data['filePath'] + "&fid=" + data['fid'] + "&sync=true");
+
+			}else{
+				alert("파일이 존재하지 않습니다");	
+			}
+			
+			
+		},
+		error : function(data) {
+			alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+		}		
+	});	
+}
+
+</script>
+
+
+
+<div class="headerIn">
+		<script type="text/javascript">
+//<![CDATA[ 
+	$(document).ready(function(){
+	    $("#sdate").datepicker({
+	        defaultDate: new Date(),
+	        showOn: "both", // focus, button, both
+	        showAnim: "blind", // blind, clip, drop, explode, fold, puff, slide, scale, size, pulsate, bounce, highlight, shake, transfer
+	        showOptions: {direction: 'horizontal'},
+	        duration: 200,
+			buttonText : "시작일 달력"
+	    })
+		$("#edate").datepicker({
+	        defaultDate: new Date(),
+	        showOn: "both", // focus, button, both
+	        showAnim: "blind", // blind, clip, drop, explode, fold, puff, slide, scale, size, pulsate, bounce, highlight, shake, transfer
+	        showOptions: {direction: 'horizontal'},
+	        duration: 200,
+			buttonText : "종료일 달력"
+	    })
+		
+		// 충주교육지원청 > 분야별정보 > 체육건강시설과 > 메뉴on표시 : 2023.01.09
+		var _link = $('.mn_category1').find('li.on>a').attr('href');
+		$('#lnb, #subMenu, #topmenu').find('a').each(function(){
+			if($(this).attr('href') == _link){
+				$(this).addClass('on');
+			}
+		})
+	});
+//]]>
+</script>
+
+<script type="text/javascript">
+	function allchk(){
+		var chked = $('input#allSel').prop('checked');		
+		var tchk = document.getElementsByName("tradechk[]");
+		var tradeCnt =0;
+		for(var i = 0; i < tchk.length; i++) {
+			tchk[i].checked = chked;
+		}
+	}
+	function checkAdelete(){
+		var form = document.list;
+		var tchk = document.getElementsByName("tradechk[]");
+		var tradeCnt =0;
+		var no="";
+		for(var i = 0; i < tchk.length; i++) {
+			if(tchk[i].checked == true) {
+				no = no+tchk[i].value+"|";
+				tradeCnt++;
+			}
+		}		
+		if(tradeCnt <= 0) {
+			alert("선택된 게시글이 없습니다.");
+			return false;
+		}else{
+			$('#delReasonTb').show().focus();
+			$("#no").val(no);
+			$("#brdata_orgname").val($("#brdata_orgname1").val());
+		}
+	}	
+
+	function delcloseTb(){
+		$('#no').val('');
+		$('#delReasonTb').val('');
+		$('#reason1').val('');
+		$('#delReasonTb').hide();
+		$("#brdata_orgname").val('');
+	}
+
+	function checkDelete(){
+		var form = document.list;
+		var tchk = document.getElementsByName("tradechk[]");
+		var tradeCnt =0;
+		var no="";
+		for(var i = 0; i < tchk.length; i++) {
+			if(tchk[i].checked == true) {
+				no = no+tchk[i].value+"|";
+				tradeCnt++;
+			}
+		}		
+		if(tradeCnt <= 0) {
+			alert("선택된 게시글이 없습니다.");
+			return false;
+		}else{
+			$('#delReasonTb1').show().focus();
+			$("#no").val(no);
+			$("#brdata_orgname").val($("#brdata_orgname1").val());
+		}
+	}
+
+	function delcloseTb1(){
+		$('#no').val('');
+		$('#delReasonTb1').val('');
+		$('#reason1').val('');
+		$('#delReasonTb1').hide();	
+		$("#brdata_orgname").val('');
+	}
+
+	function ChangeChk(number){	
+		var form = document.list;
+		var tchk = document.getElementsByName("tradechk[]");
+		var tradeCnt =0;
+		var no="";
+		for(var i = 0; i < tchk.length; i++) {
+			if(tchk[i].checked == true) {
+				no = no+tchk[i].value+"|";
+				tradeCnt++;
+			}
+		}		
+		form.no.value = no;
+		if(tradeCnt <= 0) {
+			alert("선택된 게시글이 없습니다.");
+			return false;
+		}else if(number == 1){	
+			$('#reason').val($('#reason2').val());
+
+			if($('#reason2').val() == "1") {
+				$('#reason').val($('#reason3').val());			
+			}
+
+			if(confirm("선택한 게시물을 삭제하시겠습니까?")){
+				form.act.value = "alldel";
+				form.submit();
+				return true;
+			}else{
+				return false;
+			}
+		}else if(number == 2){
+			$('#reason').val($('#reason1').val());
+
+			if(confirm("선택한 게시글을 완전 삭제하시겠습니까?\n완전삭제 후에는 복구할 수 없습니다.")){
+				form.act.value = "allrealdel";
+				form.submit();
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
+</script>
+
+
+			<div class="consqure clearfix">
+				<div class="consqureBg">
+					게시글의 본문 또는 첨부파일에 <span style="color:#e74c3c;"><strong>개인정보가 기재</strong></span>되어 있거나 <span style="color:#e74c3c;"><strong>저작권(글꼴 포함)에 위배</strong></span> 되는지 확인 후 게시바랍니다.
+					<a href="#" onclick="return false;" class="headBtn"><span>펼쳐보기</span></a>
+				</div>
+			</div>
+		<div class="consqure clearfix"><div class="consqureBg"><ul class="conList">
+	<li>청주교육지원청에서 공지하는 구인정보입니다. (기관 ID 사용)</li>
+	<li>채용공고문 작성 시 개인정보보호법에 의해 채용지원서 및 이력서 서식에 주민등록번호 기재 항목 삭제</li>
+	<li>증빙서류(자격, 학위, 경력증명서 등)에 주민등록번호가 기재되는 경우 주민등록번호 뒷자리는 마스킹(*)처리하여 발급받아 제출하도록 공고문에 명시</li>
+</ul>
+
+<h4 class="conH4">아래 해당하는 채용공고는 해당 홈페이지를 이용해주세요.</h4>
+<ul class="conList">
+	<li><em class="em_blue">인력풀통합시스템 및 교육자원봉사 플랫폼(<a href="https://pool.cbe.go.kr" target="_blank" title="새창">https://pool.cbe.go.kr</a>)</em>
+		<ul>
+			<li><strong>(인력풀통합시스템)</strong>
+				<p>학습지원튜터, 학교도서관 대체 인력, 생존수영강사, 통학차량 대체 운전원, 지방공무원 대체 인력, 교육공무직 대체 인력(조리종사자, 교무실무사, 행정실무사, 특수교육실무사, 특수교육종일반전담사, 특수교육치료사, 교육복지사, 환경실무사, 사서, 사감, 생활지도사, 통학차량실무사, 영양사, 전문상담사 등), 기타 일용직, 그 외 기관 자율 판단으로 채용공고문 탑재 일원화 가능</p>
+			</li>
+			<li><strong>(교육자원봉사 플랫폼)</strong>
+				<p>배움터지킴이, 유치원행복나누미, 유치원자원봉사, 특수교육온나누미, 초등돌봄교실자원봉사 등</p>
+			</li>
+			<li><em class="em_blue">기간제교사(<a href="https://www.cbe.go.kr/mpool/main.do" target="_blank" title="새창">https://www.cbe.go.kr/mpool/main.do</a>)</em></li>
+			<li><em class="em_blue">방과후학교강사(위탁공고), 초등돌봄전담사 대체(<a href="https://www.cbe.go.kr/after/main.do" target="_blank" title="새창">https://www.cbe.go.kr/after/main.do</a>)</em></li>
+		</ul>
+	</li>
+</ul><a href="#" onclick="return false;" class="headBtn"><span>펼쳐보기</span></a></div></div>
+<div class="searchBox clearfix">
+	<div class="fl" style="padding-top: 5px;"><img src="/base/imgs/btn/list_img.png" alt=""/>&nbsp; 전체 <b>77</b> - [1/2] 페이지</div>
+	<div class="fr">
+	
+				<form name="searchFrm" method="get" action="sub.php">
+					<fieldset>
+					<legend>게시물 검색폼</legend>
+					<input type="hidden" name="menukey" value="6425" />
+					<input type="hidden" name="mod" value="" />
+					<input type="hidden" name="search" value="Y" />
+					<input type="hidden" name="cate" value="" />
+					<input type="hidden" name="scode" value="00000004" />
+					<select id="listCnt" name="listCnt" class="selline" title="게시글 노출갯수 설정">
+						<option value="10">10개</option>
+						<option value="20">20개</option>
+						<option value="30">30개</option>						
+						<option value="50" selected >50개</option>	
+						<option value="100">100개</option>
+					</select>&nbsp;<label class="skip" for="sdate">시작날짜입력</label><input type="text" id="sdate" name="sdate" class="inpline" style="width:85px; margin-right: 2px;" value="" placeholder="예)2026-01-01" title="시작날짜입력: 예)2026-01-01" aria-label="시작날짜입력: 예)2026-01-01" /> ~ <label class="skip" for="edate">종료날짜입력</label><input type="text" id="edate" name="edate" class="inpline" style="width:85px; margin-right: 2px;" value="" placeholder="예)2026-12-31" title="종료날짜입력: 예)2026-12-31" aria-label="종료날짜입력: 예)2026-12-31" />&nbsp;<select name="search" class="selline" title="검색조건" style="width:100px"><option value="9">전체</option><option value="1">제목</option><option value="2">내용</option><option value="3">제목+내용</option><option value="4">작성자</option></select> <input type="text" name="kwd" title="검색어를 입력하세요" class="inplinekr" style="width: 200px;" placeholder="검색어를 입력하세요" value="" /> <button type="submit" class="btn_big"><span>검색</span></button></fieldset></form>	</div>
+</div></div>
+<form name="list" method="post" action="https://www.cbcje.go.kr:446/cbcje/sub.php?menukey=6425">
+		<input type="hidden" id="mod" name="mod" value="process" />
+		<input type="hidden" id="act" name="act" value="" />
+		<input type="hidden" id="no" name="no" value="" />
+		<input type="hidden" id="bid" name="bid" value="00000012" />
+		<input type="hidden" id="reason" name="reason" value="" />
+		<input type="hidden" name="token" value="3cef134850b11e5171822d609c5a21a3db742c52000ee63582c11b7810ca4114" />
+
+		<div class="containerIn">
+			<table class="board m_board">
+				<caption>교육지원청에 대한 게시판(목록)이며 번호, 제목, 작성자, 등록일, 조회, 첨부에 대해 안내</caption>
+				<colgroup>
+																	<col style="width: 8%" />
+						<col />
+						<col style="width: 17%" />
+						<col style="width: 10%" />
+						<col style="width: 6%" />
+						<col style="width: 8%" />
+									</colgroup>		
+				<thead>
+					<tr>
+												<th scope="col" class="brd_none">번호</th>
+						             
+						<th scope="col" >제목</th>
+						<th scope="col">작성자</th>
+						<th scope="col">등록일</th>
+						<th scope="col">조회</th>
+						<th scope="col" class="last">첨부</th>			
+					</tr>
+				</thead>			
+				<tbody>
+				<tr>
+									<td class="brd_none b_num">77</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38374027&page=1&listCnt=50" title="2026년 제4회 충청북도청주교육지원청 교육공무직원 공개경쟁채용시험 최종합격자 공고">2026년 제4회 충청북도청주교육지원청 교육공무직원 공개경쟁채용시험 최종합격자 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/10/21</td>
+									<td class="b_hit data"><strong>733</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BA1%E7%BB&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E5%BBKm" class="count" title="첨부파일(1개) 다운로드 - 2026년 제4회 충청북도청주교육지원청 교육공무직원 공개경쟁채용 최종합격자 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">76</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38362164&page=1&listCnt=50" title="2026년 제4회 충청북도청주교육지원청 교육공무직원 공개경쟁채용시험 서류전형 합격자 발표 및 면접시험 공고">2026년 제4회 충청북도청주교육지원청 교육공무직원 공개경쟁채용시험 서류전형 합격자 발표 및 면접시험 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/10/15</td>
+									<td class="b_hit data"><strong>930</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BA%3F%E4%BF&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E5%BAMl" class="count" title="첨부파일(1개) 다운로드 - 2026년 제4회 교육공무직원 채용 서류전형 합격자 발표 및 면접시험 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">75</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38327933&page=1&listCnt=50" title="충청북도교육청 청주 방과후·돌봄센터 교육공무직원&#40;기간제&#41; 채용 공고">충청북도교육청 청주 방과후·돌봄센터 교육공무직원&#40;기간제&#41; 채용 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/10/08</td>
+									<td class="b_hit data"><strong>1707</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="sub.php?menukey=6425&mod=view&no=38327933&page=1&listCnt=50" class="count" title="충청북도교육청 청주 방과후·돌봄센터 교육공무직원&#40;기간제&#41; 채용 공고(첨부파일 2개 있음)"><strong>2</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">74</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38324726&page=1&listCnt=50" title="2027. 충청북도교육청 청주 방과후·돌봄센터 외부강사 모집 공고">2027. 충청북도교육청 청주 방과후·돌봄센터 외부강사 모집 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/10/07</td>
+									<td class="b_hit data"><strong>671</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BB1%E5%BC&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E5%BEKj" class="count" title="첨부파일(1개) 다운로드 - 2027. 충청북도교육청 청주 방과후·돌봄센터 외부강사 모집 공고.hwp.hwpx"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">73</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38322490&page=1&listCnt=50" title="2026년 제4회 충청북도청주교육지원청 교육공무직원 채용 원서 접수 결과">2026년 제4회 충청북도청주교육지원청 교육공무직원 채용 원서 접수 결과</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/10/07</td>
+									<td class="b_hit data"><strong>1178</strong></td>
+									<td class="b_file"></td>
+								</tr><tr>
+									<td class="brd_none b_num">72</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38203210&page=1&listCnt=50" title="2026학년도 충청북도청주교육지원청 기간제교사 수시 위탁 채용 최종합격자 공고">2026학년도 충청북도청주교육지원청 기간제교사 수시 위탁 채용 최종합격자 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/08/25</td>
+									<td class="b_hit data"><strong>1101</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B89%E0%B8&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E4%BCLo" class="count" title="첨부파일(1개) 다운로드 - 2026학년도 충청북도청주교육지원청 관내 공립학교 기간제교사 수시 위탁 채용 최종합격자 공고.hwpx"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">71</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38199548&page=1&listCnt=50" title="2026학년도 충청북도청주교육지원청 관내 공립학교 기간제교사 수시 위탁 채용 서류전형 합격자 및 면접전형 공고">2026학년도 충청북도청주교육지원청 관내 공립학교 기간제교사 수시 위탁 채용 서류전형 합격자 및 면접전형 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/08/21</td>
+									<td class="b_hit data"><strong>987</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B90%EF%B9&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%B5Fh" class="count" title="첨부파일(1개) 다운로드 - 2026학년도 충청북도청주교육지원청 관내 공립학교 기간제교사 수시 위탁 채용 서류전형 합격자 및 면접전형 공고.hwpx"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">70</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38189349&page=1&listCnt=50" title="2026. 충청북도교육청 청주 방과후·돌봄센터 외부강사 모집 공고">2026. 충청북도교육청 청주 방과후·돌봄센터 외부강사 모집 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/08/14</td>
+									<td class="b_hit data"><strong>1115</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B91%E5%BB&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%B4Fn" class="count" title="첨부파일(1개) 다운로드 - 2026. 충청북도교육청 청주 방과후·돌봄센터 외부강사 모집 공고.pdf"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">69</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38187045&page=1&listCnt=50" title="2026. 청주 거점형 특화 방과후·돌봄교실 자원봉사자 추가 모집 공고">2026. 청주 거점형 특화 방과후·돌봄교실 자원봉사자 추가 모집 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/08/14</td>
+									<td class="b_hit data"><strong>824</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B9%3E%EF%B5&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%B4Hm" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주 거점형 특화 방과후·돌봄교실 자원봉사자 추가 모집 공고(최종).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">68</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38185927&page=1&listCnt=50" title="2026학년도 충청북도청주교육지원청 관내 공립학교 기간제교사 수시 위탁 채용 공고">2026학년도 충청북도청주교육지원청 관내 공립학교 기간제교사 수시 위탁 채용 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/08/13</td>
+									<td class="b_hit data"><strong>821</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B9%3E%EE%B9&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%B4Jd" class="count" title="첨부파일(1개) 다운로드 - 2026학년도 충청북도청주교육지원청 관내 공립학교 기간제교사 수시 위탁 채용 공고.hwpx"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">67</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38175512&page=1&listCnt=50" title="2026년도 제3회 충청북도청주교육지원청 학교운동부지도자&#40;공립학교&#41; 최종 합격자 공고">2026년도 제3회 충청북도청주교육지원청 학교운동부지도자&#40;공립학교&#41; 최종 합격자 공고</a></td>
+
+									<td class="b_write">체육건강과</td>
+
+									<td class="b_date data">2026/08/10</td>
+									<td class="b_hit data"><strong>502</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B9%3F%E5%B4&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%BBJh" class="count" title="첨부파일(1개) 다운로드 - 2026년도 제3회 충청북도청주교육지원청 학교운동부지도자(공립 학교) 채용 최종 합격자 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">66</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38166250&page=1&listCnt=50" title="2026. 충청북도교육청 청주 방과후·돌봄센터 자원봉사자 추가 모집 공고">2026. 충청북도교육청 청주 방과후·돌봄센터 자원봉사자 추가 모집 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/08/06</td>
+									<td class="b_hit data"><strong>784</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B9%3D%EF%B4&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%BAIo" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주 방과후·돌봄센터 자원봉사자 추가 모집 공고(2학기).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">65</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38152693&page=1&listCnt=50" title="2026. 청주 거점형 특화 방과후돌봄교실 자원봉사자 모집 공고">2026. 청주 거점형 특화 방과후돌봄교실 자원봉사자 모집 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/08/04</td>
+									<td class="b_hit data"><strong>688</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B9%3D%EE%B4&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%B9Mk" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주 거점형 Ưȭ 방과후·돌봄교실 자원봉사자 모집 공고(최종).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">64</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38145157&page=1&listCnt=50" title="2026. 청주교육지원청 유초등교육과 교육공무직&#40;학습상담사&#41; 대체인력 채용 최종합격자 공고">2026. 청주교육지원청 유초등교육과 교육공무직&#40;학습상담사&#41; 대체인력 채용 최종합격자 공고</a></td>
+
+									<td class="b_write">유초등교육과</td>
+
+									<td class="b_date data">2026/07/31</td>
+									<td class="b_hit data"><strong>1103</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B9%3B%E2%BF&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%B8Jl" class="count" title="첨부파일(1개) 다운로드 - 2026. 교육공무직(학습상담사) 대체인력 채용 최종합격자 공고문.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">63</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38142683&page=1&listCnt=50" title="2026년 제3회 충청북도청주교육지원청 교육공무직원 공개경쟁채용시험 최종합격자 공고">2026년 제3회 충청북도청주교육지원청 교육공무직원 공개경쟁채용시험 최종합격자 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/07/30</td>
+									<td class="b_hit data"><strong>2255</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B9%3B%E7%BA&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%B8Mk" class="count" title="첨부파일(1개) 다운로드 - 2026년 제3회 충청북도청주교육지원청 교육공무직원 공개경쟁채용 최종합격자 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">62</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38137655&page=1&listCnt=50" title="2026. 청주교육지원청 유초등교육과 교육공무직&#40;학습상담사&#41; 대체인력 채용 1차 서류심사 통과자 발표 및 2차 면접심사 실시 공고">2026. 청주교육지원청 유초등교육과 교육공무직&#40;학습상담사&#41; 대체인력 채용 1차 서류심사 통과자 발표 및 2차 면접심사 실시 공고</a></td>
+
+									<td class="b_write">유초등교육과</td>
+
+									<td class="b_date data">2026/07/28</td>
+									<td class="b_hit data"><strong>774</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B98%E2%B8&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%BFHk" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주교육지원청 교육공무직(학습상담사) 대체인력 채용 1차 서류심사 통과자 및 면접심사 공고문.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">61</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38132837&page=1&listCnt=50" title="2026년도 제3회 충청북도청주교육지원청 학교운동부지도자&#40;공립학교&#41; 채용 공고">2026년도 제3회 충청북도청주교육지원청 학교운동부지도자&#40;공립학교&#41; 채용 공고</a></td>
+
+									<td class="b_write">체육건강과</td>
+
+									<td class="b_date data">2026/07/27</td>
+									<td class="b_hit data"><strong>488</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B99%E1%B4&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%BFMe" class="count" title="첨부파일(1개) 다운로드 - 2026년도 제3회 충청북도청주교육지원청 학교운동부지도자(공립 학교) 채용 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">60</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38131184&page=1&listCnt=50" title="2026년 제3회 충청북도청주교육지원청 교육공무직원 공개경쟁채용시험 서류전형 합격자 발표 및 면접시험 공고">2026년 제3회 충청북도청주교육지원청 교육공무직원 공개경쟁채용시험 서류전형 합격자 발표 및 면접시험 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/07/24</td>
+									<td class="b_hit data"><strong>1790</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%B99%E3%BF&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%BFNl" class="count" title="첨부파일(1개) 다운로드 - 2026년 제3회 교육공무직원 채용 서류전형 합격자 발표 및 면접시험 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">59</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38130932&page=1&listCnt=50" title="2026년 제3회 충청북도청주교육지원청 교육공무직원 채용 재공고 원서 접수 결과 공개">2026년 제3회 충청북도청주교육지원청 교육공무직원 채용 재공고 원서 접수 결과 공개</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/07/24</td>
+									<td class="b_hit data"><strong>1746</strong></td>
+									<td class="b_file"></td>
+								</tr><tr>
+									<td class="brd_none b_num">58</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38115370&page=1&listCnt=50" title="2026. 청주교육지원청 유초등교육과 교육공무직&#40;학습상담사 대체인력&#41; 채용 공고">2026. 청주교육지원청 유초등교육과 교육공무직&#40;학습상담사 대체인력&#41; 채용 공고</a></td>
+
+									<td class="b_write">유초등교육과</td>
+
+									<td class="b_date data">2026/07/20</td>
+									<td class="b_hit data"><strong>1210</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BE1%E7%B5&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E7%BDJn" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주교육지원청 교육공무직원(학습상담사) 대체인력 채용 공고문.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">57</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38094582&page=1&listCnt=50" title="2026년 제3회 충청북도청주교육지원청 교육공무직원 공개채용시험 원서접수 결과">2026년 제3회 충청북도청주교육지원청 교육공무직원 공개채용시험 원서접수 결과</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/07/14</td>
+									<td class="b_hit data"><strong>2396</strong></td>
+									<td class="b_file"></td>
+								</tr><tr>
+									<td class="brd_none b_num">56</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38064334&page=1&listCnt=50" title="2026년 제3회 충청북도청주교육지원청 교육공무직원 공개채용시험 공고">2026년 제3회 충청북도청주교육지원청 교육공무직원 공개채용시험 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/07/08</td>
+									<td class="b_hit data"><strong>4098</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="sub.php?menukey=6425&mod=view&no=38064334&page=1&listCnt=50" class="count" title="2026년 제3회 충청북도청주교육지원청 교육공무직원 공개채용시험 공고(첨부파일 2개 있음)"><strong>2</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">55</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38057653&page=1&listCnt=50" title="2026. 청주교육지원청 특수교육지원센터 교육공무직원&#40;특수교육치료사&#41; 대체인력 채용 재공고">2026. 청주교육지원청 특수교육지원센터 교육공무직원&#40;특수교육치료사&#41; 대체인력 채용 재공고</a></td>
+
+									<td class="b_write">특수교육지원센터</td>
+
+									<td class="b_date data">2026/07/07</td>
+									<td class="b_hit data"><strong>982</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BE9%E7%BC&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E6%B9Hk" class="count" title="첨부파일(1개) 다운로드 - 2026년 청주교육지원청 교육공무직원(특수교육치료사) 대체인력 채용 재공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">54</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=38031212&page=1&listCnt=50" title="2026. 청주교육지원청 특수교육지원센터 교육공무직원&#40;특수교육치료사&#41; 대체인력 채용 공고">2026. 청주교육지원청 특수교육지원센터 교육공무직원&#40;특수교육치료사&#41; 대체인력 채용 공고</a></td>
+
+									<td class="b_write">특수교육지원센터</td>
+
+									<td class="b_date data">2026/06/30</td>
+									<td class="b_hit data"><strong>986</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BF%3E%E6%B4&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE1%E6%BFNo" class="count" title="첨부파일(1개) 다운로드 - 2026년 청주교육지원청 교육공무직원(특수교육치료사) 대체인력 채용 공고(최종).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">53</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37964143&page=1&listCnt=50" title="2026. 충청북도교육청 청주 방과후·돌봄센터 자원봉사자 추가 모집 공고">2026. 충청북도교육청 청주 방과후·돌봄센터 자원봉사자 추가 모집 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/06/11</td>
+									<td class="b_hit data"><strong>1458</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BC%3F%E2%BF&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%EF%BAKl" class="count" title="첨부파일(1개) 다운로드 - 2026. 충청북도교육청 청주 방과후돌봄센터 자원봉사자 모집 추가공고_최종.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">52</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37928986&page=1&listCnt=50" title="2026. 방과후·돌봄 개인위탁 외부강사 추가채용 수정 공고&#40;독서,논술,동화책 분야-화요일&#41;">2026. 방과후·돌봄 개인위탁 외부강사 추가채용 수정 공고&#40;독서,논술,동화책 분야-화요일&#41;</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/06/01</td>
+									<td class="b_hit data"><strong>743</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BC%3D%E7%BE&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%EF%BEGd" class="count" title="첨부파일(1개) 다운로드 - 2026. 충청북도교육청 청주 방과후·돌봄센터 외부강사 수정 공고문.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">51</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37911594&page=1&listCnt=50" title="2026. 충청북도교육청 청주 방과후·돌봄센터 학생보호인력&#40;배움터지킴이&#41; 모집 공고">2026. 충청북도교육청 청주 방과후·돌봄센터 학생보호인력&#40;배움터지킴이&#41; 모집 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/05/27</td>
+									<td class="b_hit data"><strong>936</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BD0%E6%B9&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%EF%BDNh" class="count" title="첨부파일(1개) 다운로드 - 2026. 충청북도교육청 청주 방과후돌봄센터 학생보호인력(배움터지킴이) 모집 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">50</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37911383&page=1&listCnt=50" title="2026. 충청북도교육청 청주 방과후·돌봄센터 자원봉사자 모집 공고">2026. 충청북도교육청 청주 방과후·돌봄센터 자원봉사자 모집 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/05/27</td>
+									<td class="b_hit data"><strong>818</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BD0%E6%BF&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%EF%BDNn" class="count" title="첨부파일(1개) 다운로드 - 2026. 충청북도교육청 청주 방과후돌봄센터 자원봉사자 모집 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">49</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37897922&page=1&listCnt=50" title="2026. 청주교육지원청 유초등교육과 교육공무직&#40;학습상담사 대체인력&#41; 최종합격자 공고">2026. 청주교육지원청 유초등교육과 교육공무직&#40;학습상담사 대체인력&#41; 최종합격자 공고</a></td>
+
+									<td class="b_write">유초등교육과</td>
+
+									<td class="b_date data">2026/05/21</td>
+									<td class="b_hit data"><strong>1291</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%08%BD%3F%EE%B9&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%EE%B5Hd" class="count" title="첨부파일(1개) 다운로드 - 2026. 교육공무직(학습상담사) 대체인력 채용 최종합격자 공고(시행).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">48</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37835221&page=1&listCnt=50" title="2026. 청주교육지원청 유초등교육과 교육공무직&#40;학습상담사 대체인력&#41; 채용 공고">2026. 청주교육지원청 유초등교육과 교육공무직&#40;학습상담사 대체인력&#41; 채용 공고</a></td>
+
+									<td class="b_write">유초등교육과</td>
+
+									<td class="b_date data">2026/05/08</td>
+									<td class="b_hit data"><strong>1844</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%B4%3F%E0%BC&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%EE%BFJo" class="count" title="첨부파일(1개) 다운로드 - 2026. 충청북도청주교육지원청 교육공무직(학습상담사 대체인력) 채용 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">47</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37802492&page=1&listCnt=50" title="2026. 충청북도교육청 청주 방과후·돌봄센터 방과후·돌봄 개인위탁 외부강사 채용 공고">2026. 충청북도교육청 청주 방과후·돌봄센터 방과후·돌봄 개인위탁 외부강사 채용 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/04/28</td>
+									<td class="b_hit data"><strong>1798</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%B48%EE%BE&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%EE%BCMi" class="count" title="첨부파일(1개) 다운로드 - 2-2026. 충청북도교육청 청주 방과후·돌봄센터 외부강사 모집 및 채용 공고문.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">46</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37761260&page=1&listCnt=50" title="2026년도 제2회 충청북도청주교육지원청 학교운동부지도자&#40;공립학교&#41; 최종 합격자 공고">2026년도 제2회 충청북도청주교육지원청 학교운동부지도자&#40;공립학교&#41; 최종 합격자 공고</a></td>
+
+									<td class="b_write">체육건강과</td>
+
+									<td class="b_date data">2026/04/14</td>
+									<td class="b_hit data"><strong>813</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%B5%3C%E4%B9&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E1%BANo" class="count" title="첨부파일(1개) 다운로드 - 2026년도 제2회 충청북도청주교육지원청 학교운동부지도자(공립 학교) 채용 최종 합격자 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">45</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37738985&page=1&listCnt=50" title="2026년 제2회 충청북도청주교육지원청 교육공무직원 공개채용시험 원서접수 결과">2026년 제2회 충청북도청주교육지원청 교육공무직원 공개채용시험 원서접수 결과</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/04/08</td>
+									<td class="b_hit data"><strong>3180</strong></td>
+									<td class="b_file"></td>
+								</tr><tr>
+									<td class="brd_none b_num">44</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37719147&page=1&listCnt=50" title="2026년 제2회 충청북도청주교육지원청 교육공무직원 공개채용시험 공고">2026년 제2회 충청북도청주교육지원청 교육공무직원 공개채용시험 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/04/02</td>
+									<td class="b_hit data"><strong>3276</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="sub.php?menukey=6425&mod=view&no=37719147&page=1&listCnt=50" class="count" title="2026년 제2회 충청북도청주교육지원청 교육공무직원 공개채용시험 공고(첨부파일 2개 있음)"><strong>2</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">43</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37708486&page=1&listCnt=50" title="2026년도 제2회 충청북도청주교육지원청 학교운동부지도자&#40;공립학교&#41; 채용 공고&#40;재공고&#41;">2026년도 제2회 충청북도청주교육지원청 학교운동부지도자&#40;공립학교&#41; 채용 공고&#40;재공고&#41;</a></td>
+
+									<td class="b_write">체육건강과</td>
+
+									<td class="b_date data">2026/04/01</td>
+									<td class="b_hit data"><strong>565</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%BA1%E6%B8&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E1%BCGi" class="count" title="첨부파일(1개) 다운로드 - 2026년도 제2회 충청북도청주교육지원청 학교운동부지도자(공립 학교) 채용 공고(재공고).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">42</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37682739&page=1&listCnt=50" title="2026. 청주교육지원청 교육협력과 지방공무원&#40;사회복지직&#41; 대체인력 채용 최종합격자 공고">2026. 청주교육지원청 교육협력과 지방공무원&#40;사회복지직&#41; 대체인력 채용 최종합격자 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/03/26</td>
+									<td class="b_hit data"><strong>1012</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%BA%3D%E2%BF&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E0%B4Mj" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주교육지원청 교육협력과 지방공무원(사회복지직) 대체인력 최종합격자 공고(시행).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">41</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37668026&page=1&listCnt=50" title="2026. 청주교육지원청 교육협력과 지방공무원&#40;사회복지직&#41; 대체인력 채용 서류전형 발표 및 면접 안내 공고">2026. 청주교육지원청 교육협력과 지방공무원&#40;사회복지직&#41; 대체인력 채용 서류전형 발표 및 면접 안내 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/03/24</td>
+									<td class="b_hit data"><strong>638</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%BA8%EF%B9&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E0%BAGm" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주교육지원청 교육협력과 지방공무원(사회복지직) 대체인력 서류전형 합격자 발표 및 면접심사 공고(시행).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">40</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37624911&page=1&listCnt=50" title="2026. 청주교육지원청 교육협력과 지방공무원&#40;사회복지직&#41; 대체인력 채용 3차 공고">2026. 청주교육지원청 교육협력과 지방공무원&#40;사회복지직&#41; 대체인력 채용 3차 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/03/13</td>
+									<td class="b_hit data"><strong>1188</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%BB%3F%E5%B8&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E0%BEKd" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주교육지원청 교육협력과 지방공무원(사회복지직) 대체인력 채용 3차 공고(시행).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">39</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37623492&page=1&listCnt=50" title="[공고] 2026. 초등 짝꿍도우미 자원봉사자 모집 공고">[공고] 2026. 초등 짝꿍도우미 자원봉사자 모집 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/03/13</td>
+									<td class="b_hit data"><strong>1625</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%BB%3F%E7%BA&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E0%BELi" class="count" title="첨부파일(1개) 다운로드 - 2026. 초등 짝꿍도우미 자원봉사자 모집 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">38</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37615425&page=1&listCnt=50" title="2026. 청주교육지원청 위&#40;Wee&#41;센터 꿈키움멘토단 공개 모집">2026. 청주교육지원청 위&#40;Wee&#41;센터 꿈키움멘토단 공개 모집</a></td>
+
+									<td class="b_write">학생지원과</td>
+
+									<td class="b_date data">2026/03/11</td>
+									<td class="b_hit data"><strong>826</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%BB%3C%E4%BF&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E0%BDJi" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주교육지원청 위(Wee)센터 꿈키움멘토단 공개 모집 공고문.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">37</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37596136&page=1&listCnt=50" title="2026. 청주교육지원청 교육협력과 지방공무원&#40;사회복지직&#41; 대체인력 채용 재공고">2026. 청주교육지원청 교육협력과 지방공무원&#40;사회복지직&#41; 대체인력 채용 재공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/03/06</td>
+									<td class="b_hit data"><strong>925</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%BB%3B%EE%BB&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E3%B5Il" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주교육지원청 교육협력과 지방공무원(사회복지직) 대체인력 채용 재공고(시행).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">36</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37588567&page=1&listCnt=50" title="2026년 제3회 충청북도학교안전공제회 소방시설관리업 종사자&#40;소방기사&#41; 계약직 직원 채용 공고">2026년 제3회 충청북도학교안전공제회 소방시설관리업 종사자&#40;소방기사&#41; 계약직 직원 채용 공고</a></td>
+
+									<td class="b_write">총무과</td>
+
+									<td class="b_date data">2026/03/05</td>
+									<td class="b_hit data"><strong>322</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%BB8%EE%B8&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E3%B4Gh" class="count" title="첨부파일(1개) 다운로드 - 2026년 제3회 충청북도학교안전공제회 소방시설관리업 종사자(소방기사) 계약직 직원 채용 공고문.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">35</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37573777&page=1&listCnt=50" title="2026. 청주교육지원청 교육협력과 지방공무원&#40;사회복지직&#41; 대체인력 채용 공고">2026. 청주교육지원청 교육협력과 지방공무원&#40;사회복지직&#41; 대체인력 채용 공고</a></td>
+
+									<td class="b_write">교육협력과</td>
+
+									<td class="b_date data">2026/02/27</td>
+									<td class="b_hit data"><strong>754</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%BB9%EF%B4&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E3%BBLj" class="count" title="첨부파일(1개) 다운로드 - 2026. 청주교육지원청 교육협력과 지방공무원(사회복지직) 대체인력 채용 공고(시행).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">34</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37566967&page=1&listCnt=50" title="청주교육지원청 행정과 교육공무직원&#40;대체인력&#41; 채용 최종합격자 공고">청주교육지원청 행정과 교육공무직원&#40;대체인력&#41; 채용 최종합격자 공고</a></td>
+
+									<td class="b_write">행정과</td>
+
+									<td class="b_date data">2026/02/25</td>
+									<td class="b_hit data"><strong>1023</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%B80%E5%B4&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E3%BAId" class="count" title="첨부파일(1개) 다운로드 - 충청북도청주교육지원청 행정과 교육공무직원(행정실무사) 대체인력 채용 최종합격자 공고문(시행).hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">33</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37565514&page=1&listCnt=50" title="청주교육지원청 행정과 교육공무직원&#40;행정실무사&#41; 대체인력 채용 서류전형 발표 및 면접 안내 공고">청주교육지원청 행정과 교육공무직원&#40;행정실무사&#41; 대체인력 채용 서류전형 발표 및 면접 안내 공고</a></td>
+
+									<td class="b_write">행정과</td>
+
+									<td class="b_date data">2026/02/24</td>
+									<td class="b_hit data"><strong>982</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%B80%E7%BA&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E3%BAJh" class="count" title="첨부파일(1개) 다운로드 - 충청북도청주교육지원청 행정과 교육공무직(행정실무사) 대체인력 채용 서류전형 발표 및 면접안내 공고(최종)_시행.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">32</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37562528&page=1&listCnt=50" title="2026년도 제1회 충청북도청주교육지원청 학교운동부지도자&#40;공립학교&#41; 채용 최종 합격자 공고">2026년도 제1회 충청북도청주교육지원청 학교운동부지도자&#40;공립학교&#41; 채용 최종 합격자 공고</a></td>
+
+									<td class="b_write">체육건강과</td>
+
+									<td class="b_date data">2026/02/24</td>
+									<td class="b_hit data"><strong>416</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%B81%E0%BE&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E3%BAMh" class="count" title="첨부파일(1개) 다운로드 - 2026년도 제1회 충청북도청주교육지원청 학교운동부지도자(공립 학교) 채용 최종 합격자 공고.hwp"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">31</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37558596&page=1&listCnt=50" title="2026학년도 3. 1.자 충청북도청주교육지원청 관내 공립학교 기간제교사 위탁 채용 최종합격자 공고">2026학년도 3. 1.자 충청북도청주교육지원청 관내 공립학교 기간제교사 위탁 채용 최종합격자 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/02/23</td>
+									<td class="b_hit data"><strong>852</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%B81%E6%BE&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E3%B9Gh" class="count" title="첨부파일(1개) 다운로드 - ★2026학년도 3. 1.자 충청북도청주교육지원청 관내 공립학교 기간제교사 위탁 채용 최종합격자 공고.hwpx"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">30</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37548598&page=1&listCnt=50" title="2026학년도 3. 1.자 충청북도청주교육지원청 관내 공립학교 기간제교사 위탁 채용 변경&#40;일부인원 취소&#41; 공고">2026학년도 3. 1.자 충청북도청주교육지원청 관내 공립학교 기간제교사 위탁 채용 변경&#40;일부인원 취소&#41; 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/02/13</td>
+									<td class="b_hit data"><strong>1069</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%B8%3F%E1%BE&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E3%B8Gh" class="count" title="첨부파일(1개) 다운로드 - ★2026학년도 3. 1.자 충청북도청주교육지원청 관내 공립학교 기간제교사 위탁 채용 변경(일부인원 취소) 공고_.hwpx"><strong>1</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">29</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37548239&page=1&listCnt=50" title="2026학년도 3. 1.자 충청북도청주교육지원청 관내 공립학교 기간제교사 위탁 채용 1차 서류전형 합격자 발표 및 2차 면접전형 공고">2026학년도 3. 1.자 충청북도청주교육지원청 관내 공립학교 기간제교사 위탁 채용 1차 서류전형 합격자 발표 및 2차 면접전형 공고</a></td>
+
+									<td class="b_write">학교지원과</td>
+
+									<td class="b_date data">2026/02/13</td>
+									<td class="b_hit data"><strong>976</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="sub.php?menukey=6425&mod=view&no=37548239&page=1&listCnt=50" class="count" title="2026학년도 3. 1.자 충청북도청주교육지원청 관내 공립학교 기간제교사 위탁 채용 1차 서류전형 합격자 발표 및 2차 면접전형 공고(첨부파일 2개 있음)"><strong>2</strong></a></div></td>
+								</tr><tr>
+									<td class="brd_none b_num">28</td>
+									
+									<td class="title b_title"><a href="sub.php?menukey=6425&mod=view&no=37547023&page=1&listCnt=50" title="청주교육지원청 행정과 교육공무직원&#40;행정실무사&#41; 대체인력 채용 공고">청주교육지원청 행정과 교육공무직원&#40;행정실무사&#41; 대체인력 채용 공고</a></td>
+
+									<td class="b_write">행정과</td>
+
+									<td class="b_date data">2026/02/13</td>
+									<td class="b_hit data"><strong>1046</strong></td>
+									<td class="b_file"><div class="fileicon_ok_wrap"><a href="/base/download/bbs.php?fno=.%09%B8%3F%E2%B4&amp;bid=%2A%0B%BD9%E6%BCNo&amp;did=%2A%0B%BE%3E%E3%B8Hm" class="count" title="첨부파일(1개) 다운로드 - 충청북도청주교육지원청 행정과 교육공무직원(행정실무사) 대체인력 채용 공고(시행).hwp"><strong>1</strong></a></div></td>
+								</tr>				</tbody>
+			</table>
+		</div>
+		<div class="footerIn">
+			<div class="fl"></div>
+<div class="fr"></div>
+
+			<div class="fc">
+<div class="paginate2"><span class="bt_start"><em>처음페이지</em></span><span class="bt_prev"><em>이전페이지</em></span><strong><a title='선택됨'>1</a></strong><a href="?menukey=6425&amp;mod=&page=2&scode=00000004&listCnt=50">2</a><span class="bt_next"><em>다음페이지</em></span><span class="bt_end"><em>마지막페이지</em></span></div></div>
+		</div>
+</form><script type="text/javascript">
+//<![CDATA[
+	function changeDel(val) {
+		$("#reason3").css("display", "none");
+		$("#reason3").val("");
+
+		if(val == "1") {
+			$("#reason3").css("display", "");
+		}
+	}
+//]]>
+</script>
+
+<div id="delReasonTb" name="delReasonTb" class="delcla">
+	<ul>
+		<li><span>게시글 완전삭제시 완전삭제 사유를 입력해 주세요.(필수값 아님)</span></li>
+		<li><label class="skip" for="reason1">완전삭제 사유입력</label><input type="text" class="inplinekr" id="reason1" name="reason1" style="width:320px;"/></li>
+	</ul>
+	<button type="button" onclick="ChangeChk(2);" class="btn_sml"><span>확인</span></button>
+	<button type="button" onclick="delcloseTb();" class="btn_sml"><span>취소</span></button>
+</div>
+
+<div id="delReasonTb1" name="delReasonTb1" class="delcla">
+	<ul>
+		<li><span>게시글 삭제시 삭제 사유를 입력해 주세요.(필수입력)</span></li>
+		<li>
+			<label class="skip" for="reason2">삭제 사유선택</label>
+			
+			<select class="selline" id="reason2" name="reason2" style="width:100%;" onchange="changeDel(this.value)">
+				<option value="게시글 보유 기간 경과">게시글 보유 기간 경과</option>
+				<option value="국가 안전이나 보안에 위배되는 경우">국가 안전이나 보안에 위배되는 경우</option>
+				<option value="정치적 목적이나 성향이 있는 경우">정치적 목적이나 성향이 있는 경우</option>
+				<option value="특정 기관, 단체, 부서를 근거 없이 비난하는 경우">특정 기관, 단체, 부서를 근거 없이 비난하는 경우</option>
+				<option value="특정인을 비방하거나 명예훼손의 우려가 있는 경우">특정인을 비방하거나 명예훼손의 우려가 있는 경우</option>
+				<option value="영리목적의 상업성 광고, 저작권을 침해할 수 있는 내용">영리목적의 상업성 광고, 저작권을 침해할 수 있는 내용</option>
+				<option value="욕설, 음란물 등 불건전한 내용">욕설, 음란물 등 불건전한 내용</option>
+				<option value="실명을 원칙으로 하는 경우에 실명을 사용하지 않았거나 실명이 아닌 것으로 판단되었을 경우">실명을 원칙으로 하는 경우에 실명을 사용하지 않았거나 실명이 아닌 것으로 판단되었을 경우</option>
+				<option value="동일인 또는 동일인이라고 인정되는 자가 똑같은 내용을 주 2회 이상 게시하거나 비슷한 내용을 1일 2회 이상 게시하는 경우">동일인 또는 동일인이라고 인정되는 자가 똑같은 내용을 주 2회 이상 게시하거나 비슷한 내용을 1일 2회 이상 게시하는 경우</option>
+				<option value="고유식별 정보(주민등록번호 등) 등 개인 정보가 포함되어 있는 경우">고유식별 정보(주민등록번호 등) 등 개인 정보가 포함되어 있는 경우</option>
+				<option value="연습성, 오류, 장난성의 글">연습성, 오류, 장난성의 글</option>
+				
+				<option value="1">기타(사유 작성)</option>
+			</select>
+			<input type="text" class="inplinekr" id="reason3" name="reason3" title="삭제 사유 직접입력" style="width:320px; display:none;"/>
+		</li>
+	</ul>
+
+	<button type="button" onclick="ChangeChk(1);" class="btn_sml"><span>확인</span></button>
+	<button type="button" onclick="delcloseTb1();" class="btn_sml"><span>취소</span></button>
+</div>
+		
+							</div>
+							
+
+<div class="con_manager">	
+		<dl class="clearfix">
+		<dt>
+			정보담당자			
+		</dt>
+		<dd><ul><li><b>학교지원과</b> <img src='/base/imgs/cmmn/manager_arrow.png' alt='>' /> 교육공무직팀 <img src='/base/imgs/cmmn/manager_arrow.png' alt='>' /> 043-270-5835</li></ul></dd>
+	</dl>
+		<dl class="clearfix printinfo none">
+		<dt>인쇄자정보</dt>
+		<dd><b>출력일 : </b>2026-10-28 22:20:24 <b>출력자 : </b>손님 <b>출력IP : </b>218.158.92.42</dd>
+	</dl>
+
+	<div class="research">
+	<form id="gradeFrm" name="gradeFrm" action="/base/php/cmmn.survey.php" target="surveyframe" method="post" onsubmit="return formChk(this)">
+		<fieldset>
+			<legend>만족도 조사</legend>
+			<input type="hidden" value="6425" name="menukey" />
+			<input type="hidden" value="00000004" name="scode" />
+			<input type="hidden" name="token" value="3cef134850b11e5171822d609c5a21a3db742c52000ee63582c11b7810ca4114" />
+			<div class="clearfix">
+				<h3>만족도조사</h3>
+				
+									<p>페이지의 내용이나 편의성에 만족하십니까?</p>
+					<ul class="rch">
+						 <li><input type="radio" name="gradeCnt" id="point5" value="5" checked="checked" /><label for="point5">매우만족</label></li>
+						 <li><input type="radio" name="gradeCnt" id="point4" value="4" /><label for="point4">만족</label></li>
+						 <li><input type="radio" name="gradeCnt" id="point3" value="3" /><label for="point3">보통</label></li>
+						 <li><input type="radio" name="gradeCnt" id="point2" value="2" /><label for="point2">불만족</label></li>
+						 <li><input type="radio" name="gradeCnt" id="point1" value="1" /><label for="point1">매우불만족</label></li>
+					</ul>
+							</div>
+			<div class="margin_t_20 clearfix">
+				<label for="memo" class="skip">홈페이지 운영에 관한 의견을 남겨주시면 개선에 도움이 됩니다.</label>
+				<input type="text" id="memo" name="memo" class="inplinekr text" placeholder='홈페이지 운영에 관한 의견을 남겨주시면 개선에 도움이 됩니다.' />
+				<button type="submit" class="btnAr">의견등록</button>
+			</div>
+		</fieldset>
+	</form>
+	</div>
+</div>
+<script type="text/javascript">
+	function formChk(obj){
+		var isLogin = "";
+		var scode = "00000004";
+
+		if(isLogin != "" || scode == "00000004"){
+			if((obj.gradeCnt[0].checked == true||obj.gradeCnt[1].checked == true||obj.gradeCnt[2].checked == true||obj.gradeCnt[3].checked == true||obj.gradeCnt[4].checked == true)&&(!obj.memo.value)) {
+					alert("의견을 등록해 주세요");
+					obj.memo.focus();
+					return false;
+				}
+		}else{
+			alert("로그인 후 평가를 할 수 있습니다.");
+			return false;
+		}
+	}
+</script>
+													</div>
+					</div>
+					
+<!-- 퀵메뉴.web -->
+<div id="aside" class="quick_menu">
+	<button type="button" class="open"><span>QUICK<br />MENU</span><span class="skip">열기</span></button>
+	<div class="cont_box">
+		<div class="menu_list">
+			<ul class="clearfix">
+				<li class="icon list1"><a href="../base/php/mgs.umenu.php?no=72&scode=00000004&linktype=2" title = "담당업무안내">담당업무안내</a></li><li class="icon list3"><a href="../base/php/mgs.umenu.php?no=74&scode=00000004&linktype=2" title = "민원안내">민원안내</a></li><li class="icon list4"><a href="../base/php/mgs.umenu.php?no=75&scode=00000004&linktype=2" title = "민원사전예약">민원사전예약</a></li><li class="icon list5"><a href="../base/php/mgs.umenu.php?no=76&scode=00000004&linktype=2" title = "민원서식모음">민원서식모음</a></li><li class="icon list6"><a href="../base/php/mgs.umenu.php?no=77&scode=00000004&linktype=2" title = "자유학기제">자유학기제</a></li><li class="icon list7"><a href="../base/php/mgs.umenu.php?no=78&scode=00000004&linktype=2" title = "학원/교습소/개인과외">학원/교습소/<br />개인과외</a></li><li class="icon list8"><a href="../base/php/mgs.umenu.php?no=79&scode=00000004&linktype=2" title = "교육환경보호구역">교육환경<br />보호구역</a></li><li class="icon list9"><a href="../base/php/mgs.umenu.php?no=80&scode=00000004&linktype=1" target="_blank" rel="noopener noreferrer" title = "법무행정시스템 새창연결">법무행정시스템</a></li>			</ul>
+		</div>
+		<button type="button" class="close">닫기</button>
+	</div>
+	<script type="text/javascript">JSFX_FloatDiv("aside",4,74).floatIt();</script>
+</div><!--//#aside.web -->
+<!-- 퀵메뉴.mobile -->
+<div class="quick_menu mobile">
+	<button type="button" class="open"><span>QUICK<br />MENU</span></button>
+	<div class="cont_box">
+		<div class="menu_list">
+			<ul class="clearfix">
+				<li class="icon list1"><a href="../base/php/mgs.umenu.php?no=72&scode=00000004&linktype=2" title = "담당업무안내">담당업무안내</a></li><li class="icon list3"><a href="../base/php/mgs.umenu.php?no=74&scode=00000004&linktype=2" title = "민원안내">민원안내</a></li><li class="icon list4"><a href="../base/php/mgs.umenu.php?no=75&scode=00000004&linktype=2" title = "민원사전예약">민원사전예약</a></li><li class="icon list5"><a href="../base/php/mgs.umenu.php?no=76&scode=00000004&linktype=2" title = "민원서식모음">민원서식모음</a></li><li class="icon list6"><a href="../base/php/mgs.umenu.php?no=77&scode=00000004&linktype=2" title = "자유학기제">자유학기제</a></li><li class="icon list7"><a href="../base/php/mgs.umenu.php?no=78&scode=00000004&linktype=2" title = "학원/교습소/개인과외">학원/교습소/<br />개인과외</a></li><li class="icon list8"><a href="../base/php/mgs.umenu.php?no=79&scode=00000004&linktype=2" title = "교육환경보호구역">교육환경<br />보호구역</a></li><li class="icon list9"><a href="../base/php/mgs.umenu.php?no=80&scode=00000004&linktype=1" target="_blank" rel="noopener noreferrer" title = "법무행정시스템 새창연결">법무행정시스템</a></li>			</ul>
+		</div>
+		<button type="button" class="close">닫기</button>
+	</div>
+</div><!--//quick_menu.mobile -->				</div>
+				<div id="footer">
+					<div id="footer_connect">
+	<div class="family_site">
+						<dl class="family_site1">
+			<dt><a href="#" onClick="return false;" class="selectBtn selectBtn1">교육관련 누리집</a></dt>
+			<dd style="display: none;" id="sitea1" class="sitea">
+				<ul><li><a href="/base/php/cmmn.family.link.php?no=2&scode=00000004" target="_blank" title="교육사랑연수원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^교육사랑연수원\' ); }catch(_e){}');">교육사랑연수원</a></li><li><a href="/base/php/cmmn.family.link.php?no=11&scode=00000004" target="_blank" title="국가전자도서관 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^국가전자도서관\' ); }catch(_e){}');">국가전자도서관</a></li><li><a href="/base/php/cmmn.family.link.php?no=13&scode=00000004" target="_blank" title="국립특수교육원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^국립특수교육원\' ); }catch(_e){}');">국립특수교육원</a></li><li><a href="/base/php/cmmn.family.link.php?no=14&scode=00000004" target="_blank" title="대입정보포털 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^대입정보포털\' ); }catch(_e){}');">대입정보포털</a></li><li><a href="/base/php/cmmn.family.link.php?no=85&scode=00000004" target="_blank" title="방송통신고등학교 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^방송통신고등학교\' ); }catch(_e){}');">방송통신고등학교</a></li><li><a href="/base/php/cmmn.family.link.php?no=84&scode=00000004" target="_blank" title="방송통신중학교 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^방송통신중학교\' ); }catch(_e){}');">방송통신중학교</a></li><li><a href="/base/php/cmmn.family.link.php?no=1&scode=00000004" target="_blank" title="에듀넷 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^에듀넷\' ); }catch(_e){}');">에듀넷</a></li><li><a href="/base/php/cmmn.family.link.php?no=18&scode=00000004" target="_blank" title="유아학비지원시스템 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^유아학비지원시스템\' ); }catch(_e){}');">유아학비지원시스템</a></li><li><a href="/base/php/cmmn.family.link.php?no=7&scode=00000004" target="_blank" title="국민재난안전포털 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^국민재난안전포털\' ); }catch(_e){}');">국민재난안전포털</a></li><li><a href="/base/php/cmmn.family.link.php?no=16&scode=00000004" target="_blank" title="창의인성교육넷 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^창의인성교육넷\' ); }catch(_e){}');">창의인성교육넷</a></li><li><a href="/base/php/cmmn.family.link.php?no=12&scode=00000004" target="_blank" title="충북교육연수포털 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^충북교육연수포털\' ); }catch(_e){}');">충북교육연수포털</a></li><li><a href="/base/php/cmmn.family.link.php?no=21&scode=00000004" target="_blank" title="충북교수학습지원센터 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^충북교수학습지원센터\' ); }catch(_e){}');">충북교수학습지원센터</a></li><li><a href="/base/php/cmmn.family.link.php?no=20&scode=00000004" target="_blank" title="충북교육청 고입전형포털 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^충북교육청 고입전형포털\' ); }catch(_e){}');">충북교육청 고입전형포털</a></li><li><a href="/base/php/cmmn.family.link.php?no=23&scode=00000004" target="_blank" title="충청북도진로교육원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^충청북도진로교육원\' ); }catch(_e){}');">충청북도진로교육원</a></li><li><a href="/base/php/cmmn.family.link.php?no=82&scode=00000004" target="_blank" title="충청북도학부모지원센터 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^충청북도학부모지원센터\' ); }catch(_e){}');">충청북도학부모지원센터</a></li><li><a href="/base/php/cmmn.family.link.php?no=5&scode=00000004" target="_blank" title="평등어린이세상 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^평등어린이세상\' ); }catch(_e){}');">평등어린이세상</a></li><li><a href="/base/php/cmmn.family.link.php?no=3&scode=00000004" target="_blank" title="한국119소년단 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^한국119소년단\' ); }catch(_e){}');">한국119소년단</a></li><li><a href="/base/php/cmmn.family.link.php?no=9&scode=00000004" target="_blank" title="한국교육개발원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^한국교육개발원\' ); }catch(_e){}');">한국교육개발원</a></li><li><a href="/base/php/cmmn.family.link.php?no=8&scode=00000004" target="_blank" title="한국교육과정평가원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^한국교육과정평가원\' ); }catch(_e){}');">한국교육과정평가원</a></li><li><a href="/base/php/cmmn.family.link.php?no=10&scode=00000004" target="_blank" title="한국교육방송공사&#40;EBS&#41; 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^한국교육방송공사&#40;EBS&#41;\' ); }catch(_e){}');">한국교육방송공사&#40;EBS&#41;</a></li><li><a href="/base/php/cmmn.family.link.php?no=15&scode=00000004" target="_blank" title="한국직업능력개발원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^교육관련사이트^한국직업능력개발원\' ); }catch(_e){}');">한국직업능력개발원</a></li></ul>
+				<div class="close closeBtn1"><input type="image" src="/base/imgs/cmmn/family_site_close.png" alt="교육관련 누리집 닫기"/></div>
+			</dd>
+		</dl>
+				<dl class="family_site2">
+			<dt><a href="#" onClick="return false;" class="selectBtn selectBtn2">민원업무 관련</a></dt>
+			<dd style="display: none;" id="sitea2" class="sitea">
+				<ul><li><a href="/base/php/cmmn.family.link.php?no=31&scode=00000004" target="_blank" title="정부24 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^민원업무관련^정부24\' ); }catch(_e){}');">정부24</a></li><li><a href="/base/php/cmmn.family.link.php?no=33&scode=00000004" target="_blank" title="나이스 학부모서비스 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^민원업무관련^나이스 학부모서비스\' ); }catch(_e){}');">나이스 학부모서비스</a></li><li><a href="/base/php/cmmn.family.link.php?no=32&scode=00000004" target="_blank" title="나이스플러스 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^민원업무관련^나이스플러스\' ); }catch(_e){}');">나이스플러스</a></li><li><a href="/base/php/cmmn.family.link.php?no=37&scode=00000004" target="_blank" title="유치원알리미 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^민원업무관련^유치원알리미\' ); }catch(_e){}');">유치원알리미</a></li><li><a href="/base/php/cmmn.family.link.php?no=34&scode=00000004" target="_blank" title="학교알리미 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^민원업무관련^학교알리미\' ); }catch(_e){}');">학교알리미</a></li><li><a href="/base/php/cmmn.family.link.php?no=541&scode=00000004" target="_blank" title="유치원입학관리시스템 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^민원업무관련^유치원입학관리시스템\' ); }catch(_e){}');">유치원입학관리시스템</a></li><li><a href="/base/php/cmmn.family.link.php?no=543&scode=00000004" target="_blank" title="전자서명 인증서 신청서식 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^민원업무관련^전자서명 인증서 신청서식\' ); }catch(_e){}');">전자서명 인증서 신청서식</a></li></ul>
+				<div class="close closeBtn2"><input type="image" src="/base/imgs/cmmn/family_site_close.png" alt="민원업무 관련 닫기" /></div>
+			</dd>
+		</dl>
+
+		<dl class="family_site3">
+			<dt><a href="#" onClick="return false;" class="selectBtn selectBtn3">충북교육기관</a></dt>
+			<dd style="display: none;" id="sitea3" class="sitea">	
+				<ul><li><a href="/base/php/cmmn.family.link.php?no=63&scode=00000004" target="_blank" title="충청북도자연과학교육원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도자연과학교육원\' ); }catch(_e){}');">충청북도자연과학교육원</a></li><li><a href="/base/php/cmmn.family.link.php?no=62&scode=00000004" target="_blank" title="충청북도단재교육연수원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도단재교육연수원\' ); }catch(_e){}');">충청북도단재교육연수원</a></li><li><a href="/base/php/cmmn.family.link.php?no=61&scode=00000004" target="_blank" title="충청북도교육도서관 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도교육도서관\' ); }catch(_e){}');">충청북도교육도서관</a></li><li><a href="/base/php/cmmn.family.link.php?no=60&scode=00000004" target="_blank" title="충청북도교육문화원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도교육문화원\' ); }catch(_e){}');">충청북도교육문화원</a></li><li><a href="/base/php/cmmn.family.link.php?no=59&scode=00000004" target="_blank" title="충청북도학생수련원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도학생수련원\' ); }catch(_e){}');">충청북도학생수련원</a></li><li><a href="/base/php/cmmn.family.link.php?no=58&scode=00000004" target="_blank" title="충청북도국제교육원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도국제교육원\' ); }catch(_e){}');">충청북도국제교육원</a></li><li><a href="/base/php/cmmn.family.link.php?no=56&scode=00000004" target="_blank" title="충청북도교육연구정보원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도교육연구정보원\' ); }catch(_e){}');">충청북도교육연구정보원</a></li><li><a href="/base/php/cmmn.family.link.php?no=55&scode=00000004" target="_blank" title="충청북도중원교육문화원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도중원교육문화원\' ); }catch(_e){}');">충청북도중원교육문화원</a></li><li><a href="/base/php/cmmn.family.link.php?no=54&scode=00000004" target="_blank" title="충청북도유아교육진흥원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도유아교육진흥원\' ); }catch(_e){}');">충청북도유아교육진흥원</a></li><li><a href="/base/php/cmmn.family.link.php?no=53&scode=00000004" target="_blank" title="충청북도해양교육원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도해양교육원\' ); }catch(_e){}');">충청북도해양교육원</a></li><li><a href="/base/php/cmmn.family.link.php?no=81&scode=00000004" target="_blank" title="충청북도진로교육원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도진로교육원\' ); }catch(_e){}');">충청북도진로교육원</a></li><li><a href="/base/php/cmmn.family.link.php?no=83&scode=00000004" target="_blank" title="충청북도특수교육원 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육기관^충청북도특수교육원\' ); }catch(_e){}');">충청북도특수교육원</a></li></ul>
+				<ul><li><a href="/base/php/cmmn.family.link.php?no=502&scode=00000004" target="_blank" title="충주교육지원청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육지원청^충주교육지원청\' ); }catch(_e){}');">충주교육지원청</a></li><li><a href="/base/php/cmmn.family.link.php?no=503&scode=00000004" target="_blank" title="제천교육지원청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육지원청^제천교육지원청\' ); }catch(_e){}');">제천교육지원청</a></li><li><a href="/base/php/cmmn.family.link.php?no=504&scode=00000004" target="_blank" title="보은교육지원청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육지원청^보은교육지원청\' ); }catch(_e){}');">보은교육지원청</a></li><li><a href="/base/php/cmmn.family.link.php?no=505&scode=00000004" target="_blank" title="옥천교육지원청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육지원청^옥천교육지원청\' ); }catch(_e){}');">옥천교육지원청</a></li><li><a href="/base/php/cmmn.family.link.php?no=506&scode=00000004" target="_blank" title="영동교육지원청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육지원청^영동교육지원청\' ); }catch(_e){}');">영동교육지원청</a></li><li><a href="/base/php/cmmn.family.link.php?no=507&scode=00000004" target="_blank" title="진천교육지원청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육지원청^진천교육지원청\' ); }catch(_e){}');">진천교육지원청</a></li><li><a href="/base/php/cmmn.family.link.php?no=508&scode=00000004" target="_blank" title="괴산증평교육지원청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육지원청^괴산증평교육지원청\' ); }catch(_e){}');">괴산증평교육지원청</a></li><li><a href="/base/php/cmmn.family.link.php?no=509&scode=00000004" target="_blank" title="음성교육지원청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육지원청^음성교육지원청\' ); }catch(_e){}');">음성교육지원청</a></li><li><a href="/base/php/cmmn.family.link.php?no=510&scode=00000004" target="_blank" title="단양교육지원청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^충북교육지원청^단양교육지원청\' ); }catch(_e){}');">단양교육지원청</a></li></ul>
+								<div class="close closeBtn3"><input type="image" src="/base/imgs/cmmn/family_site_close.png" alt="충북교육기관 닫기" /></div>
+			</dd>
+		</dl>
+				<dl class="family_site4">
+			<dt><a href="#" onClick="return false;" class="selectBtn selectBtn4">시도교육청</a></dt>
+			<dd style="display: none;" id="sitea4" class="sitea">
+				<ul><li><a href="/base/php/cmmn.family.link.php?no=80&scode=00000004" target="_blank" title="서울특별시교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^서울특별시교육청\' ); }catch(_e){}');">서울특별시교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=79&scode=00000004" target="_blank" title="부산광역시교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^부산광역시교육청\' ); }catch(_e){}');">부산광역시교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=78&scode=00000004" target="_blank" title="대구광역시교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^대구광역시교육청\' ); }catch(_e){}');">대구광역시교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=77&scode=00000004" target="_blank" title="인천광역시교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^인천광역시교육청\' ); }catch(_e){}');">인천광역시교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=76&scode=00000004" target="_blank" title="광주광역시교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^광주광역시교육청\' ); }catch(_e){}');">광주광역시교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=75&scode=00000004" target="_blank" title="대전광역시교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^대전광역시교육청\' ); }catch(_e){}');">대전광역시교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=74&scode=00000004" target="_blank" title="울산광역시교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^울산광역시교육청\' ); }catch(_e){}');">울산광역시교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=73&scode=00000004" target="_blank" title="세종특별자치시교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^세종특별자치시교육청\' ); }catch(_e){}');">세종특별자치시교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=72&scode=00000004" target="_blank" title="경기도교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^경기도교육청\' ); }catch(_e){}');">경기도교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=71&scode=00000004" target="_blank" title="강원특별자치도교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^강원특별자치도교육청\' ); }catch(_e){}');">강원특별자치도교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=70&scode=00000004" target="_blank" title="충청북도교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^충청북도교육청\' ); }catch(_e){}');">충청북도교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=69&scode=00000004" target="_blank" title="충청남도교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^충청남도교육청\' ); }catch(_e){}');">충청남도교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=68&scode=00000004" target="_blank" title="전북특별자치도교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^전북특별자치도교육청\' ); }catch(_e){}');">전북특별자치도교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=67&scode=00000004" target="_blank" title="전라남도교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^전라남도교육청\' ); }catch(_e){}');">전라남도교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=66&scode=00000004" target="_blank" title="경상북도교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^경상북도교육청\' ); }catch(_e){}');">경상북도교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=65&scode=00000004" target="_blank" title="경상남도교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^경상남도교육청\' ); }catch(_e){}');">경상남도교육청</a></li><li><a href="/base/php/cmmn.family.link.php?no=64&scode=00000004" target="_blank" title="제주특별자치도교육청 새창연결" onMouseDown="eval('try{ _trk_clickTrace(\'EVT\', \'^시도교육청^제주특별자치도교육청\' ); }catch(_e){}');">제주특별자치도교육청</a></li></ul>
+				<div class="close closeBtn4"><input type="image" src="/base/imgs/cmmn/family_site_close.png" alt="시도교육청 닫기" /></div>
+			</dd>
+		</dl>
+			</div>
+</div>					<script type="text/javascript">
+//<![CDATA[
+	$(document).ready(function(){
+		$('.banner_zone').motionj_rolling_vertical({
+			width : 990,
+			height : 64,
+			max_view : 1,
+			speed : 3000,
+			direction : "down"
+		});
+	});
+//]]>
+</script>
+
+<div class="banner">
+	<div class="wrap">
+		<h2>배너모음</h2>
+		<div class="control">
+			<ul class="ba_con">
+				<li><a href="#" onclick="return false;" class="bnr_up"><img src="/base/imgs/cmmn/banner_pre.png" alt="이전 배너 보기" /></a></li>
+				<li>
+					<a href="#" onclick="return false;" class="bnr_pause"><img src="/base/imgs/cmmn/banner_stop.png" alt="배너 정지" /></a>
+					<a href="#" onclick="return false;" class="bnr_play"><img src="/base/imgs/cmmn/banner_play.png" alt="배너 시작" /></a>
+				</li>
+				<li><a href="#" onclick="return false;" class="bnr_down"><img src="/base/imgs/cmmn/banner_next.png" alt="다음 배너 보기" /></a></li>
+				<li><a href="sub.php?menukey=800"><img src="/base/imgs/cmmn/banner_list.png" alt="배너 목록 보기" /></a></li>
+			</ul>
+		</div>
+		<div class="banner_zone">
+			<ul class="clearfix">
+				<li><a href="http://www.hakbi.org/" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521453-2624-0.jpg alt="전국학교비정규직노동조합 충북지부" /></a><a href="http://1398.acrc.go.kr/case/ISGAcase" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521687-6756-0.jpg alt="청탁금지법 통합검색" /></a><a href="http://www.army.mil.kr/e_book/mp/Family.pdf" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2022/1645506928-4843-0.jpg alt="전사·순직 군인 2,048명의 유가족을 찾습니다!" /></a><a href="http://www.cbe.go.kr/dept-24/na/ntt/selectNttList.do?mi=11268&amp;bbsId=1605" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1583224225-6783-0.gif alt="사립유치원 K-에듀파인 사용한다면?" /></a><a href="http://eduone.moe.go.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521338-5800-0.jpg alt="교육지원 한눈에" /></a><a href="http://www.moe.go.kr/agenda/mainpolicy/surve02.html" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521427-3344-0.jpg alt="학교폭력신고센터117" /></a></li><li><a href="http://www.kopico.go.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521609-8038-0.jpg alt="개인정보 분쟁조정위원회" /></a><a href="http://1398.acrc.go.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521282-4053-0.jpg alt="공익신고자 보호제도" /></a><a href="http://1398.acrc.go.kr/hpg/req/hpgPssStep1.do" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521353-1089-0.jpg alt="복지보조금 부정신고센터" /></a><a href="http://dokdo.mofa.go.kr/kor/pds/video_list.jsp" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521712-8821-0.jpg alt="대한민국의 아름다운 영토 독도, 외교부 독도 동영상&#40;한글&#41;" /></a><a href="http://dokdo.mofa.go.kr/eng/pds/video_list.jsp" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521399-4442-0.jpg alt="history knows The truth, 외교부 독도 동영상&#40;영문&#41;" /></a><a href="http://cafe.daum.net/anmkook" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521412-1039-0.jpg alt="공공운수노조 전국교육공무직본부" /></a></li><li><a href="http://helpcall.mnd.mil.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582519770-6572-0.jpg alt="국방헬프콜&#40;SOS&#41; 1303" /></a><a href="http://koreajobworld.or.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521468-8556-0.jpg alt="한국잡월드 어린이·청소년 직업체험관" /></a><a href="http://www.cbcje.go.kr/upload/ckfinder/userfiles/images/1541748694-7839-0_large.jpg" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521483-4706-0.jpg alt="교원 성폭력 신고센터 02-6222-6060&#40;교육부 콜센터&#41;" /></a><a href="http://www.youth.go.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521502-6866-0.jpg alt="청소년활동정보서비스 e·청소년" /></a><a href="http://www.dorandoran.go.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521516-6043-0.jpg alt="도란도란 학교폭력예방누리집 / 교육부" /></a><a href="http://cbe.simpan.go.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521576-5524-0.jpg alt="신속·공정한 권리구제 / 온라인 행정심판" /></a></li><li><a href="http://www.sportsG1.or.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582519808-1136-0.jpg alt="선수 경기실적 증명서 발급 / 대한체육회 스포츠지원포털" /></a><a href="http://www.gosims.go.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521631-2378-0.jpg alt="e나라도움 국고보조금통합관리시스템" /></a><a href="http://www.klac.or.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521645-3378-0.jpg alt="대한법률구조공단" /></a><a href="http://eeis.schoolkeepa.or.kr/" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521661-3897-0.jpg alt="교육환경보호구역" /></a><a href="http://www.go-firstschool.go.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521699-8539-0.jpg alt="처음학교로" /></a><a href="http://www.easylaw.go.kr/CSP/Main.laf" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2019/1558330324-9630-0.png alt="찾기쉬운생활법령정보" /></a></li><li><a href="http://www.safetv.go.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2019/1564034686-4478-0.gif alt="국민안전방송 안전한 TV" /></a><a href="http://www.svmedi.net/" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521764-9547-0.jpg alt="학교폭력 화해·분쟁조정 지원사업" /></a><a href="http://www.safetyreport.go.kr/api?apiKey=8011000XCM9T2P1N8SM46SJ4T09" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521741-8204-0.jpg alt="안전신문고" /></a><a href="http://www.safetyreport.go.kr/enApi?apiKey=8011000XCM9T2P1N8SM46SJ4T09#enIntroduction" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1582521751-7508-0.jpg alt="Safety e-Report &#40;안전신문고 포털&#40;영어&#41;&#41;" /></a><a href="http://www.epeople.go.kr/nep/pttn/negativePttn/NegativePttnCotents.npaid" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2019/1553070491-6746-0.gif alt="소극행정 신고센터" /></a><a href="https://www.cheongju.go.kr/child/index.do" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2021/1630374015-9330-0.gif alt="청주시 아동권리 옴부즈퍼슨 아동권리 침해 사례 상담 신청" /></a></li><li><a href="http://www.schoolsafe.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2019/1564034626-9016-0.gif alt="학교안전정보센터" /></a><a href="https://www.cbcje.go.kr:446/download/down_200706.hwp" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2020/1594009844-6419-0.jpg alt="학부모On누리 국가평생교육진흥원 전국학부모지원센터" /></a><a href="https://closedschool.klea.re.kr/" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2026/1774485342-3534-0.jpg alt="폐교 시설정보 안내서비스" /></a><a href="https://www.nise.go.kr/onmap/main/view" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2022/1668559937-5188-0.gif alt="장애학생 인권보호 지원센터" /></a><a href="https://counseling.go.kr/sub/index.do" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2026/1792045102-4002-0.jpg alt="정부합동민원센터 홍보" /></a><a href="https://kasem.safekorea.go.kr" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2023/1700789146-1729-0.gif alt="국민안전교육플랫폼" /></a></li><li><a href="http://www.cbe.go.kr/cbe/na/ntt/selectNttList.do?mi=11788&amp;bbsId=1715" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2023/1688092460-2586-0.jpg alt="충청북도교육청 성희롱 성폭력 사이버신고센터" /></a><a href="http://www.nise.go.kr/main.do?s=nise" target="_blank" title="새창연결"><img src=/upload/icd/00000002/2022/1669095011-4208-0.png alt="교육부 국립특수교육원" /></a></li>			</ul>
+		</div>
+	</div>
+</div>					<div class="footer_info">
+	<div class="wrap">
+		 	
+		<ul class="footer_link clearfix">
+			 	
+				<li class="first"><a href="sub.php?menukey=792"><strong>개인정보처리방침</strong></a></li>
+								<li><a href ="sub.php?menukey=6242">영상정보처리기기</a></li>
+															    			         			
+			         	
+                     					
+								<li><a href="sub.php?menukey=799">뷰어프로그램</a></li>
+								<li><a href="sub.php?menukey=796">저작권정책</a></li>
+				<li><a href ="sub.php?menukey=717">오시는길</a></li>
+								<li><a href ="#" id="viewmo" style="display:none;">Mobile버전 보기</a><a href ="#" id="viewpc">PC버전 보기</a></li>
+								<li><a href ="http://www.juso.go.kr/" target="_blank" title="도로명주소 새창 연결" class="load_number">도로명주소</a></li>
+									</ul>
+				<address>
+<span> 제1청사 : [28626] 충청북도 청주시 서원구 산남로 24번길 25(산남동) TEL : 043)299-3000 (당직실 3070), FAX : 043)299-3229</span>
+<span> 제2청사 : [28655] 충청북도 청주시 서원구 무심서로 485(사직동)</span>
+</address>
+
+<p class="copy">Copyright ⓒ<strong>충청북도청주교육지원청.</strong> All Rights Reserved. </p>    								<div class="wa"><a href="download/webaccessibility.pdf" title="웹 접근성 인증서 다운로드"><img src="imgs/footer/wa.png" alt="과학기술정보통신부 (사)한국장애인단체총연합회 한국웹접근성인증평가원 웹 접근성 우수사이트 인증마크(WA인증마크)" /></a></div>
+			<div class="mark"><img src="imgs/footer/qr_code.png" alt="충청북도청주교육지원청 QR코드(http://m.cbcje.go.kr)" /></div>
+						<!-- //충주 -->
+						<!-- //옥천 -->
+				<!-- 보은 -->
+				<!-- 영동 -->
+				<!-- 단양 -->
+				<!-- 음성 -->
+			</div>
+</div>
+<div id="footer_top"><a href="#">TOP</a></div>
+<map name="#3276">
+  <area shape="rect" coords="15,93,112,122" href="https://docs.google.com/forms/d/e/1FAIpQLScEIlgyJS7lbcCqIQzjoWG71xtZpriF-qigMNDdWbSQGmuXMg/viewform?usp=sf_link" target="_blank" alt="설문조사">
+  <area shape="rect" coords="119,93,215,123" href="https://www.cbe.go.kr/home/sub.php?menukey=3204" target="_blank" alt="제안서 접수">
+</map>
+
+<script>
+	document.querySelectorAll('a[target="_blank"]').forEach(function(a){
+		a.rel = (a.rel ? a.rel+' ' : '') + 'noopener noreferrer';
+	});
+</script>									</div>	
+			</div>	
+		</div>
+	</body>
+</html>
