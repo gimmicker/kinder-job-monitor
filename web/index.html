@@ -169,6 +169,8 @@
   .set dl { display: grid; grid-template-columns: 6.5em 1fr; gap: 6px 10px; margin: 0; font-size: 16px; }
   .set dt { color: var(--muted); }
   .set dd { margin: 0; font-weight: 600; }
+  .sign { margin: 6px 0 0; text-align: center; font-size: 15px; color: var(--muted); }
+  .sign span { color: var(--urgent); }
   .fontseg { display: flex; gap: 6px; }
   .fontseg button { flex: 1; border: 1.5px solid var(--line); background: var(--card); border-radius: 12px; padding: 10px 4px;
                     font-weight: 700; color: var(--muted); transition: background .2s, color .2s, border-color .2s; }
@@ -241,6 +243,9 @@
   @keyframes ray { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
   #intro h2 { margin: 0; font-size: 24px; letter-spacing: -.01em; opacity: 0; animation: fadeUp .4s .5s var(--ease) forwards; }
   #intro p { margin: -10px 0 0; font-size: 15px; opacity: 0; animation: fadeUp .4s .7s var(--ease) forwards; color: rgba(255,255,255,.8); }
+  #intro .for { font-size: 17px; font-weight: 700; color: rgba(255,255,255,.92); letter-spacing: .02em; }
+  #intro .heart { display: inline-block; color: #ffd45e; animation: beat .6s 1.3s ease-in-out; }
+  @keyframes beat { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.35); } }
   #intro.out { transform: translateY(-100%); }
   #intro.out .box { opacity: 0; transform: scale(.96) translateY(-10px); }
   @keyframes tileIn { from { opacity: 0; transform: scale(.7) rotate(-6deg); } 70% { transform: scale(1.04); } to { opacity: 1; transform: none; } }
@@ -269,7 +274,7 @@
       </svg>
     </div>
     <h2>청주 유치원 공고</h2>
-    <p>새 공고를 놓치지 않게</p>
+    <p class="for">for 엄마 <span class="heart">♥</span></p>
   </div>
 </div>
 <script>
@@ -831,6 +836,7 @@
           ? `<p class="desc">홈 화면에 추가하려면 Safari 아래쪽 공유 버튼 → <b>홈 화면에 추가</b>를 누르세요.</p>`
           : installEvt ? `<div class="btns"><button class="btn ghost" type="button" data-install>홈 화면에 설치</button></div>` : ""}
       </section>
+      <p class="sign">엄마를 위해 만들었어요 <span>♥</span></p>
     </div>`;
   }
 
