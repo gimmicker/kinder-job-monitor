@@ -58,5 +58,17 @@
   "pruned": 0,
   "started_at": "2026-10-28T11:32:00+09:00",
   "status": "success"
+ },
+ {
+  "changed_count": 0,
+  "detail_errors": 0,
+  "finished_at": "2026-10-28T18:52:46+09:00",
+  "kinder_count": 5,
+  "list_count": 50,
+  "new_count": 0,
+  "pages": 1,
+  "pruned": 0,
+  "started_at": "2026-10-28T18:52:42+09:00",
+  "status": "success"
  }
 ]
