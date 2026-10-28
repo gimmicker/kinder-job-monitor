@@ -1,10 +1,10 @@
 {
   "name": "청주 유치원 채용공고",
   "short_name": "유치원 공고",
-  "start_url": "./?tab=match",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f6f4ef",
+  "background_color": "#1f5f4a",
   "theme_color": "#1f5f4a",
   "lang": "ko",
   "icons": [
