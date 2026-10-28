@@ -138,5 +138,15 @@
   "pruned": 0,
   "started_at": "2026-10-28T22:39:18+09:00",
   "status": "partial"
+ },
+ {
+  "cj_duplicates": 5,
+  "cj_list_count": 177,
+  "cj_new_count": 11,
+  "finished_at": "2026-10-28T22:47:43+09:00",
+  "pruned": 0,
+  "source": "cheongju",
+  "started_at": "2026-10-28T22:46:43+09:00",
+  "status": "success"
  }
 ]
