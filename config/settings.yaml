@@ -12,6 +12,20 @@ source:
   timeout_sec: 20
   user_agent: "Mozilla/5.0 (compatible; kinder-job-monitor/1.0; personal low-frequency use)"
 
+# 두 번째 출처: 청주교육지원청 구인 게시판 (청주 유치원은 여기에만 올리는 공고가 많다)
+cheongju:
+  base: "https://www.cbcje.go.kr:446"
+  boards:
+    - { kind: "school", menukey: 6426 }   # 구인정보 > 학교: 학교급이 '유치원'인 글
+    - { kind: "office", menukey: 6425 }   # 구인정보 > 교육지원청: 직무를 알아볼 수 있는 채용 글
+  list_count: 50
+  max_pages: 2
+  bootstrap_days: 90       # 처음 실행 때 이보다 오래된 글은 담지 않음
+  request_delay_sec: 1.5
+  timeout_sec: 30
+  # 채용이 아니라 결과를 알리는 글
+  exclude_words: ["합격자", "접수 결과", "접수결과", "위촉 예정자", "적격자 없음", "면접 안내", "면접시험 공고"]
+
 filters:
   # 게시판 '분류' 칸 값
   categories: ["유치원"]
@@ -36,11 +50,12 @@ filters:
   # 직무 유형: 위에서부터 먼저 맞는 것을 쓴다
   job_types:
     - { type: "자원봉사",   words: ["자원봉사", "봉사자", "온나누미"] }
-    - { type: "기간제교사", words: ["기간제", "계약제교원", "계약제 교원"] }
+    - { type: "교육공무직", words: ["교육공무직", "돌봄전담사", "실무사", "조리"] }
+    # '기간제'만으로는 판단하지 않는다 (교육공무직 '기간제근로자'가 많음)
+    - { type: "기간제교사", words: ["기간제교사", "기간제 교사", "기간제교원", "기간제 교원", "계약제교원", "계약제 교원", "담임교사"] }
     - { type: "대체교사",   words: ["대체교사", "대체 교사", "대체인력"] }
     - { type: "전일제강사", words: ["전일제강사", "전일제 강사"] }
     - { type: "방과후강사", words: ["방과후", "방가후", "방학 중 강사", "방학중 강사", "특성화"] }
-    - { type: "교육공무직", words: ["교육공무직", "돌봄전담사", "실무사", "조리"] }
     - { type: "시간강사",   words: ["시간강사", "시간제"] }
     - { type: "기타강사",   words: ["강사", "튜터"] }
 

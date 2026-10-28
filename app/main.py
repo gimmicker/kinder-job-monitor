@@ -11,6 +11,7 @@ import traceback
 from . import filters, mailer
 from .config import iso, load_places, load_settings, now_kst
 from .kinders import load_kinders, merge_places
+from .cheongju import CheongjuScraper, collect_cheongju, find_same
 from .parser import ParseError, parse_detail, parse_list
 from .scraper import Scraper, detail_url
 from .store import Store
@@ -84,6 +85,10 @@ def collect(scraper, store: Store, settings: dict, places: dict, now) -> dict:
         }
         if bootstrap and job["deadline"] and job["deadline"] < today:
             job["notified_at"] = "bootstrap"
+        dup = find_same(store, job, prefix="cj")
+        if dup:  # 청주교육지원청에서 먼저 받은 같은 공고 → 마감일 칸이 있는 이쪽으로 바꾼다
+            job["notified_at"] = job["notified_at"] or store.jobs[dup].get("notified_at")
+            del store.jobs[dup]
         store.jobs[pid] = job
         stats["new_count"] += 1
 
@@ -116,11 +121,24 @@ def main() -> int:
         run.update(stats)
         run["status"] = "partial" if stats["detail_errors"] else "success"
     except Exception as e:
-        reclassify(store, settings["filters"], places)  # 게시판이 안 열려도 분류 기준 변경은 반영
         run["status"] = "failed"
         run["error"] = f"{type(e).__name__}: {e}"[:500]
         traceback.print_exc()
         code = 1
+    # 두 번째 출처: 청주교육지원청. 한쪽이 실패해도 다른 쪽은 계속한다
+    cj = {}
+    try:
+        collect_cheongju(CheongjuScraper(settings["cheongju"], settings["source"]["user_agent"]),
+                         store, settings, now, cj)
+        run.update(cj)
+        if cj.get("detail_errors") and run["status"] == "success":
+            run["status"] = "partial"
+    except Exception as e:
+        run["cheongju_error"] = f"{type(e).__name__}: {e}"[:500]
+        traceback.print_exc()
+        if run["status"] == "success":
+            run["status"] = "partial"
+    reclassify(store, settings["filters"], places)  # 게시판이 안 열려도 분류 기준 변경은 반영
     finish = now_kst()
     run["finished_at"] = iso(finish)
     dropped = store.prune(finish.date(), settings["retention"]["drop_after_deadline_days"])
@@ -132,7 +150,9 @@ def main() -> int:
     store.save()
 
     summary = (f"[{run['status']}] 목록 {run.get('list_count', 0)}건, 유치원 {run.get('kinder_count', 0)}건, "
-               f"신규 {run.get('new_count', 0)}건, 변경 {run.get('changed_count', 0)}건")
+               f"신규 {run.get('new_count', 0)}건, 변경 {run.get('changed_count', 0)}건 / "
+               f"청주교육지원청 신규 {run.get('cj_new_count', 0)}건, 중복 {run.get('cj_duplicates', 0)}건"
+               + (f", 오류: {run['cheongju_error']}" if run.get("cheongju_error") else ""))
     print(summary)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as fh:

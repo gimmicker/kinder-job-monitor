@@ -4,3 +4,4 @@ lxml>=5.0
 PyYAML>=6.0
 pywebpush>=2.0
 pytest>=8.0
+olefile>=0.47
