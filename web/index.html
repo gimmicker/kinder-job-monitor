@@ -349,6 +349,9 @@
   // app/prefs.py의 is_mine과 같은 규칙: 아는 값이 고른 조건과 다를 때만 '내 조건 아님'
   const isMine = (j) => !((j.job_type && !PREFS.types.includes(j.job_type)) || (j.city && !PREFS.cities.includes(j.city)));
   let JOBS = [], STATUS = {}, installEvt = null;
+  // 게시판을 마지막으로 제대로 읽은 시각. 한두 번 접속 실패는 다음 확인 때 저절로 풀리니 따로 알리지 않는다
+  const checkedAt = () => STATUS.last_success_at || STATUS.last_checked_at;
+  const longFail = () => (STATUS.fail_streak || 0) >= 3;
   let curJob = null;
   let tab = "open", cat = "전체", query = "", listScroll = 0, loaded = false;
   let scope = store.get("scope", "mine"); // 목록: 내 조건(mine) / 전체(all)
@@ -503,7 +506,7 @@
       return `내 조건에 맞는 ${tab === "closed" ? "마감된" : "모집 중인"} 공고가 없어요.<br><button type="button" class="link" data-scope="all">전체 공고 보기</button>`;
     if (tab === "closed") return "마감된 공고가 없어요.";
     if (all) return "이 분류에는 모집 중인 공고가 없어요.";
-    return `지금 모집 중인 공고가 없어요.<br>새 공고가 올라오면 알림으로 알려드릴게요.<br><small>마지막 확인 ${fmtTime(STATUS.last_checked_at)}</small>`;
+    return `지금 모집 중인 공고가 없어요.<br>새 공고가 올라오면 알림으로 알려드릴게요.<br><small>마지막 확인 ${fmtTime(checkedAt())}</small>`;
   }
 
   // 목록 전체(검색창 포함)를 그린다. 검색 입력 중에는 renderCards만 다시 그려 키보드가 닫히지 않게 한다.
@@ -926,7 +929,7 @@
       <section class="set">
         <h3>${tf("ℹ️")} 앱 정보</h3>
         <dl>
-          <dt>마지막 확인</dt><dd>${fmtTime(STATUS.last_checked_at)}${STATUS.last_status === "failed" ? " (확인 실패)" : ""}</dd>
+          <dt>마지막 확인</dt><dd>${fmtTime(checkedAt())}${longFail() ? "<br><small>게시판 연결이 하루째 안 돼서 다시 시도하고 있어요</small>" : ""}</dd>
           <dt>확인 시간</dt><dd>평일 08:30 · 12:30 · 17:30</dd>
           <dt>공고</dt><dd>${JOBS.length}건 보관 중</dd>
         </dl>
@@ -1010,7 +1013,7 @@
       JOBS = await jr.json(); STATUS = await sr.json();
     } catch { JOBS = JOBS.length ? JOBS : []; }
     updateCounts();
-    $("#checked").innerHTML = `마지막 확인 ${fmtTime(STATUS.last_checked_at)}${STATUS.last_status === "failed" ? " · 확인 실패" : ""} ${ic("refresh")}`;
+    $("#checked").innerHTML = `마지막 확인 ${fmtTime(checkedAt())}${longFail() ? " · 연결 다시 시도 중" : ""} ${ic("refresh")}`;
     if (onList()) { const y = window.scrollY; renderList(!loaded && introDone); window.scrollTo(0, y); } else route();
     loaded = true;
     if (window.__dataReady) { window.__dataReady(); window.__dataReady = null; }

@@ -3,7 +3,7 @@ from datetime import datetime
 import pytest
 
 from app.config import KST
-from app.main import collect
+from app.main import collect, record_check
 from app.parser import ParseError
 from app.store import Store
 from tests.conftest import fixture_text
@@ -92,3 +92,13 @@ def test_pending_skips_notified_and_expired(store, settings):
     assert all(j["notified_at"] is None for j in pending)
     assert all(not j["deadline"] or j["deadline"] >= "2026-10-26" for j in pending)
     assert all(j["match_status"] in ("match", "review") for j in pending)
+
+
+def test_fail_streak_counts_and_resets():
+    st = {}
+    record_check(st, "success", "t1")
+    record_check(st, "failed", "t2")
+    record_check(st, "failed", "t3")
+    assert st["fail_streak"] == 2 and st["last_success_at"] == "t1" and st["last_checked_at"] == "t3"
+    record_check(st, "partial", "t4")
+    assert st["fail_streak"] == 0 and st["last_success_at"] == "t4"

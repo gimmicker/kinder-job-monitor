@@ -119,6 +119,16 @@ def settings_skip_cj() -> bool:
     return bool(load_settings().get("cheongju", {}).get("skip_on_github", True))
 
 
+def record_check(status: dict, result: str, at: str) -> None:
+    """충북교육청 확인 결과 기록. 화면에는 하루치(3번) 연속 실패일 때만 알린다."""
+    status.update({"last_checked_at": at, "last_status": result})
+    if result != "failed":
+        status["last_success_at"] = at
+        status["fail_streak"] = 0
+    else:
+        status["fail_streak"] = status.get("fail_streak", 0) + 1
+
+
 def main(argv=None) -> int:
     argv = argv if argv is not None else sys.argv[1:]
     only_cj = "--only-cheongju" in argv
@@ -167,9 +177,7 @@ def main(argv=None) -> int:
     if only_cj:
         store.status["cheongju_checked_at"] = iso(finish)
     else:
-        store.status.update({"last_checked_at": iso(finish), "last_status": run["status"]})
-        if run["status"] != "failed":
-            store.status["last_success_at"] = iso(finish)
+        record_check(store.status, run["status"], iso(finish))
     store.save()
 
     summary = (f"[{run['status']}] 목록 {run.get('list_count', 0)}건, 유치원 {run.get('kinder_count', 0)}건, "
