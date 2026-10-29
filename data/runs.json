@@ -200,5 +200,13 @@
   "pruned": 0,
   "started_at": "2026-10-29T11:43:00+09:00",
   "status": "success"
+ },
+ {
+  "cheongju": "skipped (해외 접속 차단, PC에서 수집)",
+  "error": "RuntimeError: 요청 실패 https://pool.cbe.go.kr/cbe/na/ntt/selectNttList.do {'bbsId': '1798', 'mi': '11716', 'currPage': 1, 'listCo': 50}: HTTPSConnectionPool(host='pool.cbe.go.kr', port=443): Max retries exceeded with url: /cbe/na/ntt/selectNttList.do?bbsId=1798&mi=11716&currPage=1&listCo=50 (Caused by ConnectTimeoutError(<HTTPSConnection(host='pool.cbe.go.kr', port=443) at 0x7f8a8e599df0>, 'Connection to pool.cbe.go.kr timed out. (connect timeout=20)'))",
+  "finished_at": "2026-10-29T19:16:14+09:00",
+  "pruned": 0,
+  "started_at": "2026-10-29T19:14:43+09:00",
+  "status": "failed"
  }
 ]
