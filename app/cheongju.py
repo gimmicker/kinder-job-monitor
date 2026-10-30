@@ -118,12 +118,19 @@ def _norm(title: str) -> str:
     return _NOISE.sub("", title or "")
 
 
+def _rounds(job: dict) -> set[str]:
+    """제목의 차수. '1차'는 안 쓴 것과 같다 (한쪽 게시판에만 '(1차)'를 붙이는 경우가 있다)."""
+    return set(re.findall(r"(\d+)\s*차", job.get("title") or "")) - {"1"}
+
+
 def same_post(a: dict, b: dict) -> bool:
     """제목이 거의 같고 등록일이 열흘 안이면 같은 공고. 차수(2차·3차)가 다르면 다른 공고."""
+    one = re.compile(r"\(?\s*(?<!\d)1\s*차\s*\)?")  # '(1차)'만, '11차'는 그대로
+    a, b = {**a, "title": one.sub("", a.get("title") or "")}, {**b, "title": one.sub("", b.get("title") or "")}
     ta, tb = _norm(a.get("title") or ""), _norm(b.get("title") or "")
     if not ta or not tb:
         return False
-    if re.findall(r"(\d+)차", a.get("title") or "") != re.findall(r"(\d+)차", b.get("title") or ""):
+    if _rounds(a) != _rounds(b):
         return False
     pa, pb = a.get("posted_at"), b.get("posted_at")
     if pa and pb and abs((date.fromisoformat(pa) - date.fromisoformat(pb)).days) > 10:

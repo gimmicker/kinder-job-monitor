@@ -8,11 +8,13 @@ import os
 import re
 import sys
 import traceback
+from datetime import date
 
 from . import filters, mailer
 from .config import iso, load_places, load_settings, now_kst
 from .kinders import load_kinders, merge_places
-from .cheongju import CheongjuScraper, collect_cheongju, find_same
+from .cheongju import CheongjuScraper, collect_cheongju, find_same, same_post
+from .docs import find_deadline
 from .parser import ParseError, parse_detail, parse_list
 from .scraper import Scraper, detail_url
 from .store import Store
@@ -53,9 +55,11 @@ def collect(scraper, store: Store, settings: dict, places: dict, now) -> dict:
         job = store.jobs.get(pid)
         if job:
             job["last_seen_at"] = iso(now)
-            changed = [k for k in TRACKED if row.get(k) != job.get(k)]
+            board = {**job, "deadline": job.get("deadline_board") or job.get("deadline")}
+            changed = [k for k in TRACKED if row.get(k) != board.get(k)]
             if changed:
                 job.update({k: row.get(k) for k in TRACKED})
+                job.pop("deadline_board", None)  # 아래 reclassify에서 본문과 다시 비교
                 job["changed_at"] = iso(now)
                 stats["changed_count"] += 1
             continue
@@ -104,11 +108,45 @@ def reclassify(store: Store, f: dict, places: dict) -> None:
         cls = filters.classify(row, f, places, job.get("body", ""))
         if job.get("detail_error") and cls["match_status"] == "not_match" and cls["region"] == "미상":
             cls["match_status"] = "review"
-        if job.get("deadline_detail") and job.get("deadline") and job["deadline_detail"] != job["deadline"]:
+        apply_body_deadline(job)
+        board = job.get("deadline_board") or job.get("deadline")
+        if job.get("deadline_detail") and board and job["deadline_detail"] != board:
             if cls["match_status"] == "match":
                 cls["match_status"] = "review"
-            cls["reason"] += f" · 마감일 불일치(목록 {job['deadline']}, 본문 {job['deadline_detail']})"
+            cls["reason"] += f" · 마감일 불일치(목록 {board}, 본문 {job['deadline_detail']})"
         job.update(cls)
+
+
+def apply_body_deadline(job: dict) -> None:
+    """충북교육청 게시판 마감일 칸보다 공고 본문의 접수 마감일이 이르면 본문 날짜를 쓴다.
+    (게시 기간을 마감일 칸에 넣는 학교가 있다. 늦게 알면 지원을 놓친다.)"""
+    if job.get("source"):
+        return  # 청주교육지원청 공고는 처음부터 본문·첨부에서 읽는다
+    board = job.get("deadline_board") or job.get("deadline")
+    body_dl = None
+    if board and job.get("posted_at") and job.get("body"):
+        body_dl = find_deadline(job["body"], date.fromisoformat(job["posted_at"]))
+    if body_dl and body_dl < board:
+        job.update({"deadline": body_dl, "deadline_board": board, "deadline_source": "본문"})
+    elif job.get("deadline_board"):
+        job["deadline"] = job.pop("deadline_board")
+        job.pop("deadline_source", None)
+
+
+def merge_duplicates(store: Store) -> int:
+    """두 게시판에 같이 올라온 공고는 충북교육청 쪽 하나만 남긴다 (이미 알렸으면 그 기록을 옮긴다)."""
+    pool = [j for k, j in store.jobs.items() if not k.startswith("cj")]
+    drop = []
+    for k, cj in store.jobs.items():
+        if not k.startswith("cj"):
+            continue
+        same = next((p for p in pool if same_post(cj, p)), None)
+        if same:
+            same["notified_at"] = same.get("notified_at") or cj.get("notified_at")
+            drop.append(k)
+    for k in drop:
+        del store.jobs[k]
+    return len(drop)
 
 
 class _Skip(Exception):
@@ -168,6 +206,7 @@ def main(argv=None) -> int:
         traceback.print_exc()
         if run["status"] == "success":
             run["status"] = "partial"
+    run["merged"] = merge_duplicates(store)
     reclassify(store, settings["filters"], places)  # 게시판이 안 열려도 분류 기준 변경은 반영
     finish = now_kst()
     run["finished_at"] = iso(finish)

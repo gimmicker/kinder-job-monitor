@@ -569,6 +569,7 @@
         ${j.job_type ? `<span class="chip type">${esc(typeName(j.job_type))}</span>` : ""}</div>
       <h2>${esc(j.institution || j.author || "기관 확인 필요")}<span>${esc(jobDesc(j))}</span></h2>
       ${j.deadline_source === "첨부 공고문" ? `<p class="dlnote">마감일은 첨부 공고문에서 자동으로 읽었어요. 원문에서 한 번 더 확인해 주세요.</p>` : ""}
+      ${j.deadline_board ? `<p class="dlnote">게시판 마감일은 ${fmtDate(j.deadline_board)}이지만, 공고문에는 접수가 ${fmtDate(j.deadline)}까지로 적혀 있어요. 원문에서 확인해 주세요.</p>` : ""}
       ${!j.deadline ? `<p class="dlnote">마감일을 자동으로 찾지 못했어요. 원문·첨부에서 확인해 주세요.</p>` : ""}
       <div class="bigdl"><b class="${d.cls}">${d.past ? "마감" : d.short}</b><span>${d.long}</span></div>
       <div class="why ${isMine(j) ? "" : "other"}"><b>${isMine(j) ? "내 조건에 맞아요" : "내 조건과 달라요"}</b>${esc(why(j))}</div>
