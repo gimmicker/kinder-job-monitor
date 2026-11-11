@@ -537,5 +537,18 @@
   "pruned": 1,
   "started_at": "2026-11-11T01:32:44+09:00",
   "status": "success"
+ },
+ {
+  "changed_count": 0,
+  "cheongju": "skipped (해외 접속 차단, PC에서 수집)",
+  "detail_errors": 0,
+  "finished_at": "2026-11-11T11:56:40+09:00",
+  "kinder_count": 41,
+  "list_count": 50,
+  "new_count": 2,
+  "pages": 1,
+  "pruned": 0,
+  "started_at": "2026-11-11T11:56:30+09:00",
+  "status": "success"
  }
 ]
