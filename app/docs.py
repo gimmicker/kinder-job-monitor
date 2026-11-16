@@ -103,6 +103,8 @@ def find_deadline(text: str, posted: date) -> str | None:
                 mo, dd = (d.group(1), d.group(2)) if d.group(1) else (d.group(3), d.group(4))
                 dates.append((d.start(), posted.year, int(mo), int(dd)))
         dates.sort()
+        if re.search(r"~\s*(채용|충원|선발|모집|마감)\s*(시|될\s*때)\s*까지", seg):
+            continue  # 끝이 정해지지 않은 기간
         for _, y, mo, dd in dates:
             try:
                 cand = date(y, mo, dd)

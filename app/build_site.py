@@ -16,7 +16,7 @@ from .prefs import CITIES, default_prefs, job_city, job_types
 
 PUBLIC_FIELDS = ["post_id", "url", "title", "category", "author", "institution", "posted_at", "deadline",
                  "deadline_detail", "attachments", "image_count", "match_status", "reason", "job_type",
-                 "region", "first_seen_at", "changed_at", "detail_error", "source", "deadline_source"]
+                 "region", "first_seen_at", "changed_at", "detail_error", "source", "deadline_source", "deadline_board"]
 
 
 def build(out: Path) -> None:

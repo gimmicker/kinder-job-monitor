@@ -3,7 +3,7 @@ from datetime import datetime
 import pytest
 
 from app.config import KST
-from app.main import collect
+from app.main import collect, record_check
 from app.parser import ParseError
 from app.store import Store
 from tests.conftest import fixture_text
@@ -92,3 +92,27 @@ def test_pending_skips_notified_and_expired(store, settings):
     assert all(j["notified_at"] is None for j in pending)
     assert all(not j["deadline"] or j["deadline"] >= "2026-10-26" for j in pending)
     assert all(j["match_status"] in ("match", "review") for j in pending)
+
+
+def test_fail_streak_counts_and_resets():
+    st = {}
+    record_check(st, "success", "t1")
+    record_check(st, "failed", "t2")
+    record_check(st, "failed", "t3")
+    assert st["fail_streak"] == 2 and st["last_success_at"] == "t1" and st["last_checked_at"] == "t3"
+    record_check(st, "partial", "t4")
+    assert st["fail_streak"] == 0 and st["last_success_at"] == "t4"
+
+
+def test_merge_duplicates_and_body_deadline(store):
+    from app.main import apply_body_deadline, merge_duplicates
+    t = "2026학년도 오송솔미유치원 겨울방학 중 방과후과정 강사 채용 공고"
+    store.jobs["1581507"] = {"post_id": "1581507", "title": t, "posted_at": "2026-10-30", "deadline": "2026-11-06",
+                             "notified_at": None, "body": "4 . 서류 접수 및 제출 가 . 서류 접수 : 2026. 10. 30.( 금 ) ~ 11. 4.( 수 ) 15:00 까지"}
+    store.jobs["cj6426-1"] = {"post_id": "cj6426-1", "title": t + "(1차)", "posted_at": "2026-10-30", "notified_at": "x"}
+    assert merge_duplicates(store) == 1 and list(store.jobs) == ["1581507"]
+    j = store.jobs["1581507"]
+    assert j["notified_at"] == "x"
+    apply_body_deadline(j)
+    apply_body_deadline(j)  # 여러 번 돌려도 같다
+    assert (j["deadline"], j["deadline_board"], j["deadline_source"]) == ("2026-11-04", "2026-11-06", "본문")

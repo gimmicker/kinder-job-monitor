@@ -44,6 +44,7 @@
 |------|----|------|
 | 게시판 후보 A | `https://pool.cbe.go.kr/cbe/na/ntt/selectNttList.do?bbsId=1798` | 검색으로 확인됨 |
 | 게시판 후보 B | `https://mpool.cbe.go.kr/cbe/na/ntt/selectNttList.do?bbsId=1798&mi=11716` | 이전 경로 |
+| 기간제 채용공고 | `https://www.cbe.go.kr/mpool/na/ntt/selectNttList.do?bbsId=1091&mi=12127` | 2026-11-16 추가. 1798과 다른 글. 지역·구분 칸, 마감일 칸 없음(본문·첫 HWP 첨부에서 읽음, 첨부는 POST `/comm/nttFileDownload.do?fileKey=`) |
 | 목록 컬럼 | 분류, 제목, 작성자, 등록일, 마감일 | DOM 확인 필요 |
 
 **0단계 확인 결과 (2026-10-26)**

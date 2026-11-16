@@ -134,3 +134,14 @@ def test_chungbuk_post_replaces_earlier_cheongju_copy(store, settings):
     assert "cj6426-1" not in store.jobs
     kept = [j for j in store.jobs.values() if j["title"] == pool_title]
     assert len(kept) == 1 and kept[0]["notified_at"] == "2026-10-26T12:00:00+09:00"  # 다시 알리지 않음
+
+
+def test_first_round_mark_matches_unmarked_title():
+    a = {"title": "2026학년도 오송솔미유치원 겨울방학 중 방과후과정 강사 채용 공고(1차)", "posted_at": "2026-10-30"}
+    b = {"title": "2026학년도 오송솔미유치원 겨울방학 중 방과후과정 강사 채용 공고", "posted_at": "2026-10-30"}
+    assert same_post(a, b)
+    assert not same_post(a, {**b, "title": b["title"] + "(2차)"})
+
+
+def test_open_ended_period_is_not_deadline():
+    assert find_deadline("1) 기 간 : 2026. 8. 10.( 월 ) ~ 채용시까지 - 필요에 따라", date(2026, 8, 10)) is None

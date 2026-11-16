@@ -1,6 +1,6 @@
 """수집 → 분류 → 저장. 알림은 사이트 배포 후 app.push가 따로 보낸다.
 
-사용: python -m app.main                  두 출처 모두 (GitHub Actions에서는 충북교육청만)
+사용: python -m app.main                  세 출처 모두 (GitHub Actions에서는 충북교육청만)
       python -m app.main --only-cheongju   청주교육지원청만 (한국 인터넷에서, scripts/sync_cheongju.py가 부른다)
 종료 코드: 0 성공/부분 성공, 1 실패(데이터는 저장됨)
 """
@@ -8,11 +8,14 @@ import os
 import re
 import sys
 import traceback
+from datetime import date
 
 from . import filters, mailer
 from .config import iso, load_places, load_settings, now_kst
 from .kinders import load_kinders, merge_places
-from .cheongju import CheongjuScraper, collect_cheongju, find_same
+from .cheongju import CheongjuScraper, collect_cheongju, find_same, same_post
+from .docs import find_deadline
+from .hire import HireScraper, collect_hire
 from .parser import ParseError, parse_detail, parse_list
 from .scraper import Scraper, detail_url
 from .store import Store
@@ -53,9 +56,11 @@ def collect(scraper, store: Store, settings: dict, places: dict, now) -> dict:
         job = store.jobs.get(pid)
         if job:
             job["last_seen_at"] = iso(now)
-            changed = [k for k in TRACKED if row.get(k) != job.get(k)]
+            board = {**job, "deadline": job.get("deadline_board") or job.get("deadline")}
+            changed = [k for k in TRACKED if row.get(k) != board.get(k)]
             if changed:
                 job.update({k: row.get(k) for k in TRACKED})
+                job.pop("deadline_board", None)  # 아래 reclassify에서 본문과 다시 비교
                 job["changed_at"] = iso(now)
                 stats["changed_count"] += 1
             continue
@@ -100,15 +105,55 @@ def collect(scraper, store: Store, settings: dict, places: dict, now) -> dict:
 def reclassify(store: Store, f: dict, places: dict) -> None:
     """설정·기관 목록이 바뀌어도 반영되도록 저장된 공고 전체를 다시 분류 (네트워크 없음)."""
     for job in store.jobs.values():
-        row = {"title": job["title"], "category": job["category"], "author": job.get("author") or ""}
+        row = {"title": job["title"], "category": job["category"], "author": job.get("author") or "",
+               "board_region": job.get("board_region")}
         cls = filters.classify(row, f, places, job.get("body", ""))
         if job.get("detail_error") and cls["match_status"] == "not_match" and cls["region"] == "미상":
             cls["match_status"] = "review"
-        if job.get("deadline_detail") and job.get("deadline") and job["deadline_detail"] != job["deadline"]:
+        apply_body_deadline(job)
+        board = job.get("deadline_board") or job.get("deadline")
+        if job.get("deadline_detail") and board and job["deadline_detail"] != board:
             if cls["match_status"] == "match":
                 cls["match_status"] = "review"
-            cls["reason"] += f" · 마감일 불일치(목록 {job['deadline']}, 본문 {job['deadline_detail']})"
+            cls["reason"] += f" · 마감일 불일치(목록 {board}, 본문 {job['deadline_detail']})"
         job.update(cls)
+
+
+def apply_body_deadline(job: dict) -> None:
+    """충북교육청 게시판 마감일 칸보다 공고 본문의 접수 마감일이 이르면 본문 날짜를 쓴다.
+    (게시 기간을 마감일 칸에 넣는 학교가 있다. 늦게 알면 지원을 놓친다.)"""
+    if job.get("source"):
+        return  # 청주교육지원청 공고는 처음부터 본문·첨부에서 읽는다
+    board = job.get("deadline_board") or job.get("deadline")
+    body_dl = None
+    if board and job.get("posted_at") and job.get("body"):
+        body_dl = find_deadline(job["body"], date.fromisoformat(job["posted_at"]))
+    if body_dl and body_dl < board:
+        job.update({"deadline": body_dl, "deadline_board": board, "deadline_source": "본문"})
+    elif job.get("deadline_board"):
+        job["deadline"] = job.pop("deadline_board")
+        job.pop("deadline_source", None)
+
+
+def _rank(key: str) -> int:
+    """같은 공고가 여러 게시판에 있으면 남길 순서: 학교구인정보(마감일 칸 있음) → 기간제 채용공고 → 청주교육지원청."""
+    return 2 if key.startswith("cj") else 1 if key.startswith("kj") else 0
+
+
+def merge_duplicates(store: Store) -> int:
+    """여러 게시판에 같이 올라온 공고는 하나만 남긴다 (이미 알렸으면 그 기록을 옮긴다)."""
+    drop = set()
+    for k, job in store.jobs.items():
+        if _rank(k) == 0:
+            continue
+        keep = next((o for ok, o in store.jobs.items()
+                     if ok not in drop and _rank(ok) < _rank(k) and same_post(job, o)), None)
+        if keep:
+            keep["notified_at"] = keep.get("notified_at") or job.get("notified_at")
+            drop.add(k)
+    for k in drop:
+        del store.jobs[k]
+    return len(drop)
 
 
 class _Skip(Exception):
@@ -117,6 +162,16 @@ class _Skip(Exception):
 
 def settings_skip_cj() -> bool:
     return bool(load_settings().get("cheongju", {}).get("skip_on_github", True))
+
+
+def record_check(status: dict, result: str, at: str) -> None:
+    """충북교육청 확인 결과 기록. 화면에는 하루치(3번) 연속 실패일 때만 알린다."""
+    status.update({"last_checked_at": at, "last_status": result})
+    if result != "failed":
+        status["last_success_at"] = at
+        status["fail_streak"] = 0
+    else:
+        status["fail_streak"] = status.get("fail_streak", 0) + 1
 
 
 def main(argv=None) -> int:
@@ -141,6 +196,18 @@ def main(argv=None) -> int:
             run["error"] = f"{type(e).__name__}: {e}"[:500]
             traceback.print_exc()
             code = 1
+        # 세 번째 출처: 기간제 채용공고. 실패해도 다른 출처는 계속한다
+        kj = {}
+        try:
+            collect_hire(HireScraper(settings["hire"], settings["source"]["user_agent"]), store, settings, now, kj)
+            run.update(kj)
+            if kj.get("detail_errors") and run["status"] == "success":
+                run["status"] = "partial"
+        except Exception as e:
+            run["hire_error"] = f"{type(e).__name__}: {e}"[:500]
+            traceback.print_exc()
+            if run["status"] == "success":
+                run["status"] = "partial"
     # 두 번째 출처: 청주교육지원청. 한쪽이 실패해도 다른 쪽은 계속한다
     cj = {}
     try:
@@ -158,6 +225,7 @@ def main(argv=None) -> int:
         traceback.print_exc()
         if run["status"] == "success":
             run["status"] = "partial"
+    run["merged"] = merge_duplicates(store)
     reclassify(store, settings["filters"], places)  # 게시판이 안 열려도 분류 기준 변경은 반영
     finish = now_kst()
     run["finished_at"] = iso(finish)
@@ -167,13 +235,13 @@ def main(argv=None) -> int:
     if only_cj:
         store.status["cheongju_checked_at"] = iso(finish)
     else:
-        store.status.update({"last_checked_at": iso(finish), "last_status": run["status"]})
-        if run["status"] != "failed":
-            store.status["last_success_at"] = iso(finish)
+        record_check(store.status, run["status"], iso(finish))
     store.save()
 
     summary = (f"[{run['status']}] 목록 {run.get('list_count', 0)}건, 유치원 {run.get('kinder_count', 0)}건, "
                f"신규 {run.get('new_count', 0)}건, 변경 {run.get('changed_count', 0)}건 / "
+               f"기간제 채용공고 신규 {run.get('kj_new_count', 0)}건, 중복 {run.get('kj_duplicates', 0)}건"
+               + (f", 오류: {run['hire_error']}" if run.get("hire_error") else "") + " / "
                f"청주교육지원청 신규 {run.get('cj_new_count', 0)}건, 중복 {run.get('cj_duplicates', 0)}건"
                + (f", 오류: {run['cheongju_error']}" if run.get("cheongju_error") else ""))
     print(summary)

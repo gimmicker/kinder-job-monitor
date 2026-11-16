@@ -37,7 +37,8 @@ def _starts(words, base):
     return next((w for w in words if base.startswith(w)), None)
 
 
-def region(title: str, author: str, body: str, f: dict, places: dict) -> tuple[str, str]:
+def region(title: str, author: str, body: str, f: dict, places: dict,
+           board_region: str | None = None) -> tuple[str, str]:
     """('청주' | '기타' | '미상', 근거). 순서는 settings.yaml 주석 참고."""
     r = f["region"]
     insts = institutions(title, author)
@@ -59,6 +60,8 @@ def region(title: str, author: str, body: str, f: dict, places: dict) -> tuple[s
     w = _any(r["other_names"], head)
     if w:
         return "기타", f"'{w}' 포함"
+    if board_region:  # 게시판 '지역' 칸 (여러 지역이면 청주가 하나라도 있을 때 청주)
+        return ("청주" if "청주" in board_region else "기타"), f"게시판 지역 칸: {board_region}"
     w = _any(r["cheongju_words"], body or "")
     if w:
         return "청주", f"본문에 '{w}'"
@@ -81,7 +84,7 @@ def institution_name(row: dict) -> str | None:
 def classify(row: dict, f: dict, places: dict, body: str = "") -> dict:
     title = row.get("title", "")
     jt = job_type(title, f)
-    reg, reg_reason = region(title, row.get("author", ""), body, f, places)
+    reg, reg_reason = region(title, row.get("author", ""), body, f, places, row.get("board_region"))
 
     if not is_kindergarten(row, f):
         status, reason = "not_match", "유치원 공고 아님"
