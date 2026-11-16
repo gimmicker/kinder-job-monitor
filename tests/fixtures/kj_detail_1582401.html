@@ -1,0 +1,1391 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+	
+	 
+	 
+	 
+	
+	
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
+
+<title>
+	
+		
+		
+			
+				
+				
+				
+				
+				
+				
+				
+				충북교육청 기간제교사인력풀시스템
+			
+		
+		
+</title>
+<link rel=" shortcut icon" href="/resource/images/favicon.ico">
+<link rel="icon" href="/resource/images/favicon.ico">
+
+<!-- 공통파일 CSS -->
+<link rel="stylesheet" href="/resource/css/jquery.mCustomScrollbar.min.css" media="all">
+
+<!-- 레이아웃 CSS -->
+
+	
+		
+		
+			<link rel="stylesheet" href="/resource/css/con_com.css" media="all">
+		
+	
+
+<link rel="stylesheet" href="/resource/css/up_pop.css" media="all">
+<link rel="stylesheet" href="/resource/css/quickmenu.css" media="all">
+<link rel="stylesheet" href="/resource/css/layout.css" media="all">
+<link rel="stylesheet" href="/css/template/TD_B002/TD_B002_layout.css" media="all">
+
+<!-- [P] 서브메인페이지인 경우에만 생성되는 조건식 -->
+
+
+<!-- [P] 서브페이지인 경우에만 생성되는 조건식 -->
+
+	<link rel="stylesheet" href="/css/template/TD_B002/sub.css" media="all">
+	<link rel="stylesheet" href="/resource/css/board.css" media="all">
+	<link rel="stylesheet" href="/resource/css/sub_com.css" media="all">
+
+
+<!-- [P] 메인페이지인 경우에만 생성되는 조건식 -->
+	
+
+<!-- 레이아웃 커스텀 CSS -->
+
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+	
+<!-- 공통파일 js -->
+<script src="/resource/js/jquery.min.js"></script>
+<script src="/resource/js/jquery.fullPage.js"></script>
+<script src="/resource/js/jquery.mCustomScrollbar.js"></script>
+<script src="/resource/js/slick.js"></script>
+<script src="/resource/js/modernizr-2.6.2.min.js"></script>
+<script src="/resource/js/con_com.js"></script>
+<script src="/resource/js/common.js"></script>
+<script src="/common/js/jquery-ui.min.js"></script>
+<script src="/common/js/jquery.form.min.js"></script>
+<!-- 레이아웃 js -->
+<script src="/js/template/TD_B002/sub.js"></script>	
+<script type="text/javascript" src="/js/common.js"></script>
+
+<!-- 타임아웃 -->
+
+
+<script language="JavaScript" type="text/JavaScript">
+document.oncontextmenu = function anonymous() { alert('마우스 오른쪽 버튼은 사용하실 수 없습니다'); return false; } ;
+</script>
+
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "1ceadb13a8814b0";
+if(window.wcs) {
+  wcs_do();
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "EducationalOrganization",
+	"name": "충청북도교육청",
+	"url": "https://www.cbe.go.kr",
+	"sameAs": [
+		"https://www.facebook.com/chungbuk.edu",
+		"https://www.youtube.com/@실력다짐충북교육",
+		"https://instagram.com/cb_edugram"
+	]
+}
+</script>
+
+	<script src="/common/js/jquery-ui.min.js"></script>
+</head>
+<body>
+<!-- 세션 타임아웃 체크 -->
+<div id="seout"></div>
+<!-- 세션 타임아웃 체크 -->
+<!-- 바로가기 -->
+<div id="skipArea"> 
+	<a href="#subContent">본문으로 바로가기</a>
+	<a href="#gnb">메인메뉴 바로가기</a>
+</div>
+<!-- //바로가기 -->
+<div id="wrap">
+	
+	
+		 
+	<script src="/js/template/TD_B002/layout.js"></script>	
+
+<script>
+ $(function (){
+	
+	var popCookieimsi = getCookie("popCookieimsiPop01");
+	if(popCookieimsi == "hide"){
+		$(".new_pop_up").remove();
+		var openCheck =  $(".mHeader").attr("class");
+		if(openCheck.indexOf("pop_open") > 0){
+			$(".mHeader").removeClass("pop_open");
+		}
+	}else{
+		$(".new_pop_up").addClass("pop_open");
+		$(".mHeader").addClass("pop_open");
+	}
+	
+	//팝업 닫기(쿠키설정) 임시
+	$(document).on('click', '#oneday', function(e) {
+		if ($("input[name=oneday]").is(":checked") == true) {
+			$("#oneday").val("Y"); 
+	    }
+		else {
+			$("#oneday").val("N");
+		}
+	});
+	
+	$(document).on('click', '.imsiPopClose', function(e) {
+		if($("#oneday").val() == "Y") {
+			setCookie("popCookieimsiPop01", "hide");
+		}
+		
+		$(".new_pop_up").removeClass("pop_open");
+		$(".mHeader").removeClass("pop_open");
+		
+	}); 
+	
+	$(document).on('click', '.oneday > .imsiPopClose', function(e) {
+		$(".new_pop_up").removeClass("pop_open");
+		$(".mHeader").removeClass("pop_open");
+	}); 
+	//팝업 닫기(쿠키설정) 임시
+	
+	
+	$(document).on('keydown', '#oneday', function(key) {
+		if (key.keyCode == 13) {
+			if ($("input[name=oneday]").is(":checked") == true) {
+				$("input[name=oneday]").prop("checked",false);
+				$("#oneday").val("N"); 
+		    }
+			else {
+				$("input[name=oneday]").prop("checked",true);
+				$("#oneday").val("Y");
+			}
+		}
+	});
+
+	// 상단 팝업활성화시 레이아웃
+	
+	if($('.new_pop_up').hasClass('pop_open')){
+		$('.wrap').addClass('wrap_popNear');
+	}
+	$('.new_pop_up .close a').click(function(){
+		$('.wrap').removeClass('wrap_popNear');
+	});
+	
+}) 
+
+	//메뉴스크랩
+	var menuScrap = function() {
+		if(document.location.href.indexOf("mi") == -1) {
+			alert("현재 페이지는 메뉴스크랩이 불가한 페이지입니다.");
+			return false;
+		}
+		else {
+			var para =  document.location.href.split("?");
+			var str = para[1].split("&");
+			var mi = "";
+			
+			for(var i=0; i<str.length; i++) {
+				if(str[i].indexOf('mi=') == 0){
+					mi = str[i].substring(3);
+					
+					$.ajax({
+					 	type : "POST", 
+					 	data : {
+					 		mi : mi
+					 		//,domn : window.location.hostname
+					 	},
+						url : "/mpool/ad/func/myPage/menuScrapInsert.do",
+						dataType : "json",
+						success : function(result){
+							if(result.loginYn == 'N') {
+								alert("로그인이 필요한 서비스입니다. 로그인 후 이용해주세요.");
+							} else {
+								if (result.resultAt == 'Y'){
+									alert("현재 페이지 메뉴스크랩이 완료되었습니다. 마이페이지에서 확인해주세요.");
+									location.href = result.menuUrl;
+								} else if(result.resultAt == 'N'){
+									alert("메뉴스크랩 중 오류가 발생했습니다.\n관리자에게 문의해주세요.");
+								}
+							}
+						},
+						error  : function(data){
+							alert("오류가 발생했습니다.\n관리자에게 문의해주세요.");
+					 	}
+					});
+				}
+			}
+		}
+	}
+
+	//마이페이지 이동
+	var goMyPage = function(){
+		location.href="/mpool/ad/func/myPage/myPageInfo.do";
+	}
+
+</script>
+
+	<!-- 상단팝업 
+	<div class="new_pop_up">
+		<div class="popup_wrap">
+			<p class="txt"><span></span></p>
+			<p class="close ar">
+				<label for="oneday">
+					<input type="checkbox" name="oneday" id="oneday" value="N" title="오늘하루열지않기">
+					오늘하루열지않기
+				</label>
+				<a href="javascript:void(0);" class="imsiPopClose" title="닫기"><i class="xi-close"></i></a>
+			</p>
+		</div>
+	</div>-->		
+	<!-- //상단팝업 -->
+
+	<!-- header--> 
+	<!-- main/sub header 구분-->
+	<header id="header" class="subLayout">
+		<div class="hdt_link">
+			<div class="link">
+				<a href="/cbe/main.do"><i class="xi-home" aria-hidden="true"></i>충북교육청</a>
+			</div>
+			<div class="util">
+				<ul>
+					<li><a href="/mpool/main.do">홈으로</a></li>
+					<li class="login">
+							<!-- 로그인 전 -->
+							<a href="/cbe/lo/login/loginPage.do"><i class="xi-lock-o" aria-hidden="true"></i>로그인</a>
+							<!-- // 로그인 전 -->
+
+							<!-- 로그인 후 -->
+							<!-- //로그인 후 -->				
+						</li>
+						
+						<!-- 로그인 후 -->
+						<li><a href="javaScript:menuScrap();"><i class="xi-star-o" aria-hidden="true"></i>메뉴스크랩</a></li>
+						<!-- //로그인 후 -->
+				</ul>
+			</div>
+		</div>
+
+		<div class="header_wrap">
+			<h1 class="logo"><a href="/mpool/main.do"><img src="/upload/ap/sm/2022/11/958452/img_61236583-660f-4760-997e-6bb0d7b2ed731667293854539.png" alt="충청북도교육청 기간제교사인력풀시스템"></a></h1>
+			<!-- 로고 + 텍스트 타입 사용 시 -->
+			<!-- <h1 class="logo"><a href=""><img src="/images/template/TD_B002/layout/logo.png" alt="충북행복교육지구" class="web"><img src="/images/template/TD_B002/layout/m_logo.png" alt="" class="mob"><span>제천행복교육지구</span></a></h1> -->
+			<!-- //로고 + 텍스트 타입 사용 시 -->
+	
+			<!-- NAV : fullDown / oneDown / oneFull -->
+			<div id="nav" class="fullDown">
+			<!--START-->
+				<div id="gnb">
+					<div class="depth01">
+						<ul>
+							<li><a href="/mpool/cm/cntnts/cntntsView.do?mi=12125&cntntsId=35997"><span>인력풀제 운영 안내</span></a>
+								<div class="depth02">
+									<div class="titBox">
+										<p>
+											<strong>인력풀제 운영 안내</strong>
+											<span>지속가능한 충북교육</span>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li><a href="/mpool/na/ntt/selectNttList.do?mi=12130&bbsId=1090" title="닫힘"><span>게시판</span></a>
+								<div class="depth02">
+									<div class="titBox">
+										<p>
+											<strong>게시판</strong>
+											<span>지속가능한 충북교육</span>
+										</p>
+									</div>
+									<ul>
+										<li><a href="/mpool/na/ntt/selectNttList.do?mi=12130&bbsId=1090"><span>요청게시판</span></a>
+							</li>
+										<li><a href="/mpool/na/ntt/selectNttList.do?mi=12131&bbsId=1089"><span>자기소개 게시판</span></a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/mpool/na/ntt/selectNttList.do?mi=12127&bbsId=1091" class="now"><span>기간제 채용공고</span></a>
+								<div class="depth02">
+									<div class="titBox">
+										<p>
+											<strong>기간제 채용공고</strong>
+											<span>지속가능한 충북교육</span>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li><a href="#check" onclick="menuAccessCheck('12128', 'mpool', this)"><span>인력풀 등록 신청</span></a>
+								<div class="depth02">
+									<div class="titBox">
+										<p>
+											<strong>인력풀 등록 신청</strong>
+											<span>지속가능한 충북교육</span>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li><a href="/mpool/ad/hm/hnfpUserApplList.do?hnfpNo=1321&mi=12129"><span>강사 인력풀 목록</span></a>
+								<div class="depth02">
+									<div class="titBox">
+										<p>
+											<strong>강사 인력풀 목록</strong>
+											<span>지속가능한 충북교육</span>
+										</p>
+									</div>
+								</div>
+							</li>
+				</div>
+							</li>
+				</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			<!--END-->
+			</div><!--  / ,, / -->
+			<!-- //NAV : fullDown / oneDown / oneFull -->
+			<!-- moblie button-->
+			<div class="h_btn">		
+				<a href="" class="mSearch" id="mSearchOpen"><span class="hid">검색창 열기(상태:비활성화)</span><i class="xi-search" aria-hidden="true"></i></a>
+				<!-- search -->
+				<div class="mTotalSearch" id="mTotalSearch">
+					<form name="siteSearchForm" method="post" action="/cbe/search.do">
+						<div class="wrap">
+							<p class="logo"></p>
+							<div class="form">
+								<div class="inner">
+									<input type="text" placeholder="검색어를 입력해주세요" id="searchTerm" name="searchTerm" title="검색어를 입력해주세요">
+									<label class="blind" for="searchTerm">검색어를 입력해주세요</label>
+								</div>
+								<button title="통합검색 버튼" onClick="$('form[name=siteSearchForm]').submit();"><i class="xi-search" aria-hidden="true"></i><em>검색</em></button>
+							</div>
+							<a href="" class="btnClose"><i class="xi-close" aria-hidden="true"></i><em class="hid">검색영역 닫기</em></a>
+						</div>
+					</form>
+				</div>
+				<!-- //search -->
+				<!-- sitemap -->
+				<!-- //sitemap -->
+				<a href="" class="mNav" id="mNavOpen"><em class="hid">모바일메뉴 열기</em><span><em></em><em></em><em></em><em></em></span></a>
+			</div>
+			<!-- //moblie button-->
+		</div>
+	</header>
+	<!-- //header -->			
+
+	<!-- gnb shadow -->
+	<div id="gnbblind"></div>
+
+	<!-- moblie NAV -->
+	<div id="mNav">
+		<div class="inner">
+			<div class="snb"></div>
+			<nav id="mgnb"></nav>
+		</div>
+		<p><a href="" id="mNavClose"><span class="hid">전체 메뉴 닫기</span><i class="xi-close" aria-hidden="true"></i></a></p>
+	</div>
+	<!-- //moblie NAV-->
+
+	
+	
+	
+	
+	
+	
+	
+	<!-- 컨테이너 -->
+	<div id="sub_container">
+		<input type="hidden" id="tab" name ="tab" value="1091">
+		<!-- 서브메뉴 -->
+		<div id="lnb">
+			<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="/js/snsCnrs.js"></script>
+			<!--START-->
+			<input type="hidden" id="leftCurrMi" value="12127">
+			<input type="hidden" id="tabBaseMi" value="12127">
+			<input type="hidden" id="tabUpperMi" value="">
+			<input type="hidden" id="tabUpperMenu" value="">
+				<h2 style="display:none"><a href="/mpool/cm/cntnts/cntntsView.do?mi=12125&cntntsId=35997"  >인력풀제 운영 안내</a></h2>
+					<h2 style="display:none"><a href="/mpool/na/ntt/selectNttList.do?mi=12130&bbsId=1090"  >게시판</a></h2>
+					<li style="display:none"><a data-id="12130" href="/mpool/na/ntt/selectNttList.do?mi=12130&bbsId=1090"  ><span>요청게시판</span></a>
+							</li>
+							<li style="display:none"><a data-id="12131" href="/mpool/na/ntt/selectNttList.do?mi=12131&bbsId=1089"  ><span>자기소개 게시판</span></a>
+							</li>
+						</ul>
+					</nav><h2 class="active"><a href="/mpool/na/ntt/selectNttList.do?mi=12127&bbsId=1091"  >기간제 채용공고</a></h2>
+					<nav>
+						<ul class="dep01"><h2 style="display:none"><a href="#check" onclick="menuAccessCheck('12128', 'mpool')" >인력풀 등록 신청</a></h2>
+					<h2 style="display:none"><a href="/mpool/ad/hm/hnfpUserApplList.do?hnfpNo=1321&mi=12129"  >강사 인력풀 목록</a></h2>
+					
+		</div>
+		<!-- //서브메뉴 -->
+
+		<!-- 서브 영역 -->
+		<div class="subCntBody" id="subContent">
+			
+			<div class="sub_container">
+				
+				<!-- subHeader -->
+				<div class="subHeader">
+					<h2 id="pageTitle"><span>기간제 채용공고</span></h2>
+					
+					<!-- location -->
+					<ul class="subLocation">
+	<li><a href="/mpool/main.do"><i class="xi-home-o" aria-hidden="true"></i><em class="hid">HOME</em></a></li>
+	<li><a href='/mpool/na/ntt/selectNttList.do?mi=12127&bbsId=1091'>기간제 채용공고</a></li></ul>
+					<!-- //location -->
+					
+					<!-- sns -->
+					<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="/js/snsCnrs.js"></script>
+
+<div class="snsBox">
+	<button type="button" class="btnShare"><i class="xi-share-alt"></i><em class="hid">SNS 공유영역 펼치기</em></button>
+	<button type="button" class="btnPrint" onClick="print();" title="새창"><i class="xi-print"></i><em class="hid">인쇄</em></button>
+	<button type="button" class="btnPrint btnZoom btnZoom1" onClick="scaleIn();"><i class="xi-plus-min"></i><em class="hid">확대</em></button>
+	<button type="button" class="btnPrint btnZoom btnZoom2" onClick="scaleOut();"><i class="xi-minus-min"></i><em class="hid">축소</em></button>
+	<div class="snsMore" id="snsMore">
+		<p>
+			<a href="" class="snsF" onclick="snsCnrsLink('mpool','fbook');" title="새창"><em class="hid">페이스북2 공유</em></a>
+			<a href="" class="snsT" onclick="snsCnrsLink('mpool','twit');" title="새창"><em class="hid">트위터 공유</em></a>
+			<a href="" class="snsB" onclick="snsCnrsLink('mpool','nband');" title="새창"><em class="hid">네이버 밴드 공유</em></a>
+			<a href="" class="close"><i class="xi-close"></i><em class="hid">SNS 공유영역 닫기</em></a>
+		</p>
+	</div>
+</div>
+					<!-- //sns -->
+				</div>
+				<!-- //subHeader -->
+	
+				<div class="subContent">
+					<!-- contents -->
+						
+						<!--START-->
+										<!--END-->
+
+						
+						<script src="/common/js/board.js"></script><!-- 게시판 js -->
+<link rel="stylesheet" href="/common/css/board.css" media="all"><!-- 게시판 css -->
+
+<script src="/js/fileUpload.js"></script>
+<script>
+	document.domain = "cbe.go.kr";
+</script>
+<script type="text/javascript" src="/js/dataTables.js"></script>
+<script type="text/javascript" src="/js/dataTables.min.js"></script>
+<link href="/css/com/dataTables/dataTables.css" rel="stylesheet">
+<link href="/css/com/dataTables/dataTables.min.css" rel="stylesheet">
+<script src="/editor/dext5upload/js/dext5upload.js" type="text/javascript"></script>
+<script src="/common/js/jquery.form.min.js"></script>
+
+<script>
+$(document).ready(function() {
+	 var noticeUseAt = "N";
+	 if ( noticeUseAt == "Y") {
+			$(".confmUseDt").hide();
+	 } else {
+		 $(".confmUseDt").show();
+	 }
+
+	 $('#boardTB').DataTable({
+		"searching" : false,
+		"ordering" : false,
+		"language": {
+			"lengthMenu": "페이징 옵션 _MENU_"
+		}
+	});
+	
+	 
+	
+});
+	
+	
+	$(function(){
+		
+		//html5 지원 여부 파악
+		var empthyFormData = "";
+		if (fn_html5Support() && fn_FormDataSupport("empthyForm")) {
+			// 자바 스크립트 in -> 명시된 속성이 명시된 객체에 존재하면 true 반환, 속성 in 객체명
+			empthyFormData = new FormData($("#empthyForm")[0]);
+		}else{
+			empthyFormData = $("#empthyForm").serialize();
+		}
+		
+		$('.insertEmpthy').click(function(){
+			if($("#empthyCn").val() == "") {
+				alert("내용을 입력해주세요.");
+				$("#empthyCn").focus();
+				return false;
+			}
+			if(!confirm('공감을 등록하시겠습니까?')){
+				return;
+			}
+			
+			$("#empthyForm").ajaxSubmit({
+				formData : empthyFormData,
+				url: "/mpool/na/ntt/insertNttEmpthy.do",
+				dataType: "json",
+				async: true,
+				success: function(responseText, statusText)
+				{
+					if (responseText.resultAt == 'Y') {
+						alert('공감이 등록되었습니다.');
+						//완료 페이지 이동
+						goParamPage($("input[name='nttSn']").val(), 'nttSn', '/mpool/na/ntt/selectNttInfo.do');
+					}
+					else if (responseText.resultAt == 'L') 
+					{
+						alert('로그인또는 본인인증 후 댓글 등록이 가능합니다.');
+						//완료 페이지 이동
+						location.href="/"+mpool+"/lo/login/loginPage.do";
+					}
+				}
+			});
+		});
+		
+		$(document).on("click",".empthyCancel",function(){
+			$('#empthyUpdt'+$(this).attr('data-id')).hide();
+		});
+		
+		$(document).on("click",".empthyUpadteMode",function(){
+			$('#empthyUpdt'+$(this).attr('data-id')).show();
+		});
+		
+		$(document).on("click",".updateEmpthy",function(){
+			if($('#empthyCn'+$(this).attr('data-id')).val() == "") {
+	            alert("내용을 입력해주세요.");
+	            $('#empthyCn'+$(this).attr('data-id')).focus();
+	            return false;
+	        }
+			if(!confirm('공감내용을 수정하시겠습니까?')){
+				return;
+			}
+			$('#empthySn').val($(this).attr('data-id'));
+			$('#updtEmpthyCn').val($('#empthyCn'+$(this).attr('data-id')).val());
+			$("#empthyForm").ajaxSubmit({
+				formData : empthyFormData,
+	            url: "/mpool/na/ntt/updateNttEmpthy.do",
+	            dataType: "json",
+	            async: true,
+	            success: function(responseText, statusText){
+            		alert('공감내용이 수정되었습니다.');
+            		//완료 페이지 이동
+					goParamPage($("input[name='nttSn']").val(), 'nttSn', '/mpool/na/ntt/selectNttInfo.do');
+	            }
+	        });
+		});
+		
+		$('.empthyDelete').click(function(){
+			if(!confirm('공감을 삭제하시겠습니까?')){
+				return;
+			}
+			$('#empthySn').val($(this).attr('data-id'));
+			$("#empthyForm").ajaxSubmit({
+				formData : empthyFormData,
+	            url: "/mpool/na/ntt/deleteNttEmpthy.do",
+	            dataType: "json",
+	            async: true,
+	            success: function(responseText, statusText){
+	            	alert('공감이 삭제되었습니다.');
+	            	
+	            	//완료 페이지 이동
+					goParamPage($("input[name='nttSn']").val(), 'nttSn', '/mpool/na/ntt/selectNttInfo.do');
+	            }
+	        });
+		})
+		
+		
+		//html5 지원 여부 파악
+		var formData = "";
+		if (fn_html5Support() && fn_FormDataSupport("answerForm")) {
+			// 자바 스크립트 in -> 명시된 속성이 명시된 객체에 존재하면 true 반환, 속성 in 객체명
+			formData = new FormData($("#answerForm")[0]);
+		}else{
+			formData = $("#answerForm").serialize();
+		}
+		
+		$('.nttUpdatePage').click(function(){
+			$('#nttViewForm').attr('action','/mpool/na/ntt/updateNttPage.do').submit();
+		});
+		
+		$('.nttReplyPage').click(function(){
+			$('#nttViewForm').attr('action','/mpool/na/ntt/insertNttPage.do').submit();
+		});
+		
+		$('.insertAnswer').click(function(){
+			
+			var form = $('#answerForm')[0];
+			var data = new FormData(form);  
+			
+			if($("#answerCn").val() == "") {
+	            alert("내용을 입력해주세요.");
+	            $("#answerCn").focus();
+	            return false;
+	        }
+			if(!confirm('댓글을 등록하시겠습니까?')){
+				return;
+			}
+			/* 댓글등록 */
+			$.ajax({
+				type : "POST",
+				enctype : "multipart/form-data",
+				url: "/mpool/na/ntt/insertNttAnswer.do",
+				data : data,
+				dataType: "json",
+				processData: false,
+				contentType: false,
+	            success: function(responseText, statusText){
+	            	if (responseText.resultAt == 'Y') {
+		            	alert('댓글이 등록되었습니다.');
+		            	//완료 페이지 이동
+						goParamPage($("input[name='nttSn']").val(), 'nttSn', '/mpool/na/ntt/selectNttInfo.do');
+					} else if (responseText.resultAt == 'L') {
+		            	alert('로그인또는 본인인증 후 댓글 등록이 가능합니다.');
+		            	//완료 페이지 이동
+		            	location.href="/"+mpool+"/lo/login/loginPage.do";
+					} else {
+						alert('댓글이 등록 권한이 없습니다.');
+					}
+	            	
+	            }
+	        });
+		});
+		
+		$(document).on("click",".updateAnswer",function(){
+			if($('#answerCn'+$(this).attr('data-id')).val() == "") {
+	            alert("내용을 입력해주세요.");
+	            $('#answerCn'+$(this).attr('data-id')).focus();
+	            return false;
+	        }
+			if(!confirm('댓글을 수정하시겠습니까?')){
+				return;
+			}
+			$('#answerSn').val($(this).attr('data-id'));
+			$('#updtAnswerCn').val($('#answerCn'+$(this).attr('data-id')).val());
+			$('#uFile').val($('#uFile'+$(this).attr('data-id')).val());
+			var form = $('#answerForm')[0];
+			var data = new FormData(form);  
+			
+			$.ajax({
+				type : "POST",
+				enctype : "multipart/form-data",
+	            url: "/mpool/na/ntt/updateNttAnswer.do",
+				data : data,
+				dataType: "json",
+				processData: false,
+				contentType: false,
+	            success: function(responseText, statusText){
+	            	if(responseText.resultAt == 'X'){
+	            		alert('댓글을 수정할 권한이 없습니다.');
+	            	} else {
+	            		alert('댓글이 수정되었습니다.');
+	            		//완료 페이지 이동
+						goParamPage($("input[name='nttSn']").val(), 'nttSn', '/mpool/na/ntt/selectNttInfo.do');
+	            	}
+	            }
+	        });
+		});
+		
+		$(document).on("click",".answerCancel",function(){
+			$('#replyUpdt'+$(this).attr('data-id')).hide();
+			$('#replyView'+$(this).attr('data-id')).show();
+		});
+		
+		$(document).on("click",".answerUpadteMode",function(){
+			$('#replyView'+$(this).attr('data-id')).hide();
+			$('#replyUpdt'+$(this).attr('data-id')).show();
+		});
+		
+		$('.answerDelete').click(function(){
+			if(!confirm('댓글을 삭제하시겠습니까?')){
+				return;
+			}
+			$('#answerSn').val($(this).attr('data-id'));
+			
+			var form = $('#answerForm')[0];
+			var data = new FormData(form);  
+			
+			$.ajax({
+				type : "POST",
+				enctype : "multipart/form-data",
+				url: "/mpool/na/ntt/deleteNttAnswer.do",
+				data : data,
+				dataType: "json",
+				processData: false,
+				contentType: false,
+				success: function(responseText, statusText){
+					alert('댓글이 삭제되었습니다.');
+					//완료 페이지 이동
+					goParamPage($("input[name='nttSn']").val(), 'nttSn', '/mpool/na/ntt/selectNttInfo.do');
+				}
+			});
+		})
+
+		$('#nttMvmnResn').keyup(function (e) {
+			let content = $(this).val();
+			
+			// 글자수 세기
+			if (content.length == 0 || content == '') {
+				$('.textCount').text('0자');
+			} else {
+				$('.textCount').text(content.length + '자');
+			}
+		});
+
+		$('#nttDeleteResn').keyup(function (e) {
+			let content2 = $(this).val();
+			
+			// 글자수 세기
+			if (content2.length == 0 || content2 == '') {
+				$('.textDelCount').text('0자');
+			} else {
+				$('.textDelCount').text(content2.length + '자');
+			}
+		});
+		
+		$('.nttDelete').click(function(){
+			
+			
+			
+			if(!confirm('게시물을 삭제하시겠습니까?')){
+				return;
+			}
+			//html지원여부파악
+			var formData = "";
+			if (fn_html5Support() && fn_FormDataSupport("nttViewForm")) {
+				// 자바 스크립트 in -> 명시된 속성이 명시된 객체에 존재하면 true 반환, 속성 in 객체명
+				formData = new FormData($("#nttViewForm")[0]);
+			}else{
+				formData = $("#nttViewForm").serialize();
+			}
+			
+			if (fn_html5Support() && fn_FormDataSupport("nttViewForm")) {
+				$("#nttViewForm").ajaxSubmit({
+					formData : formData,
+		            url: "/mpool/na/ntt/deleteNttInfo.do",
+		            dataType: "json",
+		            async: true,
+		            success: function(responseText, statusText){
+		            	alert('게시물이 삭제되었습니다.');
+		            	$("#nttViewForm").attr('action', '/mpool/na/ntt/selectNttList.do').submit();
+		            },error : function(responseText, statusText){
+						alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+					} 
+		        });
+			}else{
+				$("#nttViewForm").ajaxForm({
+					formData : formData,
+		            url: "/mpool/na/ntt/deleteNttInfo.do",
+		            dataType: "json",
+		            async: true,
+		            success : function(responseText, statusText){
+		            	alert('게시물이 삭제되었습니다.');
+						$("#nttViewForm").attr('action', '/mpool/na/ntt/selectNttList.do').submit();		            	 
+		            },error : function(responseText, statusText){
+						 alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");	
+					}
+		            
+				}).submit();
+			}
+		})
+		
+
+
+		
+
+		// 게시물 이동
+		$(".btnMove").click(function(){
+			
+			
+			var bbsId = $("#selectMove").val();
+			var oriBbsId = $("input[name='bbsId']").val();
+			var nttSn = $("input[name='nttSn']").val();
+			let content = $("#nttMvmnResn").val();
+			
+
+			if($("#nttMvmnResn").valueEmpty()){
+				alert("게시물 이동 사유를 적어주세요.");
+				$("#nttMvmnResn").focus();
+				return false;
+			}
+			
+			// 글자수 제한
+			if (content.length <= 50) {
+				alert('게시물 이동 사유는 50자이상 작성해주세요.');
+				return false;
+			}
+			
+			if (!confirm("게시물을 이동하시겠습니까?"))
+				return false;
+			
+			$.ajax({
+				type : "post",
+				url : "/mpool/na/ntt/updateBbsId.do",
+				data : { 
+					bbsId : bbsId,
+					oriBbsId : oriBbsId,
+					nttSn : nttSn,
+					mi : $("#nowMenuId").val(),
+					nttMvmnResn : content
+				},
+				dataType : "json",
+				success : function(data) {
+					if (data == 1) {
+						alert("게시물이 이동되었습니다.");
+					}
+					
+					//완료 페이지 이동
+					goParamPage($("input[name='bbsId']").val(), 'bbsId', '/mpool/na/ntt/selectNttList.do');
+				},
+				error : function(data) {
+					alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+				}		
+			});				
+		});
+		
+		// 게시물 승인
+		$('.confmAtBtn').click(function(){
+			var confmTy = $(this).attr("title");
+			var confmAt = $(this).attr("data-id");
+			var nttSn = $("input[name=nttSn]").val();
+			var bbsId = $("input[name=bbsId]").val();
+			
+			if(!confirm("게시물을 "+confmTy+"하시겠습니까?"))		
+				return false;
+			
+			$.ajax({
+				type : "post",
+				url : "/mpool/na/ntt/updateNttConfmAt.do",
+				data : {
+					confmAt : confmAt,
+					nttSn : nttSn,
+					bbsId : bbsId,
+					manageAt : "N"
+				},
+				dataType : "json",
+				success : function(data){
+					if (data > 0) {
+						alert("완료되었습니다.");
+					} else {
+						alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+					}
+					//완료 페이지 이동
+					goParamPage($("input[name='bbsId']").val(), 'bbsId', '/mpool/na/ntt/selectNttList.do');
+					
+				},
+				error : function(data){
+					alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+				}			
+			});
+			
+				
+		});
+		
+	});
+	
+	function updateNttSttus(act) {
+		var returnMsg = "";
+		
+		if (act == "R") {
+			returnMsg = "접수되었습니다.";
+			
+			if (!confirm("접수하시겠습니까?")) {
+				return false;
+			}
+		} else if (act == "C") {
+			returnMsg = "완료되었습니다.";
+			
+			if (!confirm("완료하시겠습니까?")) {
+				return false;
+			}
+		}else if(act ="W"){
+			returnMsg = "초기화되었습니다.";
+			
+			if (!confirm("초기화하시겠습니까?")) {
+				return false;
+			}
+		} else {
+			alert("올바른 접근이 아닙니다.");
+			return false;
+		}
+		
+		$("input[name='nttSttus']").val(act);
+		
+		$.ajax({
+			type : "post",
+			url : "/mpool/na/ntt/updateNttSttus.do",
+			data : $("#nttViewForm").serialize(),
+			dataType : "json",
+			success : function(data){
+				if (data > 0) {
+					alert(returnMsg);
+				} else {
+					alert("실패하였습니다.");
+				}
+				//완료 페이지 이동
+				goParamPage($("input[name='nttSn']").val(), 'nttSn', '/mpool/na/ntt/selectNttInfo.do');
+			},
+			error : function(data){
+				alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+			}			
+		});
+	}
+	
+	var textCountLimit = 4000;
+	$(document).ready(function() {
+		
+
+		$('textarea[name=answerCn]').keyup(function(){ 
+			//텍스트영역의 길이를 체크한다.
+			var textLength = $(this).val().length;
+			//입력된 텍스트 길이를 #textCount에 업데이트
+			$('#textCount').text(textLength);
+
+			//제한된 길이보다 입력된 길이가 큰 경우 제한 길이만큼만 자로고 텍스트 영역에 넣는다.
+
+			if(textLength > textCountLimit){
+				$(this).val($(this).val().substr(0,textCountLimit));
+			}
+		});
+	});
+
+	
+
+	//url 복사
+	function fn_copyUrl(val){
+		var host = window.location.origin;
+		var urlCopy = document.createElement("textarea");
+		document.body.appendChild(urlCopy);
+		urlCopy.value = host+val;
+		urlCopy.select();
+		document.execCommand("Copy");
+		alert("게시글 주소가 복사되었습니다.");
+	}
+	//목록가기
+	function goList(frm){
+		frm.action = '/mpool/na/ntt/selectNttList.do';
+		frm.submit();
+	}
+	
+	//답글작성페이지가기
+	function goNttReplyPage(frm){
+		frm.action = '/mpool/na/ntt/insertNttPage.do';
+		frm.submit();
+	}
+	
+	//상세가기
+	function goDetail(frm, val){
+		frm.nttSn.value = val;
+		frm.action = '/mpool/na/ntt/selectNttInfo.do';
+		frm.submit();
+	}
+
+	var G_UploadID;
+	function fn_addFile() {
+		// file 뿌려줌
+		
+			DEXT5UPLOAD.AddUploadedFile('1582401', '2026학년도 학년말 방학 중 방과후과정 강사채용 계획(2026.11.16)공고.hwp','/upload/mpool/na/bbs_1091/2026/11/F1AF3C53-31B9-DAEC-6396-527A9A18C6AA.hwp','134144','1697291', G_UploadID);
+		
+	}
+	
+</script>
+
+<script>
+//문서뷰어
+function htmlDocTransView(dwldUrl) {
+	/*기본정보*/
+	$.ajax({
+		type : "post",
+		url : "/mpool/na/ntt/selectFileInfoCk.do",
+		data : { 
+			dwldUrl : dwldUrl
+		},
+		dataType : "json",
+		success : function(data) {
+			if(data.fileCk =="Y"){
+				/*var htmlDocTransForm=document.nttFileViewForm;
+				var htmlDocTransView = window.open("","docTransName","");
+				
+				htmlDocTransForm.method = "post";
+				$("#filePath").val("http://210.106.100.39/comm/nttFileDownload.do?fileKey="+dwldUrl+"&sysId="+data.sysId+"&bbsId="+data.bbsId+"&nttSn="+data.nttSn); 
+				$("#fid").val(data.fid);
+				htmlDocTransForm.action = "http://210.106.100.98/SynapDocViewServer/job";
+				htmlDocTransForm.target = "docTransName";
+				htmlDocTransForm.submit();
+				location.href="http://210.106.100.98/SynapDocViewServer/job?fileType=URL&convertType=1&sync=true&fid="+data.fid+"&filePath=http://210.106.100.39/comm/nttFileDownload.do?fileKey="+dwldUrl+"&sysId="+data.sysId+"&bbsId="+data.bbsId+"&nttSn="+data.nttSn; 
+				*/
+				window.open('http://210.106.100.98/SynapDocViewServer/job?fileType=URL&convertType=1&sync=true&fid='+data.fid+'&filePath=http://210.106.100.39/comm/nttFileDownload.do?fileKey='+dwldUrl+'&sysId='+data.sysId+'&bbsId='+data.bbsId+'&nttSn='+data.nttSn);
+			}else{
+				alert("파일이 존재하지 않습니다");	
+			}
+			
+		},
+		error : function(data) {
+			alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+		}		
+	});	
+}
+</script>
+
+
+
+<script>
+	function goFileDown(dwldUrl){
+		$("#nttViewForm").attr("action", "/comm/nttFileDownload.do?fileKey="+dwldUrl).submit();
+	}
+</script>
+
+<!-- 탭 -->
+<!-- 단어 설정 -->
+<!-- 단어 설정 -->
+<form name="nttViewForm" id="nttViewForm" method="post" >
+<input type="hidden" name="currPage" value="" />
+<input type="hidden" name="mi" value="12127"/>
+<input type="hidden" name="bbsId" value="1091"/>
+<input type="hidden" name="bbsPrpos" value="HOMEPAGE"/>
+<input type="hidden" name="nttSn" value="1582401" />
+<input type="hidden" name="sysId" value="mpool" />
+<input type="hidden" name="searchValue" value="" />
+<input type="hidden" name="searchType" value="" />
+<input type="hidden" name="nttSttus" value=""/>
+<input type="hidden" name="replyAt" value="" />
+<input type="hidden" name="paramtrStrtpnt" value="" />
+<input type="hidden" name="noLayout" value="" />
+<input type="hidden" name="bbsRequstNo" value="" />
+<input type="hidden" name="bbsTypeChk" id="bbsTypeChk" value=""/>
+	<div class="bbs_ViewA">
+		<h3>
+					2026.학년말 방학중 방과후과정 강사채용 계획(생명초등학교병설유치원)</h3>
+			<ul class="bbsV_data">
+			<li>
+						<strong>지역</strong>
+						<input name="adit2Column" id="adit2Column" type="hidden" >
+							 청주</li>
+				<li>
+						<strong>구분</strong>
+						<input name="adit1Column" id="adit1Column" type="hidden" >
+							 청주, 유치원</li>
+				<li>
+						<strong>
+							작성자</strong>
+						조해경</li>
+				<li>
+						<strong>
+							등록일</strong>
+						2026.11.16.</li>
+				<li><strong>조회수</strong>80</li>
+				</ul>
+		
+		<div class="bbsV_cont">
+			<p>
+					</p>
+			<p>
+					</p>
+			<p>
+					</p>
+			<p>
+					</p>
+			<p>
+					</p>
+			<p>
+					</p>
+			<p>
+					</p>
+			<p>
+					<p style="font-family: 굴림; font-size: 12pt; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;"><img src="https://www.cbe.go.kr:443/upload/dext5editordata/2026/11/20261116_162745131_83658.jpeg" style="width: 509px; height: 718px;"></p><br />
+						<br />
+
+						</p>
+			</div>
+		
+		<!-- 첨부파일 & 다운로드 횟수//RQexclImgFileList -->
+		<div class="bbsV_atchmnfl">
+				<dl>
+					<dt><span>첨부파일</span></dt>
+					<dd>
+						<ul class="bbsV_file">
+							
+							<ul class="bbsV_file">
+								<li>
+										<a href="javaScript:goFileDown('cdd6ff2eb1988d25372ad8afc5ae47bc');" class="fileName" title="2026학년도 학년말 방학 중 방과후과정 강사채용 계획(2026.11.16)공고.hwp 다운로드">
+											2026학년도 학년말 방학 중 방과후과정 강사채용 계획(2026.11.16)공고.hwp&nbsp;
+										</a>
+										
+												&nbsp;&nbsp;<a href="javascript:htmlDocTransView('cdd6ff2eb1988d25372ad8afc5ae47bc')" title="2026학년도 학년말 방학 중 방과후과정 강사채용 계획(2026.11.16)공고.hwp 새창 바로보기" class="fileView"><img src="/common/images/board/btn_search.png" alt="2026학년도 학년말 방학 중 방과후과정 강사채용 계획(2026.11.16)공고.hwp 새창 바로보기"></a>
+												</li>
+								</ul>
+							
+							</ul>
+					</dd>
+				</dl>
+			</div>
+		<!-- //첨부파일 & 다운로드 횟수 -->
+	
+		</div>
+
+	<!-- 버튼 -->
+	<div class="btn_bbs ar mgt20">
+	<a href="javascript:;" onclick="goList(document.getElementById('nttViewForm'));" title="목록" class="btn_grn"><span>목록</span></a>
+	</div>
+	
+	<!-- //버튼 -->
+	
+</form>
+
+
+<!-- 게시물 이동 -->
+<!-- //게시판 이동 -->								
+
+
+<!-- 이전/다음 -->
+	<ul class="bbsV_prne">
+		<li><span>다음글</span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;다음글이 없습니다.</li>
+		<li><span>이전글</span>
+				<a href="/mpool/na/ntt/selectNttInfo.do?nttSn=1582400&mi=12127" title="이전글">충주혜성학교 특수(중등) 기간제 교원 채용 공고</a>
+					</li>
+		</ul>	
+<!-- //이전/다음 -->
+<!-- 문서뷰어 -->
+<form name="nttFileViewForm" id="nttFileViewForm" method="post" >
+	<input type="hidden" id="fileType" name="fileType" value="URL" />
+	<input type="hidden" id="convertType" name="convertType" value="0" />
+	<input type="hidden" id="filePath" name="filePath" value="N" />
+	<input type="hidden" id="fid" name="fid" value="N" />
+</form>
+
+					<!-- contents -->
+					
+
+
+
+<script>
+	//만족도 조사 ( 엔터 )
+	$(function(){
+		$('#etcOpinion').keypress(function(event){
+			if ( event.which == 13 ) {
+				$('.csnstSubmit').click();
+			}	
+		});
+			
+	});
+	
+	$(document).on('click','.csnstSubmit',function(){
+		/* 20/01/02 담당자 요청으로 제거
+		if(!confirm('만족도 조사에 참여하시겠습니까?')){
+			return false;
+		} else {
+
+		}
+		*/
+		
+		if ($("input[name='stsfdgEvlScore']:checked").val() == null) {
+			alert("만족도 항목을 선택해주세요.");
+			return false;
+		} 
+		
+		var data = $("#csnstForm").serialize();
+		
+		$.ajax({
+			type: "POST",
+			datatype:"json",
+			data: data,
+			url: "/mpool/cs/csnst/insertCsnstInfo.do",
+			success:function(result){
+				var retValue = result;
+				if(retValue == 1){
+					alert("만족도 참여를 완료하였습니다.");
+				} else if(retValue == 2){
+					alert("하루에 1회만 참여할 수 있습니다.");
+				} else {
+					alert("만족도 참여에 실패하였습니다.");
+				}
+			},
+			error:function(data) {   
+				alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+			}
+					
+		});		
+	});
+</script>								
+								<!-- 만족도조사 -->
+						        <div class="satisfaction"> 
+						            <h3 class="hid">콘텐츠 만족도 조사</h3>
+						            <p class="question">  페이지에서 제공하는 정보에 대하여 만족하셨습니까?  </p>
+						            <form name="csnstForm" id="csnstForm" method="post" >
+						                <fieldset>
+						                    <legend>만족도 조사</legend>
+						                    <input type="hidden" name="sysId" id="csnstSysId" value='mpool'>
+						                    <input type="hidden" name="menuId" id="csnstMenuId" value="12127">
+						                    <div class="satisfaction_list">
+						                        <div class="input_radio">
+						                            <span><input name="stsfdgEvlScore" value="5" id="stsfdgEvlScore1" type="radio">
+						                            <label for="stsfdgEvlScore1">매우만족</label></span>
+						                            <span><input name="stsfdgEvlScore" value="4" id="stsfdgEvlScore2" type="radio">
+						                            <label for="stsfdgEvlScore2">만족</label></span>
+						                            <span><input name="stsfdgEvlScore" value="3" id="stsfdgEvlScore3" type="radio">
+						                            <label for="stsfdgEvlScore3">보통</label></span>
+						                            <span><input name="stsfdgEvlScore" value="2" id="stsfdgEvlScore4" type="radio">
+						                            <label for="stsfdgEvlScore4">불만족</label></span>
+						                            <span><input name="stsfdgEvlScore" value="1" id="stsfdgEvlScore5" type="radio">
+						                            <label for="stsfdgEvlScore5">매우불만족</label></span>
+													<input type="button" value="평가하기" class="csnstSubmit btn_na mini" >
+						                        </div>
+						                    </div>
+						                </fieldset>
+						            </form>
+						            
+						            
+						         
+						            
+										
+							            
+						            
+						        </div>
+						        <!-- //만족도조사 -->
+				</div>
+			</div>
+		</div>
+		<!-- //서브 영역 -->
+	</div>
+	
+	
+
+<!-- footer -->
+<footer id="footer">
+	<div class="container">
+		<div class="ftLink">
+<ul class="ftLinkSelf">
+	<li><a href="/cbe/itp/policy/policyInfo.do?mi=11759"><strong>개인정보처리방침</strong></a></li>
+	<li><a href="/cbe/itp/selectVidoInfoViewPop.do?mi=11762" target="_blank">영상정보처리방침</a></li>
+	<li><a href="/cbe/cm/cntnts/cntntsView.do?mi=11764&amp;cntntsId=35654" target="_blank">저작권정책</a></li>
+	<li><a href="/cbe/cm/cntnts/cntntsView.do?mi=11768&amp;cntntsId=35657" target="_blank">뷰어프로그램</a></li>
+</ul>
+</div>
+
+<div class="ftBox">
+<address><span>(28635) 충북 청주시 서원구 청남로 1929 (산남동 4-11)</span></address>
+
+<ul>
+	<li>TEL : 043)290-2000, (당직실 2500), 2669, 2670</li>
+	<li>FAX : 043)290-2741</li>
+</ul>
+
+<p class="copyright">Copyright &copy; Chungcheongbuk-do Office Of Education. All Rights Reserved.</p>
+</div>
+
+		<!-- <div class="ftLink">
+			<ul>
+				<li><a href=""><strong>개인정보처리방침</strong></a></li>
+				<li><a href="">영상정보처리방침</a></li>
+				<li><a href="">저작권신고</a></li>
+				<li><a href="">저작권정책</a></li>
+				<li><a href="">뷰어프로그램</a></li>
+			</ul>
+		</div>
+
+		<div class="ftBox">
+			<address>
+				<span>[28635] 충북 청주시 서원구 청남로 1929 (산남동 4-11)</span> <span>TEL : 043)290-2768</span><span>FAX : 043)290-2751</span>
+			</address>
+
+			<p class="copyright">Copyright &copy; Chungcheongbuk-do Office Of Education.. All rights reserved.</p>
+		</div> -->
+		<a href="" class="btn_top"><i class="xi-long-arrow-up" aria-hidden="true"></i><em class="hid">최상단으로 이동</em></a>
+	</div>
+</footer>
+	<!-- // footer -->
+
+	
+</div>
+<!-- menuForm -->
+		<!--공통 메뉴 Form -->
+<form name="mainMenuForm" id="mainMenuForm" method="post">
+	<input type="hidden" name="mi" id="nowMenuId" value="12127" />
+	<input type="hidden" name="paramNm" id="paramNm" value=""/>
+	<input type="hidden" name="paramVal" id="paramVal" value=""/>
+</form>
+<!--/공통 메뉴 Form -->
+	
+<script>
+$(function() {
+	
+	//공통 submit
+	$(".menuFormBtn").click(function(){
+		var paramVal = $(this).attr('data-param'); 
+		var paramNm = $(this).attr('data-nm');
+		var paramUrl = $(this).attr('data-url');
+		$("#paramVal").val(paramVal);
+		$("#paramNm").val(paramNm);
+		setTrimMenuId();
+		$("#mainMenuForm").attr('action', paramUrl).submit();
+	});
+	
+});
+
+//파라미터 페이지 이동 
+function goParamPage( setVal, setNm, setUrl ) {
+	$("#paramNm").val(setNm);
+	$("#paramVal").val(setVal);
+	setTrimMenuId();
+	$("#mainMenuForm").attr('action', setUrl).submit();
+};
+
+//메뉴 아이디 공백제거
+function setTrimMenuId(){
+	var nowMenuId = $.trim($("#nowMenuId").val());
+	$("nowMenuId").val(nowMenuId);
+};
+
+</script>
+	
+	 
+	
+	
+
+	
+    	<!-- /menuForm -->
+</body>
+</html>

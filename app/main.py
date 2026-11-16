@@ -1,6 +1,6 @@
 """수집 → 분류 → 저장. 알림은 사이트 배포 후 app.push가 따로 보낸다.
 
-사용: python -m app.main                  두 출처 모두 (GitHub Actions에서는 충북교육청만)
+사용: python -m app.main                  세 출처 모두 (GitHub Actions에서는 충북교육청만)
       python -m app.main --only-cheongju   청주교육지원청만 (한국 인터넷에서, scripts/sync_cheongju.py가 부른다)
 종료 코드: 0 성공/부분 성공, 1 실패(데이터는 저장됨)
 """
@@ -15,6 +15,7 @@ from .config import iso, load_places, load_settings, now_kst
 from .kinders import load_kinders, merge_places
 from .cheongju import CheongjuScraper, collect_cheongju, find_same, same_post
 from .docs import find_deadline
+from .hire import HireScraper, collect_hire
 from .parser import ParseError, parse_detail, parse_list
 from .scraper import Scraper, detail_url
 from .store import Store
@@ -104,7 +105,8 @@ def collect(scraper, store: Store, settings: dict, places: dict, now) -> dict:
 def reclassify(store: Store, f: dict, places: dict) -> None:
     """설정·기관 목록이 바뀌어도 반영되도록 저장된 공고 전체를 다시 분류 (네트워크 없음)."""
     for job in store.jobs.values():
-        row = {"title": job["title"], "category": job["category"], "author": job.get("author") or ""}
+        row = {"title": job["title"], "category": job["category"], "author": job.get("author") or "",
+               "board_region": job.get("board_region")}
         cls = filters.classify(row, f, places, job.get("body", ""))
         if job.get("detail_error") and cls["match_status"] == "not_match" and cls["region"] == "미상":
             cls["match_status"] = "review"
@@ -133,17 +135,22 @@ def apply_body_deadline(job: dict) -> None:
         job.pop("deadline_source", None)
 
 
+def _rank(key: str) -> int:
+    """같은 공고가 여러 게시판에 있으면 남길 순서: 학교구인정보(마감일 칸 있음) → 기간제 채용공고 → 청주교육지원청."""
+    return 2 if key.startswith("cj") else 1 if key.startswith("kj") else 0
+
+
 def merge_duplicates(store: Store) -> int:
-    """두 게시판에 같이 올라온 공고는 충북교육청 쪽 하나만 남긴다 (이미 알렸으면 그 기록을 옮긴다)."""
-    pool = [j for k, j in store.jobs.items() if not k.startswith("cj")]
-    drop = []
-    for k, cj in store.jobs.items():
-        if not k.startswith("cj"):
+    """여러 게시판에 같이 올라온 공고는 하나만 남긴다 (이미 알렸으면 그 기록을 옮긴다)."""
+    drop = set()
+    for k, job in store.jobs.items():
+        if _rank(k) == 0:
             continue
-        same = next((p for p in pool if same_post(cj, p)), None)
-        if same:
-            same["notified_at"] = same.get("notified_at") or cj.get("notified_at")
-            drop.append(k)
+        keep = next((o for ok, o in store.jobs.items()
+                     if ok not in drop and _rank(ok) < _rank(k) and same_post(job, o)), None)
+        if keep:
+            keep["notified_at"] = keep.get("notified_at") or job.get("notified_at")
+            drop.add(k)
     for k in drop:
         del store.jobs[k]
     return len(drop)
@@ -189,6 +196,18 @@ def main(argv=None) -> int:
             run["error"] = f"{type(e).__name__}: {e}"[:500]
             traceback.print_exc()
             code = 1
+        # 세 번째 출처: 기간제 채용공고. 실패해도 다른 출처는 계속한다
+        kj = {}
+        try:
+            collect_hire(HireScraper(settings["hire"], settings["source"]["user_agent"]), store, settings, now, kj)
+            run.update(kj)
+            if kj.get("detail_errors") and run["status"] == "success":
+                run["status"] = "partial"
+        except Exception as e:
+            run["hire_error"] = f"{type(e).__name__}: {e}"[:500]
+            traceback.print_exc()
+            if run["status"] == "success":
+                run["status"] = "partial"
     # 두 번째 출처: 청주교육지원청. 한쪽이 실패해도 다른 쪽은 계속한다
     cj = {}
     try:
@@ -221,6 +240,8 @@ def main(argv=None) -> int:
 
     summary = (f"[{run['status']}] 목록 {run.get('list_count', 0)}건, 유치원 {run.get('kinder_count', 0)}건, "
                f"신규 {run.get('new_count', 0)}건, 변경 {run.get('changed_count', 0)}건 / "
+               f"기간제 채용공고 신규 {run.get('kj_new_count', 0)}건, 중복 {run.get('kj_duplicates', 0)}건"
+               + (f", 오류: {run['hire_error']}" if run.get("hire_error") else "") + " / "
                f"청주교육지원청 신규 {run.get('cj_new_count', 0)}건, 중복 {run.get('cj_duplicates', 0)}건"
                + (f", 오류: {run['cheongju_error']}" if run.get("cheongju_error") else ""))
     print(summary)

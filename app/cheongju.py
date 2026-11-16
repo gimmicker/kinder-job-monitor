@@ -124,7 +124,7 @@ def _rounds(job: dict) -> set[str]:
 
 
 def same_post(a: dict, b: dict) -> bool:
-    """제목이 거의 같고 등록일이 열흘 안이면 같은 공고. 차수(2차·3차)가 다르면 다른 공고."""
+    """제목이 거의 같고 등록일이 열흘 안이면 같은 공고. 차수(2차·3차)나 기관이 다르면 다른 공고."""
     one = re.compile(r"\(?\s*(?<!\d)1\s*차\s*\)?")  # '(1차)'만, '11차'는 그대로
     a, b = {**a, "title": one.sub("", a.get("title") or "")}, {**b, "title": one.sub("", b.get("title") or "")}
     ta, tb = _norm(a.get("title") or ""), _norm(b.get("title") or "")
@@ -132,6 +132,10 @@ def same_post(a: dict, b: dict) -> bool:
         return False
     if _rounds(a) != _rounds(b):
         return False
+    ia = {base for _, base, _ in filters.institutions(a["title"])}
+    ib = {base for _, base, _ in filters.institutions(b["title"])}
+    if ia and ib and not ia & ib:
+        return False  # 제목 틀이 같아도 학교가 다르면 다른 공고 (부윤초·소이초 방과후과정 강사 채용)
     pa, pb = a.get("posted_at"), b.get("posted_at")
     if pa and pb and abs((date.fromisoformat(pa) - date.fromisoformat(pb)).days) > 10:
         return False

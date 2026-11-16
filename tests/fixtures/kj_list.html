@@ -1,0 +1,1943 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+	
+	 
+	 
+	 
+	
+	
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
+
+<title>
+	
+		
+		
+			
+				
+				
+				
+				
+				
+				
+				
+				충북교육청 기간제교사인력풀시스템
+			
+		
+		
+</title>
+<link rel=" shortcut icon" href="/resource/images/favicon.ico">
+<link rel="icon" href="/resource/images/favicon.ico">
+
+<!-- 공통파일 CSS -->
+<link rel="stylesheet" href="/resource/css/jquery.mCustomScrollbar.min.css" media="all">
+
+<!-- 레이아웃 CSS -->
+
+	
+		
+		
+			<link rel="stylesheet" href="/resource/css/con_com.css" media="all">
+		
+	
+
+<link rel="stylesheet" href="/resource/css/up_pop.css" media="all">
+<link rel="stylesheet" href="/resource/css/quickmenu.css" media="all">
+<link rel="stylesheet" href="/resource/css/layout.css" media="all">
+<link rel="stylesheet" href="/css/template/TD_B002/TD_B002_layout.css" media="all">
+
+<!-- [P] 서브메인페이지인 경우에만 생성되는 조건식 -->
+
+
+<!-- [P] 서브페이지인 경우에만 생성되는 조건식 -->
+
+	<link rel="stylesheet" href="/css/template/TD_B002/sub.css" media="all">
+	<link rel="stylesheet" href="/resource/css/board.css" media="all">
+	<link rel="stylesheet" href="/resource/css/sub_com.css" media="all">
+
+
+<!-- [P] 메인페이지인 경우에만 생성되는 조건식 -->
+	
+
+<!-- 레이아웃 커스텀 CSS -->
+
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+	
+<!-- 공통파일 js -->
+<script src="/resource/js/jquery.min.js"></script>
+<script src="/resource/js/jquery.fullPage.js"></script>
+<script src="/resource/js/jquery.mCustomScrollbar.js"></script>
+<script src="/resource/js/slick.js"></script>
+<script src="/resource/js/modernizr-2.6.2.min.js"></script>
+<script src="/resource/js/con_com.js"></script>
+<script src="/resource/js/common.js"></script>
+<script src="/common/js/jquery-ui.min.js"></script>
+<script src="/common/js/jquery.form.min.js"></script>
+<!-- 레이아웃 js -->
+<script src="/js/template/TD_B002/sub.js"></script>	
+<script type="text/javascript" src="/js/common.js"></script>
+
+<!-- 타임아웃 -->
+
+
+<script language="JavaScript" type="text/JavaScript">
+document.oncontextmenu = function anonymous() { alert('마우스 오른쪽 버튼은 사용하실 수 없습니다'); return false; } ;
+</script>
+
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "1ceadb13a8814b0";
+if(window.wcs) {
+  wcs_do();
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "EducationalOrganization",
+	"name": "충청북도교육청",
+	"url": "https://www.cbe.go.kr",
+	"sameAs": [
+		"https://www.facebook.com/chungbuk.edu",
+		"https://www.youtube.com/@실력다짐충북교육",
+		"https://instagram.com/cb_edugram"
+	]
+}
+</script>
+
+	<script src="/common/js/jquery-ui.min.js"></script>
+</head>
+<body>
+<!-- 세션 타임아웃 체크 -->
+<div id="seout"></div>
+<!-- 세션 타임아웃 체크 -->
+<!-- 바로가기 -->
+<div id="skipArea"> 
+	<a href="#subContent">본문으로 바로가기</a>
+	<a href="#gnb">메인메뉴 바로가기</a>
+</div>
+<!-- //바로가기 -->
+<div id="wrap">
+	
+	
+		 
+	<script src="/js/template/TD_B002/layout.js"></script>	
+
+<script>
+ $(function (){
+	
+	var popCookieimsi = getCookie("popCookieimsiPop01");
+	if(popCookieimsi == "hide"){
+		$(".new_pop_up").remove();
+		var openCheck =  $(".mHeader").attr("class");
+		if(openCheck.indexOf("pop_open") > 0){
+			$(".mHeader").removeClass("pop_open");
+		}
+	}else{
+		$(".new_pop_up").addClass("pop_open");
+		$(".mHeader").addClass("pop_open");
+	}
+	
+	//팝업 닫기(쿠키설정) 임시
+	$(document).on('click', '#oneday', function(e) {
+		if ($("input[name=oneday]").is(":checked") == true) {
+			$("#oneday").val("Y"); 
+	    }
+		else {
+			$("#oneday").val("N");
+		}
+	});
+	
+	$(document).on('click', '.imsiPopClose', function(e) {
+		if($("#oneday").val() == "Y") {
+			setCookie("popCookieimsiPop01", "hide");
+		}
+		
+		$(".new_pop_up").removeClass("pop_open");
+		$(".mHeader").removeClass("pop_open");
+		
+	}); 
+	
+	$(document).on('click', '.oneday > .imsiPopClose', function(e) {
+		$(".new_pop_up").removeClass("pop_open");
+		$(".mHeader").removeClass("pop_open");
+	}); 
+	//팝업 닫기(쿠키설정) 임시
+	
+	
+	$(document).on('keydown', '#oneday', function(key) {
+		if (key.keyCode == 13) {
+			if ($("input[name=oneday]").is(":checked") == true) {
+				$("input[name=oneday]").prop("checked",false);
+				$("#oneday").val("N"); 
+		    }
+			else {
+				$("input[name=oneday]").prop("checked",true);
+				$("#oneday").val("Y");
+			}
+		}
+	});
+
+	// 상단 팝업활성화시 레이아웃
+	
+	if($('.new_pop_up').hasClass('pop_open')){
+		$('.wrap').addClass('wrap_popNear');
+	}
+	$('.new_pop_up .close a').click(function(){
+		$('.wrap').removeClass('wrap_popNear');
+	});
+	
+}) 
+
+	//메뉴스크랩
+	var menuScrap = function() {
+		if(document.location.href.indexOf("mi") == -1) {
+			alert("현재 페이지는 메뉴스크랩이 불가한 페이지입니다.");
+			return false;
+		}
+		else {
+			var para =  document.location.href.split("?");
+			var str = para[1].split("&");
+			var mi = "";
+			
+			for(var i=0; i<str.length; i++) {
+				if(str[i].indexOf('mi=') == 0){
+					mi = str[i].substring(3);
+					
+					$.ajax({
+					 	type : "POST", 
+					 	data : {
+					 		mi : mi
+					 		//,domn : window.location.hostname
+					 	},
+						url : "/mpool/ad/func/myPage/menuScrapInsert.do",
+						dataType : "json",
+						success : function(result){
+							if(result.loginYn == 'N') {
+								alert("로그인이 필요한 서비스입니다. 로그인 후 이용해주세요.");
+							} else {
+								if (result.resultAt == 'Y'){
+									alert("현재 페이지 메뉴스크랩이 완료되었습니다. 마이페이지에서 확인해주세요.");
+									location.href = result.menuUrl;
+								} else if(result.resultAt == 'N'){
+									alert("메뉴스크랩 중 오류가 발생했습니다.\n관리자에게 문의해주세요.");
+								}
+							}
+						},
+						error  : function(data){
+							alert("오류가 발생했습니다.\n관리자에게 문의해주세요.");
+					 	}
+					});
+				}
+			}
+		}
+	}
+
+	//마이페이지 이동
+	var goMyPage = function(){
+		location.href="/mpool/ad/func/myPage/myPageInfo.do";
+	}
+
+</script>
+
+	<!-- 상단팝업 
+	<div class="new_pop_up">
+		<div class="popup_wrap">
+			<p class="txt"><span></span></p>
+			<p class="close ar">
+				<label for="oneday">
+					<input type="checkbox" name="oneday" id="oneday" value="N" title="오늘하루열지않기">
+					오늘하루열지않기
+				</label>
+				<a href="javascript:void(0);" class="imsiPopClose" title="닫기"><i class="xi-close"></i></a>
+			</p>
+		</div>
+	</div>-->		
+	<!-- //상단팝업 -->
+
+	<!-- header--> 
+	<!-- main/sub header 구분-->
+	<header id="header" class="subLayout">
+		<div class="hdt_link">
+			<div class="link">
+				<a href="/cbe/main.do"><i class="xi-home" aria-hidden="true"></i>충북교육청</a>
+			</div>
+			<div class="util">
+				<ul>
+					<li><a href="/mpool/main.do">홈으로</a></li>
+					<li class="login">
+							<!-- 로그인 전 -->
+							<a href="/cbe/lo/login/loginPage.do"><i class="xi-lock-o" aria-hidden="true"></i>로그인</a>
+							<!-- // 로그인 전 -->
+
+							<!-- 로그인 후 -->
+							<!-- //로그인 후 -->				
+						</li>
+						
+						<!-- 로그인 후 -->
+						<li><a href="javaScript:menuScrap();"><i class="xi-star-o" aria-hidden="true"></i>메뉴스크랩</a></li>
+						<!-- //로그인 후 -->
+				</ul>
+			</div>
+		</div>
+
+		<div class="header_wrap">
+			<h1 class="logo"><a href="/mpool/main.do"><img src="/upload/ap/sm/2022/11/958452/img_61236583-660f-4760-997e-6bb0d7b2ed731667293854539.png" alt="충청북도교육청 기간제교사인력풀시스템"></a></h1>
+			<!-- 로고 + 텍스트 타입 사용 시 -->
+			<!-- <h1 class="logo"><a href=""><img src="/images/template/TD_B002/layout/logo.png" alt="충북행복교육지구" class="web"><img src="/images/template/TD_B002/layout/m_logo.png" alt="" class="mob"><span>제천행복교육지구</span></a></h1> -->
+			<!-- //로고 + 텍스트 타입 사용 시 -->
+	
+			<!-- NAV : fullDown / oneDown / oneFull -->
+			<div id="nav" class="fullDown">
+			<!--START-->
+				<div id="gnb">
+					<div class="depth01">
+						<ul>
+							<li><a href="/mpool/cm/cntnts/cntntsView.do?mi=12125&cntntsId=35997"><span>인력풀제 운영 안내</span></a>
+								<div class="depth02">
+									<div class="titBox">
+										<p>
+											<strong>인력풀제 운영 안내</strong>
+											<span>지속가능한 충북교육</span>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li><a href="/mpool/na/ntt/selectNttList.do?mi=12130&bbsId=1090" title="닫힘"><span>게시판</span></a>
+								<div class="depth02">
+									<div class="titBox">
+										<p>
+											<strong>게시판</strong>
+											<span>지속가능한 충북교육</span>
+										</p>
+									</div>
+									<ul>
+										<li><a href="/mpool/na/ntt/selectNttList.do?mi=12130&bbsId=1090"><span>요청게시판</span></a>
+							</li>
+										<li><a href="/mpool/na/ntt/selectNttList.do?mi=12131&bbsId=1089"><span>자기소개 게시판</span></a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/mpool/na/ntt/selectNttList.do?mi=12127&bbsId=1091" class="now"><span>기간제 채용공고</span></a>
+								<div class="depth02">
+									<div class="titBox">
+										<p>
+											<strong>기간제 채용공고</strong>
+											<span>지속가능한 충북교육</span>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li><a href="#check" onclick="menuAccessCheck('12128', 'mpool', this)"><span>인력풀 등록 신청</span></a>
+								<div class="depth02">
+									<div class="titBox">
+										<p>
+											<strong>인력풀 등록 신청</strong>
+											<span>지속가능한 충북교육</span>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li><a href="/mpool/ad/hm/hnfpUserApplList.do?hnfpNo=1321&mi=12129"><span>강사 인력풀 목록</span></a>
+								<div class="depth02">
+									<div class="titBox">
+										<p>
+											<strong>강사 인력풀 목록</strong>
+											<span>지속가능한 충북교육</span>
+										</p>
+									</div>
+								</div>
+							</li>
+				</div>
+							</li>
+				</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			<!--END-->
+			</div><!--  / ,, / -->
+			<!-- //NAV : fullDown / oneDown / oneFull -->
+			<!-- moblie button-->
+			<div class="h_btn">		
+				<a href="" class="mSearch" id="mSearchOpen"><span class="hid">검색창 열기(상태:비활성화)</span><i class="xi-search" aria-hidden="true"></i></a>
+				<!-- search -->
+				<div class="mTotalSearch" id="mTotalSearch">
+					<form name="siteSearchForm" method="post" action="/cbe/search.do">
+						<div class="wrap">
+							<p class="logo"></p>
+							<div class="form">
+								<div class="inner">
+									<input type="text" placeholder="검색어를 입력해주세요" id="searchTerm" name="searchTerm" title="검색어를 입력해주세요">
+									<label class="blind" for="searchTerm">검색어를 입력해주세요</label>
+								</div>
+								<button title="통합검색 버튼" onClick="$('form[name=siteSearchForm]').submit();"><i class="xi-search" aria-hidden="true"></i><em>검색</em></button>
+							</div>
+							<a href="" class="btnClose"><i class="xi-close" aria-hidden="true"></i><em class="hid">검색영역 닫기</em></a>
+						</div>
+					</form>
+				</div>
+				<!-- //search -->
+				<!-- sitemap -->
+				<!-- //sitemap -->
+				<a href="" class="mNav" id="mNavOpen"><em class="hid">모바일메뉴 열기</em><span><em></em><em></em><em></em><em></em></span></a>
+			</div>
+			<!-- //moblie button-->
+		</div>
+	</header>
+	<!-- //header -->			
+
+	<!-- gnb shadow -->
+	<div id="gnbblind"></div>
+
+	<!-- moblie NAV -->
+	<div id="mNav">
+		<div class="inner">
+			<div class="snb"></div>
+			<nav id="mgnb"></nav>
+		</div>
+		<p><a href="" id="mNavClose"><span class="hid">전체 메뉴 닫기</span><i class="xi-close" aria-hidden="true"></i></a></p>
+	</div>
+	<!-- //moblie NAV-->
+
+	
+	
+	
+	
+	
+	
+	
+	<!-- 컨테이너 -->
+	<div id="sub_container">
+		<input type="hidden" id="tab" name ="tab" value="1091">
+		<!-- 서브메뉴 -->
+		<div id="lnb">
+			<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="/js/snsCnrs.js"></script>
+			<!--START-->
+			<input type="hidden" id="leftCurrMi" value="12127">
+			<input type="hidden" id="tabBaseMi" value="12127">
+			<input type="hidden" id="tabUpperMi" value="">
+			<input type="hidden" id="tabUpperMenu" value="">
+				<h2 style="display:none"><a href="/mpool/cm/cntnts/cntntsView.do?mi=12125&cntntsId=35997"  >인력풀제 운영 안내</a></h2>
+					<h2 style="display:none"><a href="/mpool/na/ntt/selectNttList.do?mi=12130&bbsId=1090"  >게시판</a></h2>
+					<li style="display:none"><a data-id="12130" href="/mpool/na/ntt/selectNttList.do?mi=12130&bbsId=1090"  ><span>요청게시판</span></a>
+							</li>
+							<li style="display:none"><a data-id="12131" href="/mpool/na/ntt/selectNttList.do?mi=12131&bbsId=1089"  ><span>자기소개 게시판</span></a>
+							</li>
+						</ul>
+					</nav><h2 class="active"><a href="/mpool/na/ntt/selectNttList.do?mi=12127&bbsId=1091"  >기간제 채용공고</a></h2>
+					<nav>
+						<ul class="dep01"><h2 style="display:none"><a href="#check" onclick="menuAccessCheck('12128', 'mpool')" >인력풀 등록 신청</a></h2>
+					<h2 style="display:none"><a href="/mpool/ad/hm/hnfpUserApplList.do?hnfpNo=1321&mi=12129"  >강사 인력풀 목록</a></h2>
+					
+		</div>
+		<!-- //서브메뉴 -->
+
+		<!-- 서브 영역 -->
+		<div class="subCntBody" id="subContent">
+			
+			<div class="sub_container">
+				
+				<!-- subHeader -->
+				<div class="subHeader">
+					<h2 id="pageTitle"><span>기간제 채용공고</span></h2>
+					
+					<!-- location -->
+					<ul class="subLocation">
+	<li><a href="/mpool/main.do"><i class="xi-home-o" aria-hidden="true"></i><em class="hid">HOME</em></a></li>
+	<li><a href='/mpool/na/ntt/selectNttList.do?mi=12127&bbsId=1091'>기간제 채용공고</a></li></ul>
+					<!-- //location -->
+					
+					<!-- sns -->
+					<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="/js/snsCnrs.js"></script>
+
+<div class="snsBox">
+	<button type="button" class="btnShare"><i class="xi-share-alt"></i><em class="hid">SNS 공유영역 펼치기</em></button>
+	<button type="button" class="btnPrint" onClick="print();" title="새창"><i class="xi-print"></i><em class="hid">인쇄</em></button>
+	<button type="button" class="btnPrint btnZoom btnZoom1" onClick="scaleIn();"><i class="xi-plus-min"></i><em class="hid">확대</em></button>
+	<button type="button" class="btnPrint btnZoom btnZoom2" onClick="scaleOut();"><i class="xi-minus-min"></i><em class="hid">축소</em></button>
+	<div class="snsMore" id="snsMore">
+		<p>
+			<a href="" class="snsF" onclick="snsCnrsLink('mpool','fbook');" title="새창"><em class="hid">페이스북2 공유</em></a>
+			<a href="" class="snsT" onclick="snsCnrsLink('mpool','twit');" title="새창"><em class="hid">트위터 공유</em></a>
+			<a href="" class="snsB" onclick="snsCnrsLink('mpool','nband');" title="새창"><em class="hid">네이버 밴드 공유</em></a>
+			<a href="" class="close"><i class="xi-close"></i><em class="hid">SNS 공유영역 닫기</em></a>
+		</p>
+	</div>
+</div>
+					<!-- //sns -->
+				</div>
+				<!-- //subHeader -->
+	
+				<div class="subContent">
+					<!-- contents -->
+						
+						<!--START-->
+										<!--END-->
+
+						
+						<script type="text/javascript" src="/js/jquery.highlight-4.js"></script>
+<script src="/common/js/board.js"></script><!-- 게시판 js -->
+<!-- 게시판 css -->
+<!-- 	<link rel="stylesheet" href="/common/css/board.css" media="all"> -->
+	<!-- 게시판 css -->
+
+
+<script src="/js/calendar.js"></script>
+<!-- popover 사용 -->
+<script src="/js/ap/hc/bootstrap.min.js"></script>
+<!-- popover 사용 -->
+<script src="/js/co/na/ebook/ebook.js"></script>
+
+
+<!-- 탭 -->
+<script>
+	function goSearch(searchTy, searchkey){
+		$("#searchTy").val(searchTy);
+		$("#searchVal").val(searchkey);
+		$("#searchForm").attr("action","/mpool/na/ntt/selectNttList.do?bbsId=1091").submit();
+	}
+	function goSearch2(searchTy, searchkey){
+		$("#searchTy").val(searchTy);
+		$("#searchVal").val(searchkey);
+		$("#searchForm").attr("action","/mpool/na/ntt/selectNttList.do?bbsId=1091&ty=A").submit();
+	}
+</script> 
+
+<form method="post" name="searchForm" id="searchForm">
+	<input type="hidden" name="mi" value="12127">
+	
+	<input type="hidden" name="searchTy" id="searchTy"  value="" >
+	<input type="hidden" name="searchVal" id="searchVal" value="">
+
+	<div class="tab_st1 Tab_w50">
+		<ul>
+			<li class="on"><a href="/mpool/na/ntt/selectNttList.do?mi=12127&bbsId=1091"><span>구분별</span></a></li>
+			<li ><a href="/mpool/na/ntt/selectNttList.do?mi=12127&bbsId=1091&ty=A"><span>지역별</span></a></li>
+		</ul>
+	</div>
+	
+	<div class="tab_st2 Tab_w20">
+		<!-- 구분별 -->
+		<ul>
+			<li  class="on"><a href="/mpool/na/ntt/selectNttList.do?mi=12127&bbsId=1091"><span>전체</span></a></li>
+			<li ><a href="javascript:goSearch('ADIT1_COLUMN','유치원');"><span>유치원</span></a></li>
+			<li ><a href="javascript:goSearch('ADIT1_COLUMN','초등');"><span>초등</span></a></li>
+			<li ><a href="javascript:goSearch('ADIT1_COLUMN','중등');"><span>중등</span></a></li>
+			<li ><a href="javascript:goSearch('ADIT1_COLUMN','보건.사서.영양.전문상담');"><span>보건.사서.영양.전문상담</span></a></li>
+			<li ><a href="javascript:goSearch('ADIT1_COLUMN','특수');"><span>특수</span></a></li>
+		</ul>
+		<!-- 지역별 -->
+		</div>
+</form><!-- <style>
+.hide{display:none;}
+</style> -->
+
+<!-- 단어 설정 -->
+<!-- 게시판 검색 -->
+
+
+	<div class="bbs_srch mgt20">
+		<!-- 게시판 상단 -->
+		<form name="srchForm" id="srchForm" method="post">
+			<input type="hidden" name="bbsId"  value="1091" id="bbsId"/>
+			<input type="hidden" name="nttSn"  value="" id="nttSn"/>
+			<input type="hidden" name="mi"  value="12127" />
+			<input type="hidden" name="currPage" value="1" />
+			<input type="hidden" name="paramtrStrtpnt" value="" />
+			<input type="hidden" name="noLayout" value="" />
+			<input type="hidden" name="bbsRequstNo" value="" />
+			<input type="hidden" name="fileSn" id="fileSn" />
+			<input type="hidden" name="bbsTypeChk" id="bbsTypeChk" value="list"/>
+
+			<fieldset>
+				<label class="blind" for="listCo">페이징 옵션</label>
+				<!-- 셀렉트박스 -->
+				 <select name="listCo" id="listCo" title="한페이지당 게시물 갯수" >
+					<option value="10"  >10 건</option>
+					<option value="20"  >20 건</option>
+					<option value="30"  >30 건</option>
+					<option value="40"  >40 건</option>
+					<option value="50" selected >50 건</option>
+					<option value="100"  >100 건</option>
+				</select>
+
+				<label class="blind" for="searchType">검색 옵션</label>
+				<select name="searchType" id="searchType" title="검색 옵션">					
+					<option value="sj"    >제목</option>
+					<!--<option value="nm"    >작성자</option>-->
+					</select>
+
+				<!-- 영문홈페이지 게시판 기간 검색 -->
+				<label class="blind" for="searchValue">검색어</label>
+				<input name="searchValue" id="searchValue"  placeholder="검색어를 입력하세요" title="검색어를 입력하세요" class="inpTxt" type="text" value=''>
+				<button type="button" title="검색" class="btnSearch" onClick="javascript:searchEvent()">검색</button>
+			</fieldset>
+		</form>
+	</div>
+	<!-- 페이지안내 -->
+	<div class="pageinfo">
+		<p class="pge_totle">
+			전체<strong>16,191</strong>
+					<strong class="pc_black">건</strong>
+				</p>
+		<p class="pge_num">
+			페이지<strong title="현재페이지">1</strong><span>/</span>324</p>
+
+	</div>
+	<!-- //페이지 안내 -->
+<!-- //게시판 검색 -->
+
+<!-- //게시판 상단 -->
+
+<!-- 게시판 리스트 -->
+<div class="bbs_ListA bbs_bg1" id="board-imgTxt">
+	<table>
+	<caption>
+			<span> 기간제 채용공고 게시판</span>
+		</caption>
+		<colgroup>
+			<col style="width:8%;" data-table="number">
+					<col style="width:9%;">
+					<col style="width:18%;">
+					<col style="width:30%;">
+					<col style="width:12%;" data-table="write">
+					<col style="width:13%;" data-table="date">
+					<col style="width:10%;" data-table="number">
+					</colgroup>
+			<thead>
+				<tr>
+				<th scope="col" data-table="number">번호</th>
+						<th scope="col" data-table="write">지역</th>
+						<th scope="col" data-table="write">구분</th>
+						<th scope="col" data-table="write">제목</th>
+						<th scope="col"  data-table="write">작성자</th>
+						<th scope="col" data-table="date">등록일</th>
+						<th scope="col" data-table="number">조회수</th>
+						</tr>
+			</thead>
+			<tbody>
+			<tr>
+						<td data-table="number">16191</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582401" title="2026.학년말 방학중 방과후과정 강사채용 계획(생명초등학교병설유치원)" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										2026.학년말 방학중 방과후과정 강사채용 계획(생명초등학교병설유치원)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								조해경</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">81</td>
+								</tr>
+						<tr>
+						<td data-table="number">16190</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												특수</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582400" title="충주혜성학교 특수(중등) 기간제 교원 채용 공고" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										충주혜성학교 특수(중등) 기간제 교원 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								장용길</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">47</td>
+								</tr>
+						<tr>
+						<td data-table="number">16189</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												보건.사서.영양.전문상담</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582390" title="[12월, 영양] 2026. 봉명중 기간제교사(영양교사) 채용 공고(2차)" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										[12월, 영양] 2026. 봉명중 기간제교사(영양교사) 채용 공고(2차)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								봉명중학교</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">52</td>
+								</tr>
+						<tr>
+						<td data-table="number">16188</td>
+								<td data-table="write">
+												음성</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582386" title="2026. 부윤초등학교병설유치원 겨울방학 중 방과후과정 강사 채용" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										2026. 부윤초등학교병설유치원 겨울방학 중 방과후과정 강사 채용</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								곽지연</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">47</td>
+								</tr>
+						<tr>
+						<td data-table="number">16187</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582381" title="2026. 봉덕초등학교병설유치원 겨울방학 중 방과후 과정 강사 채용 공고" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										2026. 봉덕초등학교병설유치원 겨울방학 중 방과후 과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								봉덕초등학교</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">51</td>
+								</tr>
+						<tr>
+						<td data-table="number">16186</td>
+								<td data-table="write">
+												음성</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582379" title="2026학년도 소이초등학교병설유치원 겨울방학 중 방과후과정 강사 채용" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										2026학년도 소이초등학교병설유치원 겨울방학 중 방과후과정 강사 채용</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								김예현</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">46</td>
+								</tr>
+						<tr>
+						<td data-table="number">16185</td>
+								<td data-table="write">
+												청주, 보은, 옥</td>
+										<td data-table="write">
+												유치원, 초등, 중등, 특수</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582336" title="오송솔미유치원 특수교육 전일제강사 2차 채용 공고" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										오송솔미유치원 특수교육 전일제강사 2차 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								오송솔미유치원</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">57</td>
+								</tr>
+						<tr>
+						<td data-table="number">16184</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582354" title="2026. 충주남한강초등학교병설유치원 겨울방학 중 방과후 과정 강사 채용 공고문(3차)" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										2026. 충주남한강초등학교병설유치원 겨울방학 중 방과후 과정 강사 채용 공고문(3차)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								충주남한강초</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">39</td>
+								</tr>
+						<tr>
+						<td data-table="number">16183</td>
+								<td data-table="write">
+												보은</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582334" title="2026. 보은동광초등학교병설유치원 겨울방학 중 방과후과정 강사 채용 공고" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										2026. 보은동광초등학교병설유치원 겨울방학 중 방과후과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								동광초등학교</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">36</td>
+								</tr>
+						<tr>
+						<td data-table="number">16182</td>
+								<td data-table="write">
+												옥천</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582351" title="2026학년도 삼양유치원 겨울방학 중 방과후 과정 강사 채용 공고" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										2026학년도 삼양유치원 겨울방학 중 방과후 과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								오서희</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">40</td>
+								</tr>
+						<tr>
+						<td data-table="number">16181</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582330" title="2026. 학년말 방학 중 방과후 과정 강사 채용 공고 2차" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										2026. 학년말 방학 중 방과후 과정 강사 채용 공고 2차</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								옥산유치원</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">67</td>
+								</tr>
+						<tr>
+						<td data-table="number">16180</td>
+								<td data-table="write">
+												진천</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582350" title="2026. 금구초등학교병설유치원 학년말방학 중 방과후과정 강사 채용 공고" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										2026. 금구초등학교병설유치원 학년말방학 중 방과후과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								금구초등학교</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">39</td>
+								</tr>
+						<tr>
+						<td data-table="number">16179</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582326" title="2026. 국원유치원 학년말 방학 중 방과후 과정 강사 채용 공고 (2차)" class="nttInfoBtn">
+										<span class="hid">새글</span>
+											<span class="new">N</span>
+										2026. 국원유치원 학년말 방학 중 방과후 과정 강사 채용 공고 (2차)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								국원유치원</td>
+		
+								<td data-table="date">2026.11.16.</td>
+								<td data-table="number">32</td>
+								</tr>
+						<tr>
+						<td data-table="number">16178</td>
+								<td data-table="write">
+												괴산/증평</td>
+										<td data-table="write">
+												초등</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582322" title="2026. 증평초등학교 계약제교원 채용 2차 공고" class="nttInfoBtn">
+										2026. 증평초등학교 계약제교원 채용 2차 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								증평초등학교</td>
+		
+								<td data-table="date">2026.11.15.</td>
+								<td data-table="number">154</td>
+								</tr>
+						<tr>
+						<td data-table="number">16177</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582301" title="2026학년도 비봉유치원 학년말 방학 중 방과후 과정 강사 채용 공고(1차)" class="nttInfoBtn">
+										2026학년도 비봉유치원 학년말 방학 중 방과후 과정 강사 채용 공고(1차)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								비봉유치원</td>
+		
+								<td data-table="date">2026.11.13.</td>
+								<td data-table="number">176</td>
+								</tr>
+						<tr>
+						<td data-table="number">16176</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582291" title="2026학년도 충주예성초등학교병설유치원 겨울방학 중 방과후 과정 강사 채용 공고" class="nttInfoBtn">
+										2026학년도 충주예성초등학교병설유치원 겨울방학 중 방과후 과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								충주예성초등학교</td>
+		
+								<td data-table="date">2026.11.13.</td>
+								<td data-table="number">130</td>
+								</tr>
+						<tr>
+						<td data-table="number">16175</td>
+								<td data-table="write">
+												괴산/증평</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582289" title="2026. 증평초등학교병설유치원 겨울방학중 방과후과정 강사 채용 공고" class="nttInfoBtn">
+										2026. 증평초등학교병설유치원 겨울방학중 방과후과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								증평초등학교</td>
+		
+								<td data-table="date">2026.11.13.</td>
+								<td data-table="number">103</td>
+								</tr>
+						<tr>
+						<td data-table="number">16174</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582276" title="2026. 양청초등학교병설유치원 학년말 방학 중 방과후 과정 강사 채용 1차 공고" class="nttInfoBtn">
+										2026. 양청초등학교병설유치원 학년말 방학 중 방과후 과정 강사 채용 1차 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								양청초등학교</td>
+		
+								<td data-table="date">2026.11.13.</td>
+								<td data-table="number">127</td>
+								</tr>
+						<tr>
+						<td data-table="number">16173</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582269" title="2026학년도 용성초병설유치원 겨울방학 중 방과후 과정 강사 채용 공고" class="nttInfoBtn">
+										2026학년도 용성초병설유치원 겨울방학 중 방과후 과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								박소현</td>
+		
+								<td data-table="date">2026.11.13.</td>
+								<td data-table="number">149</td>
+								</tr>
+						<tr>
+						<td data-table="number">16172</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582281" title="2026학년도 초롱꽃유치원 겨울방학 중 방과후 과정 강사 채용 공고(2차)" class="nttInfoBtn">
+										2026학년도 초롱꽃유치원 겨울방학 중 방과후 과정 강사 채용 공고(2차)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								초롱꽃유치원</td>
+		
+								<td data-table="date">2026.11.13.</td>
+								<td data-table="number">147</td>
+								</tr>
+						<tr>
+						<td data-table="number">16171</td>
+								<td data-table="write">
+												진천</td>
+										<td data-table="write">
+												보건.사서.영양.전문상담</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582256" title="진천상신초등학교 기간제교사 채용 2차 공고" class="nttInfoBtn">
+										진천상신초등학교 기간제교사 채용 2차 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								진천상신초등학교</td>
+		
+								<td data-table="date">2026.11.13.</td>
+								<td data-table="number">158</td>
+								</tr>
+						<tr>
+						<td data-table="number">16170</td>
+								<td data-table="write">
+												음성</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582265" title="2026학년도 금왕유치원 계약제교원(학년말방학 중 방과후과정 강사) 개별채용 및 3차공고" class="nttInfoBtn">
+										2026학년도 금왕유치원 계약제교원(학년말방학 중 방과후과정 강사) 개별채용 및 3차공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								금왕유치원</td>
+		
+								<td data-table="date">2026.11.13.</td>
+								<td data-table="number">100</td>
+								</tr>
+						<tr>
+						<td data-table="number">16169</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582248" title="2026. 사천초등학교 병설유치원 겨울방학 중 방과후과정 강사 채용" class="nttInfoBtn">
+										2026. 사천초등학교 병설유치원 겨울방학 중 방과후과정 강사 채용</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								사천초등학교</td>
+		
+								<td data-table="date">2026.11.13.</td>
+								<td data-table="number">127</td>
+								</tr>
+						<tr>
+						<td data-table="number">16168</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582241" title="2026. 가흥초등학교병설유치원 방학 중 방과후 과정 강사 채용 공고" class="nttInfoBtn">
+										2026. 가흥초등학교병설유치원 방학 중 방과후 과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								서승언</td>
+		
+								<td data-table="date">2026.11.12.</td>
+								<td data-table="number">111</td>
+								</tr>
+						<tr>
+						<td data-table="number">16167</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												중등</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582232" title="충대부중- 전일제강사(기술가정) 채용 공고" class="nttInfoBtn">
+										충대부중- 전일제강사(기술가정) 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								충북대학교사범대학부설중</td>
+		
+								<td data-table="date">2026.11.12.</td>
+								<td data-table="number">159</td>
+								</tr>
+						<tr>
+						<td data-table="number">16166</td>
+								<td data-table="write">
+												청주, 보은, 진</td>
+										<td data-table="write">
+												유치원, 특수</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582211" title="2026. 오송솔미유치원 특수교육 전일제 강사 채용 공고" class="nttInfoBtn">
+										2026. 오송솔미유치원 특수교육 전일제 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								오송솔미유치원</td>
+		
+								<td data-table="date">2026.11.12.</td>
+								<td data-table="number">147</td>
+								</tr>
+						<tr>
+						<td data-table="number">16165</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582221" title="2026. 동남유치원 겨울방학 중 방과후 과정 강사 채용 공고" class="nttInfoBtn">
+										2026. 동남유치원 겨울방학 중 방과후 과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								김연희</td>
+		
+								<td data-table="date">2026.11.12.</td>
+								<td data-table="number">182</td>
+								</tr>
+						<tr>
+						<td data-table="number">16164</td>
+								<td data-table="write">
+												진천</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582218" title="2026학년도 유치원 겨울방학 중 방과후 과정 강사 채용 공고" class="nttInfoBtn">
+										2026학년도 유치원 겨울방학 중 방과후 과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								장유성</td>
+		
+								<td data-table="date">2026.11.12.</td>
+								<td data-table="number">123</td>
+								</tr>
+						<tr>
+						<td data-table="number">16163</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582201" title="2026. 창리초병설유 겨울방학 중 방과후과정 강사 채용 공고(2차)" class="nttInfoBtn">
+										2026. 창리초병설유 겨울방학 중 방과후과정 강사 채용 공고(2차)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								창리초등학교</td>
+		
+								<td data-table="date">2026.11.12.</td>
+								<td data-table="number">166</td>
+								</tr>
+						<tr>
+						<td data-table="number">16162</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582176" title="2026.  용아초등학교병설유치원 겨울방학 중 방과후과정 강사 모집 2차 공고" class="nttInfoBtn">
+										2026.  용아초등학교병설유치원 겨울방학 중 방과후과정 강사 모집 2차 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								최민지</td>
+		
+								<td data-table="date">2026.11.12.</td>
+								<td data-table="number">145</td>
+								</tr>
+						<tr>
+						<td data-table="number">16161</td>
+								<td data-table="write">
+												괴산/증평</td>
+										<td data-table="write">
+												초등</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582187" title="2026. 증평초등학교 계약제교원 채용 공고" class="nttInfoBtn">
+										2026. 증평초등학교 계약제교원 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								증평초등학교</td>
+		
+								<td data-table="date">2026.11.12.</td>
+								<td data-table="number">237</td>
+								</tr>
+						<tr>
+						<td data-table="number">16160</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582162" title=" 2026. 모충초병설유치원에서 겨울방학 중 방과후 과정 강사 채용 공고" class="nttInfoBtn">
+										 2026. 모충초병설유치원에서 겨울방학 중 방과후 과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								심숙희</td>
+		
+								<td data-table="date">2026.11.11.</td>
+								<td data-table="number">194</td>
+								</tr>
+						<tr>
+						<td data-table="number">16159</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												중등</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582151" title="충주고등학교 전일제강사(화학) 2차 공고" class="nttInfoBtn">
+										충주고등학교 전일제강사(화학) 2차 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								충주고등학교</td>
+		
+								<td data-table="date">2026.11.11.</td>
+								<td data-table="number">139</td>
+								</tr>
+						<tr>
+						<td data-table="number">16158</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												중등</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582133" title="2026. 기간제 교원(진로) 채용 공고" class="nttInfoBtn">
+										2026. 기간제 교원(진로) 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								탄금중학교</td>
+		
+								<td data-table="date">2026.11.11.</td>
+								<td data-table="number">225</td>
+								</tr>
+						<tr>
+						<td data-table="number">16157</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582132" title="2026. 율봉유치원 겨울방학 중 방과후과정 강사 채용 공고" class="nttInfoBtn">
+										2026. 율봉유치원 겨울방학 중 방과후과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								율봉유치원</td>
+		
+								<td data-table="date">2026.11.11.</td>
+								<td data-table="number">158</td>
+								</tr>
+						<tr>
+						<td data-table="number">16156</td>
+								<td data-table="write">
+												음성</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582149" title="2026. 겨울방학 중 방과후 과정 강사 모집 공고 " class="nttInfoBtn">
+										2026. 겨울방학 중 방과후 과정 강사 모집 공고 </a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								송춘기</td>
+		
+								<td data-table="date">2026.11.11.</td>
+								<td data-table="number">167</td>
+								</tr>
+						<tr>
+						<td data-table="number">16155</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												보건.사서.영양.전문상담</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582144" title="[12월, 영양] 2026. 봉명중 기간제교사(영양교사) 채용 공고" class="nttInfoBtn">
+										[12월, 영양] 2026. 봉명중 기간제교사(영양교사) 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								봉명중학교</td>
+		
+								<td data-table="date">2026.11.11.</td>
+								<td data-table="number">203</td>
+								</tr>
+						<tr>
+						<td data-table="number">16154</td>
+								<td data-table="write">
+												음성</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582129" title="2026. 남신초등학교병설유치원 겨울방학중 방과후과정 강사 채용 공고" class="nttInfoBtn">
+										2026. 남신초등학교병설유치원 겨울방학중 방과후과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								신미선</td>
+		
+								<td data-table="date">2026.11.11.</td>
+								<td data-table="number">83</td>
+								</tr>
+						<tr>
+						<td data-table="number">16153</td>
+								<td data-table="write">
+												진천</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582143" title="2026. 겨울방학 중 방과후과정 강사 채용 공고(2차)" class="nttInfoBtn">
+										2026. 겨울방학 중 방과후과정 강사 채용 공고(2차)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								권혜선</td>
+		
+								<td data-table="date">2026.11.11.</td>
+								<td data-table="number">133</td>
+								</tr>
+						<tr>
+						<td data-table="number">16152</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												초등</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582139" title="2026. 사천초 기간제교사 채용(초등 담임교사)" class="nttInfoBtn">
+										2026. 사천초 기간제교사 채용(초등 담임교사)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								사천초등학교</td>
+		
+								<td data-table="date">2026.11.11.</td>
+								<td data-table="number">274</td>
+								</tr>
+						<tr>
+						<td data-table="number">16151</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582110" title="2026학년도 충주대소원초등학교병설유치원 학년말방학 중 방과후과정 강사 채용 공고" class="nttInfoBtn">
+										2026학년도 충주대소원초등학교병설유치원 학년말방학 중 방과후과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								충주대소원초</td>
+		
+								<td data-table="date">2026.11.10.</td>
+								<td data-table="number">147</td>
+								</tr>
+						<tr>
+						<td data-table="number">16150</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												초등, 특수</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582105" title="2026. 증안초 계약제교원(기간제 특수교사) 채용 공고(2차)" class="nttInfoBtn">
+										2026. 증안초 계약제교원(기간제 특수교사) 채용 공고(2차)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								증안초등학교</td>
+		
+								<td data-table="date">2026.11.10.</td>
+								<td data-table="number">235</td>
+								</tr>
+						<tr>
+						<td data-table="number">16149</td>
+								<td data-table="write">
+												</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582086" title="2026학년도 쌍봉초등학교병설유치원 겨울방학 중 방과후과정 강사 모집 공고" class="nttInfoBtn">
+										2026학년도 쌍봉초등학교병설유치원 겨울방학 중 방과후과정 강사 모집 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								박은희</td>
+		
+								<td data-table="date">2026.11.10.</td>
+								<td data-table="number">137</td>
+								</tr>
+						<tr>
+						<td data-table="number">16148</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582100" title="2027학년도 보슬유치원 정교사 채용 공고" class="nttInfoBtn">
+										2027학년도 보슬유치원 정교사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								이영숙</td>
+		
+								<td data-table="date">2026.11.10.</td>
+								<td data-table="number">226</td>
+								</tr>
+						<tr>
+						<td data-table="number">16147</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582098" title="2026. 경산초병설유치원 겨울방학 중 방과후과정 강사 채용 공고" class="nttInfoBtn">
+										2026. 경산초병설유치원 겨울방학 중 방과후과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								김다래</td>
+		
+								<td data-table="date">2026.11.10.</td>
+								<td data-table="number">157</td>
+								</tr>
+						<tr>
+						<td data-table="number">16146</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												중등</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582082" title="충북공업고등학교 2026. 2학기 기간제교사 채용 공고(기계)" class="nttInfoBtn">
+										충북공업고등학교 2026. 2학기 기간제교사 채용 공고(기계)</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								충북공업고등학교</td>
+		
+								<td data-table="date">2026.11.10.</td>
+								<td data-table="number">348</td>
+								</tr>
+						<tr>
+						<td data-table="number">16145</td>
+								<td data-table="write">
+												음성</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582075" title="2026년 생극초병설유치원 방학중 강사 채용공고" class="nttInfoBtn">
+										2026년 생극초병설유치원 방학중 강사 채용공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								생극초등학교</td>
+		
+								<td data-table="date">2026.11.10.</td>
+								<td data-table="number">80</td>
+								</tr>
+						<tr>
+						<td data-table="number">16144</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582061" title="2026. 충주대림초등학교병설유치원 학년말방학 중 방과후 강사 채용 공고" class="nttInfoBtn">
+										2026. 충주대림초등학교병설유치원 학년말방학 중 방과후 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								김신숙</td>
+		
+								<td data-table="date">2026.11.10.</td>
+								<td data-table="number">143</td>
+								</tr>
+						<tr>
+						<td data-table="number">16143</td>
+								<td data-table="write">
+												충주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582060" title="2026학년도 유치원 겨울방학 중 방과후 과정 강사 채용 공고" class="nttInfoBtn">
+										2026학년도 유치원 겨울방학 중 방과후 과정 강사 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								주덕화곡초등학교</td>
+		
+								<td data-table="date">2026.11.10.</td>
+								<td data-table="number">141</td>
+								</tr>
+						<tr>
+						<td data-table="number">16142</td>
+								<td data-table="write">
+												청주</td>
+										<td data-table="write">
+												유치원</td>
+										<td data-table="subject" class="bbs_tit">
+									<a href="javascript:;" data-id="1582014" title="2026. 강서초병설유치원 겨울방학 중 방과후과정 강사 2차 채용 공고" class="nttInfoBtn">
+										2026. 강서초병설유치원 겨울방학 중 방과후과정 강사 2차 채용 공고</a>
+								</td>
+								<td data-table="write">
+								<!-- menuAuthAt 관리자 권한이 있을 시 Y값이 들어간다. 본인글이거나 관리자일 경우 작성자가 보이도록 수정 -->
+								정소영</td>
+		
+								<td data-table="date">2026.11.10.</td>
+								<td data-table="number">161</td>
+								</tr>
+						</tbody>
+		</table>
+</div>
+
+<!-- //게시판 리스트 -->
+
+<!-- 버튼 -->
+<!-- 글쓰기 버튼명 세팅 -->
+<div class="btn_bbs ar mgt20">
+
+</div>
+
+
+	
+
+
+
+<!-- //버튼 -->
+<!-- 페이징 -->
+<form name="pagingForm" action="/mpool/na/ntt/selectNttList.do" method="post">
+<input type="hidden" name="currPage" value="1" />
+<input type="hidden" name="listUseAt" value="Y" />
+<input type="hidden" name="manageAt" value="N" />
+<input type="hidden" name="confmUseAt" value="N" />
+<input type="hidden" name="listCo" value="50" />
+<input type="hidden" name="sysId" value="mpool" />
+<input type="hidden" name="bbsTy" value="NORMAL" />
+<input type="hidden" name="bbsTypeChk" value="list" />
+<input type="hidden" name="newHour" value="24" />
+<input type="hidden" name="maxSn" value="50" />
+<input type="hidden" name="pblancAt" value="N" />
+<input type="hidden" name="authorAt" value="N" />
+<input type="hidden" name="noticeAt" value="N" />
+<input type="hidden" name="mi" value="12127" />
+<input type="hidden" name="useAt" value="Y" />
+<input type="hidden" name="minSn" value="0" />
+<input type="hidden" name="bbsId" value="1091" />
+<div class="bbs_pagerA">
+<a href="#wrap" class="bbs_arr pgeL2" title="맨처음 페이지입니다..">맨처음</a>
+<div>
+<strong class="bbs_pge_num" title="현재 페이지 입니다.">1</strong>
+<a href="#wrap" class="bbs_pge_num" onclick="goPaging(2)" title='2 페이지로 이동됩니다.'>2</a><a href="#wrap" class="bbs_pge_num" onclick="goPaging(3)" title='3 페이지로 이동됩니다.'>3</a><a href="#wrap" class="bbs_pge_num" onclick="goPaging(4)" title='4 페이지로 이동됩니다.'>4</a><a href="#wrap" class="bbs_pge_num" onclick="goPaging(5)" title='5 페이지로 이동됩니다.'>5</a><a href="#wrap" class="bbs_pge_num" onclick="goPaging(6)" title='6 페이지로 이동됩니다.'>6</a><a href="#wrap" class="bbs_pge_num" onclick="goPaging(7)" title='7 페이지로 이동됩니다.'>7</a><a href="#wrap" class="bbs_pge_num" onclick="goPaging(8)" title='8 페이지로 이동됩니다.'>8</a><a href="#wrap" class="bbs_pge_num" onclick="goPaging(9)" title='9 페이지로 이동됩니다.'>9</a><a href="#wrap" class="bbs_pge_num" onclick="goPaging(10)" title='10 페이지로 이동됩니다.'>10</a></div>
+<a href="#wrap" onclick="goPaging(11)" class="bbs_arr pgeR1" title="11 페이지로 이동됩니다.">다음</a>
+<a href="#wrap" onclick="goPaging(324)" class="bbs_arr pgeR2" title="맨마지막(324) 페이지로 이동됩니다.">맨마지막</a>
+</div>
+</form>
+<script>function goPaging(pageSn){document.pagingForm.currPage.value=pageSn;document.pagingForm.submit();}</script>
+<!-- //페이징 -->
+
+<script type="text/javascript">
+	var tab_focus = null;//2020.12.28.SY,CHo 포커스 동적위치 조정(웹접근성)
+
+	
+
+	//검색
+	function searchEvent() {
+	    var frm = document.getElementById('srchForm');
+
+		/*영문홈페이지에서만 기간설정 */
+	    
+
+		frm.currPage.value = '';
+		frm.action = '/mpool/na/ntt/selectNttList.do';
+		frm.submit();
+	}
+
+ 	$(function(){
+
+ 		//검색 ( 엔터 )
+ 		$('#searchValue').keypress(function(event){
+ 		    if ( event.which == 13 ) {
+ 		    	searchEvent();
+ 		         return false;
+ 		    }
+ 		});
+
+		$(".loginNttPage").click(function() {
+			var bbsId = $(this).attr('data-id');
+			//$("#bbsId").val(bbsId);
+			$("#srchForm2").attr('action', "/mpool/lo/login/loginPage.do?bbsId="+bbsId+"").submit();
+		});
+
+ 		//게시물 보기
+ 		$(".nttInfoBtn").click(function() {
+ 			var nttSn = $(this).attr('data-id');
+ 			$("#nttSn").val(nttSn);
+ 			$("#bbsTypeChk").val($("bbsTypeChk").val());
+
+			$.ajax({
+				type : "post",
+				url : "/mpool/na/ntt/bbsAuthCheck.do",
+				data : $("#srchForm").serialize(),
+				async: true,
+				dataType : "json",
+				success : function(data) {
+					if(data.resultAt == "Y"){
+						$("#srchForm").attr('action', "/mpool/na/ntt/selectNttInfo.do").submit();
+					}else if(data.resultAt == "N"){
+						alert(data.resultMsg);
+					}
+				},
+				error : function(data) {
+					alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+				}
+			});
+ 		});
+
+
+		
+
+	   $(".listFileDown").click(function(){
+		   var nttSn = $(this).attr("data-id");
+		   var fileTy = $(this).attr("data-fileTy");
+		   var bbsId = $(this).parents().attr("data-id");
+		   var form_data = {
+				nttSn: nttSn,
+				bbsId: bbsId
+			};
+		   $.ajax ({
+				  type: 'post', // POST 로 전송
+				  dataType: 'json', // JSON 타입이 아닐경우 제거
+				  url: '/mpool/na/ntt/fileDownChk.do', // 호출 URL
+				  data: form_data,
+				  success:function(data){
+					var results = data.nttFileList;
+						var closeBtn = false;
+				        var str = '';
+						str += '<ul>';
+						$.each(results, function(i){
+							if(fileTy == 'doc' && results[i].fileTy != 'ebook' && results[i].fileTy != 'ebook_old') {
+								str += '<li>';
+								str += '<a class="fileName" href="/comm/nttFileDownload.do?fileKey='+results[i].dwldUrl+'" title="'+results[i].fileNm+' 다운로드">'+results[i].fileNm+'</a>';
+								if(!closeBtn){
+									str += '<a class="fileClose" href="javascript:" data-id="'+ results[i].nttSn +'" data-fileTy="'+fileTy+'"><img src="/common/images/board/btn_close.png" alt="첨부파일 레이어 닫기"></a>';
+									closeBtn = true;
+								}
+								str += '</li>';
+							} else if(fileTy == 'ebook' && (results[i].fileTy == 'ebook' || results[i].fileTy == 'ebook_old')) {
+								str += '<li>';
+								str += '<a class="fileName nttEbookInfoBtn" href="javascript:;" data-id="'+results[i].nttSn+'" data-fileSn="'+results[i].fileSn+'" title="'+results[i].fileNm+' 보기">'+results[i].fileNm+'</a>';
+								if(!closeBtn){
+									str += '<a class="fileClose" href="javascript:" data-id="'+ results[i].nttSn +'" data-fileTy="'+fileTy+'"><img src="/common/images/board/btn_close.png" alt="첨부파일 레이어 닫기"></a>';
+									closeBtn = true;
+								}
+								str += '</li>';
+							}
+				    	});
+				       str += '</ul>';
+				       $("#listFile_"+fileTy+"_"+nttSn).html(str);
+				  },
+				  error:function(e) {
+					  alert("error!");
+				  }
+				});
+		   if($("#listFile_"+fileTy+"_"+nttSn).attr("class").indexOf("hide") > 0){
+			   $(".file_lyr").addClass("hide");
+			   $("#listFile_"+fileTy+"_"+nttSn).removeClass("hide");
+		   } else {
+			   $("#listFile_"+fileTy+"_"+nttSn).addClass("hide");
+		   }
+		   tab_focus = $(this);//2020.12.28.SY,CHo 포커스 동적위치 조정(웹접근성)
+		});
+
+		/*파일 리스트 닫기*/
+		$(document).on('click','.fileClose',function(){
+			var nttSn = $(this).attr("data-id");
+			var fileTy = $(this).attr("data-fileTy");
+			var bbsId = $(this).parents().attr("id");
+			if($("#listFile_"+fileTy+"_"+nttSn).attr("class").indexOf("hide") > 0){
+					$(".file_lyr").addClass("hide");
+					$("#listFile_"+fileTy+"_"+nttSn).removeClass("hide");
+				} else {
+					$("#listFile_"+fileTy+"_"+nttSn).addClass("hide");
+				}
+			tab_focus.focus();//2020.12.28.SY,CHo 포커스 동적위치 조정(웹접근성)
+		});
+
+ 	});
+
+ 	$(".newsletterBtn").on("click", function(){
+ 		window.open('about:blank', 'newsletter','menubar=no,scrollbars=yes,width=1000,height=700');
+ 		$("#srchForm").attr("target", "newsletter").attr("action", "/nts/ad/nslet/recptnReqstInfo.do").submit().attr("target", "_blank");
+ 		return;
+ 	});
+
+
+ 	//게시판 타입 변경
+ 	$(".goBssTypeUp").click(function() {
+		var bbsType = $(this).attr('data-id');
+		$("#bbsTypeChk").val(bbsType);
+		$("#srchForm").attr('action', "/mpool/na/ntt/selectNttList.do").submit();
+	});
+
+	$(document).ready(function() {
+		var sKey1 = ''; // 해당 검색어
+
+		if(sKey1 != ''){
+			$('#board-imgTxt').highlight(sKey1); // 하이라이트(여러개의 검색어라면 단순하게 여러번 사용
+		}
+		//스페이스로 구분되어 and 연산자 검색을 한 검색어의 경우
+		var sKey = '';
+	
+		var splitKey = sKey.split(" ");
+		if(splitKey.length > 1) {
+			for(var i=0; i<splitKey.length; i++){
+				$('#board-imgTxt').highlight(splitKey[i]);// 검색어 하이라이트 
+			}
+		} else {
+			$('#board-imgTxt').highlight(sKey); 
+		}
+
+	});
+
+</script>
+
+
+<form name="srchForm2" id="srchForm2" method="post">
+<input type="hidden" name="mi"  value="12127" />
+<input type="hidden" name="paramtrStrtpnt" value="" />
+<input type="hidden" name="noLayout" value="" />
+<input type="hidden" name="bbsRequstNo" value="" />
+<input type="hidden" name="sysId" value="mpool" />
+
+</form>
+
+					<!-- contents -->
+					
+
+
+
+<script>
+	//만족도 조사 ( 엔터 )
+	$(function(){
+		$('#etcOpinion').keypress(function(event){
+			if ( event.which == 13 ) {
+				$('.csnstSubmit').click();
+			}	
+		});
+			
+	});
+	
+	$(document).on('click','.csnstSubmit',function(){
+		/* 20/01/02 담당자 요청으로 제거
+		if(!confirm('만족도 조사에 참여하시겠습니까?')){
+			return false;
+		} else {
+
+		}
+		*/
+		
+		if ($("input[name='stsfdgEvlScore']:checked").val() == null) {
+			alert("만족도 항목을 선택해주세요.");
+			return false;
+		} 
+		
+		var data = $("#csnstForm").serialize();
+		
+		$.ajax({
+			type: "POST",
+			datatype:"json",
+			data: data,
+			url: "/mpool/cs/csnst/insertCsnstInfo.do",
+			success:function(result){
+				var retValue = result;
+				if(retValue == 1){
+					alert("만족도 참여를 완료하였습니다.");
+				} else if(retValue == 2){
+					alert("하루에 1회만 참여할 수 있습니다.");
+				} else {
+					alert("만족도 참여에 실패하였습니다.");
+				}
+			},
+			error:function(data) {   
+				alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+			}
+					
+		});		
+	});
+</script>								
+								<!-- 만족도조사 -->
+						        <div class="satisfaction"> 
+						            <h3 class="hid">콘텐츠 만족도 조사</h3>
+						            <p class="question">  페이지에서 제공하는 정보에 대하여 만족하셨습니까?  </p>
+						            <form name="csnstForm" id="csnstForm" method="post" >
+						                <fieldset>
+						                    <legend>만족도 조사</legend>
+						                    <input type="hidden" name="sysId" id="csnstSysId" value='mpool'>
+						                    <input type="hidden" name="menuId" id="csnstMenuId" value="12127">
+						                    <div class="satisfaction_list">
+						                        <div class="input_radio">
+						                            <span><input name="stsfdgEvlScore" value="5" id="stsfdgEvlScore1" type="radio">
+						                            <label for="stsfdgEvlScore1">매우만족</label></span>
+						                            <span><input name="stsfdgEvlScore" value="4" id="stsfdgEvlScore2" type="radio">
+						                            <label for="stsfdgEvlScore2">만족</label></span>
+						                            <span><input name="stsfdgEvlScore" value="3" id="stsfdgEvlScore3" type="radio">
+						                            <label for="stsfdgEvlScore3">보통</label></span>
+						                            <span><input name="stsfdgEvlScore" value="2" id="stsfdgEvlScore4" type="radio">
+						                            <label for="stsfdgEvlScore4">불만족</label></span>
+						                            <span><input name="stsfdgEvlScore" value="1" id="stsfdgEvlScore5" type="radio">
+						                            <label for="stsfdgEvlScore5">매우불만족</label></span>
+													<input type="button" value="평가하기" class="csnstSubmit btn_na mini" >
+						                        </div>
+						                    </div>
+						                </fieldset>
+						            </form>
+						            
+						            
+						         
+						            
+										
+							            
+						            
+						        </div>
+						        <!-- //만족도조사 -->
+				</div>
+			</div>
+		</div>
+		<!-- //서브 영역 -->
+	</div>
+	
+	
+
+<!-- footer -->
+<footer id="footer">
+	<div class="container">
+		<div class="ftLink">
+<ul class="ftLinkSelf">
+	<li><a href="/cbe/itp/policy/policyInfo.do?mi=11759"><strong>개인정보처리방침</strong></a></li>
+	<li><a href="/cbe/itp/selectVidoInfoViewPop.do?mi=11762" target="_blank">영상정보처리방침</a></li>
+	<li><a href="/cbe/cm/cntnts/cntntsView.do?mi=11764&amp;cntntsId=35654" target="_blank">저작권정책</a></li>
+	<li><a href="/cbe/cm/cntnts/cntntsView.do?mi=11768&amp;cntntsId=35657" target="_blank">뷰어프로그램</a></li>
+</ul>
+</div>
+
+<div class="ftBox">
+<address><span>(28635) 충북 청주시 서원구 청남로 1929 (산남동 4-11)</span></address>
+
+<ul>
+	<li>TEL : 043)290-2000, (당직실 2500), 2669, 2670</li>
+	<li>FAX : 043)290-2741</li>
+</ul>
+
+<p class="copyright">Copyright &copy; Chungcheongbuk-do Office Of Education. All Rights Reserved.</p>
+</div>
+
+		<!-- <div class="ftLink">
+			<ul>
+				<li><a href=""><strong>개인정보처리방침</strong></a></li>
+				<li><a href="">영상정보처리방침</a></li>
+				<li><a href="">저작권신고</a></li>
+				<li><a href="">저작권정책</a></li>
+				<li><a href="">뷰어프로그램</a></li>
+			</ul>
+		</div>
+
+		<div class="ftBox">
+			<address>
+				<span>[28635] 충북 청주시 서원구 청남로 1929 (산남동 4-11)</span> <span>TEL : 043)290-2768</span><span>FAX : 043)290-2751</span>
+			</address>
+
+			<p class="copyright">Copyright &copy; Chungcheongbuk-do Office Of Education.. All rights reserved.</p>
+		</div> -->
+		<a href="" class="btn_top"><i class="xi-long-arrow-up" aria-hidden="true"></i><em class="hid">최상단으로 이동</em></a>
+	</div>
+</footer>
+	<!-- // footer -->
+
+	
+</div>
+<!-- menuForm -->
+		<!--공통 메뉴 Form -->
+<form name="mainMenuForm" id="mainMenuForm" method="post">
+	<input type="hidden" name="mi" id="nowMenuId" value="12127" />
+	<input type="hidden" name="paramNm" id="paramNm" value=""/>
+	<input type="hidden" name="paramVal" id="paramVal" value=""/>
+</form>
+<!--/공통 메뉴 Form -->
+	
+<script>
+$(function() {
+	
+	//공통 submit
+	$(".menuFormBtn").click(function(){
+		var paramVal = $(this).attr('data-param'); 
+		var paramNm = $(this).attr('data-nm');
+		var paramUrl = $(this).attr('data-url');
+		$("#paramVal").val(paramVal);
+		$("#paramNm").val(paramNm);
+		setTrimMenuId();
+		$("#mainMenuForm").attr('action', paramUrl).submit();
+	});
+	
+});
+
+//파라미터 페이지 이동 
+function goParamPage( setVal, setNm, setUrl ) {
+	$("#paramNm").val(setNm);
+	$("#paramVal").val(setVal);
+	setTrimMenuId();
+	$("#mainMenuForm").attr('action', setUrl).submit();
+};
+
+//메뉴 아이디 공백제거
+function setTrimMenuId(){
+	var nowMenuId = $.trim($("#nowMenuId").val());
+	$("nowMenuId").val(nowMenuId);
+};
+
+</script>
+	
+	 
+	
+	
+
+	
+    	<!-- /menuForm -->
+</body>
+</html>
