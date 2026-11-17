@@ -98,3 +98,18 @@ def test_same_title_template_different_school_is_not_duplicate():
     a = {"title": "2026. 부윤초등학교병설유치원 겨울방학 중 방과후과정 강사 채용", "posted_at": "2026-11-16"}
     b = {"title": "2026학년도 소이초등학교병설유치원 겨울방학 중 방과후과정 강사 채용", "posted_at": "2026-11-16"}
     assert not same_post(a, b)
+
+
+def test_new_post_read_as_already_closed_is_kept_open(store, settings):
+    # 봉덕초 사례: 11/16 공고를 11/17에 처음 봤는데 마감 11/16으로 읽히면 '확인 필요'로 모집 중에 남긴다
+    sc = FakeHire(hwpx("가. 공고 및 서류접수: 2026. 11. 16.(월) 14:00까지 나. 제출방법: 방문"))
+    collect_hire(sc, store, settings, datetime(2026, 11, 17, 4, 0, tzinfo=KST), {})
+    j = store.jobs["kj1582401"]
+    assert j["deadline"] is None and j["notified_at"] is None
+
+
+def test_body_date_same_as_posted_does_not_override_board():
+    from app.main import apply_body_deadline
+    j = {"posted_at": "2026-11-10", "deadline": "2026-11-12", "body": "3. 접수기간: 2026.11.10. 10:00부터 방문 접수"}
+    apply_body_deadline(j)
+    assert j["deadline"] == "2026-11-12"
