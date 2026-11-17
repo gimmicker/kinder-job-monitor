@@ -788,5 +788,22 @@
   "source": "cheongju",
   "started_at": "2026-11-17T18:00:02+09:00",
   "status": "success"
+ },
+ {
+  "changed_count": 0,
+  "cheongju": "skipped (해외 접속 차단, PC에서 수집)",
+  "detail_errors": 0,
+  "finished_at": "2026-11-17T18:01:08+09:00",
+  "kinder_count": 44,
+  "kj_duplicates": 1,
+  "kj_list_count": 50,
+  "kj_new_count": 2,
+  "list_count": 50,
+  "merged": 0,
+  "new_count": 2,
+  "pages": 1,
+  "pruned": 0,
+  "started_at": "2026-11-17T18:00:46+09:00",
+  "status": "success"
  }
 ]
