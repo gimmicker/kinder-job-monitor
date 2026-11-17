@@ -590,11 +590,11 @@
     $("#scope").hidden = tab === "fav" || !inTabAll.length;
     $("#scope").innerHTML = `<button type="button" data-scope="mine" class="${scope === "mine" ? "on" : ""}">내 조건 <small>${inTabAll.filter(isMine).length}</small></button>`
       + `<button type="button" data-scope="all" class="${scope === "all" ? "on" : ""}">전체 <small>${inTabAll.length}</small></button>`;
-    $("#modesw").hidden = !inTabAll.length && tab !== "fav";
+    $("#modesw").hidden = !CFG.kakaoKey || (!inTabAll.length && tab !== "fav"); // 카카오 키를 넣기 전에는 지도 전환을 숨긴다
     $("#modesw").innerHTML = `<button type="button" data-mode="list" class="${mode === "list" ? "on" : ""}">목록</button>`
       + `<button type="button" data-mode="map" class="${mode === "map" ? "on" : ""}">${tf("🗺️")} 지도</button>`;
     const q = $(".search .clear"); if (q) q.hidden = !query;
-    if (mode === "map" && list.length) return renderMap(list);
+    if (mode === "map" && CFG.kakaoKey && list.length) return renderMap(list);
     const doAnim = animate && !reduceMotion;
     $("#cards").innerHTML = (list.length ? `<div class="list">${list.map((j, i) => card(j, i, doAnim)).join("")}</div>`
         : `<div class="empty">${emptyText(pool.length > 0)}</div>`);
@@ -1049,7 +1049,7 @@
 
       <section class="set">
         <h3>${tf("🏠")} 집 위치</h3>
-        <p class="desc">버스 길찾기 출발지, 공고의 ‘집에서 몇 km’, 지도의 집 표시에 써요. 집에 있을 때 한 번 저장해 두세요. 위치는 이 폰에만 저장돼요.</p>
+        <p class="desc">버스 길찾기 출발지, 공고의 ‘집에서 몇 km’${CFG.kakaoKey ? ", 지도의 집 표시" : ""}에 써요. 집에 있을 때 한 번 저장해 두세요. 위치는 이 폰에만 저장돼요.</p>
         ${home ? `<div class="state ok">저장됨 · ${fmtDate(home.at)}${home.acc ? ` · 오차 약 ${home.acc}m` : ""}
             <a href="https://www.openstreetmap.org/?mlat=${home.lat}&mlon=${home.lng}#map=17/${home.lat}/${home.lng}" target="_blank" rel="noopener">지도에서 확인</a></div>`
           : `<div class="state">아직 저장하지 않았어요. 지금은 지금 있는 곳에서 출발해요.</div>`}
