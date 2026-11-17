@@ -115,7 +115,7 @@
   .map-msg { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; text-align: center;
              color: var(--muted); font-size: 16px; }
   .map-note { color: var(--muted); font-size: 14px; margin: 8px 2px 0; }
-  .pin { position: relative; display: grid; max-width: 140px; padding: 4px 9px; border: 0; border-radius: 10px;
+  .pin { position: relative; display: grid; width: max-content; max-width: 150px; padding: 4px 9px; border: 0; border-radius: 10px;
          background: var(--brand); color: #fff; font-size: 13px; line-height: 1.25; text-align: center;
          box-shadow: 0 2px 6px rgba(0,0,0,.28); cursor: pointer; }
   .pin::after { content: ""; position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%);
@@ -606,7 +606,7 @@
     if (!CFG.kakaoKey) return Promise.reject(new Error("nokey"));
     if (!kakaoReady) kakaoReady = new Promise((ok, fail) => {
       const s = document.createElement("script");
-      s.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${encodeURIComponent(CFG.kakaoKey)}&autoload=false`;
+      s.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${encodeURIComponent(CFG.kakaoKey)}&libraries=clusterer&autoload=false`;
       s.onload = () => (window.kakao && kakao.maps ? kakao.maps.load(ok) : fail(new Error("load")));
       s.onerror = () => { kakaoReady = null; fail(new Error("load")); };
       document.head.appendChild(s);
@@ -640,10 +640,18 @@
     const K = kakao.maps;
     if (!mapObj || mapObj.el !== el) {
       el.innerHTML = "";
-      mapObj = { el, map: new K.Map(el, { center: new K.LatLng(36.635, 127.49), level: 7 }), layers: [], sig: "" };
+      const map = new K.Map(el, { center: new K.LatLng(36.635, 127.49), level: 7 });
+      // 가까운 핀은 숫자 동그라미로 묶는다. 누르면 확대되고, 충분히 확대하면 핀이 따로 보인다
+      const clusterer = new K.MarkerClusterer({ map, averageCenter: true, minLevel: 6, gridSize: 56, calculator: [1000],
+        styles: [{ width: "44px", height: "44px", lineHeight: "38px", borderRadius: "50%", border: "3px solid #fff",
+                   background: "rgba(31,95,74,.92)", color: "#fff", textAlign: "center", fontSize: "16px", fontWeight: "700",
+                   boxShadow: "0 2px 6px rgba(0,0,0,.3)" }] });
+      mapObj = { el, map, clusterer, layers: [], sig: "" };
     }
     mapObj.layers.forEach((o) => o.setMap(null));
     mapObj.layers = [];
+    mapObj.clusterer.clear();
+    const pinOverlays = [];
     const bounds = new K.LatLngBounds();
     const home = store.get("home", null);
     if (home) {
@@ -669,9 +677,10 @@
         renderSheet(groups);
         const sh = $("#sheet"); if (sh) sh.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
       });
-      ov.setMap(mapObj.map); mapObj.layers.push(ov);
+      pinOverlays.push(ov); mapObj.layers.push(ov);
       bounds.extend(ov.getPosition());
     }
+    mapObj.clusterer.addMarkers(pinOverlays);
     // 보이는 핀이 바뀌었을 때만 화면을 다시 맞춘다 (사용자가 옮겨 둔 지도는 그대로)
     const sig = [...groups.keys()].join("|") + (home ? `|h${home.lat},${home.lng}` : "");
     if (sig !== mapObj.sig && !bounds.isEmpty()) {
