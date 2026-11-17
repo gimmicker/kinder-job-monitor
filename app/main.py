@@ -128,7 +128,7 @@ def apply_body_deadline(job: dict) -> None:
     body_dl = None
     if board and job.get("posted_at") and job.get("body"):
         body_dl = find_deadline(job["body"], date.fromisoformat(job["posted_at"]))
-    if body_dl and body_dl < board:
+    if body_dl and body_dl < board and body_dl > job["posted_at"]:  # 등록일과 같은 날짜는 기간의 시작일일 수 있다
         job.update({"deadline": body_dl, "deadline_board": board, "deadline_source": "본문"})
     elif job.get("deadline_board"):
         job["deadline"] = job.pop("deadline_board")

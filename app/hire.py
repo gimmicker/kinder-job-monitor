@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 from . import filters
 from .cheongju import MAX_ATTACHMENT, find_same
 from .config import iso
-from .docs import doc_text, find_deadline
+from .docs import doc_text, doubtful_deadline, find_deadline
 from .parser import ParseError, _clean, _date
 from .parser import parse_detail as parse_pool_detail
 from .scraper import Scraper
@@ -134,6 +134,8 @@ def _add(scraper, store, cfg, row, pid, now, stats) -> None:
     except Exception as e:
         err = str(e)[:200]
         stats["detail_errors"] = stats.get("detail_errors", 0) + 1
+    if doubtful_deadline(deadline, row.get("posted_at"), now.date()):
+        deadline, src = None, None  # 갓 올라온 공고가 벌써 마감? 잘못 읽었을 수 있으니 '확인 필요'로 (봉덕초 사례)
     author = row.get("author") or ""
     store.jobs[pid] = {
         "post_id": pid,

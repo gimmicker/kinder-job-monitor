@@ -7,7 +7,7 @@ import re
 import struct
 import zipfile
 import zlib
-from datetime import date
+from datetime import date, timedelta
 
 import olefile
 
@@ -83,6 +83,19 @@ _ANCHOR = re.compile(r"(원서\s*접수|서류\s*접수|서류\s*제출|신청�
                      r"|지원서\s*접수|모집\s*기간|신청\s*기간|접\s*수\s*기\s*간)")
 _FULL = re.compile(r"(20\d\d)\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})")
 _SHORT = re.compile(r"(?<![\d.])(\d{1,2})\s*[.월/]\s*(\d{1,2})\s*[.일]?\s*(?:\(|［|\[)|(?<!\d)(\d{1,2})\s*월\s*(\d{1,2})\s*일")
+# 기간의 끝 날짜: '~11.12.10:00', '~11.9 10시', '~11,17.(화)'(쉼표 오타)처럼 요일 괄호가 없어도 읽는다
+_RANGE_END = re.compile(r"[~∼～〜-]\s*(?:(20\d\d)\s*[./년]\s*)?(\d{1,2})\s*[.,/월]\s*(\d{1,2})(?!\d)")
+# 접수 기간 뒤에 오는 다른 일정. 여기부터는 마감일이 아니다 (면접일을 마감으로 읽던 문제)
+_STOP = re.compile(r"면접|합격|발표|결과|통보|심사|전형|(채용|근무|계약)\s*기간")
+MAX_PERIOD_DAYS = 60  # 등록 후 이보다 먼 날짜는 접수 마감이 아니라 근무 기간으로 본다
+
+
+def doubtful_deadline(deadline: str | None, posted: str | None, today: date) -> bool:
+    """올라온 지 3일이 안 된 공고가 처음 볼 때 벌써 마감으로 읽히면 잘못 읽었을 수 있다.
+    이럴 때는 마감일을 비워 '확인 필요'로 모집 중에 남긴다 (놓치는 것보다 한 번 더 보는 게 낫다)."""
+    if not deadline or not posted:
+        return False
+    return deadline < today.isoformat() and posted >= (today - timedelta(days=3)).isoformat()
 
 
 def find_deadline(text: str, posted: date) -> str | None:
@@ -104,6 +117,13 @@ def find_deadline(text: str, posted: date) -> str | None:
             if not any(s <= d.start() < e for s, e in full):
                 mo, dd = (d.group(1), d.group(2)) if d.group(1) else (d.group(3), d.group(4))
                 dates.append((d.start(), posted.year, int(mo), int(dd)))
+        for d in _RANGE_END.finditer(seg):
+            dates.append((d.start(), int(d.group(1) or posted.year), int(d.group(2)), int(d.group(3))))
+        if dates:  # 첫 날짜 뒤에 면접·발표 같은 다른 일정이 나오면 거기서 끊는다
+            first = min(x[0] for x in dates)
+            stop = _STOP.search(seg, first)
+            if stop:
+                dates = [x for x in dates if x[0] < stop.start()]
         dates.sort()
         if re.search(r"~\s*(채용|충원|선발|모집|마감)\s*(시|될\s*때)\s*까지", seg):
             continue  # 끝이 정해지지 않은 기간
@@ -114,7 +134,7 @@ def find_deadline(text: str, posted: date) -> str | None:
                 continue
             if mo < posted.month - 6:  # 12월에 올린 공고의 1월 마감
                 cand = date(y + 1, mo, dd)
-            if posted <= cand <= date(posted.year + 1, 12, 31):
+            if posted <= cand <= posted + timedelta(days=MAX_PERIOD_DAYS):
                 best = cand  # 기간의 끝 날짜까지 계속 갱신
         if best:
             return best.isoformat()
