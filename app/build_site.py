@@ -37,7 +37,8 @@ def build(out: Path) -> None:
     shutil.copy(status, out / "data" / "status.json") if status.exists() else \
         (out / "data" / "status.json").write_text("{}", encoding="utf-8")
     settings = load_settings()
-    cfg = {"vapidPublicKey": os.environ.get("VAPID_PUBLIC_KEY", ""),
+    cfg = {"kakaoKey": (settings.get("site") or {}).get("kakao_js_key") or "",
+           "vapidPublicKey": os.environ.get("VAPID_PUBLIC_KEY", ""),
            "workerUrl": os.environ.get("WORKER_URL", "").rstrip("/"),
            # 받을 공고 조건: 고를 수 있는 값과 기본값 (app/prefs.py와 같은 규칙)
            "conditions": {"cities": CITIES, "types": job_types(settings), "defaults": default_prefs(settings)}}
