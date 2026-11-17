@@ -3,6 +3,7 @@
 필요 환경변수: WORKER_URL, WORKER_ADMIN_TOKEN, VAPID_PRIVATE_KEY, VAPID_SUBJECT(mailto: 또는 https:)
 사용: python -m app.push           새 공고 발송
       python -m app.push --test    테스트 알림 1건
+      python -m app.push --notice  공지 알림 1건 (환경변수 NOTICE='제목|내용', 예: 앱 업데이트 안내)
 """
 import json
 import os
@@ -135,9 +136,14 @@ def main(argv=None) -> int:
     worker = Worker(_env("WORKER_URL"), _env("WORKER_ADMIN_TOKEN"))
     key, subject = _env("VAPID_PRIVATE_KEY"), os.environ.get("VAPID_SUBJECT", "mailto:admin@example.com")
 
-    if "--test" in argv:
-        msgs = [{"post_ids": [], "payload": {"title": "알림 테스트", "body": "알림이 잘 옵니다 👍",
-                                             "url": "./", "tag": "test"}}]
+    if "--test" in argv or "--notice" in argv:
+        title, body = "알림 테스트", "알림이 잘 옵니다 👍"
+        if "--notice" in argv:
+            title, _, body = (os.environ.get("NOTICE") or "").partition("|")
+            if not title.strip():
+                raise SystemExit("NOTICE가 비어 있음 ('제목|내용')")
+        msgs = [{"post_ids": [], "payload": {"title": title.strip(), "body": body.strip(),
+                                             "url": "./", "tag": "notice" if "--notice" in argv else "test"}}]
         res = send(msgs, worker.subscriptions(), key, subject)
         for sid in res["gone"]:
             worker.delete(sid)
