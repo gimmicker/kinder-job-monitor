@@ -95,11 +95,13 @@ def find_deadline(text: str, posted: date) -> str | None:
         cut = re.search(r"\s(\d{1,2}\s*\.|[가-하]\s*\.)\s*[가-힣]", seg[10:])
         if cut:
             seg = seg[:10 + cut.start()]
-        dates = []
+        dates, full = [], []
         for d in _FULL.finditer(seg):
             dates.append((d.start(), int(d.group(1)), int(d.group(2)), int(d.group(3))))
+            full.append(d.span())
         for d in _SHORT.finditer(seg):
-            if not any(abs(d.start() - x[0]) < 12 for x in dates):
+            # 연도까지 쓴 날짜 안의 '11. 4.'만 건너뛴다 ('11.16(월)-11.18.(수)'처럼 붙은 두 날짜는 둘 다 읽는다)
+            if not any(s <= d.start() < e for s, e in full):
                 mo, dd = (d.group(1), d.group(2)) if d.group(1) else (d.group(3), d.group(4))
                 dates.append((d.start(), posted.year, int(mo), int(dd)))
         dates.sort()
