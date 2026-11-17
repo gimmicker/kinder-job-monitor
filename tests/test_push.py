@@ -81,3 +81,27 @@ def test_plan_uses_each_phones_conditions():
     assert got["mom"] == ["a", "b", "d"]   # 지역·직무를 모르는 공고는 놓치지 않게 포함
     assert got["me"] == ["a", "d"]
     assert got["jin"] == ["d"]             # '기타' 지역은 진천인지 알 수 없어 제외, 모르는 값은 무시
+
+
+def test_notice_sends_title_and_body(monkeypatch):
+    import app.push as push
+    sent = {}
+
+    class FakeWorker:
+        def __init__(self, *a): pass
+        def subscriptions(self): return [{"id": "s1"}]
+        def delete(self, sid): pass
+
+    def fake_send(msgs, subs, key, subject):
+        sent["msgs"], sent["subs"] = msgs, subs
+        return {"delivered": set(), "gone": set(), "errors": []}
+
+    monkeypatch.setattr(push, "Worker", FakeWorker)
+    monkeypatch.setattr(push, "send", fake_send)
+    for k, v in {"WORKER_URL": "u", "WORKER_ADMIN_TOKEN": "t", "VAPID_PRIVATE_KEY": "k",
+                 "NOTICE": "앱이 새로워졌어요|지도로 보기가 생겼어요"}.items():
+        monkeypatch.setenv(k, v)
+    assert push.main(["--notice"]) == 0
+    p = sent["msgs"][0]["payload"]
+    assert (p["title"], p["body"], p["tag"]) == ("앱이 새로워졌어요", "지도로 보기가 생겼어요", "notice")
+    assert sent["subs"] == [{"id": "s1"}]
