@@ -83,7 +83,7 @@ site:
   # 카카오맵 JavaScript 키 (developers.kakao.com → 내 애플리케이션 → 앱 키).
   # 화면에 그대로 보이는 공개 키이고, 카카오에 등록한 사이트 주소에서만 동작한다
   # (https://gimmicker.github.io, 미리보기 http://localhost:8090). 비어 있으면 지도 자리에 '준비 중'.
-  kakao_js_key: ""
+  kakao_js_key: "3ef0d9edede1b70d3940a1478383c9f6"
 
 notify:
   summary_threshold: 3      # 새 공고가 이보다 많으면 요약 알림 1건
