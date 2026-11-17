@@ -80,6 +80,8 @@
   .cat { flex: none; border: 1.5px solid var(--line); background: var(--card); color: var(--muted); border-radius: 999px;
          padding: 6px 13px; font-size: 15px; font-weight: 700; transition: background .2s, color .2s, border-color .2s; }
   .cat.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .cat.area.active { background: var(--brand); border-color: var(--brand); }
+  .cat.area .tf { font-size: 14px; margin-right: 3px; }
   .cat small { font-weight: 500; margin-left: 3px; }
 
   /* ---------- 카드 ---------- */
@@ -376,6 +378,7 @@
   let tab = "open", cat = "전체", query = "", listScroll = 0, loaded = false;
   let scope = store.get("scope", "mine"); // 목록: 내 조건(mine) / 전체(all)
   let mode = store.get("mode", "list"); // 목록(list) / 지도(map)
+  let area = store.get("area", "전체"); // 지역 필터: 청주는 구, 그 밖은 시·군
 
   // ?code= 는 알림 등록 코드. 한 번 저장한다.
   const params = new URLSearchParams(location.search);
@@ -426,6 +429,13 @@
     if (!home || !k) return "";
     const d = km(home, k);
     return `집에서 ${d < 1 ? `${Math.max(1, Math.round(d * 10)) * 100}m` : `${d < 10 ? d.toFixed(1) : Math.round(d)}km`}`;
+  }
+  // 지역 필터 값: 청주 유치원은 구(유치원알리미 주소), 청주 밖은 시·군. 모르면 null (전체에서만 보임)
+  const GU = ["상당구", "서원구", "흥덕구", "청원구"];
+  function areaOf(j) {
+    const k = j.kinder;
+    if (k && k.city === "청주") return GU.includes(k.area) ? k.area : null;
+    return j.city && j.city !== "청주" && j.city !== "기타" ? j.city : null;
   }
   // 아이콘: 의미가 있는 것은 토스페이스 이모지, 작은 조작 버튼은 2px 선 아이콘
   const greetName = (n) => n + (/님$/.test(n) ? "께" : " 선생님께");
@@ -552,6 +562,7 @@
           <button class="clear" type="button" data-clear ${query ? "" : "hidden"} aria-label="검색어 지우기">${ic("x")}</button>
         </label>
         <div class="tool-row"><div class="scope" id="scope"></div><div class="scope" id="modesw"></div></div>
+        <div class="cats" id="areas"></div>
         <div class="cats" id="cats"></div>
       </div>
       <div id="cards"></div>`;
@@ -559,7 +570,15 @@
   }
   function renderCards(animate) {
     if (!$("#cards")) return renderList(animate); // 화면 전환 도중이면 목록 전체를 다시 그린다
-    const pool = base(tab);
+    // 지역 → 직무 순으로 좁힌다. 고른 지역에 공고가 없는 탭에서는 전체로 보여 주되 고른 값은 기억한다
+    const all = base(tab);
+    const areaCnt = {};
+    all.forEach((j) => { const a = areaOf(j); if (a) areaCnt[a] = (areaCnt[a] || 0) + 1; });
+    const areas = [...GU.filter((g) => areaCnt[g]), ...Object.keys(areaCnt).filter((a) => !GU.includes(a)).sort((a, b) => areaCnt[b] - areaCnt[a])];
+    const ar = areaCnt[area] ? area : "전체";
+    $("#areas").hidden = areas.length < 2;
+    $("#areas").innerHTML = ["전체", ...areas].map((a) => `<button class="cat area ${a === ar ? "active" : ""}" type="button" data-area="${esc(a)}">${a === "전체" ? `${tf("📍")}전체 지역` : esc(a)}<small>${a === "전체" ? all.length : areaCnt[a]}</small></button>`).join("");
+    const pool = ar === "전체" ? all : all.filter((j) => areaOf(j) === ar);
     const counts = {};
     pool.forEach((j) => { const k = typeName(j.job_type) || "기타"; counts[k] = (counts[k] || 0) + 1; });
     const cats = ["전체", ...Object.keys(counts).sort((a, b) => counts[b] - counts[a])];
@@ -783,6 +802,12 @@
       tab = t.dataset.tab; store.set("tab", tab); cat = "전체"; listScroll = 0;
       history.replaceState(null, "", `?tab=${tab}`);
       movePill(); renderCards(true); window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+      return;
+    }
+    const ak = e.target.closest("[data-area]");
+    if (ak) {
+      area = ak.dataset.area; store.set("area", area); renderCards(true);
+      ak.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", inline: "center", block: "nearest" });
       return;
     }
     const k = e.target.closest("[data-cat]");
