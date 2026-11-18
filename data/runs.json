@@ -856,5 +856,14 @@
   "source": "cheongju",
   "started_at": "2026-11-18T18:25:45+09:00",
   "status": "success"
+ },
+ {
+  "cj_list_count": 100,
+  "finished_at": "2026-11-18T18:29:36+09:00",
+  "merged": 0,
+  "pruned": 0,
+  "source": "cheongju",
+  "started_at": "2026-11-18T18:29:28+09:00",
+  "status": "success"
  }
 ]
