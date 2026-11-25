@@ -1226,5 +1226,14 @@
   "pruned": 0,
   "started_at": "2026-11-25T18:47:35+09:00",
   "status": "success"
+ },
+ {
+  "cj_list_count": 100,
+  "finished_at": "2026-11-25T18:50:57+09:00",
+  "merged": 0,
+  "pruned": 0,
+  "source": "cheongju",
+  "started_at": "2026-11-25T18:50:49+09:00",
+  "status": "success"
  }
 ]
