@@ -2,18 +2,6 @@
  {
   "changed_count": 0,
   "detail_errors": 0,
-  "finished_at": "2026-10-28T11:32:04+09:00",
-  "kinder_count": 5,
-  "list_count": 50,
-  "new_count": 0,
-  "pages": 1,
-  "pruned": 0,
-  "started_at": "2026-10-28T11:32:00+09:00",
-  "status": "success"
- },
- {
-  "changed_count": 0,
-  "detail_errors": 0,
   "finished_at": "2026-10-28T18:52:46+09:00",
   "kinder_count": 5,
   "list_count": 50,
@@ -1293,6 +1281,16 @@
   "pages": 1,
   "pruned": 0,
   "started_at": "2026-11-27T14:16:41+09:00",
+  "status": "success"
+ },
+ {
+  "cj_list_count": 100,
+  "cj_new_count": 1,
+  "finished_at": "2026-11-27T19:06:43+09:00",
+  "merged": 0,
+  "pruned": 0,
+  "source": "cheongju",
+  "started_at": "2026-11-27T19:06:25+09:00",
   "status": "success"
  }
 ]
